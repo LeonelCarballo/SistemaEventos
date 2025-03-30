@@ -45,71 +45,71 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        menuButton = new javax.swing.JButton();
+        jPanelFondoBlanco = new javax.swing.JPanel();
+        jPanelColorRosa = new javax.swing.JPanel();
+        jButtonMenu = new javax.swing.JButton();
         eventosScrollPane = new javax.swing.JScrollPane();
-        logo = new javax.swing.JLabel();
-        inicioButton = new javax.swing.JButton();
-        explorarButton = new javax.swing.JButton();
-        crearEventoButton = new javax.swing.JButton();
+        jLabelLogo = new javax.swing.JLabel();
+        jButtonInicio = new javax.swing.JButton();
+        jButtonExplorar = new javax.swing.JButton();
+        jButtonCrearEvento = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanelFondoBlanco.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelFondoBlanco.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(253, 166, 179));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanelColorRosa.setBackground(new java.awt.Color(253, 166, 179));
+        jPanelColorRosa.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        menuButton.setBackground(new java.awt.Color(253, 166, 179));
-        menuButton.setForeground(new java.awt.Color(255, 255, 255));
-        menuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotonmenu.png"))); // NOI18N
-        jPanel2.add(menuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        jButtonMenu.setBackground(new java.awt.Color(253, 166, 179));
+        jButtonMenu.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotonmenu.png"))); // NOI18N
+        jPanelColorRosa.add(jButtonMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 560));
-        jPanel1.add(eventosScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 130, 350, 420));
+        jPanelFondoBlanco.add(jPanelColorRosa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 560));
+        jPanelFondoBlanco.add(eventosScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 130, 350, 420));
 
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linklogo.png"))); // NOI18N
-        jPanel1.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 210, 50));
+        jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linklogo.png"))); // NOI18N
+        jPanelFondoBlanco.add(jLabelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 210, 50));
 
-        inicioButton.setBackground(new java.awt.Color(255, 255, 255));
-        inicioButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupinicio.png"))); // NOI18N
-        inicioButton.setBorder(null);
-        inicioButton.addActionListener(new java.awt.event.ActionListener() {
+        jButtonInicio.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupinicio.png"))); // NOI18N
+        jButtonInicio.setBorder(null);
+        jButtonInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inicioButtonActionPerformed(evt);
+                jButtonInicioActionPerformed(evt);
             }
         });
-        jPanel1.add(inicioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 110, 50));
+        jPanelFondoBlanco.add(jButtonInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 110, 50));
 
-        explorarButton.setBackground(new java.awt.Color(255, 255, 255));
-        explorarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupexplorar.png"))); // NOI18N
-        jPanel1.add(explorarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 160, -1));
+        jButtonExplorar.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonExplorar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupexplorar.png"))); // NOI18N
+        jPanelFondoBlanco.add(jButtonExplorar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 160, -1));
 
-        crearEventoButton.setBackground(new java.awt.Color(255, 255, 255));
-        crearEventoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotoncrear.png"))); // NOI18N
-        crearEventoButton.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCrearEvento.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonCrearEvento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotoncrear.png"))); // NOI18N
+        jButtonCrearEvento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                crearEventoButtonActionPerformed(evt);
+                jButtonCrearEventoActionPerformed(evt);
             }
         });
-        jPanel1.add(crearEventoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 490, -1, 40));
+        jPanelFondoBlanco.add(jButtonCrearEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 490, -1, 40));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 864, 558));
+        getContentPane().add(jPanelFondoBlanco, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 864, 558));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void inicioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicioButtonActionPerformed
+    private void jButtonInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInicioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_inicioButtonActionPerformed
+    }//GEN-LAST:event_jButtonInicioActionPerformed
 
-    private void crearEventoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearEventoButtonActionPerformed
+    private void jButtonCrearEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearEventoActionPerformed
         controlador.iniciarFlujoCreacionEvento();
         cerrar();
-    }//GEN-LAST:event_crearEventoButtonActionPerformed
+    }//GEN-LAST:event_jButtonCrearEventoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -147,13 +147,13 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton crearEventoButton;
     private javax.swing.JScrollPane eventosScrollPane;
-    private javax.swing.JButton explorarButton;
-    private javax.swing.JButton inicioButton;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel logo;
-    private javax.swing.JButton menuButton;
+    private javax.swing.JButton jButtonCrearEvento;
+    private javax.swing.JButton jButtonExplorar;
+    private javax.swing.JButton jButtonInicio;
+    private javax.swing.JButton jButtonMenu;
+    private javax.swing.JLabel jLabelLogo;
+    private javax.swing.JPanel jPanelColorRosa;
+    private javax.swing.JPanel jPanelFondoBlanco;
     // End of variables declaration//GEN-END:variables
 }
