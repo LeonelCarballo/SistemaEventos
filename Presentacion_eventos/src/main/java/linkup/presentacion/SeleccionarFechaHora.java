@@ -45,20 +45,20 @@ public class SeleccionarFechaHora extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel7 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        menuButton = new javax.swing.JButton();
-        logo = new javax.swing.JLabel();
-        inicioButton = new javax.swing.JButton();
-        explorarButton = new javax.swing.JButton();
+        jPanelFondo = new javax.swing.JPanel();
+        jPanelColorRosa = new javax.swing.JPanel();
+        jButtonMenu = new javax.swing.JButton();
+        jLabelLogo = new javax.swing.JLabel();
+        jButtonInicio = new javax.swing.JButton();
+        jButtonExplorar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        jPanelColorFondo = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        jButtonSiguiente = new javax.swing.JButton();
+        jButtonCancelar = new javax.swing.JButton();
+        jButtonAnterior = new javax.swing.JButton();
+        jPanelColor = new javax.swing.JPanel();
+        jLabelTituloNuevoEvento = new javax.swing.JLabel();
 
         jLabel7.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(168, 91, 102));
@@ -67,108 +67,108 @@ public class SeleccionarFechaHora extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanelFondo.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(253, 166, 179));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanelColorRosa.setBackground(new java.awt.Color(253, 166, 179));
+        jPanelColorRosa.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        menuButton.setBackground(new java.awt.Color(253, 166, 179));
-        menuButton.setForeground(new java.awt.Color(255, 255, 255));
-        menuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotonmenu.png"))); // NOI18N
-        jPanel2.add(menuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        jButtonMenu.setBackground(new java.awt.Color(253, 166, 179));
+        jButtonMenu.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotonmenu.png"))); // NOI18N
+        jPanelColorRosa.add(jButtonMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 560));
+        jPanelFondo.add(jPanelColorRosa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 560));
 
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linklogo.png"))); // NOI18N
-        jPanel1.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 210, 50));
+        jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linklogo.png"))); // NOI18N
+        jPanelFondo.add(jLabelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 210, 50));
 
-        inicioButton.setBackground(new java.awt.Color(255, 255, 255));
-        inicioButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupinicio.png"))); // NOI18N
-        inicioButton.setBorder(null);
-        inicioButton.addActionListener(new java.awt.event.ActionListener() {
+        jButtonInicio.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupinicio.png"))); // NOI18N
+        jButtonInicio.setBorder(null);
+        jButtonInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inicioButtonActionPerformed(evt);
+                jButtonInicioActionPerformed(evt);
             }
         });
-        jPanel1.add(inicioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 110, 50));
+        jPanelFondo.add(jButtonInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 110, 50));
 
-        explorarButton.setBackground(new java.awt.Color(255, 255, 255));
-        explorarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupexplorar.png"))); // NOI18N
-        jPanel1.add(explorarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 160, -1));
+        jButtonExplorar.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonExplorar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupexplorar.png"))); // NOI18N
+        jPanelFondo.add(jButtonExplorar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 160, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupcreandoevento.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 480, -1, -1));
+        jPanelFondo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 480, -1, -1));
 
-        jPanel3.setBackground(new java.awt.Color(246, 227, 230));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanelColorFondo.setBackground(new java.awt.Color(246, 227, 230));
+        jPanelColorFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(168, 91, 102));
         jLabel3.setText("Seleccionar fecha y hora");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        jPanelColorFondo.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        jButton1.setBackground(new java.awt.Color(246, 227, 230));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotonsiguiente.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSiguiente.setBackground(new java.awt.Color(246, 227, 230));
+        jButtonSiguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotonsiguiente.png"))); // NOI18N
+        jButtonSiguiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonSiguienteActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, -1, -1));
+        jPanelColorFondo.add(jButtonSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, -1, -1));
 
-        jButton2.setBackground(new java.awt.Color(246, 227, 230));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotoncancelar.png"))); // NOI18N
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCancelar.setBackground(new java.awt.Color(246, 227, 230));
+        jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotoncancelar.png"))); // NOI18N
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonCancelarActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, -1, -1));
+        jPanelColorFondo.add(jButtonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, -1, -1));
 
-        jButton3.setBackground(new java.awt.Color(246, 227, 230));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotonregresar.png"))); // NOI18N
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAnterior.setBackground(new java.awt.Color(246, 227, 230));
+        jButtonAnterior.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotonregresar.png"))); // NOI18N
+        jButtonAnterior.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButtonAnteriorActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 340, -1, -1));
+        jPanelColorFondo.add(jButtonAnterior, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 340, -1, -1));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 300, 400));
+        jPanelFondo.add(jPanelColorFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 300, 400));
 
-        jPanel4.setBackground(new java.awt.Color(195, 123, 133));
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, 300, 10));
+        jPanelColor.setBackground(new java.awt.Color(195, 123, 133));
+        jPanelFondo.add(jPanelColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, 300, 10));
 
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("Arial Black", 0, 20)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(168, 91, 102));
-        jLabel2.setText("Nuevo evento");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, -1, -1));
+        jLabelTituloNuevoEvento.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelTituloNuevoEvento.setFont(new java.awt.Font("Arial Black", 0, 20)); // NOI18N
+        jLabelTituloNuevoEvento.setForeground(new java.awt.Color(168, 91, 102));
+        jLabelTituloNuevoEvento.setText("Nuevo evento");
+        jPanelFondo.add(jLabelTituloNuevoEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 864, 558));
+        getContentPane().add(jPanelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 864, 558));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void inicioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicioButtonActionPerformed
+    private void jButtonInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInicioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_inicioButtonActionPerformed
+    }//GEN-LAST:event_jButtonInicioActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         controlador.mostrarVentanaPrincipal();
         cerrar();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteActionPerformed
         controlador.mostrarSeleccionarUbicacion();
         cerrar();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonSiguienteActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButtonAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorActionPerformed
         controlador.mostrarFormularioDetalles();
         cerrar();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jButtonAnteriorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -213,20 +213,20 @@ public class SeleccionarFechaHora extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton explorarButton;
-    private javax.swing.JButton inicioButton;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButtonAnterior;
+    private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JButton jButtonExplorar;
+    private javax.swing.JButton jButtonInicio;
+    private javax.swing.JButton jButtonMenu;
+    private javax.swing.JButton jButtonSiguiente;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JLabel logo;
-    private javax.swing.JButton menuButton;
+    private javax.swing.JLabel jLabelLogo;
+    private javax.swing.JLabel jLabelTituloNuevoEvento;
+    private javax.swing.JPanel jPanelColor;
+    private javax.swing.JPanel jPanelColorFondo;
+    private javax.swing.JPanel jPanelColorRosa;
+    private javax.swing.JPanel jPanelFondo;
     // End of variables declaration//GEN-END:variables
 }
