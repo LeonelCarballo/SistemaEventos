@@ -45,25 +45,25 @@ public class IngresarDetallesEvento extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel7 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        menuButton = new javax.swing.JButton();
-        logo = new javax.swing.JLabel();
-        inicioButton = new javax.swing.JButton();
-        explorarButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        jPanelBlanco = new javax.swing.JPanel();
+        jPanelRosa = new javax.swing.JPanel();
+        JButtonMenu = new javax.swing.JButton();
+        jLabelLogo = new javax.swing.JLabel();
+        JButtonInicio = new javax.swing.JButton();
+        JButtonExplorar = new javax.swing.JButton();
+        jLabelCreandoEvento = new javax.swing.JLabel();
+        jPanelRosaClaro = new javax.swing.JPanel();
+        jLabelNombreEvento = new javax.swing.JLabel();
+        jTextFieldNombreEvento = new javax.swing.JTextField();
+        jLabelEtiqueta = new javax.swing.JLabel();
+        jComboBoxEtiqueta = new javax.swing.JComboBox<>();
+        jLabelBanner = new javax.swing.JLabel();
+        jTextFieldDescripcion = new javax.swing.JTextField();
+        jLabelDescripcion = new javax.swing.JLabel();
+        jButtonSiguiente = new javax.swing.JButton();
+        jButtonCancelar = new javax.swing.JButton();
+        jPanelColorSeparador = new javax.swing.JPanel();
+        jLabelNuevoEvento = new javax.swing.JLabel();
 
         jLabel7.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(168, 91, 102));
@@ -72,129 +72,129 @@ public class IngresarDetallesEvento extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanelBlanco.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelBlanco.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(253, 166, 179));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanelRosa.setBackground(new java.awt.Color(253, 166, 179));
+        jPanelRosa.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        menuButton.setBackground(new java.awt.Color(253, 166, 179));
-        menuButton.setForeground(new java.awt.Color(255, 255, 255));
-        menuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotonmenu.png"))); // NOI18N
-        jPanel2.add(menuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        JButtonMenu.setBackground(new java.awt.Color(253, 166, 179));
+        JButtonMenu.setForeground(new java.awt.Color(255, 255, 255));
+        JButtonMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotonmenu.png"))); // NOI18N
+        jPanelRosa.add(JButtonMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 560));
+        jPanelBlanco.add(jPanelRosa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 560));
 
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linklogo.png"))); // NOI18N
-        jPanel1.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 210, 50));
+        jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linklogo.png"))); // NOI18N
+        jPanelBlanco.add(jLabelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 210, 50));
 
-        inicioButton.setBackground(new java.awt.Color(255, 255, 255));
-        inicioButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupinicio.png"))); // NOI18N
-        inicioButton.setBorder(null);
-        inicioButton.addActionListener(new java.awt.event.ActionListener() {
+        JButtonInicio.setBackground(new java.awt.Color(255, 255, 255));
+        JButtonInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupinicio.png"))); // NOI18N
+        JButtonInicio.setBorder(null);
+        JButtonInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inicioButtonActionPerformed(evt);
+                JButtonInicioActionPerformed(evt);
             }
         });
-        jPanel1.add(inicioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 110, 50));
+        jPanelBlanco.add(JButtonInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 110, 50));
 
-        explorarButton.setBackground(new java.awt.Color(255, 255, 255));
-        explorarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupexplorar.png"))); // NOI18N
-        jPanel1.add(explorarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 160, -1));
+        JButtonExplorar.setBackground(new java.awt.Color(255, 255, 255));
+        JButtonExplorar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupexplorar.png"))); // NOI18N
+        jPanelBlanco.add(JButtonExplorar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 160, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupcreandoevento.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 480, -1, -1));
+        jLabelCreandoEvento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupcreandoevento.png"))); // NOI18N
+        jPanelBlanco.add(jLabelCreandoEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 480, -1, -1));
 
-        jPanel3.setBackground(new java.awt.Color(246, 227, 230));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanelRosaClaro.setBackground(new java.awt.Color(246, 227, 230));
+        jPanelRosaClaro.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(168, 91, 102));
-        jLabel3.setText("Nombre del evento");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        jLabelNombreEvento.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabelNombreEvento.setForeground(new java.awt.Color(168, 91, 102));
+        jLabelNombreEvento.setText("Nombre del evento");
+        jPanelRosaClaro.add(jLabelNombreEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(148, 63, 75)));
-        jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 260, 40));
+        jTextFieldNombreEvento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(148, 63, 75)));
+        jPanelRosaClaro.add(jTextFieldNombreEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 260, 40));
 
-        jLabel4.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(168, 91, 102));
-        jLabel4.setText("Etiqueta");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+        jLabelEtiqueta.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabelEtiqueta.setForeground(new java.awt.Color(168, 91, 102));
+        jLabelEtiqueta.setText("Etiqueta");
+        jPanelRosaClaro.add(jLabelEtiqueta, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
 
-        jComboBox1.setBackground(new java.awt.Color(246, 227, 230));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(148, 63, 75)));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        jComboBoxEtiqueta.setBackground(new java.awt.Color(246, 227, 230));
+        jComboBoxEtiqueta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxEtiqueta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(148, 63, 75)));
+        jComboBoxEtiqueta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                jComboBoxEtiquetaActionPerformed(evt);
             }
         });
-        jPanel3.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 260, 40));
+        jPanelRosaClaro.add(jComboBoxEtiqueta, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 260, 40));
 
-        jLabel5.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(168, 91, 102));
-        jLabel5.setText("Banner");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
+        jLabelBanner.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabelBanner.setForeground(new java.awt.Color(168, 91, 102));
+        jLabelBanner.setText("Banner");
+        jPanelRosaClaro.add(jLabelBanner, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
 
-        jTextField2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(148, 63, 75)));
-        jPanel3.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 260, 40));
+        jTextFieldDescripcion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(148, 63, 75)));
+        jPanelRosaClaro.add(jTextFieldDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 260, 40));
 
-        jLabel6.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(168, 91, 102));
-        jLabel6.setText("Descripcion");
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
+        jLabelDescripcion.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabelDescripcion.setForeground(new java.awt.Color(168, 91, 102));
+        jLabelDescripcion.setText("Descripcion");
+        jPanelRosaClaro.add(jLabelDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
-        jButton1.setBackground(new java.awt.Color(246, 227, 230));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotonsiguiente.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSiguiente.setBackground(new java.awt.Color(246, 227, 230));
+        jButtonSiguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotonsiguiente.png"))); // NOI18N
+        jButtonSiguiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonSiguienteActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, -1, -1));
+        jPanelRosaClaro.add(jButtonSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, -1, -1));
 
-        jButton2.setBackground(new java.awt.Color(246, 227, 230));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotoncancelar.png"))); // NOI18N
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCancelar.setBackground(new java.awt.Color(246, 227, 230));
+        jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotoncancelar.png"))); // NOI18N
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonCancelarActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, -1, -1));
+        jPanelRosaClaro.add(jButtonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, -1, -1));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 300, 400));
+        jPanelBlanco.add(jPanelRosaClaro, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 300, 400));
 
-        jPanel4.setBackground(new java.awt.Color(195, 123, 133));
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, 300, 10));
+        jPanelColorSeparador.setBackground(new java.awt.Color(195, 123, 133));
+        jPanelBlanco.add(jPanelColorSeparador, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, 300, 10));
 
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("Arial Black", 0, 20)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(168, 91, 102));
-        jLabel2.setText("Nuevo evento");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, -1, -1));
+        jLabelNuevoEvento.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelNuevoEvento.setFont(new java.awt.Font("Arial Black", 0, 20)); // NOI18N
+        jLabelNuevoEvento.setForeground(new java.awt.Color(168, 91, 102));
+        jLabelNuevoEvento.setText("Nuevo evento");
+        jPanelBlanco.add(jLabelNuevoEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 864, 558));
+        getContentPane().add(jPanelBlanco, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 864, 558));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void inicioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicioButtonActionPerformed
+    private void JButtonInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonInicioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_inicioButtonActionPerformed
+    }//GEN-LAST:event_JButtonInicioActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void jComboBoxEtiquetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxEtiquetaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_jComboBoxEtiquetaActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         controlador.mostrarVentanaPrincipal();
         cerrar();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteActionPerformed
         controlador.mostrarSeleccionFechaHora();
         cerrar();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonSiguienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -235,25 +235,25 @@ public class IngresarDetallesEvento extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton explorarButton;
-    private javax.swing.JButton inicioButton;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JButton JButtonExplorar;
+    private javax.swing.JButton JButtonInicio;
+    private javax.swing.JButton JButtonMenu;
+    private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JButton jButtonSiguiente;
+    private javax.swing.JComboBox<String> jComboBoxEtiqueta;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JLabel logo;
-    private javax.swing.JButton menuButton;
+    private javax.swing.JLabel jLabelBanner;
+    private javax.swing.JLabel jLabelCreandoEvento;
+    private javax.swing.JLabel jLabelDescripcion;
+    private javax.swing.JLabel jLabelEtiqueta;
+    private javax.swing.JLabel jLabelLogo;
+    private javax.swing.JLabel jLabelNombreEvento;
+    private javax.swing.JLabel jLabelNuevoEvento;
+    private javax.swing.JPanel jPanelBlanco;
+    private javax.swing.JPanel jPanelColorSeparador;
+    private javax.swing.JPanel jPanelRosa;
+    private javax.swing.JPanel jPanelRosaClaro;
+    private javax.swing.JTextField jTextFieldDescripcion;
+    private javax.swing.JTextField jTextFieldNombreEvento;
     // End of variables declaration//GEN-END:variables
 }
