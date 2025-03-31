@@ -4,8 +4,7 @@
  */
 package Main;
 
-import linkup.presentacion.control.ControlCrearEvento;
-import linkup.presentacion.VentanaPrincipalCrearEvento;
+import linkup.presentacion.ControlCrearEvento;
 
 /**
  *
