@@ -4,7 +4,6 @@
  */
 package linkup.presentacion;
 
-import linkup.presentacion.control.ControlCrearEvento;
 
 /**
  *

@@ -14,9 +14,7 @@ import linkup.presentacion.VentanaPrincipalCrearEvento;
 public class Main {
 
     public static void main(String[] args) {
-        ControlCrearEvento controlador = new ControlCrearEvento();
-        VentanaPrincipalCrearEvento ventanaPrincipalCrearEvento = new VentanaPrincipalCrearEvento(controlador);
-        ventanaPrincipalCrearEvento.mostrar();
+        ControlCrearEvento.getInstancia().iniciarFlujoCreacionEvento();
     }
     
 }
