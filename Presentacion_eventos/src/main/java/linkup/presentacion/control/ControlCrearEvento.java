@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package linkup.presentacion;
+package linkup.presentacion.control;
 
 import DTOs.ContactoDTO;
 import DTOs.EventoCompletoDTO;
@@ -19,6 +19,12 @@ import Subsistema.GuardarEvento;
 import exception.NegocioException;
 import java.util.List;
 import javax.swing.JOptionPane;
+import linkup.presentacion.ConfirmacionEvento;
+import linkup.presentacion.EnviarInvitaciones;
+import linkup.presentacion.IngresarDetallesEvento;
+import linkup.presentacion.SeleccionarFechaHora;
+import linkup.presentacion.SeleccionarUbicacion;
+import linkup.presentacion.VentanaPrincipalCrearEvento;
 
 /**
  *
