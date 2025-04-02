@@ -48,6 +48,22 @@ public class GuardarEvento implements IGuardarEvento {
         if (evento == null) {
             throw new NegocioException("El evento no puede ser null");
         }
+        if(evento.getNombreEvento() == null){
+            throw new NegocioException("El evento no puede ser null");
+        }
+        if (evento.getEtiqueta() == null || evento.getEtiqueta().trim().isEmpty()) {
+        throw new NegocioException("La etiqueta del evento es obligatoria.");
+        }
+        if (evento.getDescripcion() == null || evento.getDescripcion().trim().isEmpty()) {
+            throw new NegocioException("La descripción del evento es obligatoria.");
+        }
+        if (evento.getUbicacion() == null || evento.getUbicacion().trim().isEmpty()) {
+            throw new NegocioException("La ubicación del evento es obligatoria.");
+        }
+        if (evento.getInvitados() == null || evento.getInvitados().isEmpty()) {
+            throw new NegocioException("Debe haber al menos un invitado.");
+        }
+        
 
         eventosGuardados.add(evento);
         System.out.println("Evento guardado" + evento.getNombreEvento());
