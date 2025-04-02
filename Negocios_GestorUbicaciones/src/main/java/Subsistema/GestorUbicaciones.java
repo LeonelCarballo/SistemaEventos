@@ -7,6 +7,7 @@ package Subsistema;
 import DTOs.Infraestructura;
 import ISubsistema.IGestorUbicaciones;
 import exception.NegocioException;
+import java.util.List;
 
 /**
  *
@@ -30,6 +31,19 @@ public class GestorUbicaciones implements IGestorUbicaciones {
         }
         if (direccion.length() < 5 || direccion.length() > 150) {
             throw new NegocioException("La dirección debe tener entre 5 y 150 caracteres.");
+        }
+        //LA DIRECCION SOLO ACEPTARA LETRAS, LETRAS CON ACENTOS, NUMEROS, ESPACIOS, COMAS Y PUNTOS 
+        if (!direccion.matches("^[a-zA-Z0-9áéíóúüñÁÉÍÓÚÜÑ.,#\\-\\s]+$")) {
+            throw new NegocioException("La dirección contiene caracteres no permitidos.");
+        }
+        //RECHAZA SOLO NUMEROS
+        if (direccion.matches("^\\d+$")) {
+            throw new NegocioException("La dirección no puede ser solo números.");
+        }
+        //BLOQUEA DIRECCIONES INDEBIDAS
+        List<String> direccionesInvalidas = List.of("Desconocido", "N/A", "Sin dirección", "No se", "Quien sabe", "Sepa");
+        if (direccionesInvalidas.contains(direccion.trim())) {
+            throw new NegocioException("La dirección ingresada no es válida.");
         }
     }
 
