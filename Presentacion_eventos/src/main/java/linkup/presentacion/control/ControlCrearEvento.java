@@ -78,23 +78,23 @@ public class ControlCrearEvento {
         frmDetalles.setVisible(true);
     }
 
-    public void mostrarSeleccionFechaHora() {
+    public void mostrarSeleccionFechaHora(EventoDTO eventoDTO) {
         if (frmFechaHora == null) {
-            frmFechaHora = new SeleccionarFechaHora(this);
+            frmFechaHora = new SeleccionarFechaHora(this , eventoDTO);
         }
         frmFechaHora.setVisible(true);
     }
 
-    public void mostrarSeleccionarUbicacion() {
+    public void mostrarSeleccionarUbicacion(EventoDTO evento) {
         if (frmUbicacion == null) {
-            frmUbicacion = new SeleccionarUbicacion(this);
+            frmUbicacion = new SeleccionarUbicacion(this, evento);
         }
         frmUbicacion.setVisible(true);
     }
 
-    public void mostrarEnviarInvitaciones() {
+    public void mostrarEnviarInvitaciones(EventoDTO eventoDTO) {
         if (frmInvitaciones == null) {
-            frmInvitaciones = new EnviarInvitaciones(this);
+            frmInvitaciones = new EnviarInvitaciones(this, eventoDTO);
         }
         frmInvitaciones.setVisible(true);
     }
@@ -110,19 +110,21 @@ public class ControlCrearEvento {
         try {
             this.eventoDTO = validadorEvento.validarRegistroEvento(evento);
             cerrarVentana(frmDetalles);
-            mostrarSeleccionFechaHora();
+            mostrarSeleccionFechaHora(evento);
             return eventoDTO;
         } catch (NegocioException e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);
             return null;
         }
     }
+    
+    
 
     public Infraestructura intentarRegistrarUbicacion(Infraestructura ubicacion) {
         try {
             this.ubicacionSeleccionada = gestorUbicaciones.validarUbicacion(ubicacion);
             cerrarVentana(frmUbicacion);
-            mostrarEnviarInvitaciones();
+            //mostrarEnviarInvitaciones();
             return ubicacionSeleccionada;
         } catch (NegocioException e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);

@@ -4,7 +4,17 @@
  */
 package linkup.presentacion;
 
+import DTOs.EventoDTO;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import linkup.presentacion.control.ControlCrearEvento;
+
 
 
 /**
@@ -14,11 +24,13 @@ import linkup.presentacion.control.ControlCrearEvento;
 public class SeleccionarFechaHora extends javax.swing.JFrame {
     
     private ControlCrearEvento controlador;
+    private EventoDTO eventoDTO;
     /**
      * Creates new form VentanaPrincipalCrearEvento
      */
-    public SeleccionarFechaHora(ControlCrearEvento controlador) {
+    public SeleccionarFechaHora(ControlCrearEvento controlador, EventoDTO eventoDTO) {
         this.controlador = controlador;
+        this.eventoDTO = eventoDTO;
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -58,6 +70,12 @@ public class SeleccionarFechaHora extends javax.swing.JFrame {
         jButtonSiguiente = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
         jButtonAnterior = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        HoraCB = new javax.swing.JComboBox<>();
+        MinutoCB = new javax.swing.JComboBox<>();
         jPanelColor = new javax.swing.JPanel();
         jLabelTituloNuevoEvento = new javax.swing.JLabel();
 
@@ -106,8 +124,8 @@ public class SeleccionarFechaHora extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(168, 91, 102));
-        jLabel3.setText("Seleccionar fecha y hora");
-        jPanelColorFondo.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        jLabel3.setText("Minutos");
+        jPanelColorFondo.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, -1, -1));
 
         jButtonSiguiente.setBackground(new java.awt.Color(246, 227, 230));
         jButtonSiguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotonsiguiente.png"))); // NOI18N
@@ -136,6 +154,28 @@ public class SeleccionarFechaHora extends javax.swing.JFrame {
         });
         jPanelColorFondo.add(jButtonAnterior, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 340, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(168, 91, 102));
+        jLabel4.setText("Seleccionar fecha y hora");
+        jPanelColorFondo.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(168, 91, 102));
+        jLabel5.setText("Fecha");
+        jPanelColorFondo.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(168, 91, 102));
+        jLabel6.setText("Horas");
+        jPanelColorFondo.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
+        jPanelColorFondo.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
+
+        HoraCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
+        jPanelColorFondo.add(HoraCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
+
+        MinutoCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
+        jPanelColorFondo.add(MinutoCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, -1, -1));
+
         jPanelFondo.add(jPanelColorFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 300, 400));
 
         jPanelColor.setBackground(new java.awt.Color(195, 123, 133));
@@ -162,7 +202,19 @@ public class SeleccionarFechaHora extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteActionPerformed
-        controlador.mostrarSeleccionarUbicacion();
+        
+            String hora = (String) this.HoraCB.getSelectedItem();
+String minuto = (String) this.MinutoCB.getSelectedItem();
+
+        // Obtienes la fecha desde el JDateChooser
+        Date fecha = jDateChooser1.getDate();
+        Instant instant = fecha.toInstant();
+        ZoneId zoneId = ZoneId.systemDefault(); 
+        LocalDate localDate = instant.atZone(zoneId).toLocalDate();
+        LocalTime localTime = LocalTime.of(Integer.parseInt(hora), Integer.parseInt(minuto));
+        LocalDateTime fechaHora = LocalDateTime.of(localDate, localTime);
+        eventoDTO.setFechaHora(fechaHora);
+        controlador.mostrarSeleccionarUbicacion(eventoDTO);
         cerrar();
     }//GEN-LAST:event_jButtonSiguienteActionPerformed
 
@@ -214,14 +266,20 @@ public class SeleccionarFechaHora extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> HoraCB;
+    private javax.swing.JComboBox<String> MinutoCB;
     private javax.swing.JButton jButtonAnterior;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonExplorar;
     private javax.swing.JButton jButtonInicio;
     private javax.swing.JButton jButtonMenu;
     private javax.swing.JButton jButtonSiguiente;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabelLogo;
     private javax.swing.JLabel jLabelTituloNuevoEvento;

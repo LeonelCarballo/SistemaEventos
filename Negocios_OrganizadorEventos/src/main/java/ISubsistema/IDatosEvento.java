@@ -13,4 +13,8 @@ import exception.NegocioException;
  */
 public interface IDatosEvento {
     public EventoDTO validarRegistroEvento(EventoDTO evento) throws NegocioException;
+
+    
+    
+    
 }

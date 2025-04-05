@@ -4,6 +4,7 @@
  */
 package linkup.presentacion;
 
+import DTOs.EventoDTO;
 import linkup.presentacion.control.ControlCrearEvento;
 
 /**
@@ -12,12 +13,13 @@ import linkup.presentacion.control.ControlCrearEvento;
  */
 public class IngresarDetallesEvento extends javax.swing.JFrame {
     private ControlCrearEvento controlador;
-
+    private EventoDTO eventoDTO;
     /**
      * Creates new form VentanaPrincipalCrearEvento
      */
     public IngresarDetallesEvento(ControlCrearEvento controlador) {
         this.controlador = controlador;
+        this.eventoDTO = new EventoDTO();
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -192,7 +194,10 @@ public class IngresarDetallesEvento extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteActionPerformed
-        controlador.mostrarSeleccionFechaHora();
+        eventoDTO.setNombreEvento(jTextFieldNombreEvento.getText());
+        eventoDTO.setDescripcion(jTextFieldDescripcion.getText());
+        eventoDTO.setEtiqueta(jComboBoxEtiqueta.getActionCommand());
+        controlador.mostrarSeleccionFechaHora(eventoDTO);
         cerrar();
     }//GEN-LAST:event_jButtonSiguienteActionPerformed
 
