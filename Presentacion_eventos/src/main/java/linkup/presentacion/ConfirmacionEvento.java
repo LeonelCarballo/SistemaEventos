@@ -4,6 +4,7 @@
  */
 package linkup.presentacion;
 
+import DTOs.EventoDTO;
 import linkup.presentacion.control.ControlCrearEvento;
 
 /**
@@ -13,13 +14,15 @@ import linkup.presentacion.control.ControlCrearEvento;
 public class ConfirmacionEvento extends javax.swing.JFrame {
 
     private ControlCrearEvento controlador;
+    private EventoDTO eventoDTO;
     /**
      * Creates new form VentanaPrincipalCrearEvento
      */
     
     
-    public ConfirmacionEvento(ControlCrearEvento controlador) {
+    public ConfirmacionEvento(ControlCrearEvento controlador, EventoDTO eventoDTO) {
         this.controlador = controlador;
+        this.eventoDTO = eventoDTO;
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -172,11 +175,14 @@ public class ConfirmacionEvento extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorActionPerformed
-        controlador.mostrarEnviarInvitaciones();
+        //controlador.mostrarEnviarInvitaciones();
         cerrar();
     }//GEN-LAST:event_jButtonAnteriorActionPerformed
 
     private void jButtonCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearActionPerformed
+        controlador.iniciarFlujoCreacionEvento();
+        controlador.intentarCrearEvento(eventoDTO);
+        controlador.intentarCrearEvento(eventoDTO);
         controlador.mostrarVentanaPrincipal();
         cerrar();
     }//GEN-LAST:event_jButtonCrearActionPerformed

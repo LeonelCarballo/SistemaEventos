@@ -4,6 +4,7 @@
  */
 package linkup.presentacion;
 
+import DTOs.EventoDTO;
 import linkup.presentacion.control.ControlCrearEvento;
 
 /**
@@ -13,12 +14,15 @@ import linkup.presentacion.control.ControlCrearEvento;
 public class SeleccionarUbicacion extends javax.swing.JFrame {
 
     private ControlCrearEvento controlador;
+    private EventoDTO eventoDTO;
+
     /**
      * Creates new form VentanaPrincipalCrearEvento
      */
     
-    public SeleccionarUbicacion(ControlCrearEvento controlador) {
+    public SeleccionarUbicacion(ControlCrearEvento controlador, EventoDTO eventoDTO) {
         this.controlador = controlador;
+        this.eventoDTO = eventoDTO;
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -167,17 +171,18 @@ public class SeleccionarUbicacion extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonInicioActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+        eventoDTO.setUbicacion(jTextFieldUbicacion.getText());
         controlador.mostrarVentanaPrincipal();
         cerrar();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorActionPerformed
-        controlador.mostrarSeleccionFechaHora();
+        controlador.mostrarSeleccionFechaHora(eventoDTO);
         cerrar();
     }//GEN-LAST:event_jButtonAnteriorActionPerformed
 
     private void jButtonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteActionPerformed
-        controlador.mostrarEnviarInvitaciones();
+        controlador.mostrarEnviarInvitaciones(eventoDTO);
         cerrar();
     }//GEN-LAST:event_jButtonSiguienteActionPerformed
 

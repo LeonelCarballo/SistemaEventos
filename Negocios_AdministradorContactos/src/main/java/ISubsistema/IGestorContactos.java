@@ -6,6 +6,7 @@ package ISubsistema;
 
 import DTOs.ContactoDTO;
 import exception.NegocioException;
+import java.util.List;
 
 /**
  *
@@ -13,4 +14,6 @@ import exception.NegocioException;
  */
 public interface IGestorContactos {
     public ContactoDTO validarContacto(ContactoDTO contacto) throws NegocioException;
+    
+    public List<ContactoDTO> ObtenerContactos();
 }

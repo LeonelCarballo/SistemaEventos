@@ -4,6 +4,10 @@
  */
 package linkup.presentacion;
 
+import DTOs.ContactoDTO;
+import DTOs.EventoDTO;
+import java.util.List;
+import javax.swing.JCheckBox;
 import linkup.presentacion.control.ControlCrearEvento;
 
 /**
@@ -13,15 +17,38 @@ import linkup.presentacion.control.ControlCrearEvento;
 public class EnviarInvitaciones extends javax.swing.JFrame {
 
     private ControlCrearEvento controlador;
+    private List<JCheckBox> checkboxes;
+    private EventoDTO eventoDTO;
+    public List<ContactoDTO> seleccionados;
     /**
      * Creates new form VentanaPrincipalCrearEvento
      */
     
     
-    public EnviarInvitaciones(ControlCrearEvento controlador) {
+    public EnviarInvitaciones(ControlCrearEvento controlador, EventoDTO eventoDTO) {
         this.controlador = controlador;
+        this.eventoDTO = eventoDTO;
+        mostrarContactos();
         initComponents();
         setLocationRelativeTo(null);
+    }
+    
+     public void mostrarContactos(){
+        for (ContactoDTO ContactoDTO : controlador.ObtenerContactos()) {
+                JCheckBox checkBox = new JCheckBox(ContactoDTO.getNombre());
+                checkboxes.add(checkBox);
+                contactosPanel.add(checkBox);
+        }
+    }
+     
+     private void generarListaSeleccionados() {
+
+        for (int i = 0; i < checkboxes.size(); i++) {
+        JCheckBox checkBox = checkboxes.get(i);
+        if (checkBox.isSelected()) {
+            seleccionados.add(controlador.ObtenerContactos().get(i));
+        }
+    }   
     }
 
     public EnviarInvitaciones() {
@@ -60,8 +87,8 @@ public class EnviarInvitaciones extends javax.swing.JFrame {
         jButtonCancelar = new javax.swing.JButton();
         jButtonAnterior = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
         jTextField1 = new javax.swing.JTextField();
+        contactosPanel = new javax.swing.JPanel();
         jButtonCopiarEnlace = new javax.swing.JButton();
         jLabelGenerarAlbum = new javax.swing.JLabel();
         jLabelEnviarNotificaciones = new javax.swing.JLabel();
@@ -147,7 +174,6 @@ public class EnviarInvitaciones extends javax.swing.JFrame {
 
         jPanel5.setBackground(new java.awt.Color(152, 79, 89));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel5.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 240, 130));
 
         jTextField1.setEditable(false);
         jTextField1.setBackground(new java.awt.Color(241, 212, 217));
@@ -159,6 +185,9 @@ public class EnviarInvitaciones extends javax.swing.JFrame {
             }
         });
         jPanel5.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 240, 30));
+
+        contactosPanel.setLayout(new javax.swing.BoxLayout(contactosPanel, javax.swing.BoxLayout.Y_AXIS));
+        jPanel5.add(contactosPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 240, 130));
 
         jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 260, 190));
 
@@ -214,12 +243,15 @@ public class EnviarInvitaciones extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorActionPerformed
-        controlador.mostrarSeleccionarUbicacion();
+        controlador.mostrarSeleccionarUbicacion(eventoDTO);
         cerrar();
     }//GEN-LAST:event_jButtonAnteriorActionPerformed
 
     private void jButtonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteActionPerformed
-        controlador.mostrarConfirmacionEvento();
+        generarListaSeleccionados();
+        controlador.intentarValidarContactos(seleccionados);
+        
+        controlador.mostrarConfirmacionEvento(eventoDTO);
         cerrar();
     }//GEN-LAST:event_jButtonSiguienteActionPerformed
 
@@ -279,6 +311,7 @@ public class EnviarInvitaciones extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JLabelLogo;
+    private javax.swing.JPanel contactosPanel;
     private javax.swing.JButton jButtonAnterior;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonCopiarEnlace;
@@ -299,7 +332,6 @@ public class EnviarInvitaciones extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanelBlanco;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

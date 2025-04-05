@@ -26,6 +26,9 @@ public class EventoDTO {
         this.ubicacion = ubicacion;
     }
 
+    public EventoDTO() {
+    }
+
     public String getNombreEvento() {
         return nombreEvento;
     }

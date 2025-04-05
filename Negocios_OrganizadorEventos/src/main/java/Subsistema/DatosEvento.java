@@ -26,6 +26,7 @@ public class DatosEvento implements IDatosEvento {
         return evento;
     }
 
+
     public void validarNombreEvento(EventoDTO evento) throws NegocioException {
         String nombre = evento.getNombreEvento();
         if (nombre == null || nombre.isBlank()) {

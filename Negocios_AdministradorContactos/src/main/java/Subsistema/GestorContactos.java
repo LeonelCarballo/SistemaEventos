@@ -7,6 +7,8 @@ package Subsistema;
 import DTOs.ContactoDTO;
 import ISubsistema.IGestorContactos;
 import exception.NegocioException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
 
 /**
@@ -15,6 +17,12 @@ import java.util.regex.Pattern;
  */
 public class GestorContactos implements IGestorContactos {
 
+    private final List<ContactoDTO> contactos = List.of(
+    new ContactoDTO("Ana Martínez", "ana.martinez@gmail.com", "555-1234"),
+    new ContactoDTO("Luis Ramírez", "luis.ramirez@hotmail.com", "555-5678"),
+    new ContactoDTO("Carla Torres", "carla.torres@yahoo.com", "555-9012")
+    );
+    
     @Override
     public ContactoDTO validarContacto(ContactoDTO contacto) throws NegocioException {
         validarNombre(contacto);
@@ -56,4 +64,11 @@ public class GestorContactos implements IGestorContactos {
             throw new NegocioException("El número telefónico debe contener exactamente 10 dígitos.");
         }
     }
+
+    @Override
+    public List<ContactoDTO> ObtenerContactos() {
+        return contactos;
+    }
+    
+    
 }
