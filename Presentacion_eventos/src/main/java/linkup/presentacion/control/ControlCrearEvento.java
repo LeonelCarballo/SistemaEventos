@@ -99,9 +99,9 @@ public class ControlCrearEvento {
         frmInvitaciones.setVisible(true);
     }
 
-    public void mostrarConfirmacionEvento() {
+    public void mostrarConfirmacionEvento(EventoDTO eventoDTO) {
         if (frmConfirmacion == null) {
-            frmConfirmacion = new ConfirmacionEvento(this);
+            frmConfirmacion = new ConfirmacionEvento(this, eventoDTO);
         }
         frmConfirmacion.setVisible(true);
     }
@@ -139,7 +139,7 @@ public class ControlCrearEvento {
             }
             this.contactosSeleccionados = contactos;
             cerrarVentana(frmInvitaciones);
-            mostrarConfirmacionEvento();
+            mostrarConfirmacionEvento(eventoDTO);
             return contactosSeleccionados;
         } catch (NegocioException e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);
@@ -183,7 +183,7 @@ public class ControlCrearEvento {
         return contactosSeleccionados;
     }
     
-    public List<ContactoDTO> getContactos() {
-        return contactosSeleccionados;
+    public List<ContactoDTO> ObtenerContactos() {
+        return gestorContactos.ObtenerContactos();
     }
 }
