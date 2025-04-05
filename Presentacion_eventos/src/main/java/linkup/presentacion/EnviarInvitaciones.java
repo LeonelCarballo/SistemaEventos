@@ -6,6 +6,7 @@ package linkup.presentacion;
 
 import DTOs.ContactoDTO;
 import DTOs.EventoDTO;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JCheckBox;
 import linkup.presentacion.control.ControlCrearEvento;
@@ -28,8 +29,10 @@ public class EnviarInvitaciones extends javax.swing.JFrame {
     public EnviarInvitaciones(ControlCrearEvento controlador, EventoDTO eventoDTO) {
         this.controlador = controlador;
         this.eventoDTO = eventoDTO;
-        mostrarContactos();
+        this.checkboxes = new ArrayList<>();
+        this.seleccionados = new ArrayList<>(); 
         initComponents();
+         mostrarContactos();
         setLocationRelativeTo(null);
     }
     

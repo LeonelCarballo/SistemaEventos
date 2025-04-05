@@ -18,9 +18,9 @@ import java.util.regex.Pattern;
 public class GestorContactos implements IGestorContactos {
 
     private final List<ContactoDTO> contactos = List.of(
-    new ContactoDTO("Ana Martínez", "ana.martinez@gmail.com", "555-1234"),
-    new ContactoDTO("Luis Ramírez", "luis.ramirez@hotmail.com", "555-5678"),
-    new ContactoDTO("Carla Torres", "carla.torres@yahoo.com", "555-9012")
+    new ContactoDTO("Ana Martínez", "ana.martinez@gmail.com", "6445551234"),
+    new ContactoDTO("Luis Ramírez", "luis.ramirez@hotmail.com", "6445555678"),
+    new ContactoDTO("Carla Torres", "carla.torres@yahoo.com", "6445559012")
     );
     
     @Override

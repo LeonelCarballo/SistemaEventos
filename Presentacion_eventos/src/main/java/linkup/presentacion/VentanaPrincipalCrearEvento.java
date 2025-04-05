@@ -48,11 +48,11 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
         jPanelFondoBlanco = new javax.swing.JPanel();
         jPanelColorRosa = new javax.swing.JPanel();
         jButtonMenu = new javax.swing.JButton();
-        eventosScrollPane = new javax.swing.JScrollPane();
         jLabelLogo = new javax.swing.JLabel();
         jButtonInicio = new javax.swing.JButton();
         jButtonExplorar = new javax.swing.JButton();
         jButtonCrearEvento = new javax.swing.JButton();
+        eventosPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -69,7 +69,6 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
         jPanelColorRosa.add(jButtonMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jPanelFondoBlanco.add(jPanelColorRosa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 560));
-        jPanelFondoBlanco.add(eventosScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 130, 350, 420));
 
         jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linklogo.png"))); // NOI18N
         jPanelFondoBlanco.add(jLabelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 210, 50));
@@ -96,6 +95,9 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
             }
         });
         jPanelFondoBlanco.add(jButtonCrearEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 490, -1, 40));
+
+        eventosPanel.setLayout(new javax.swing.BoxLayout(eventosPanel, javax.swing.BoxLayout.Y_AXIS));
+        jPanelFondoBlanco.add(eventosPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, 340, 430));
 
         getContentPane().add(jPanelFondoBlanco, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 864, 558));
 
@@ -147,7 +149,7 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane eventosScrollPane;
+    private javax.swing.JPanel eventosPanel;
     private javax.swing.JButton jButtonCrearEvento;
     private javax.swing.JButton jButtonExplorar;
     private javax.swing.JButton jButtonInicio;

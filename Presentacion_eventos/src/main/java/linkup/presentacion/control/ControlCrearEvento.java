@@ -154,7 +154,7 @@ public class ControlCrearEvento {
                     eventoDTO.getEtiqueta(),
                     eventoDTO.getDescripcion(),
                     eventoDTO.getFechaHora(),
-                    ubicacionSeleccionada.getDireccion(),
+                    eventoDTO.getUbicacion(),
                     contactosSeleccionados
             );
             guardarEventoDTO.persistirEventoDTO(eventoCompleto);
