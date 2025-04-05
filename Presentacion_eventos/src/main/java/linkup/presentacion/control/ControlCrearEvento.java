@@ -182,4 +182,8 @@ public class ControlCrearEvento {
     public List<ContactoDTO> getContactosSeleccionados() {
         return contactosSeleccionados;
     }
+    
+    public List<ContactoDTO> getContactos() {
+        return contactosSeleccionados;
+    }
 }
