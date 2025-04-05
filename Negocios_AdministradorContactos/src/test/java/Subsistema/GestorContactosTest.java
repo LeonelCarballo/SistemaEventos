@@ -54,9 +54,9 @@ public class GestorContactosTest {
         assertEquals("El nombre del contacto no puede estar vacío.", exception.getMessage());
     }
 
-    
+    //Lanza excepcion
     @Test
-    public void testValidarNombreBienPincheLargo() throws Exception {
+    public void testValidarNombreBienLargo() throws Exception {
         String nombreLargo = "Taumatawhakatangihangakoauauotamateaturipukakapikimaungahoronukupokaiwhenuakitanatahu";
         when(contactoMock.getNombre()).thenReturn(nombreLargo);
 
