@@ -1,33 +1,37 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package DTOs;
 
 import java.time.LocalDateTime;
+import linkup.objetosnegocio.Etiqueta;
 
-/**
- *
- * @author jrasc
- */
 public class EventoDTO {
 
     private String nombreEvento;
-    private String etiqueta;
+    private Etiqueta etiqueta;
     private String descripcion;
     private LocalDateTime fechaHora;
-    private String ubicacion;
+    private LocalDateTime fechaFin;
 
-    public EventoDTO(String nombreEvento, String etiqueta, String descripcion, LocalDateTime fechaHora, String ubicacion) {
+    private String direccion;
+    private Double latitud;
+    private Double longitud;
+
+    public EventoDTO() {
+    }
+
+    public EventoDTO(String nombreEvento, Etiqueta etiqueta, String descripcion,
+                     LocalDateTime fechaHora, LocalDateTime fechaFin,
+                     String direccion, Double latitud, Double longitud) {
         this.nombreEvento = nombreEvento;
         this.etiqueta = etiqueta;
         this.descripcion = descripcion;
         this.fechaHora = fechaHora;
-        this.ubicacion = ubicacion;
+        this.fechaFin = fechaFin;
+        this.direccion = direccion;
+        this.latitud = latitud;
+        this.longitud = longitud;
     }
 
-    public EventoDTO() {
-    }
+    // Getters y setters
 
     public String getNombreEvento() {
         return nombreEvento;
@@ -37,11 +41,11 @@ public class EventoDTO {
         this.nombreEvento = nombreEvento;
     }
 
-    public String getEtiqueta() {
+    public Etiqueta getEtiqueta() {
         return etiqueta;
     }
 
-    public void setEtiqueta(String etiqueta) {
+    public void setEtiqueta(Etiqueta etiqueta) {
         this.etiqueta = etiqueta;
     }
 
@@ -61,12 +65,35 @@ public class EventoDTO {
         this.fechaHora = fechaHora;
     }
 
-    public String getUbicacion() {
-        return ubicacion;
+    public LocalDateTime getFechaFin() {
+        return fechaFin;
     }
 
-    public void setUbicacion(String ubicacion) {
-        this.ubicacion = ubicacion;
+    public void setFechaFin(LocalDateTime fechaFin) {
+        this.fechaFin = fechaFin;
     }
 
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public Double getLatitud() {
+        return latitud;
+    }
+
+    public void setLatitud(Double latitud) {
+        this.latitud = latitud;
+    }
+
+    public Double getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(Double longitud) {
+        this.longitud = longitud;
+    }
 }
