@@ -1,37 +1,30 @@
-package DTOs;
+package linkup.dto.negocio;
 
-import java.time.LocalDateTime;
 import linkup.objetosnegocio.Etiqueta;
+import java.time.LocalDateTime;
 
 public class EventoDTO {
-
+    private String idExterno;
     private String nombreEvento;
     private Etiqueta etiqueta;
     private String descripcion;
     private LocalDateTime fechaHora;
     private LocalDateTime fechaFin;
-
     private String direccion;
     private Double latitud;
     private Double longitud;
+    private boolean recordatorioActivo;
+    private LocalDateTime fechaRecordatorio;
 
-    public EventoDTO() {
+    // Getters y Setters
+
+    public String getIdExterno() {
+        return idExterno;
     }
 
-    public EventoDTO(String nombreEvento, Etiqueta etiqueta, String descripcion,
-                     LocalDateTime fechaHora, LocalDateTime fechaFin,
-                     String direccion, Double latitud, Double longitud) {
-        this.nombreEvento = nombreEvento;
-        this.etiqueta = etiqueta;
-        this.descripcion = descripcion;
-        this.fechaHora = fechaHora;
-        this.fechaFin = fechaFin;
-        this.direccion = direccion;
-        this.latitud = latitud;
-        this.longitud = longitud;
+    public void setIdExterno(String idExterno) {
+        this.idExterno = idExterno;
     }
-
-    // Getters y setters
 
     public String getNombreEvento() {
         return nombreEvento;
@@ -95,5 +88,21 @@ public class EventoDTO {
 
     public void setLongitud(Double longitud) {
         this.longitud = longitud;
+    }
+
+    public boolean isRecordatorioActivo() {
+        return recordatorioActivo;
+    }
+
+    public void setRecordatorioActivo(boolean recordatorioActivo) {
+        this.recordatorioActivo = recordatorioActivo;
+    }
+
+    public LocalDateTime getFechaRecordatorio() {
+        return fechaRecordatorio;
+    }
+
+    public void setFechaRecordatorio(LocalDateTime fechaRecordatorio) {
+        this.fechaRecordatorio = fechaRecordatorio;
     }
 }

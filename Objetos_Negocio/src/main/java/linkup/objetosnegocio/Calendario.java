@@ -1,28 +1,55 @@
+
 package linkup.objetosnegocio;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * Representa un calendario que agrupa eventos de un usuario o grupo.
- * Puede estar sincronizado con una API externa (como Google Calendar).
- */
 public class Calendario {
-    private String id; // Identificador interno
-    private String idExterno; // ID de la API externa (opcional)
+    private String id;
+    private String idExterno;
     private String nombre;
     private TipoCalendario tipo;
-    private List<Evento> eventos;
+    private List<String> idsEventos;
+
+    private final ServicioEventos servicioEventos = ServicioEventos.getInstancia();
+
 
     public Calendario() {
-        this.eventos = new ArrayList<>();
+        this.idsEventos = new ArrayList<>();
     }
 
     public Calendario(String nombre, TipoCalendario tipo) {
         this();
         setNombre(nombre);
         setTipo(tipo);
+    }
+
+    public void sincronizarConProveedorExterno() {
+        if (tipo == TipoCalendario.COMPARTIDO && idExterno != null) {
+            List<Evento> nuevosEventos = servicioEventos.obtenerEventos(idExterno);
+            this.idsEventos.clear();
+            for (Evento e : nuevosEventos) {
+                this.idsEventos.add(e.getIdExterno());
+            }
+        }
+    }
+
+
+    public List<Evento> getEventos() {
+        if (idExterno == null) {
+            return new ArrayList<>();
+        }
+        return servicioEventos.obtenerEventos(idExterno);
+    }
+
+
+    public void agregarEvento(Evento evento) {
+        if (evento == null || evento.getIdExterno() == null) {
+            throw new IllegalArgumentException("Evento no válido.");
+        }
+        this.idsEventos.add(evento.getIdExterno());
+        servicioEventos.agregarEvento(idExterno, evento);
     }
 
     // Getters y Setters
@@ -65,34 +92,12 @@ public class Calendario {
         this.tipo = tipo;
     }
 
-    public List<Evento> getEventos() {
-        return eventos;
-    }
-
-    public void agregarEvento(Evento evento) {
-        if (evento == null) {
-            throw new IllegalArgumentException("El evento no puede ser nulo.");
-        }
-        this.eventos.add(evento);
-    }
-
-    public void eliminarEvento(Evento evento) {
-        this.eventos.remove(evento);
-    }
-
-    // Métodos auxiliares
-
-    public boolean contieneEvento(Evento evento) {
-        return this.eventos.contains(evento);
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Calendario)) return false;
         Calendario that = (Calendario) o;
-        return Objects.equals(id, that.id) &&
-               Objects.equals(nombre, that.nombre);
+        return Objects.equals(id, that.id) && Objects.equals(nombre, that.nombre);
     }
 
     @Override
@@ -103,9 +108,9 @@ public class Calendario {
     @Override
     public String toString() {
         return "Calendario{" +
-               "nombre='" + nombre + '\'' +
-               ", tipo=" + tipo +
-               ", eventos=" + eventos.size() +
-               '}';
+                "nombre='" + nombre + '\'' +
+                ", tipo=" + tipo +
+                ", eventos=" + idsEventos.size() +
+                '}';
     }
 }

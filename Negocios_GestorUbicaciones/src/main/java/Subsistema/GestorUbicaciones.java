@@ -4,10 +4,11 @@
  */
 package Subsistema;
 
-import DTOs.Infraestructura;
 import ISubsistema.IGestorUbicaciones;
 import exception.NegocioException;
 import java.util.List;
+import linkup.infraestructura.mapa.InfraestructuraMapa;
+import linkup.infraestructura.mapa.Location;
 
 /**
  *
@@ -15,59 +16,26 @@ import java.util.List;
  */
 public class GestorUbicaciones implements IGestorUbicaciones {
 
+    private InfraestructuraMapa mapService;
+    private Location ubicacionSeleccionada;
+
+    public GestorUbicaciones (InfraestructuraMapa mapService) {
+        this.mapService = mapService;
+    }
+
     @Override
-    public Infraestructura validarUbicacion(Infraestructura ubicacion) throws NegocioException {
-        validarDireccion(ubicacion);
-        validarCoordenadas(ubicacion);
-        validarZonaHoraria(ubicacion);
-        return ubicacion;
+    public void mostrarMapa() {
+        mapService.showMap();
     }
 
-    // Verifica que la dirección no esté vacía y tenga formato aceptable
-    public void validarDireccion(Infraestructura ubicacion) throws NegocioException {
-        String direccion = ubicacion.getDireccion();
-        if (direccion == null || direccion.isBlank()) {
-            throw new NegocioException("La dirección no puede estar vacía.");
-        }
-        if (direccion.length() < 5 || direccion.length() > 150) {
-            throw new NegocioException("La dirección debe tener entre 5 y 150 caracteres.");
-        }
-        //LA DIRECCION SOLO ACEPTARA LETRAS, LETRAS CON ACENTOS, NUMEROS, ESPACIOS, COMAS Y PUNTOS 
-        if (!direccion.matches("^[a-zA-Z0-9áéíóúüñÁÉÍÓÚÜÑ.,#\\-\\s]+$")) {
-            throw new NegocioException("La dirección contiene caracteres no permitidos.");
-        }
-        //RECHAZA SOLO NUMEROS
-        if (direccion.matches("^\\d+$")) {
-            throw new NegocioException("La dirección no puede ser solo números.");
-        }
-        //BLOQUEA DIRECCIONES INDEBIDAS
-        List<String> direccionesInvalidas = List.of("Desconocido", "N/A", "Sin dirección", "No se", "Quien sabe", "Sepa");
-        if (direccionesInvalidas.contains(direccion.trim())) {
-            throw new NegocioException("La dirección ingresada no es válida.");
-        }
+    @Override
+    public Location elegirUbicacion(String nombre) {
+        ubicacionSeleccionada = mapService.selectLocation(nombre);
+        return ubicacionSeleccionada;
     }
 
-    // Verifica que las coordenadas estén dentro de un rango válido
-    public void validarCoordenadas(Infraestructura ubicacion) throws NegocioException {
-        double lat = ubicacion.getLatitud();
-        double lon = ubicacion.getLongitud();
-        if (lat < -90 || lat > 90) {
-            throw new NegocioException("La latitud debe estar entre -90 y 90.");
-        }
-        if (lon < -180 || lon > 180) {
-            throw new NegocioException("La longitud debe estar entre -180 y 180.");
-        }
-    }
-
-    // Verifica que la zona horaria tenga un formato válido (ej. "America/Mexico_City")
-    public void validarZonaHoraria(Infraestructura ubicacion) throws NegocioException {
-        String zona = ubicacion.getZonaHoraria();
-        if (zona == null || zona.isBlank()) {
-            throw new NegocioException("La zona horaria no puede estar vacía.");
-        }
-        // Validación simple: que tenga formato continente/ciudad
-        if (!zona.matches("^[A-Za-z_]+/[A-Za-z_]+$")) {
-            throw new NegocioException("La zona horaria no tiene un formato válido.");
-        }
+    @Override
+    public Location getUbicacionSeleccionada() {
+        return ubicacionSeleccionada;
     }
 }

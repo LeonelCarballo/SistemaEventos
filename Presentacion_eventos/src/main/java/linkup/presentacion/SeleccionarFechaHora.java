@@ -4,7 +4,7 @@
  */
 package linkup.presentacion;
 
-import DTOs.EventoDTO;
+import linkup.dtosnegocios.EventoDTO;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;

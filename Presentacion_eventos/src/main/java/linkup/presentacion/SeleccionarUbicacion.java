@@ -4,7 +4,7 @@
  */
 package linkup.presentacion;
 
-import DTOs.EventoDTO;
+import linkup.dtosnegocios.EventoDTO;
 import linkup.presentacion.control.ControlCrearEvento;
 
 /**

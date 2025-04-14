@@ -4,8 +4,8 @@
  */
 package linkup.presentacion;
 
-import DTOs.ContactoDTO;
-import DTOs.EventoDTO;
+import linkup.dtosnegocios.ContactoDTO;
+import linkup.dtosnegocios.EventoDTO;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JCheckBox;

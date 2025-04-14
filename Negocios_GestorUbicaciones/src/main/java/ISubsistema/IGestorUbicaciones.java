@@ -4,8 +4,9 @@
  */
 package ISubsistema;
 
-import DTOs.Infraestructura;
-import exception.NegocioException;
+import linkup.infraestructura.mapa.Location;
+
+
 
 /**
  *
@@ -13,5 +14,7 @@ import exception.NegocioException;
  */
 public interface IGestorUbicaciones {
 
-    public Infraestructura validarUbicacion(Infraestructura ubicacion) throws NegocioException;
+    public abstract void mostrarMapa();
+    public abstract Location elegirUbicacion(String nombre);
+    public abstract Location getUbicacionSeleccionada();
 }

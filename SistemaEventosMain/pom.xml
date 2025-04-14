@@ -12,6 +12,9 @@
         <module>../Negocios_OrganizadorEventos</module>
         <module>../Objetos_Negocio</module>
         <module>../Presentacion_eventos</module>
+        <module>../../../NetBeansProjects/InfraestructuraMapa</module>
+        <module>../../../NetBeansProjects/InfraestructuraCalendario</module>
+        <module>../../../NetBeansProjects/DTO_Infraestructura</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

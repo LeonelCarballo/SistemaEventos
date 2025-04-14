@@ -4,10 +4,10 @@
  */
 package linkup.presentacion.control;
 
-import DTOs.ContactoDTO;
-import DTOs.EventoCompletoDTO;
-import DTOs.EventoDTO;
-import DTOs.Infraestructura;
+import linkup.dtosnegocios.ContactoDTO;
+import linkup.dtosnegocios.EventoCompletoDTO;
+import linkup.dtosnegocios.EventoDTO;
+import linkup.dtosnegocios.Infraestructura;
 import linkup.organizadoreventos.interfaces.IDatosEvento;
 import ISubsistema.IGestorContactos;
 import ISubsistema.IGestorUbicaciones;
