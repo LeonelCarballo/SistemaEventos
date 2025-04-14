@@ -171,7 +171,7 @@ public class SeleccionarUbicacion extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonInicioActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
-        eventoDTO.setUbicacion(jTextFieldUbicacion.getText());
+        eventoDTO.setDireccion(jTextFieldUbicacion.getText());
         controlador.mostrarVentanaPrincipal();
         cerrar();
     }//GEN-LAST:event_jButtonCancelarActionPerformed

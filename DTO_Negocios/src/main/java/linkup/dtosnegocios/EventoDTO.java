@@ -1,4 +1,4 @@
-package linkup.dto.negocio;
+package linkup.dtosnegocios;
 
 import linkup.objetosnegocio.Etiqueta;
 import java.time.LocalDateTime;

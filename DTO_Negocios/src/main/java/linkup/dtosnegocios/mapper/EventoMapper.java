@@ -4,7 +4,7 @@
  */
 package linkup.dtosnegocios.mapper;
 
-import linkup.dto.negocio.EventoDTO;
+import linkup.dtosnegocios.EventoDTO;
 import linkup.objetosnegocio.Evento;
 
 /**

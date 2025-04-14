@@ -8,17 +8,15 @@ import linkup.dtosnegocios.ContactoDTO;
 import linkup.dtosnegocios.EventoCompletoDTO;
 import linkup.dtosnegocios.EventoDTO;
 import linkup.dtosnegocios.Infraestructura;
-import linkup.organizadoreventos.interfaces.IDatosEvento;
 import ISubsistema.IGestorContactos;
 import ISubsistema.IGestorUbicaciones;
-import linkup.organizadoreventos.interfaces.IGuardarEvento;
-import linkup.organizadoreventos.DatosEvento;
 import Subsistema.GestorContactos;
 import Subsistema.GestorUbicaciones;
-import linkup.organizadoreventos.GuardarEvento;
 import exception.NegocioException;
 import java.util.List;
 import javax.swing.JOptionPane;
+import linkup.organizadoreventos.OrganizadorEventos;
+import linkup.organizadoreventos.interfaces.IOrganizadorEventos;
 import linkup.presentacion.ConfirmacionEvento;
 import linkup.presentacion.EnviarInvitaciones;
 import linkup.presentacion.IngresarDetallesEvento;
@@ -34,10 +32,10 @@ public class ControlCrearEvento {
 
     private static ControlCrearEvento instancia;
 
-    private static IDatosEvento validadorEvento = new DatosEvento();
+    private static IOrganizadorEventos validadorEvento = new OrganizadorEventos();
     private static IGestorUbicaciones gestorUbicaciones = new GestorUbicaciones();
     private static IGestorContactos gestorContactos = new GestorContactos();
-    private static IGuardarEvento guardarEventoDTO = new GuardarEvento();
+    private static IOrganizadorEventos guardarEventoDTO = new OrganizadorEventos();
 
     private EventoDTO eventoDTO;
     private Infraestructura ubicacionSeleccionada;

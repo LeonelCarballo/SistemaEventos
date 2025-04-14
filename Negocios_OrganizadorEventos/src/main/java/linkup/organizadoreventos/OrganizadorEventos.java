@@ -1,12 +1,12 @@
 
 package linkup.organizadoreventos;
 
-import linkup.dto.negocio.EventoDTO;
 import linkup.dtosnegocios.mapper.EventoMapper;
 import linkup.objetosnegocio.Evento;
 
 import java.util.ArrayList;
 import java.util.List;
+import linkup.dtosnegocios.EventoDTO;
 import linkup.organizadoreventos.interfaces.IOrganizadorEventos;
 
 public class OrganizadorEventos implements IOrganizadorEventos {
