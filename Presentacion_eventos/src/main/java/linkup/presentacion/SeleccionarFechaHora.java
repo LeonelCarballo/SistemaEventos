@@ -204,7 +204,7 @@ public class SeleccionarFechaHora extends javax.swing.JFrame {
     private void jButtonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteActionPerformed
         
             String hora = (String) this.HoraCB.getSelectedItem();
-String minuto = (String) this.MinutoCB.getSelectedItem();
+            String minuto = (String) this.MinutoCB.getSelectedItem();
 
         // Obtienes la fecha desde el JDateChooser
         Date fecha = jDateChooser1.getDate();

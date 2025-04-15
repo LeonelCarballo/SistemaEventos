@@ -5,6 +5,7 @@
 package linkup.presentacion;
 
 import linkup.dtosnegocios.EventoDTO;
+import linkup.objetosnegocio.Etiqueta;
 import linkup.presentacion.control.ControlCrearEvento;
 
 /**
@@ -17,7 +18,7 @@ public class IngresarDetallesEvento extends javax.swing.JFrame {
     /**
      * Creates new form VentanaPrincipalCrearEvento
      */
-    public IngresarDetallesEvento(ControlCrearEvento controlador) {
+    public IngresarDetallesEvento(ControlCrearEvento controlador,EventoDTO eventoDTO) {
         this.controlador = controlador;
         this.eventoDTO = new EventoDTO();
         initComponents();
@@ -124,7 +125,7 @@ public class IngresarDetallesEvento extends javax.swing.JFrame {
         jPanelRosaClaro.add(jLabelEtiqueta, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
 
         jComboBoxEtiqueta.setBackground(new java.awt.Color(246, 227, 230));
-        jComboBoxEtiqueta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxEtiqueta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cumpleaños", "Boda", "Reunion" }));
         jComboBoxEtiqueta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(148, 63, 75)));
         jComboBoxEtiqueta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,9 +195,19 @@ public class IngresarDetallesEvento extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteActionPerformed
+        Etiqueta etiqueta = Etiqueta.CUMPLEAÑOS;
+        
+        if(jComboBoxEtiqueta.getSelectedItem() == "Cumpleaños"){
+            etiqueta = Etiqueta.CUMPLEAÑOS;
+        }else if(jComboBoxEtiqueta.getSelectedItem() == "Boda"){
+            etiqueta = Etiqueta.BODA;
+        }else if(jComboBoxEtiqueta.getSelectedItem() == "Reunion"){
+            etiqueta = Etiqueta.REUNION;
+        }
+        
         eventoDTO.setNombreEvento(jTextFieldNombreEvento.getText());
         eventoDTO.setDescripcion(jTextFieldDescripcion.getText());
-        eventoDTO.setEtiqueta(jComboBoxEtiqueta.getActionCommand());
+        eventoDTO.setEtiqueta(etiqueta);
         controlador.mostrarSeleccionFechaHora(eventoDTO);
         cerrar();
     }//GEN-LAST:event_jButtonSiguienteActionPerformed

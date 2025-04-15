@@ -2,6 +2,8 @@ package linkup.dtosnegocios;
 
 import linkup.objetosnegocio.Etiqueta;
 import java.time.LocalDateTime;
+import java.util.List;
+import linkup.dtosnegocios.ContactoDTO;
 
 public class EventoDTO {
     private String idExterno;
@@ -15,6 +17,7 @@ public class EventoDTO {
     private Double longitud;
     private boolean recordatorioActivo;
     private LocalDateTime fechaRecordatorio;
+    private List<ContactoDTO> invitados;
 
     // Getters y Setters
 
@@ -105,4 +108,14 @@ public class EventoDTO {
     public void setFechaRecordatorio(LocalDateTime fechaRecordatorio) {
         this.fechaRecordatorio = fechaRecordatorio;
     }
+
+    public List<ContactoDTO> getInvitados() {
+        return invitados;
+    }
+
+    public void setInvitados(List<ContactoDTO> invitados) {
+        this.invitados = invitados;
+    }
+    
+    
 }

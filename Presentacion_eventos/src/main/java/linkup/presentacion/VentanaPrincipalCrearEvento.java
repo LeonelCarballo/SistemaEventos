@@ -4,6 +4,15 @@
  */
 package linkup.presentacion;
 
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.util.List;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JLabel;
+import linkup.dtosnegocios.EventoDTO;
 import linkup.presentacion.control.ControlCrearEvento;
 
 /**
@@ -13,13 +22,16 @@ import linkup.presentacion.control.ControlCrearEvento;
 public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
 
     private ControlCrearEvento controlador;
+    private List<EventoDTO> eventos;
     /**
      * Creates new form VentanaPrincipalCrearEvento
      */
-    public VentanaPrincipalCrearEvento(ControlCrearEvento controlador) {
+    public VentanaPrincipalCrearEvento(ControlCrearEvento controlador, List<EventoDTO> eventos) {
         this.controlador = controlador;
+        this.eventos  = eventos;
         initComponents();
         setLocationRelativeTo(null);
+        cargarEventos();
     }
 
     public VentanaPrincipalCrearEvento() {
@@ -36,6 +48,30 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
         dispose();
     }
     
+    public void cargarEventos() {
+
+    jPanelListaEventos.removeAll();
+    jPanelListaEventos.setLayout(new BoxLayout(jPanelListaEventos, BoxLayout.Y_AXIS));
+    jPanelListaEventos.setBackground(Color.WHITE);
+
+    if (eventos != null && !eventos.isEmpty()) {
+        for (EventoDTO evento : eventos) {
+            EventoPanel panelEvento = new EventoPanel(evento);
+            jPanelListaEventos.add(panelEvento);
+            jPanelListaEventos.add(Box.createRigidArea(new Dimension(0, 10))); 
+        }
+    } else {
+        JLabel labelVacio = new JLabel("No hay eventos disponibles.");
+        labelVacio.setFont(new Font("SansSerif", Font.ITALIC, 14));
+        labelVacio.setForeground(Color.GRAY);
+        labelVacio.setAlignmentX(Component.CENTER_ALIGNMENT);
+        jPanelListaEventos.add(labelVacio);
+    }
+
+    jPanelListaEventos.revalidate();
+    jPanelListaEventos.repaint();
+}
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -52,7 +88,8 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
         jButtonInicio = new javax.swing.JButton();
         jButtonExplorar = new javax.swing.JButton();
         jButtonCrearEvento = new javax.swing.JButton();
-        eventosPanel = new javax.swing.JPanel();
+        jScrollPaneListaEvento = new javax.swing.JScrollPane();
+        jPanelListaEventos = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -96,8 +133,9 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
         });
         jPanelFondoBlanco.add(jButtonCrearEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 490, -1, 40));
 
-        eventosPanel.setLayout(new javax.swing.BoxLayout(eventosPanel, javax.swing.BoxLayout.Y_AXIS));
-        jPanelFondoBlanco.add(eventosPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, 340, 430));
+        jScrollPaneListaEvento.setViewportView(jPanelListaEventos);
+
+        jPanelFondoBlanco.add(jScrollPaneListaEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 430, 430));
 
         getContentPane().add(jPanelFondoBlanco, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 864, 558));
 
@@ -109,7 +147,7 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonInicioActionPerformed
 
     private void jButtonCrearEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearEventoActionPerformed
-        controlador.iniciarFlujoCreacionEvento();
+        controlador.mostrarFormularioDetalles();
         cerrar();
     }//GEN-LAST:event_jButtonCrearEventoActionPerformed
 
@@ -149,7 +187,6 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel eventosPanel;
     private javax.swing.JButton jButtonCrearEvento;
     private javax.swing.JButton jButtonExplorar;
     private javax.swing.JButton jButtonInicio;
@@ -157,5 +194,7 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelLogo;
     private javax.swing.JPanel jPanelColorRosa;
     private javax.swing.JPanel jPanelFondoBlanco;
+    private javax.swing.JPanel jPanelListaEventos;
+    private javax.swing.JScrollPane jScrollPaneListaEvento;
     // End of variables declaration//GEN-END:variables
 }

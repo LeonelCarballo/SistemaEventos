@@ -6,6 +6,7 @@ package linkup.dtosnegocios;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import linkup.objetosnegocio.Etiqueta;
 
 /**
  *
@@ -14,13 +15,13 @@ import java.util.List;
 public class EventoCompletoDTO {
 
     private String nombreEvento;
-    private String etiqueta;
+    private Etiqueta etiqueta;
     private String descripcion;
     private LocalDateTime fechaHora;
     private String ubicacion;
     private List<ContactoDTO> invitados;
 
-    public EventoCompletoDTO(String nombreEvento, String etiqueta, String descripcion, LocalDateTime fechaHora, String ubicacion, List<ContactoDTO> invitados) {
+    public EventoCompletoDTO(String nombreEvento, Etiqueta etiqueta, String descripcion, LocalDateTime fechaHora, String ubicacion, List<ContactoDTO> invitados) {
         this.nombreEvento = nombreEvento;
         this.etiqueta = etiqueta;
         this.descripcion = descripcion;
@@ -37,11 +38,11 @@ public class EventoCompletoDTO {
         this.nombreEvento = nombreEvento;
     }
 
-    public String getEtiqueta() {
+    public Etiqueta getEtiqueta() {
         return etiqueta;
     }
 
-    public void setEtiqueta(String etiqueta) {
+    public void setEtiqueta(Etiqueta etiqueta) {
         this.etiqueta = etiqueta;
     }
 

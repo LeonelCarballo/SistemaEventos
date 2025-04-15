@@ -4,7 +4,7 @@
  */
 package Subsistema;
 
-import DTOs.ContactoDTO;
+import linkup.dtosnegocios.ContactoDTO;
 import ISubsistema.IGestorContactos;
 import exception.NegocioException;
 import java.util.ArrayList;

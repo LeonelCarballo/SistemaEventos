@@ -6,13 +6,14 @@ package linkup.organizadoreventos.interfaces;
 
 import java.util.List;
 import linkup.dtosnegocios.EventoDTO;
+import linkup.objetosnegocio.Evento;
 
 /**
  * Interfaz que define las operaciones del subsistema de organización de eventos.
  */
 public interface IOrganizadorEventos {
     
-    public abstract boolean agregarEvento(EventoDTO evento);
+    public abstract void agregarEvento(EventoDTO evento);
     
     public abstract EventoDTO consultarEventoPorId(String idExterno);
     

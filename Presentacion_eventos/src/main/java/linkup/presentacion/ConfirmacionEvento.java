@@ -4,7 +4,12 @@
  */
 package linkup.presentacion;
 
-import linkup.dto.negocio.EventoDTO;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+import linkup.dtosnegocios.EventoDTO;
+import linkup.objetosnegocio.Etiqueta;
+import linkup.organizadoreventos.interfaces.IOrganizadorEventos;
 import linkup.presentacion.control.ControlCrearEvento;
 
 /**
@@ -15,29 +20,55 @@ public class ConfirmacionEvento extends javax.swing.JFrame {
 
     private ControlCrearEvento controlador;
     private EventoDTO eventoDTO;
+    private IOrganizadorEventos organizadorEventos;
+    private List<EventoDTO> eventos;
+
     /**
      * Creates new form VentanaPrincipalCrearEvento
      */
-    
-    
-    public ConfirmacionEvento(ControlCrearEvento controlador, EventoDTO eventoDTO) {
+
+//     
+    public ConfirmacionEvento(ControlCrearEvento controlador, EventoDTO eventoDTO, IOrganizadorEventos organizadorEventos) {
         this.controlador = controlador;
         this.eventoDTO = eventoDTO;
+        this.organizadorEventos = organizadorEventos;
         initComponents();
+        mostrarDatosEvento();
         setLocationRelativeTo(null);
     }
 
     public ConfirmacionEvento() {
         initComponents();
     }
-    
-    public void mostrar(){
+
+    public void mostrar() {
         setVisible(true);
     }
-    
-    public void cerrar(){
+
+    public void cerrar() {
         setVisible(false);
         dispose();
+    }
+
+    public void mostrarDatosEvento() {
+        String etiquetaString = "";
+        if (eventoDTO.getEtiqueta() == Etiqueta.CUMPLEAÑOS) {
+            etiquetaString = "Cumpleaños";
+        } else if (eventoDTO.getEtiqueta() == Etiqueta.BODA) {
+            etiquetaString = "Boda";
+        } else if (eventoDTO.getEtiqueta() == Etiqueta.REUNION) {
+            etiquetaString = "Reunion";
+        }
+
+        LocalDateTime fechaHora = eventoDTO.getFechaHora();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        String fechaHoraFormateada = fechaHora.format(formatter);
+
+        jTextFieldNombre.setText(eventoDTO.getNombreEvento());
+        jTextFieldDescripcion.setText(eventoDTO.getDescripcion());
+        jTextFieldEtiqueta.setText(etiquetaString);
+        jTextFieldUbicacion.setText(eventoDTO.getDireccion());
+        jTextFieldFechaHora.setText(fechaHoraFormateada);
     }
 
     /**
@@ -62,6 +93,16 @@ public class ConfirmacionEvento extends javax.swing.JFrame {
         jButtonCancelar = new javax.swing.JButton();
         jButtonAnterior = new javax.swing.JButton();
         jPanelDetalles = new javax.swing.JPanel();
+        jLabelNombreEvento = new javax.swing.JLabel();
+        jLabelDescripcion = new javax.swing.JLabel();
+        jLabelEtiqueta = new javax.swing.JLabel();
+        jLabelUbicacion = new javax.swing.JLabel();
+        jLabelFechaHora = new javax.swing.JLabel();
+        jTextFieldNombre = new javax.swing.JTextField();
+        jTextFieldDescripcion = new javax.swing.JTextField();
+        jTextFieldEtiqueta = new javax.swing.JTextField();
+        jTextFieldUbicacion = new javax.swing.JTextField();
+        jTextFieldFechaHora = new javax.swing.JTextField();
         jButtonCrear = new javax.swing.JButton();
         jPanelColorSeparador = new javax.swing.JPanel();
         jLabelConfirmacionEvento = new javax.swing.JLabel();
@@ -134,6 +175,42 @@ public class ConfirmacionEvento extends javax.swing.JFrame {
 
         jPanelDetalles.setBackground(new java.awt.Color(152, 79, 89));
         jPanelDetalles.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabelNombreEvento.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelNombreEvento.setText("Nombre:");
+        jPanelDetalles.add(jLabelNombreEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        jLabelDescripcion.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelDescripcion.setText("Descripcion:");
+        jPanelDetalles.add(jLabelDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
+
+        jLabelEtiqueta.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelEtiqueta.setText("Etiqueta:");
+        jPanelDetalles.add(jLabelEtiqueta, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
+
+        jLabelUbicacion.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelUbicacion.setText("Ubicación:");
+        jPanelDetalles.add(jLabelUbicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
+
+        jLabelFechaHora.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelFechaHora.setText("Fecha Hora:");
+        jPanelDetalles.add(jLabelFechaHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
+
+        jTextFieldNombre.setEditable(false);
+        jPanelDetalles.add(jTextFieldNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 150, -1));
+
+        jTextFieldDescripcion.setEditable(false);
+        jPanelDetalles.add(jTextFieldDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 150, -1));
+
+        jTextFieldEtiqueta.setEditable(false);
+        jPanelDetalles.add(jTextFieldEtiqueta, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 150, -1));
+
+        jTextFieldUbicacion.setEditable(false);
+        jPanelDetalles.add(jTextFieldUbicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, 150, -1));
+
+        jTextFieldFechaHora.setEditable(false);
+        jPanelDetalles.add(jTextFieldFechaHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 150, -1));
+
         jPanelRosaClaro.add(jPanelDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 260, 300));
 
         jButtonCrear.setBackground(new java.awt.Color(246, 227, 230));
@@ -180,10 +257,9 @@ public class ConfirmacionEvento extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAnteriorActionPerformed
 
     private void jButtonCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearActionPerformed
-        controlador.iniciarFlujoCreacionEvento();
         controlador.intentarCrearEvento(eventoDTO);
-        controlador.intentarCrearEvento(eventoDTO);
-        controlador.mostrarVentanaPrincipal();
+        eventos=organizadorEventos.consultarEventos();
+        controlador.mostrarVentanaPrincipalAlCrear(eventos);
         cerrar();
     }//GEN-LAST:event_jButtonCrearActionPerformed
 
@@ -263,12 +339,22 @@ public class ConfirmacionEvento extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabelConfirmacionEvento;
     private javax.swing.JLabel jLabelCrearEvento;
+    private javax.swing.JLabel jLabelDescripcion;
     private javax.swing.JLabel jLabelDetallesEvento;
+    private javax.swing.JLabel jLabelEtiqueta;
+    private javax.swing.JLabel jLabelFechaHora;
+    private javax.swing.JLabel jLabelNombreEvento;
+    private javax.swing.JLabel jLabelUbicacion;
     private javax.swing.JPanel jPanelBlanco;
     private javax.swing.JPanel jPanelColorSeparador;
     private javax.swing.JPanel jPanelDetalles;
     private javax.swing.JPanel jPanelRosa;
     private javax.swing.JPanel jPanelRosaClaro;
+    private javax.swing.JTextField jTextFieldDescripcion;
+    private javax.swing.JTextField jTextFieldEtiqueta;
+    private javax.swing.JTextField jTextFieldFechaHora;
+    private javax.swing.JTextField jTextFieldNombre;
+    private javax.swing.JTextField jTextFieldUbicacion;
     private javax.swing.JButton menuButton;
     // End of variables declaration//GEN-END:variables
 }

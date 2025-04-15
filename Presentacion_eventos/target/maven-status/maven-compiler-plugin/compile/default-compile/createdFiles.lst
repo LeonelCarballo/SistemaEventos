@@ -8,13 +8,16 @@ linkup\presentacion\IngresarDetallesEvento.class
 linkup\presentacion\EnviarInvitaciones$4.class
 linkup\presentacion\EnviarInvitaciones$1.class
 linkup\presentacion\SeleccionarUbicacion$3.class
+linkup\presentacion\EventoPanel$2.class
 linkup\presentacion\IngresarDetallesEvento$3.class
 linkup\presentacion\ConfirmacionEvento$3.class
+linkup\presentacion\EventoPanel.class
 linkup\presentacion\SeleccionarFechaHora$3.class
 Main\Main.class
 linkup\presentacion\VentanaPrincipalCrearEvento$3.class
 linkup\presentacion\EnviarInvitaciones$5.class
 linkup\presentacion\SeleccionarUbicacion$2.class
+linkup\presentacion\EventoPanel$1.class
 linkup\presentacion\SeleccionarFechaHora$2.class
 linkup\presentacion\VentanaPrincipalCrearEvento$1.class
 linkup\presentacion\IngresarDetallesEvento$4.class

@@ -4,7 +4,7 @@
  */
 package ISubsistema;
 
-import DTOs.ContactoDTO;
+import linkup.dtosnegocios.ContactoDTO;
 import exception.NegocioException;
 import java.util.List;
 
