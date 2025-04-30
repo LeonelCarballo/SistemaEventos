@@ -252,7 +252,7 @@ public class EnviarInvitaciones extends javax.swing.JFrame {
 
     private void jButtonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteActionPerformed
         generarListaSeleccionados();
-        controlador.intentarValidarContactos(seleccionados);
+        eventoDTO.setInvitados(seleccionados);
         
         controlador.mostrarConfirmacionEvento(eventoDTO);
         cerrar();

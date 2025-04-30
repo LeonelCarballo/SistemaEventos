@@ -9,5 +9,5 @@ package linkup.objetosnegocio;
  * @author Dana Chavez
  */
 public enum Etiqueta {
-    
+    CUMPLEAÑOS, BODA, REUNION
 }

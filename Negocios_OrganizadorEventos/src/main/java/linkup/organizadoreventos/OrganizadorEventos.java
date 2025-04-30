@@ -1,4 +1,3 @@
-
 package linkup.organizadoreventos;
 
 import linkup.dtosnegocios.mapper.EventoMapper;
@@ -18,12 +17,12 @@ public class OrganizadorEventos implements IOrganizadorEventos {
     }
 
     @Override
-    public boolean agregarEvento(EventoDTO dto) {
-        if (dto == null || dto.getIdExterno() == null){
-            return false;
-        }
-        Evento nuevo = EventoMapper.toEntidad(dto);
-        return eventos.add(nuevo);
+    public void agregarEvento(EventoDTO dto) {
+        
+        if (dto != null) {
+            Evento nuevo = EventoMapper.toEntidad(dto);
+            eventos.add(nuevo);
+        } 
     }
 
     @Override

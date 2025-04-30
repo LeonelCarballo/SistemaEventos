@@ -171,7 +171,7 @@ public class SeleccionarUbicacion extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonInicioActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
-        eventoDTO.setDireccion(jTextFieldUbicacion.getText());
+        
         controlador.mostrarVentanaPrincipal();
         cerrar();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
@@ -182,6 +182,7 @@ public class SeleccionarUbicacion extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAnteriorActionPerformed
 
     private void jButtonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteActionPerformed
+        eventoDTO.setDireccion(jTextFieldUbicacion.getText());
         controlador.mostrarEnviarInvitaciones(eventoDTO);
         cerrar();
     }//GEN-LAST:event_jButtonSiguienteActionPerformed

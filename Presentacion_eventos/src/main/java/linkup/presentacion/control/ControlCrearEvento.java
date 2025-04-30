@@ -7,7 +7,8 @@ package linkup.presentacion.control;
 import linkup.dtosnegocios.ContactoDTO;
 import linkup.dtosnegocios.EventoCompletoDTO;
 import linkup.dtosnegocios.EventoDTO;
-import linkup.dtosnegocios.Infraestructura;
+import linkup.infraestructura.mapa.InfraestructuraMapa;
+import linkup.infraestructura.mapa.Location;
 import ISubsistema.IGestorContactos;
 import ISubsistema.IGestorUbicaciones;
 import Subsistema.GestorContactos;
@@ -15,6 +16,7 @@ import Subsistema.GestorUbicaciones;
 import exception.NegocioException;
 import java.util.List;
 import javax.swing.JOptionPane;
+import linkup.objetosnegocio.Evento;
 import linkup.organizadoreventos.OrganizadorEventos;
 import linkup.organizadoreventos.interfaces.IOrganizadorEventos;
 import linkup.presentacion.ConfirmacionEvento;
@@ -32,13 +34,16 @@ public class ControlCrearEvento {
 
     private static ControlCrearEvento instancia;
 
+    private static InfraestructuraMapa mapService = new InfraestructuraMapa();
     private static IOrganizadorEventos validadorEvento = new OrganizadorEventos();
-    private static IGestorUbicaciones gestorUbicaciones = new GestorUbicaciones();
+    private static IGestorUbicaciones gestorUbicaciones = new GestorUbicaciones(mapService);
     private static IGestorContactos gestorContactos = new GestorContactos();
     private static IOrganizadorEventos guardarEventoDTO = new OrganizadorEventos();
 
     private EventoDTO eventoDTO;
-    private Infraestructura ubicacionSeleccionada;
+    private List<EventoDTO> eventos;
+//    private final List<Evento> listaEventos;
+    
     private List<ContactoDTO> contactosSeleccionados;
 
     private VentanaPrincipalCrearEvento frmPrincipal;
@@ -59,76 +64,75 @@ public class ControlCrearEvento {
     }
 
     public void iniciarFlujoCreacionEvento() {
-        mostrarFormularioDetalles();
+        mostrarVentanaPrincipal();
     }
 
     public void mostrarVentanaPrincipal() {
-        if (frmPrincipal == null) {
-            frmPrincipal = new VentanaPrincipalCrearEvento(this);
-        }
+
+            frmPrincipal = new VentanaPrincipalCrearEvento(this, eventos);
+
+        frmPrincipal.setVisible(true);
+    }
+    
+    public void mostrarVentanaPrincipalAlCrear(List<EventoDTO> eventos) {
+        this.eventos = eventos;
+
+            frmPrincipal = new VentanaPrincipalCrearEvento(this, eventos);
+        
         frmPrincipal.setVisible(true);
     }
 
     public void mostrarFormularioDetalles() {
-        if (frmDetalles == null) {
-            frmDetalles = new IngresarDetallesEvento(this);
-        }
+
+            frmDetalles = new IngresarDetallesEvento(this, eventoDTO);
+
         frmDetalles.setVisible(true);
     }
 
     public void mostrarSeleccionFechaHora(EventoDTO eventoDTO) {
-        if (frmFechaHora == null) {
+
             frmFechaHora = new SeleccionarFechaHora(this , eventoDTO);
-        }
+
         frmFechaHora.setVisible(true);
     }
 
     public void mostrarSeleccionarUbicacion(EventoDTO evento) {
-        if (frmUbicacion == null) {
             frmUbicacion = new SeleccionarUbicacion(this, evento);
-        }
+
         frmUbicacion.setVisible(true);
     }
 
     public void mostrarEnviarInvitaciones(EventoDTO eventoDTO) {
-        if (frmInvitaciones == null) {
+
             frmInvitaciones = new EnviarInvitaciones(this, eventoDTO);
-        }
+
         frmInvitaciones.setVisible(true);
     }
 
     public void mostrarConfirmacionEvento(EventoDTO eventoDTO) {
-        if (frmConfirmacion == null) {
-            frmConfirmacion = new ConfirmacionEvento(this, eventoDTO);
-        }
+
+            frmConfirmacion = new ConfirmacionEvento(this, eventoDTO, validadorEvento);
+
         frmConfirmacion.setVisible(true);
     }
 
-    public EventoDTO intentarCrearEvento(EventoDTO evento) {
-        try {
-            this.eventoDTO = validadorEvento.validarRegistroEvento(evento);
-            cerrarVentana(frmDetalles);
-            mostrarSeleccionFechaHora(evento);
-            return eventoDTO;
-        } catch (NegocioException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);
-            return null;
-        }
+    public void intentarCrearEvento(EventoDTO evento) {
+        validadorEvento.agregarEvento(evento);
+        cerrarVentana(frmDetalles);
+        mostrarSeleccionFechaHora(evento);
     }
-    
-    
 
-    public Infraestructura intentarRegistrarUbicacion(Infraestructura ubicacion) {
-        try {
-            this.ubicacionSeleccionada = gestorUbicaciones.validarUbicacion(ubicacion);
-            cerrarVentana(frmUbicacion);
-            //mostrarEnviarInvitaciones();
-            return ubicacionSeleccionada;
-        } catch (NegocioException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);
-            return null;
-        }
-    }
+//    public Infraestructura intentarRegistrarUbicacion(Infraestructura ubicacion) {
+//        try {
+//            this.ubicacionSeleccionada = gestorUbicaciones.(ubicacion);
+//            cerrarVentana(frmUbicacion);
+//            mostrarEnviarInvitaciones();
+//            return ubicacionSeleccionada;
+//        } catch (NegocioException e) {
+//            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);
+//            return null;
+//        }
+//    }
 
     public List<ContactoDTO> intentarValidarContactos(List<ContactoDTO> contactos) {
         try {
@@ -145,23 +149,23 @@ public class ControlCrearEvento {
         }
     }
 
-    public void confirmarYGuardarEvento() {
-        try {
-            EventoCompletoDTO eventoCompleto = new EventoCompletoDTO(
-                    eventoDTO.getNombreEvento(),
-                    eventoDTO.getEtiqueta(),
-                    eventoDTO.getDescripcion(),
-                    eventoDTO.getFechaHora(),
-                    eventoDTO.getUbicacion(),
-                    contactosSeleccionados
-            );
-            guardarEventoDTO.persistirEventoDTO(eventoCompleto);
-            JOptionPane.showMessageDialog(null, "Evento creado");
-            cerrarVentana(frmConfirmacion);
-        } catch (NegocioException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(), "Error al guardar", JOptionPane.INFORMATION_MESSAGE);
-        }
-    }
+//    public void confirmarYGuardarEvento() {
+//        try {
+//            EventoCompletoDTO eventoCompleto = new EventoCompletoDTO(
+//                    eventoDTO.getNombreEvento(),
+//                    eventoDTO.getEtiqueta(),
+//                    eventoDTO.getDescripcion(),
+//                    eventoDTO.getFechaHora(),
+//                    eventoDTO.getDireccion(),
+//                    contactosSeleccionados
+//            );
+//            guardarEventoDTO.agregarEvento(eventoCompleto);
+//            JOptionPane.showMessageDialog(null, "Evento creado");
+//            cerrarVentana(frmConfirmacion);
+//        } catch (NegocioException e) {
+//            JOptionPane.showMessageDialog(null, e.getMessage(), "Error al guardar", JOptionPane.INFORMATION_MESSAGE);
+//        }
+//    }
 
     public void cerrarVentana(javax.swing.JFrame ventana) {
         if (ventana != null) {
@@ -173,9 +177,9 @@ public class ControlCrearEvento {
         return eventoDTO;
     }
 
-    public Infraestructura getUbicacionSeleccionada() {
-        return ubicacionSeleccionada;
-    }
+//    public Infraestructura getUbicacionSeleccionada() {
+//        return ubicacionSeleccionada;
+//    }
 
     public List<ContactoDTO> getContactosSeleccionados() {
         return contactosSeleccionados;
