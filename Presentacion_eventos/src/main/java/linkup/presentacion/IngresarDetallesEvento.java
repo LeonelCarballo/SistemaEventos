@@ -4,8 +4,14 @@
  */
 package linkup.presentacion;
 
+import java.io.File;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import linkup.dtosnegocios.EventoDTO;
+import linkup.exception.NegocioException;
 import linkup.objetosnegocio.Etiqueta;
+import linkup.organizadoreventos.interfaces.IOrganizadorEventos;
 import linkup.presentacion.control.ControlCrearEvento;
 
 /**
@@ -13,12 +19,14 @@ import linkup.presentacion.control.ControlCrearEvento;
  * @author Dana Chavez
  */
 public class IngresarDetallesEvento extends javax.swing.JFrame {
+
     private ControlCrearEvento controlador;
     private EventoDTO eventoDTO;
+
     /**
      * Creates new form VentanaPrincipalCrearEvento
      */
-    public IngresarDetallesEvento(ControlCrearEvento controlador,EventoDTO eventoDTO) {
+    public IngresarDetallesEvento(ControlCrearEvento controlador, EventoDTO eventoDTO) {
         this.controlador = controlador;
         this.eventoDTO = new EventoDTO();
         initComponents();
@@ -28,12 +36,12 @@ public class IngresarDetallesEvento extends javax.swing.JFrame {
     public IngresarDetallesEvento() {
         initComponents();
     }
-    
-    public void mostrar(){
+
+    public void mostrar() {
         setVisible(true);
     }
-    
-    public void cerrar(){
+
+    public void cerrar() {
         setVisible(false);
         dispose();
     }
@@ -65,6 +73,7 @@ public class IngresarDetallesEvento extends javax.swing.JFrame {
         jLabelDescripcion = new javax.swing.JLabel();
         jButtonSiguiente = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
+        jButtonSeleccionarBanner = new javax.swing.JButton();
         jPanelColorSeparador = new javax.swing.JPanel();
         jLabelNuevoEvento = new javax.swing.JLabel();
 
@@ -165,6 +174,14 @@ public class IngresarDetallesEvento extends javax.swing.JFrame {
         });
         jPanelRosaClaro.add(jButtonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, -1, -1));
 
+        jButtonSeleccionarBanner.setText("Seleccionar banner");
+        jButtonSeleccionarBanner.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSeleccionarBannerActionPerformed(evt);
+            }
+        });
+        jPanelRosaClaro.add(jButtonSeleccionarBanner, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 260, -1));
+
         jPanelBlanco.add(jPanelRosaClaro, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 300, 400));
 
         jPanelColorSeparador.setBackground(new java.awt.Color(195, 123, 133));
@@ -196,21 +213,43 @@ public class IngresarDetallesEvento extends javax.swing.JFrame {
 
     private void jButtonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteActionPerformed
         Etiqueta etiqueta = Etiqueta.CUMPLEAÑOS;
-        
-        if(jComboBoxEtiqueta.getSelectedItem() == "Cumpleaños"){
-            etiqueta = Etiqueta.CUMPLEAÑOS;
-        }else if(jComboBoxEtiqueta.getSelectedItem() == "Boda"){
-            etiqueta = Etiqueta.BODA;
-        }else if(jComboBoxEtiqueta.getSelectedItem() == "Reunion"){
-            etiqueta = Etiqueta.REUNION;
-        }
-        
-        eventoDTO.setNombreEvento(jTextFieldNombreEvento.getText());
-        eventoDTO.setDescripcion(jTextFieldDescripcion.getText());
-        eventoDTO.setEtiqueta(etiqueta);
+
+    String seleccion = (String) jComboBoxEtiqueta.getSelectedItem();
+    if ("Cumpleaños".equals(seleccion)) {
+        etiqueta = Etiqueta.CUMPLEAÑOS;
+    } else if ("Boda".equals(seleccion)) {
+        etiqueta = Etiqueta.BODA;
+    } else if ("Reunion".equals(seleccion)) {
+        etiqueta = Etiqueta.REUNION;
+    }
+
+    eventoDTO.setNombreEvento(jTextFieldNombreEvento.getText());
+    eventoDTO.setDescripcion(jTextFieldDescripcion.getText());
+    eventoDTO.setEtiqueta(etiqueta);
+
+    try {
+        eventoDTO = controlador.validarDetallesEventoDTO(eventoDTO);
         controlador.mostrarSeleccionFechaHora(eventoDTO);
         cerrar();
+    } catch (NegocioException ex) {
+        JOptionPane.showMessageDialog(this, ex.getMessage(), "Error de validación", JOptionPane.ERROR_MESSAGE);
+    }
+
+
     }//GEN-LAST:event_jButtonSiguienteActionPerformed
+
+    private void jButtonSeleccionarBannerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeleccionarBannerActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Seleccionar imagen de banner");
+        fileChooser.setFileFilter(new FileNameExtensionFilter("Imágenes", "jpg", "png", "jpeg", "gif"));
+        int result = fileChooser.showOpenDialog(this);
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            eventoDTO.setBannerPath(selectedFile.getAbsolutePath());
+            JOptionPane.showMessageDialog(this, "Banner cargado correctamente.");
+        }
+    }//GEN-LAST:event_jButtonSeleccionarBannerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -255,6 +294,7 @@ public class IngresarDetallesEvento extends javax.swing.JFrame {
     private javax.swing.JButton JButtonInicio;
     private javax.swing.JButton JButtonMenu;
     private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JButton jButtonSeleccionarBanner;
     private javax.swing.JButton jButtonSiguiente;
     private javax.swing.JComboBox<String> jComboBoxEtiqueta;
     private javax.swing.JLabel jLabel7;

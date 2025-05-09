@@ -18,4 +18,8 @@ public interface IOrganizadorEventos {
     public abstract EventoDTO consultarEventoPorId(String idExterno);
     
     public abstract List<EventoDTO> consultarEventos();
+    
+    public abstract EventoDTO validarDetalllesEvento(EventoDTO dto);
+    
+    public abstract EventoDTO validarFechaHoraEvento(EventoDTO dto);
 }

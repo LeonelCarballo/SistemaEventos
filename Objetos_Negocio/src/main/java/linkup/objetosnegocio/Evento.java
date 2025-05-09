@@ -16,6 +16,7 @@ public class Evento {
     private final Double longitud;
     private final boolean recordatorioActivo;
     private final LocalDateTime fechaRecordatorio;
+    private final String bannerPath;
 
     public Evento(String idExterno,
                   String nombreEvento,
@@ -27,7 +28,8 @@ public class Evento {
                   Double latitud,
                   Double longitud,
                   boolean recordatorioActivo,
-                  LocalDateTime fechaRecordatorio) {
+                  LocalDateTime fechaRecordatorio,
+                  String bannerPath) {
 
         this.idExterno = idExterno;
         this.nombreEvento = nombreEvento;
@@ -40,6 +42,7 @@ public class Evento {
         this.longitud = longitud;
         this.recordatorioActivo = recordatorioActivo;
         this.fechaRecordatorio = fechaRecordatorio;
+        this.bannerPath = bannerPath; // ASIGNACIÓN
     }
 
     // Getters
@@ -88,7 +91,9 @@ public class Evento {
         return fechaRecordatorio;
     }
 
-    // Lógica de negocio
+    public String getBannerPath() { 
+        return bannerPath;
+    }
 
     public boolean esEventoPasado() {
         return LocalDateTime.now().isAfter(fechaFin != null ? fechaFin : fechaHora);

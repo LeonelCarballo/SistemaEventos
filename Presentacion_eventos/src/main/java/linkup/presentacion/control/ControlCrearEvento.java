@@ -43,7 +43,7 @@ public class ControlCrearEvento {
     private EventoDTO eventoDTO;
     private List<EventoDTO> eventos;
 //    private final List<Evento> listaEventos;
-    
+
     private List<ContactoDTO> contactosSeleccionados;
 
     private VentanaPrincipalCrearEvento frmPrincipal;
@@ -69,49 +69,49 @@ public class ControlCrearEvento {
 
     public void mostrarVentanaPrincipal() {
 
-            frmPrincipal = new VentanaPrincipalCrearEvento(this, eventos);
+        frmPrincipal = new VentanaPrincipalCrearEvento(this, eventos);
 
         frmPrincipal.setVisible(true);
     }
-    
+
     public void mostrarVentanaPrincipalAlCrear(List<EventoDTO> eventos) {
         this.eventos = eventos;
 
-            frmPrincipal = new VentanaPrincipalCrearEvento(this, eventos);
-        
+        frmPrincipal = new VentanaPrincipalCrearEvento(this, eventos);
+
         frmPrincipal.setVisible(true);
     }
 
     public void mostrarFormularioDetalles() {
 
-            frmDetalles = new IngresarDetallesEvento(this, eventoDTO);
+        frmDetalles = new IngresarDetallesEvento(this, eventoDTO);
 
         frmDetalles.setVisible(true);
     }
 
     public void mostrarSeleccionFechaHora(EventoDTO eventoDTO) {
 
-            frmFechaHora = new SeleccionarFechaHora(this , eventoDTO);
+        frmFechaHora = new SeleccionarFechaHora(this, eventoDTO);
 
         frmFechaHora.setVisible(true);
     }
 
     public void mostrarSeleccionarUbicacion(EventoDTO evento) {
-            frmUbicacion = new SeleccionarUbicacion(this, evento);
+        frmUbicacion = new SeleccionarUbicacion(this, evento);
 
         frmUbicacion.setVisible(true);
     }
 
     public void mostrarEnviarInvitaciones(EventoDTO eventoDTO) {
 
-            frmInvitaciones = new EnviarInvitaciones(this, eventoDTO);
+        frmInvitaciones = new EnviarInvitaciones(this, eventoDTO);
 
         frmInvitaciones.setVisible(true);
     }
 
     public void mostrarConfirmacionEvento(EventoDTO eventoDTO) {
 
-            frmConfirmacion = new ConfirmacionEvento(this, eventoDTO, validadorEvento);
+        frmConfirmacion = new ConfirmacionEvento(this, eventoDTO, validadorEvento);
 
         frmConfirmacion.setVisible(true);
     }
@@ -133,7 +133,6 @@ public class ControlCrearEvento {
 //            return null;
 //        }
 //    }
-
     public List<ContactoDTO> intentarValidarContactos(List<ContactoDTO> contactos) {
         try {
             for (ContactoDTO c : contactos) {
@@ -166,7 +165,6 @@ public class ControlCrearEvento {
 //            JOptionPane.showMessageDialog(null, e.getMessage(), "Error al guardar", JOptionPane.INFORMATION_MESSAGE);
 //        }
 //    }
-
     public void cerrarVentana(javax.swing.JFrame ventana) {
         if (ventana != null) {
             ventana.dispose();
@@ -180,12 +178,23 @@ public class ControlCrearEvento {
 //    public Infraestructura getUbicacionSeleccionada() {
 //        return ubicacionSeleccionada;
 //    }
-
     public List<ContactoDTO> getContactosSeleccionados() {
         return contactosSeleccionados;
     }
-    
+
     public List<ContactoDTO> ObtenerContactos() {
         return gestorContactos.ObtenerContactos();
+    }
+
+    public EventoDTO validarDetallesEventoDTO(EventoDTO evento) {
+        return validadorEvento.validarDetalllesEvento(evento);
+    }
+
+    public EventoDTO validarFechaHoraEventoDTO(EventoDTO evento) {
+        return validadorEvento.validarFechaHoraEvento(evento);
+    }
+
+    public EventoDTO validarUbicacionEventoDTO(EventoDTO evento) {
+        return gestorUbicaciones.validarUbicacionEvento(evento);
     }
 }

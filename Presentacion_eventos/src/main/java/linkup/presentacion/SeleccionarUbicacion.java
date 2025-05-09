@@ -4,7 +4,9 @@
  */
 package linkup.presentacion;
 
+import javax.swing.JOptionPane;
 import linkup.dtosnegocios.EventoDTO;
+import linkup.exception.NegocioException;
 import linkup.presentacion.control.ControlCrearEvento;
 
 /**
@@ -183,8 +185,15 @@ public class SeleccionarUbicacion extends javax.swing.JFrame {
 
     private void jButtonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteActionPerformed
         eventoDTO.setDireccion(jTextFieldUbicacion.getText());
+
+    try {
+        eventoDTO = controlador.validarUbicacionEventoDTO(eventoDTO);
+
         controlador.mostrarEnviarInvitaciones(eventoDTO);
         cerrar();
+    } catch (NegocioException ex) {
+        JOptionPane.showMessageDialog(this, ex.getMessage(), "Error de validación", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_jButtonSiguienteActionPerformed
 
     /**

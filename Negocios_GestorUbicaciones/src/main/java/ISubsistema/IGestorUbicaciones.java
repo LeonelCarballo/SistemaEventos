@@ -4,6 +4,7 @@
  */
 package ISubsistema;
 
+import linkup.dtosnegocios.EventoDTO;
 import linkup.infraestructura.mapa.Location;
 
 
@@ -17,4 +18,5 @@ public interface IGestorUbicaciones {
     public abstract void mostrarMapa();
     public abstract Location elegirUbicacion(String nombre);
     public abstract Location getUbicacionSeleccionada();
+    public abstract EventoDTO validarUbicacionEvento(EventoDTO dto);
 }

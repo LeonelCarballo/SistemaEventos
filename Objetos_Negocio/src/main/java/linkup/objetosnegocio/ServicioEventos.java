@@ -13,7 +13,7 @@ public class ServicioEventos {
     private final IInfraestructuraCalendario infraestructura;
 
     private ServicioEventos() {
-        this.infraestructura = new InfraestructuraCalendario(); // aquí podrías inyectar una implementación real
+        this.infraestructura = new InfraestructuraCalendario(); 
     }
 
     public static ServicioEventos getInstancia() {
@@ -39,7 +39,7 @@ public class ServicioEventos {
         return new Evento(
                 dto.idExterno,
                 dto.nombreEvento,
-                Etiqueta.valueOf(dto.etiqueta), // Convierte String a Enum
+                Etiqueta.valueOf(dto.etiqueta),
                 dto.descripcion,
                 dto.fechaHora,
                 dto.fechaFin,
@@ -47,7 +47,8 @@ public class ServicioEventos {
                 dto.latitud,
                 dto.longitud,
                 dto.recordatorioActivo,
-                dto.fechaRecordatorio
+                dto.fechaRecordatorio,
+                dto.bannerPath
         );
     }
 
@@ -64,6 +65,7 @@ public class ServicioEventos {
         dto.longitud = evento.getLongitud();
         dto.recordatorioActivo = evento.isRecordatorioActivo();
         dto.fechaRecordatorio = evento.getFechaRecordatorio();
+        dto.bannerPath = evento.getBannerPath();
         return dto;
     }
 }

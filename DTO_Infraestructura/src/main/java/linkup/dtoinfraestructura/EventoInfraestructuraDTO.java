@@ -22,6 +22,7 @@ public class EventoInfraestructuraDTO {
     public Double longitud;
     public boolean recordatorioActivo;
     public LocalDateTime fechaRecordatorio;
+    public String bannerPath;
 
     public EventoInfraestructuraDTO() {
     }
@@ -70,7 +71,7 @@ public class EventoInfraestructuraDTO {
         return fechaRecordatorio;
     }
     
-    
-    
-    
+    public String getBannerPath() {
+        return bannerPath;
+    }
 }
