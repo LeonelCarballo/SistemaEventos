@@ -4,6 +4,7 @@
  */
 package linkup.presentacion;
 
+import java.time.DateTimeException;
 import linkup.dtosnegocios.EventoDTO;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -13,6 +14,8 @@ import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import javax.swing.JOptionPane;
+import linkup.exception.NegocioException;
 import linkup.presentacion.control.ControlCrearEvento;
 
 
@@ -202,20 +205,33 @@ public class SeleccionarFechaHora extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteActionPerformed
-        
-            String hora = (String) this.HoraCB.getSelectedItem();
-            String minuto = (String) this.MinutoCB.getSelectedItem();
+       try {
+        String hora = (String) this.HoraCB.getSelectedItem();
+        String minuto = (String) this.MinutoCB.getSelectedItem();
 
-        // Obtienes la fecha desde el JDateChooser
         Date fecha = jDateChooser1.getDate();
+        if (fecha == null) {
+            throw new NegocioException("Debe seleccionar una fecha.");
+        }
+
         Instant instant = fecha.toInstant();
-        ZoneId zoneId = ZoneId.systemDefault(); 
+        ZoneId zoneId = ZoneId.systemDefault();
         LocalDate localDate = instant.atZone(zoneId).toLocalDate();
         LocalTime localTime = LocalTime.of(Integer.parseInt(hora), Integer.parseInt(minuto));
         LocalDateTime fechaHora = LocalDateTime.of(localDate, localTime);
+
         eventoDTO.setFechaHora(fechaHora);
+
+        eventoDTO = controlador.validarFechaHoraEventoDTO(eventoDTO);
+
         controlador.mostrarSeleccionarUbicacion(eventoDTO);
         cerrar();
+
+    } catch (NegocioException ex) {
+        JOptionPane.showMessageDialog(this, ex.getMessage(), "Error de validación", JOptionPane.ERROR_MESSAGE);
+    } catch (DateTimeException | NumberFormatException ex) {
+        JOptionPane.showMessageDialog(this, "Hora o fecha inválida.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_jButtonSiguienteActionPerformed
 
     private void jButtonAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorActionPerformed

@@ -6,6 +6,7 @@ import java.util.List;
 import linkup.dtosnegocios.ContactoDTO;
 
 public class EventoDTO {
+
     private String idExterno;
     private String nombreEvento;
     private Etiqueta etiqueta;
@@ -18,9 +19,9 @@ public class EventoDTO {
     private boolean recordatorioActivo;
     private LocalDateTime fechaRecordatorio;
     private List<ContactoDTO> invitados;
+    private String bannerPath;
 
     // Getters y Setters
-
     public String getIdExterno() {
         return idExterno;
     }
@@ -116,6 +117,13 @@ public class EventoDTO {
     public void setInvitados(List<ContactoDTO> invitados) {
         this.invitados = invitados;
     }
-    
-    
+
+    public String getBannerPath() {
+        return bannerPath;
+    }
+
+    public void setBannerPath(String bannerPath) {
+        this.bannerPath = bannerPath;
+    }
+
 }

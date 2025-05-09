@@ -1,3 +1,4 @@
+linkup\exception\NegocioException.class
 linkup\presentacion\IngresarDetallesEvento$2.class
 linkup\presentacion\ConfirmacionEvento$4.class
 linkup\presentacion\SeleccionarFechaHora$4.class
@@ -5,6 +6,7 @@ linkup\presentacion\EnviarInvitaciones$7.class
 linkup\presentacion\ConfirmacionEvento$5.class
 linkup\presentacion\VentanaPrincipalCrearEvento.class
 linkup\presentacion\IngresarDetallesEvento.class
+linkup\presentacion\IngresarDetallesEvento$6.class
 linkup\presentacion\EnviarInvitaciones$4.class
 linkup\presentacion\EnviarInvitaciones$1.class
 linkup\presentacion\SeleccionarUbicacion$3.class

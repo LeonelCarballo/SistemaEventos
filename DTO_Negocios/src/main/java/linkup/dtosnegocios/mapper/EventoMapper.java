@@ -30,6 +30,7 @@ public class EventoMapper {
         dto.setLongitud(evento.getLongitud());
         dto.setRecordatorioActivo(evento.isRecordatorioActivo());
         dto.setFechaRecordatorio(evento.getFechaRecordatorio());
+        dto.setBannerPath(evento.getBannerPath());
         
         return dto;
     }
@@ -46,7 +47,8 @@ public class EventoMapper {
             dto.getLatitud(),
             dto.getLongitud(),
             dto.isRecordatorioActivo(),
-            dto.getFechaRecordatorio()
+            dto.getFechaRecordatorio(),
+            dto.getBannerPath()
         );
     }
 }
