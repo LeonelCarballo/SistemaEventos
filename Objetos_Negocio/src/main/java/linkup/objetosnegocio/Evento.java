@@ -1,4 +1,3 @@
-
 package linkup.objetosnegocio;
 
 import java.time.LocalDateTime;
