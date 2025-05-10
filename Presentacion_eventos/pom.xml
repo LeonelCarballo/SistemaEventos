@@ -80,11 +80,6 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>InfraestructuraCalendario</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
             <artifactId>InfraestructuraMapa</artifactId>
             <version>${project.version}</version>
         </dependency>
