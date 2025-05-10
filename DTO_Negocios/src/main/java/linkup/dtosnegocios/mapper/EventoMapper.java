@@ -6,6 +6,7 @@ package linkup.dtosnegocios.mapper;
 
 import linkup.dtosnegocios.EventoDTO;
 import linkup.objetosnegocio.Evento;
+import linkup.objetosnegocio.ServicioEventos;
 
 /**
  * Clase utilitaria para mapear entre objetos Evento y EventoDTO.
@@ -15,7 +16,7 @@ public class EventoMapper {
     private EventoMapper() {
     }
 
-    public static EventoDTO toDTO(Evento evento) {
+    public static EventoDTO toDTO(ServicioEventos evento) {
         if (evento == null) return null;
         
         EventoDTO dto = new EventoDTO();
@@ -35,8 +36,8 @@ public class EventoMapper {
         return dto;
     }
 
-    public static Evento toEntidad(EventoDTO dto) {
-        return new Evento(
+    public static ServicioEventos toEntidad(EventoDTO dto) {
+        return new ServicioEventos(
             dto.getIdExterno(),
             dto.getNombreEvento(),
             dto.getEtiqueta(),

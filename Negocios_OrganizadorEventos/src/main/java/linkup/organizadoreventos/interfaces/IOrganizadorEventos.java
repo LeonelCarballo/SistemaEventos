@@ -13,7 +13,7 @@ import linkup.objetosnegocio.Evento;
  */
 public interface IOrganizadorEventos {
     
-    public abstract void agregarEvento(EventoDTO evento);
+    public abstract void agregarEvento(EventoDTO evento, String idCalendario);
     
     public abstract EventoDTO consultarEventoPorId(String idExterno);
     

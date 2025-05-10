@@ -1,19 +1,59 @@
 package linkup.objetosnegocio;
 
-
-
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
-import linkup.infraestructura.calendario.InfraestructuraCalendario;
 import linkup.dtoinfraestructura.EventoInfraestructuraDTO;
-import linkup.infraestructura.interfaces.IInfraestructuraCalendario;
+import linkup.infraestructura.Integracion;
+import linkup.infraestructura.interfaces.IIntegracion;
 
 public class ServicioEventos {
     private static ServicioEventos instancia;
-    private final IInfraestructuraCalendario infraestructura;
+    private final IIntegracion integracion;
+    
+    private final String idExterno;
+    private final String nombreEvento;
+    private final Etiqueta etiqueta;
+    private final String descripcion;
+    private final LocalDateTime fechaHora;
+    private final LocalDateTime fechaFin;
+    private final String direccion;
+    private final Double latitud;
+    private final Double longitud;
+    private final boolean recordatorioActivo;
+    private final LocalDateTime fechaRecordatorio;
+    private final String bannerPath;
+
+    public ServicioEventos(String idExterno, String nombreEvento, Etiqueta etiqueta, String descripcion, LocalDateTime fechaHora, LocalDateTime fechaFin, String direccion, Double latitud, Double longitud, boolean recordatorioActivo, LocalDateTime fechaRecordatorio, String bannerPath) {
+        this.integracion = new Integracion();
+        this.idExterno = idExterno;
+        this.nombreEvento = nombreEvento;
+        this.etiqueta = etiqueta;
+        this.descripcion = descripcion;
+        this.fechaHora = fechaHora;
+        this.fechaFin = fechaFin;
+        this.direccion = direccion;
+        this.latitud = latitud;
+        this.longitud = longitud;
+        this.recordatorioActivo = recordatorioActivo;
+        this.fechaRecordatorio = fechaRecordatorio;
+        this.bannerPath = bannerPath;
+    }
 
     private ServicioEventos() {
-        this.infraestructura = new InfraestructuraCalendario(); 
+        this.integracion = new Integracion();
+        this.idExterno = null;
+        this.nombreEvento = null;
+        this.etiqueta = null;
+        this.descripcion = null;
+        this.fechaHora = null;
+        this.fechaFin = null;
+        this.direccion = null;
+        this.latitud = null;
+        this.longitud = null;
+        this.recordatorioActivo = false;
+        this.fechaRecordatorio = null;
+        this.bannerPath = null;
     }
 
     public static ServicioEventos getInstancia() {
@@ -24,15 +64,15 @@ public class ServicioEventos {
     }
 
     public List<Evento> obtenerEventos(String idCalendarioExterno) {
-        List<EventoInfraestructuraDTO> eventosInfra = infraestructura.obtenerEventosDelCalendario(idCalendarioExterno);
+        List<EventoInfraestructuraDTO> eventosInfra = integracion.obtenerEventosDelCalendario(idCalendarioExterno);
         return eventosInfra.stream()
                 .map(this::convertirADominio)
                 .collect(Collectors.toList());
     }
 
-    public void agregarEvento(String idCalendarioExterno, Evento evento) {
+    public void agregarEvento(String idCalendarioExterno, ServicioEventos evento) {
         EventoInfraestructuraDTO dto = convertirADTO(evento);
-        infraestructura.agregarEventoACalendario(idCalendarioExterno, dto);
+        integracion.agregarEventoACalendario(idCalendarioExterno, dto);
     }
 
     private Evento convertirADominio(EventoInfraestructuraDTO dto) {
@@ -52,7 +92,7 @@ public class ServicioEventos {
         );
     }
 
-    private EventoInfraestructuraDTO convertirADTO(Evento evento) {
+    private EventoInfraestructuraDTO convertirADTO(ServicioEventos evento) {
         EventoInfraestructuraDTO dto = new EventoInfraestructuraDTO();
         dto.idExterno = evento.getIdExterno();
         dto.nombreEvento = evento.getNombreEvento();
@@ -68,4 +108,56 @@ public class ServicioEventos {
         dto.bannerPath = evento.getBannerPath();
         return dto;
     }
+
+   
+
+    public String getIdExterno() {
+        return idExterno;
+    }
+
+    public String getNombreEvento() {
+        return nombreEvento;
+    }
+
+    public Etiqueta getEtiqueta() {
+        return etiqueta;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public LocalDateTime getFechaHora() {
+        return fechaHora;
+    }
+
+    public LocalDateTime getFechaFin() {
+        return fechaFin;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public Double getLatitud() {
+        return latitud;
+    }
+
+    public Double getLongitud() {
+        return longitud;
+    }
+
+    public boolean isRecordatorioActivo() {
+        return recordatorioActivo;
+    }
+
+    public LocalDateTime getFechaRecordatorio() {
+        return fechaRecordatorio;
+    }
+
+    public String getBannerPath() {
+        return bannerPath;
+    }
+
 }
+

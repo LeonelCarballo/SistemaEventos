@@ -9,11 +9,14 @@ import linkup.infraestructura.conectores.ConectorCalendario;
 import linkup.infraestructura.conectores.ConectorMapa;
 
 public class FabricaConectores {
-    public static IConector crearConectorParaCalendario() {
-        return new ConectorCalendario();
-    }
-
-    public static IConector crearConectorParaMapa() {
-        return new ConectorMapa();
+    public static IConector crearConector(String tipo) {
+        switch (tipo) {
+            case "calendario":
+                return new ConectorCalendario();
+            case "mapa":
+                return new ConectorMapa(); 
+            default:
+                throw new IllegalArgumentException("Tipo de conector no válido");
+        }
     }
 }
