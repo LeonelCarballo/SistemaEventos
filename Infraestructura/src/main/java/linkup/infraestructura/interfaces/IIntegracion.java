@@ -28,6 +28,6 @@ public interface IIntegracion {
      */
     public abstract void agregarEventoACalendario(String idCalendario, EventoInfraestructuraDTO evento);
     
-    public boolean validarHorario(String idCalendario, String fecha, String hora);
+    public abstract boolean validarHorario(String idCalendario, String fecha, String hora);
 
 }

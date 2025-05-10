@@ -258,7 +258,7 @@ public class ConfirmacionEvento extends javax.swing.JFrame {
 
     private void jButtonCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearActionPerformed
         controlador.intentarCrearEvento(eventoDTO);
-        eventos=organizadorEventos.consultarEventos();
+        eventos = organizadorEventos.consultarEventos();
         controlador.mostrarVentanaPrincipalAlCrear(eventos);
         cerrar();
     }//GEN-LAST:event_jButtonCrearActionPerformed
