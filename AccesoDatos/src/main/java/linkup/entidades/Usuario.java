@@ -12,12 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/**
- *
- * @author gael_
- */
-
-//no se muy bien donde va esta clase, si en negocio o acceso a datos
 
 @Entity
 @Table (name = "usuarios")
