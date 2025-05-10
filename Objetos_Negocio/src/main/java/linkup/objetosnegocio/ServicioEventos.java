@@ -4,16 +4,16 @@ package linkup.objetosnegocio;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import linkup.infraestructura.calendario.InfraestructuraCalendario;
 import linkup.dtoinfraestructura.EventoInfraestructuraDTO;
-import linkup.infraestructura.interfaces.IInfraestructuraCalendario;
+import linkup.infraestructura.Integracion;
+import linkup.infraestructura.interfaces.IIntegracion;
 
 public class ServicioEventos {
     private static ServicioEventos instancia;
-    private final IInfraestructuraCalendario infraestructura;
+    private final IIntegracion infraestructura;
 
     private ServicioEventos() {
-        this.infraestructura = new InfraestructuraCalendario(); 
+        this.infraestructura = new Integracion(); 
     }
 
     public static ServicioEventos getInstancia() {

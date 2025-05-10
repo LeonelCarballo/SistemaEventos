@@ -27,5 +27,7 @@ public interface IIntegracion {
      * @param evento Evento a agregar
      */
     public abstract void agregarEventoACalendario(String idCalendario, EventoInfraestructuraDTO evento);
+    
+    public abstract boolean validarHorario(String idCalendario, String fecha, String hora);
 
 }
