@@ -5,21 +5,25 @@
 package linkup.infraestructura;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import java.lang.ProcessBuilder.Redirect.Type;
 import java.util.Collections;
 import java.util.List;
 import linkup.dtoinfraestructura.EventoInfraestructuraDTO;
 import linkup.infraestructura.control.ControlInfraestructura;
 import linkup.infraestructura.interfaces.IIntegracion;
 import com.google.gson.reflect.TypeToken;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
+import linkup.infraestructura.utils.LocalDateTimeAdapter;
 
 public class Integracion implements IIntegracion {
 
-private final Gson gson = new Gson();
+    private final Gson gson = new GsonBuilder()
+        .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())
+        .create();
     private final ControlInfraestructura control = new ControlInfraestructura();
 
     @Override

@@ -1,4 +1,5 @@
 linkup\infraestructura\conectores\ConectorMapa.class
+linkup\infraestructura\utils\LocalDateTimeAdapter.class
 linkup\infraestructura\Integracion.class
 linkup\infraestructura\interfaces\IIntegracion.class
 linkup\infraestructura\conectores\ConectorCalendario.class
