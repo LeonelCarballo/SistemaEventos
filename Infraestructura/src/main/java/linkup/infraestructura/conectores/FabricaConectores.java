@@ -9,7 +9,6 @@ import linkup.infraestructura.conectores.ConectorCalendario;
 import linkup.infraestructura.conectores.ConectorMapa;
 
 public class FabricaConectores {
-        
     public static IConector crearConector(String tipo) {
         switch (tipo) {
             case "calendario":

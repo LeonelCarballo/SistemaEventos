@@ -8,28 +8,29 @@ import java.util.ArrayList;
 import java.util.List;
 import linkup.dtosnegocios.EventoDTO;
 import linkup.exception.NegocioException;
+import linkup.objetosnegocio.ServicioEventos;
 import linkup.organizadoreventos.interfaces.IOrganizadorEventos;
 
 public class OrganizadorEventos implements IOrganizadorEventos {
 
-    private final List<Evento> eventos;
+    private final List<ServicioEventos> eventos;
 
     public OrganizadorEventos() {
         this.eventos = new ArrayList<>();
     }
 
     @Override
-    public void agregarEvento(EventoDTO dto) {
+    public void agregarEvento(EventoDTO dto, String idCalendario) {
 
         if (dto != null) {
-            Evento nuevo = EventoMapper.toEntidad(dto);
-            eventos.add(nuevo);
+            ServicioEventos nuevo = EventoMapper.toEntidad(dto);
+            nuevo.agregarEvento(idCalendario, nuevo);
         }
     }
 
     @Override
     public EventoDTO consultarEventoPorId(String idExterno) {
-        for (Evento e : eventos) {
+        for (ServicioEventos e : eventos) {
             if (e.getIdExterno().equals(idExterno)) {
                 return EventoMapper.toDTO(e);
             }
@@ -40,7 +41,7 @@ public class OrganizadorEventos implements IOrganizadorEventos {
     @Override
     public List<EventoDTO> consultarEventos() {
         List<EventoDTO> lista = new ArrayList<>();
-        for (Evento e : eventos) {
+        for (ServicioEventos e : eventos) {
             lista.add(EventoMapper.toDTO(e));
         }
         return lista;

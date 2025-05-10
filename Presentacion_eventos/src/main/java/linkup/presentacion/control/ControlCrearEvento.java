@@ -42,6 +42,7 @@ public class ControlCrearEvento {
 
     private EventoDTO eventoDTO;
     private List<EventoDTO> eventos;
+    private String idCalendario = "1";
 //    private final List<Evento> listaEventos;
 
     private List<ContactoDTO> contactosSeleccionados;
@@ -117,12 +118,12 @@ public class ControlCrearEvento {
     }
 
     public void intentarCrearEvento(EventoDTO evento) {
-        validadorEvento.agregarEvento(evento);
+        validadorEvento.agregarEvento(evento, idCalendario);
         cerrarVentana(frmDetalles);
         mostrarSeleccionFechaHora(evento);
     }
 
-//    public Infraestructura intentarRegistrarUbicacion(Infraestructura ubicacion) {
+//    public Infraestructura RegistrarUbicacion(Infraestructura ubicacion) {
 //        try {
 //            this.ubicacionSeleccionada = gestorUbicaciones.(ubicacion);
 //            cerrarVentana(frmUbicacion);

@@ -44,7 +44,7 @@ public class Calendario {
     }
 
 
-    public void agregarEvento(Evento evento) {
+    public void agregarEvento(ServicioEventos evento) {
         if (evento == null || evento.getIdExterno() == null) {
             throw new IllegalArgumentException("Evento no válido.");
         }
