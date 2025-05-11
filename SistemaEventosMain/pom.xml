@@ -12,6 +12,8 @@
         <module>../Negocios_OrganizadorEventos</module>
         <module>../Objetos_Negocio</module>
         <module>../Presentacion_eventos</module>
+        <module>../AccesoDatos</module>
+        <module>Negocios_Usuarios</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
