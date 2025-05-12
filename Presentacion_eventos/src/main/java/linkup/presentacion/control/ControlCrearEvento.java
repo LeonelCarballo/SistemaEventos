@@ -23,6 +23,8 @@ import linkup.organizadoreventos.interfaces.IOrganizadorEventos;
 import linkup.presentacion.ConfirmacionEvento;
 import linkup.presentacion.EnviarInvitaciones;
 import linkup.presentacion.IngresarDetallesEvento;
+import linkup.presentacion.IniciarSesion;
+import linkup.presentacion.RegistrarUsuario;
 import linkup.presentacion.SeleccionarFechaHora;
 import linkup.presentacion.SeleccionarUbicacion;
 import linkup.presentacion.VentanaPrincipalCrearEvento;
@@ -54,6 +56,9 @@ public class ControlCrearEvento {
     private SeleccionarUbicacion frmUbicacion;
     private EnviarInvitaciones frmInvitaciones;
     private ConfirmacionEvento frmConfirmacion;
+    
+    private IniciarSesion frmIniciarSesion;
+    private RegistrarUsuario frmRegistrarUsuario;  
 
     private ControlCrearEvento() {
     }

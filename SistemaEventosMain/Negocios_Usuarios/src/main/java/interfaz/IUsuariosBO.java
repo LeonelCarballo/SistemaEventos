@@ -15,6 +15,6 @@ import linkup.entidades.Usuario;
  * @author gael_
  */
 public interface IUsuariosBO {
-    public Usuario registrarUsuario(NuevoUsuarioDTO nuevoUsuario) throws NegocioException;
+    public boolean registrarUsuario(NuevoUsuarioDTO nuevoUsuario);
     public UsuarioDTO iniciarSesionUsuario(String username, String contrasenia) throws NegocioException;
 }
