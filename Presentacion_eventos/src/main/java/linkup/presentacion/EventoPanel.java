@@ -40,7 +40,7 @@ public class EventoPanel extends JPanel {
         setLayout(new BorderLayout());
         setBackground(Color.WHITE);
         setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 1));
-        setPreferredSize(new Dimension(400, 220)); // También aumentamos el total
+        setPreferredSize(new Dimension(400, 220)); 
 
         JPanel imagenPanel = new JPanel() {
             protected void paintComponent(Graphics g) {
@@ -98,7 +98,7 @@ public class EventoPanel extends JPanel {
                 }
             }
         };
-        imagenPanel.setPreferredSize(new Dimension(400, 120)); // Aumentamos la altura del banner
+        imagenPanel.setPreferredSize(new Dimension(400, 120)); 
         add(imagenPanel, BorderLayout.NORTH);
 
         JPanel infoPanel = new JPanel(new GridLayout(4, 1));

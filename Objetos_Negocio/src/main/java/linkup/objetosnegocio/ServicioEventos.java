@@ -2,58 +2,25 @@ package linkup.objetosnegocio;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import linkup.dtoinfraestructura.EventoInfraestructuraDTO;
 import linkup.infraestructura.Integracion;
 import linkup.infraestructura.interfaces.IIntegracion;
 
-public class ServicioEventos {
+public final class ServicioEventos {
     private static ServicioEventos instancia;
     private final IIntegracion integracion;
-    
-    private final String idExterno;
-    private final String nombreEvento;
-    private final Etiqueta etiqueta;
-    private final String descripcion;
-    private final LocalDateTime fechaHora;
-    private final LocalDateTime fechaFin;
-    private final String direccion;
-    private final Double latitud;
-    private final Double longitud;
-    private final boolean recordatorioActivo;
-    private final LocalDateTime fechaRecordatorio;
-    private final String bannerPath;
-
-    public ServicioEventos(String idExterno, String nombreEvento, Etiqueta etiqueta, String descripcion, LocalDateTime fechaHora, LocalDateTime fechaFin, String direccion, Double latitud, Double longitud, boolean recordatorioActivo, LocalDateTime fechaRecordatorio, String bannerPath) {
-        this.integracion = new Integracion();
-        this.idExterno = idExterno;
-        this.nombreEvento = nombreEvento;
-        this.etiqueta = etiqueta;
-        this.descripcion = descripcion;
-        this.fechaHora = fechaHora;
-        this.fechaFin = fechaFin;
-        this.direccion = direccion;
-        this.latitud = latitud;
-        this.longitud = longitud;
-        this.recordatorioActivo = recordatorioActivo;
-        this.fechaRecordatorio = fechaRecordatorio;
-        this.bannerPath = bannerPath;
-    }
+    private final Evento evento; 
 
     private ServicioEventos() {
         this.integracion = new Integracion();
-        this.idExterno = null;
-        this.nombreEvento = null;
-        this.etiqueta = null;
-        this.descripcion = null;
-        this.fechaHora = null;
-        this.fechaFin = null;
-        this.direccion = null;
-        this.latitud = null;
-        this.longitud = null;
-        this.recordatorioActivo = false;
-        this.fechaRecordatorio = null;
-        this.bannerPath = null;
+        this.evento = null;  
+    }
+
+    public ServicioEventos(Evento evento) {
+        this.integracion = new Integracion();
+        this.evento = Objects.requireNonNull(evento, "Evento no puede ser nulo");
     }
 
     public static ServicioEventos getInstancia() {
@@ -63,41 +30,50 @@ public class ServicioEventos {
         return instancia;
     }
 
-    public List<Evento> obtenerEventos(String idCalendarioExterno) {
-        List<EventoInfraestructuraDTO> eventosInfra = integracion.obtenerEventosDelCalendario(idCalendarioExterno);
-        return eventosInfra.stream()
-                .map(this::convertirADominio)
-                .collect(Collectors.toList());
+    public void publicarEnCalendario(String idCalendarioExterno) {
+        if (evento == null) {
+            throw new IllegalStateException("Se requiere un evento válido para esta operación");
+        }
+        EventoInfraestructuraDTO dto = convertirADTO();
+        integracion.agregarEventoACalendario(idCalendarioExterno, dto);
     }
 
-    public void agregarEvento(String idCalendarioExterno, ServicioEventos evento) {
-        EventoInfraestructuraDTO dto = convertirADTO(evento);
-        integracion.agregarEventoACalendario(idCalendarioExterno, dto);
+    public boolean puedeCancelarse() {
+        return evento != null && evento.puedeCancelarse();
+    }
+
+    public static List<Evento> obtenerEventosDelCalendario(String idCalendarioExterno) {
+        List<EventoInfraestructuraDTO> eventosInfra = getInstancia().integracion
+            .obtenerEventosDelCalendario(idCalendarioExterno);
+        
+        return eventosInfra.stream()
+                .map(getInstancia()::convertirADominio)
+                .collect(Collectors.toList());
     }
 
     private Evento convertirADominio(EventoInfraestructuraDTO dto) {
         return new Evento(
-                dto.idExterno,
-                dto.nombreEvento,
-                Etiqueta.valueOf(dto.etiqueta),
-                dto.descripcion,
-                dto.fechaHora,
-                dto.fechaFin,
-                dto.direccion,
-                dto.latitud,
-                dto.longitud,
-                dto.recordatorioActivo,
-                dto.fechaRecordatorio,
-                dto.bannerPath
+            dto.idExterno,
+            dto.nombreEvento,
+            Etiqueta.valueOf(dto.etiqueta),
+            dto.descripcion,
+            dto.fechaHora,
+            dto.fechaFin,
+            dto.direccion,
+            dto.latitud,
+            dto.longitud,
+            dto.recordatorioActivo,
+            dto.fechaRecordatorio,
+            dto.bannerPath
         );
     }
 
-    private EventoInfraestructuraDTO convertirADTO(ServicioEventos evento) {
+    private EventoInfraestructuraDTO convertirADTO() {
         EventoInfraestructuraDTO dto = new EventoInfraestructuraDTO();
         dto.idExterno = evento.getIdExterno();
         dto.nombreEvento = evento.getNombreEvento();
         dto.descripcion = evento.getDescripcion();
-        dto.etiqueta = evento.getEtiqueta().name(); 
+        dto.etiqueta = evento.getEtiqueta().name();
         dto.fechaHora = evento.getFechaHora();
         dto.fechaFin = evento.getFechaFin();
         dto.direccion = evento.getDireccion();
@@ -108,56 +84,20 @@ public class ServicioEventos {
         dto.bannerPath = evento.getBannerPath();
         return dto;
     }
-
    
-
     public String getIdExterno() {
-        return idExterno;
+        return evento != null ? evento.getIdExterno() : null;
     }
 
     public String getNombreEvento() {
-        return nombreEvento;
+        return evento != null ? evento.getNombreEvento() : null;
     }
 
-    public Etiqueta getEtiqueta() {
-        return etiqueta;
+    public Evento getEvento() {
+        return evento;
     }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public LocalDateTime getFechaHora() {
-        return fechaHora;
-    }
-
-    public LocalDateTime getFechaFin() {
-        return fechaFin;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public Double getLatitud() {
-        return latitud;
-    }
-
-    public Double getLongitud() {
-        return longitud;
-    }
-
-    public boolean isRecordatorioActivo() {
-        return recordatorioActivo;
-    }
-
-    public LocalDateTime getFechaRecordatorio() {
-        return fechaRecordatorio;
-    }
-
-    public String getBannerPath() {
-        return bannerPath;
-    }
-
+    
+    
+   
 }
 

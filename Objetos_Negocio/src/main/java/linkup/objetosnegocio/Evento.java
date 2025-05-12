@@ -3,7 +3,8 @@ package linkup.objetosnegocio;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class Evento {
+public final class Evento {
+    
     private final String idExterno;
     private final String nombreEvento;
     private final Etiqueta etiqueta;
@@ -18,33 +19,42 @@ public class Evento {
     private final String bannerPath;
 
     public Evento(String idExterno,
-                  String nombreEvento,
-                  Etiqueta etiqueta,
-                  String descripcion,
-                  LocalDateTime fechaHora,
-                  LocalDateTime fechaFin,
-                  String direccion,
-                  Double latitud,
-                  Double longitud,
-                  boolean recordatorioActivo,
-                  LocalDateTime fechaRecordatorio,
-                  String bannerPath) {
-
-        this.idExterno = idExterno;
-        this.nombreEvento = nombreEvento;
-        this.etiqueta = etiqueta;
-        this.descripcion = descripcion;
-        this.fechaHora = fechaHora;
+                 String nombreEvento,
+                 Etiqueta etiqueta,
+                 String descripcion,
+                 LocalDateTime fechaHora,
+                 LocalDateTime fechaFin,
+                 String direccion,
+                 Double latitud,
+                 Double longitud,
+                 boolean recordatorioActivo,
+                 LocalDateTime fechaRecordatorio,
+                 String bannerPath) {
+        
+        this.idExterno = Objects.requireNonNull(idExterno, "ID externo no puede ser nulo");
+        this.nombreEvento = Objects.requireNonNull(nombreEvento, "Nombre no puede ser nulo");
+        this.etiqueta = Objects.requireNonNull(etiqueta, "Etiqueta no puede ser nula");
+        this.descripcion = Objects.requireNonNull(descripcion, "Descripción no puede ser nula");
+        this.fechaHora = Objects.requireNonNull(fechaHora, "Fecha/Hora no puede ser nula");
         this.fechaFin = fechaFin;
-        this.direccion = direccion;
-        this.latitud = latitud;
+        this.direccion = direccion; 
+        this.latitud = latitud; 
         this.longitud = longitud;
         this.recordatorioActivo = recordatorioActivo;
-        this.fechaRecordatorio = fechaRecordatorio;
-        this.bannerPath = bannerPath; // ASIGNACIÓN
+        this.fechaRecordatorio = fechaRecordatorio; 
+        this.bannerPath = bannerPath; 
+        
+        validarFechas();
     }
 
-    // Getters
+    private void validarFechas() {
+        if (fechaFin != null && fechaFin.isBefore(fechaHora)) {
+            throw new IllegalArgumentException("Fecha fin no puede ser anterior a fecha inicio");
+        }
+        if (fechaRecordatorio != null && fechaRecordatorio.isAfter(fechaHora)) {
+            throw new IllegalArgumentException("Recordatorio no puede ser después del evento");
+        }
+    }
 
     public String getIdExterno() {
         return idExterno;
@@ -90,18 +100,20 @@ public class Evento {
         return fechaRecordatorio;
     }
 
-    public String getBannerPath() { 
+    public String getBannerPath() {
         return bannerPath;
     }
 
     public boolean esEventoPasado() {
-        return LocalDateTime.now().isAfter(fechaFin != null ? fechaFin : fechaHora);
+        LocalDateTime ahora = LocalDateTime.now();
+        return ahora.isAfter(fechaFin != null ? fechaFin : fechaHora);
     }
 
     public boolean esEventoHoy() {
-        LocalDateTime hoy = LocalDateTime.now();
-        return fechaHora.toLocalDate().equals(hoy.toLocalDate()) ||
-               (fechaFin != null && fechaFin.toLocalDate().equals(hoy.toLocalDate()));
+        LocalDateTime hoy = LocalDateTime.now().toLocalDate().atStartOfDay();
+        LocalDateTime manana = hoy.plusDays(1);
+        return (fechaHora.isEqual(hoy) || fechaHora.isAfter(hoy)) && (fechaHora.isBefore(manana)) ||
+               (fechaFin != null && fechaFin.isAfter(hoy) && fechaFin.isBefore(manana));
     }
 
     public boolean puedeCancelarse() {
@@ -109,16 +121,15 @@ public class Evento {
     }
 
     public long duracionEnMinutos() {
-        return fechaFin != null
-                ? java.time.Duration.between(fechaHora, fechaFin).toMinutes()
-                : 0;
+        return fechaFin != null ? java.time.Duration.between(fechaHora, fechaFin).toMinutes() : 0;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Evento evento)) return false;
-        return Objects.equals(idExterno, evento.idExterno);
+        if (!(o instanceof Evento)) return false;
+        Evento evento = (Evento) o;
+        return idExterno.equals(evento.idExterno);
     }
 
     @Override
@@ -128,11 +139,12 @@ public class Evento {
 
     @Override
     public String toString() {
-        return "Evento{" +
-                "id='" + idExterno + '\'' +
-                ", nombre='" + nombreEvento + '\'' +
-                ", inicio=" + fechaHora +
-                ", fin=" + fechaFin +
-                '}';
+        return String.format(
+            "Evento[id=%s, nombre=%s, inicio=%s, fin=%s]", 
+            idExterno, 
+            nombreEvento, 
+            fechaHora, 
+            fechaFin
+        );
     }
 }

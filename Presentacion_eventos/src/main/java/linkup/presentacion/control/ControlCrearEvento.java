@@ -16,6 +16,7 @@ import Subsistema.GestorUbicaciones;
 import exception.NegocioException;
 import java.util.List;
 import javax.swing.JOptionPane;
+import linkup.dtosnegocios.mapper.EventoMapper;
 import linkup.objetosnegocio.Evento;
 import linkup.organizadoreventos.OrganizadorEventos;
 import linkup.organizadoreventos.interfaces.IOrganizadorEventos;
@@ -35,14 +36,14 @@ public class ControlCrearEvento {
     private static ControlCrearEvento instancia;
 
     private static InfraestructuraMapa mapService = new InfraestructuraMapa();
-    private static IOrganizadorEventos validadorEvento = new OrganizadorEventos();
+    private static IOrganizadorEventos validadorEvento = new OrganizadorEventos("1");
     private static IGestorUbicaciones gestorUbicaciones = new GestorUbicaciones(mapService);
     private static IGestorContactos gestorContactos = new GestorContactos();
-    private static IOrganizadorEventos guardarEventoDTO = new OrganizadorEventos();
+    private static IOrganizadorEventos guardarEventoDTO = new OrganizadorEventos("1");
 
     private EventoDTO eventoDTO;
     private List<EventoDTO> eventos;
-    private String idCalendario = "1";
+    private static String idCalendario = "1";
 //    private final List<Evento> listaEventos;
 
     private List<ContactoDTO> contactosSeleccionados;
@@ -118,9 +119,18 @@ public class ControlCrearEvento {
     }
 
     public void intentarCrearEvento(EventoDTO evento) {
-        validadorEvento.agregarEvento(evento, idCalendario);
+
+        EventoDTO validado = validadorEvento.validarEventoCompleto(evento);
+
+        if(validado.getIdExterno() == null) {
+            validado.setIdExterno(EventoMapper.generarNuevoId());
+        }
+
+        this.eventoDTO = validado;
+        validadorEvento.agregarEvento(validado);
+
         cerrarVentana(frmDetalles);
-        mostrarSeleccionFechaHora(evento);
+        mostrarSeleccionFechaHora(validado);
     }
 
 //    public Infraestructura RegistrarUbicacion(Infraestructura ubicacion) {
@@ -134,6 +144,7 @@ public class ControlCrearEvento {
 //            return null;
 //        }
 //    }
+    
     public List<ContactoDTO> intentarValidarContactos(List<ContactoDTO> contactos) {
         try {
             for (ContactoDTO c : contactos) {
@@ -166,6 +177,7 @@ public class ControlCrearEvento {
 //            JOptionPane.showMessageDialog(null, e.getMessage(), "Error al guardar", JOptionPane.INFORMATION_MESSAGE);
 //        }
 //    }
+    
     public void cerrarVentana(javax.swing.JFrame ventana) {
         if (ventana != null) {
             ventana.dispose();
@@ -188,7 +200,7 @@ public class ControlCrearEvento {
     }
 
     public EventoDTO validarDetallesEventoDTO(EventoDTO evento) {
-        return validadorEvento.validarDetalllesEvento(evento);
+        return validadorEvento.validarDetallesEvento(evento);
     }
 
     public EventoDTO validarFechaHoraEventoDTO(EventoDTO evento) {

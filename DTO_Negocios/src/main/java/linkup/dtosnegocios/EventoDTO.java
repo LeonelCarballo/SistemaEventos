@@ -3,10 +3,10 @@ package linkup.dtosnegocios;
 import linkup.objetosnegocio.Etiqueta;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 import linkup.dtosnegocios.ContactoDTO;
 
-public class EventoDTO {
-
+public final class EventoDTO {
     private String idExterno;
     private String nombreEvento;
     private Etiqueta etiqueta;
@@ -21,21 +21,32 @@ public class EventoDTO {
     private List<ContactoDTO> invitados;
     private String bannerPath;
 
-    // Getters y Setters
+    public EventoDTO() {}
+
+    public EventoDTO(String idExterno, String nombreEvento, Etiqueta etiqueta, 
+                   LocalDateTime fechaHora) {
+        this.idExterno = Objects.requireNonNull(idExterno);
+        this.nombreEvento = Objects.requireNonNull(nombreEvento);
+        this.etiqueta = Objects.requireNonNull(etiqueta);
+        this.fechaHora = Objects.requireNonNull(fechaHora);
+    }
+
     public String getIdExterno() {
         return idExterno;
     }
 
-    public void setIdExterno(String idExterno) {
+    public EventoDTO setIdExterno(String idExterno) {
         this.idExterno = idExterno;
+        return this;
     }
 
     public String getNombreEvento() {
         return nombreEvento;
     }
 
-    public void setNombreEvento(String nombreEvento) {
-        this.nombreEvento = nombreEvento;
+    public EventoDTO setNombreEvento(String nombreEvento) {
+        this.nombreEvento = Objects.requireNonNull(nombreEvento);
+        return this;
     }
 
     public Etiqueta getEtiqueta() {
@@ -126,4 +137,20 @@ public class EventoDTO {
         this.bannerPath = bannerPath;
     }
 
+    public boolean esEventoFuturo() {
+        return fechaHora != null && fechaHora.isAfter(LocalDateTime.now());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof EventoDTO)) return false;
+        EventoDTO eventoDTO = (EventoDTO) o;
+        return Objects.equals(idExterno, eventoDTO.idExterno);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idExterno);
+    }
 }

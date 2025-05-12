@@ -1,25 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package linkup.dtosnegocios.mapper;
 
 import linkup.dtosnegocios.EventoDTO;
 import linkup.objetosnegocio.Evento;
 import linkup.objetosnegocio.ServicioEventos;
 
-/**
- * Clase utilitaria para mapear entre objetos Evento y EventoDTO.
- */
-public class EventoMapper {
+public final class EventoMapper {
+    private EventoMapper() {}
+    
+    public static EventoDTO toDTO(ServicioEventos servicioEvento) {
+        if (servicioEvento == null) return null;
 
-    private EventoMapper() {
-    }
-
-    public static EventoDTO toDTO(ServicioEventos evento) {
-        if (evento == null) return null;
-        
+        Evento evento = servicioEvento.getEvento();
         EventoDTO dto = new EventoDTO();
+
         dto.setIdExterno(evento.getIdExterno());
         dto.setNombreEvento(evento.getNombreEvento());
         dto.setEtiqueta(evento.getEtiqueta());
@@ -32,12 +25,18 @@ public class EventoMapper {
         dto.setRecordatorioActivo(evento.isRecordatorioActivo());
         dto.setFechaRecordatorio(evento.getFechaRecordatorio());
         dto.setBannerPath(evento.getBannerPath());
-        
+
         return dto;
     }
 
-    public static ServicioEventos toEntidad(EventoDTO dto) {
-        return new ServicioEventos(
+    public static ServicioEventos toServicioEvento(EventoDTO dto) {
+        if(dto.getIdExterno() == null || dto.getIdExterno().isEmpty()) {
+            String idExterno = dto.getIdExterno() != null ? 
+                          dto.getIdExterno() : 
+                          generarNuevoId();
+        }
+        
+        Evento evento = new Evento(
             dto.getIdExterno(),
             dto.getNombreEvento(),
             dto.getEtiqueta(),
@@ -51,5 +50,27 @@ public class EventoMapper {
             dto.getFechaRecordatorio(),
             dto.getBannerPath()
         );
+        return new ServicioEventos(evento);
+    }
+
+    public static Evento toEvento(EventoDTO dto) {
+        return new Evento(
+            dto.getIdExterno(),
+            dto.getNombreEvento(),
+            dto.getEtiqueta(),
+            dto.getDescripcion(),
+            dto.getFechaHora(),
+            dto.getFechaFin(),
+            dto.getDireccion(),
+            dto.getLatitud(),
+            dto.getLongitud(),
+            dto.isRecordatorioActivo(),
+            dto.getFechaRecordatorio(),
+            dto.getBannerPath()
+        );
+    }
+    
+    public static String generarNuevoId() {
+        return java.util.UUID.randomUUID().toString(); 
     }
 }

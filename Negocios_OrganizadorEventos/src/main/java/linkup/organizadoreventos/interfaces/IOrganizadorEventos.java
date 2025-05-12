@@ -1,25 +1,55 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package linkup.organizadoreventos.interfaces;
 
 import java.util.List;
 import linkup.dtosnegocios.EventoDTO;
+import linkup.exception.NegocioException;
 
 /**
  * Interfaz que define las operaciones del subsistema de organización de eventos.
  */
-
 public interface IOrganizadorEventos {
     
-    public abstract void agregarEvento(EventoDTO evento, String idCalendario);
+    /**
+     * Agrega un nuevo evento al sistema y al calendario especificado
+     * @param dto Datos del evento a agregar
+     * @throws NegocioException Si el evento no es válido
+     */
+    void agregarEvento(EventoDTO dto) throws NegocioException;
     
-    public abstract EventoDTO consultarEventoPorId(String idExterno);
+    /**
+     * Consulta un evento por su ID externo
+     * @param idExterno Identificador único del evento
+     * @return EventoDTO o null si no se encuentra
+     */
+    EventoDTO consultarEventoPorId(String idExterno);
     
-    public abstract List<EventoDTO> consultarEventos();
+    /**
+     * Obtiene todos los eventos del sistema
+     * @return Lista de eventos
+     */
+    List<EventoDTO> consultarEventos();
     
-    public abstract EventoDTO validarDetalllesEvento(EventoDTO dto);
+    /**
+     * Valida los detalles básicos de un evento
+     * @param dto Evento a validar
+     * @return Evento validado
+     * @throws NegocioException Si hay errores de validación
+     */
+    EventoDTO validarDetallesEvento(EventoDTO dto) throws NegocioException;
     
-    public abstract EventoDTO validarFechaHoraEvento(EventoDTO dto);
+    /**
+     * Valida las fechas y horas de un evento
+     * @param dto Evento a validar
+     * @return Evento validado
+     * @throws NegocioException Si hay errores de validación
+     */
+    EventoDTO validarFechaHoraEvento(EventoDTO dto) throws NegocioException;
+    
+    /**
+     * Valida completamente un evento (detalles + fechas)
+     * @param dto Evento a validar
+     * @return Evento validado
+     * @throws NegocioException Si hay errores de validación
+     */
+    EventoDTO validarEventoCompleto(EventoDTO dto) throws NegocioException;
 }
