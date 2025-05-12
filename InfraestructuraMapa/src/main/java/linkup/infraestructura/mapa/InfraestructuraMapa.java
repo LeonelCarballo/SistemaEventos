@@ -4,8 +4,15 @@
 
 package linkup.infraestructura.mapa;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.application.Platform;
+import javafx.embed.swing.JFXPanel;
+import javafx.scene.Scene;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
+import javax.swing.JPanel;
 import linkup.infraestructura.mapa.interfaces.IInfraestructuraMapa;
 
 /**
@@ -13,38 +20,34 @@ import linkup.infraestructura.mapa.interfaces.IInfraestructuraMapa;
  * @author Dana Chavez
  */
 public class InfraestructuraMapa implements IInfraestructuraMapa {
-    
-    private List<Location> mockLocations;
 
     public InfraestructuraMapa() {
-        mockLocations = new ArrayList<>();
-        mockLocations.add(new Location("Plaza Central", -34.6037, -58.3816));
-        mockLocations.add(new Location("Parque del Sol", -34.6118, -58.4173));
-        mockLocations.add(new Location("Estación Norte", -34.5944, -58.4000));
     }
 
     @Override
-    public void showMap() {
-        System.out.println("Mostrando mapa de prueba con ubicaciones disponibles...");
-        for (Location loc : mockLocations) {
-            System.out.println(" - " + loc);
-        }
+    public void showMap(JPanel destino) {
+        JFXPanel jfxPanel = new JFXPanel();           
+        destino.add(jfxPanel);
+
+        Platform.runLater(() -> {
+            WebView webView = new WebView();
+            WebEngine engine = webView.getEngine();
+
+            File file = new File("mapa.html");
+            engine.load(file.toURI().toString());
+
+            jfxPanel.setScene(new Scene(webView));
+        });
     }
 
     @Override
     public List<Location> getAvailableLocations() {
-        return mockLocations;
+        return null;
     }
 
     @Override
     public Location selectLocation(String name) {
-        for (Location loc : mockLocations) {
-            if (loc.getName().equalsIgnoreCase(name)) {
-                System.out.println("Ubicación seleccionada: " + loc);
-                return loc;
-            }
-        }
-        System.out.println("Ubicación no encontrada.");
+        
         return null;
     }
 }

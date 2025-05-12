@@ -5,6 +5,7 @@
 package linkup.infraestructura.mapa.interfaces;
 
 import java.util.List;
+import javax.swing.JPanel;
 import linkup.infraestructura.mapa.Location;
 
 /**
@@ -13,7 +14,7 @@ import linkup.infraestructura.mapa.Location;
  */
 public interface IInfraestructuraMapa {
     
-    public abstract void showMap();
+    public abstract void showMap(JPanel destino);
     
     public abstract List<Location> getAvailableLocations();
     
