@@ -18,6 +18,12 @@ public class ControlInfraestructura {
         IConector conector = FabricaConectores.crearConector("calendario");
         return conector.invocarServicioJson(json);
     }
+    
+    public String obtenerUbicacionDesdeServidor() {
+    IConector conector = FabricaConectores.crearConector("mapa");
+    return conector.invocarServicioJson(""); // No se envía JSON, solo se hace GET
+    }
+
 
 }
 
