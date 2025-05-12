@@ -14,6 +14,8 @@
         <module>../Presentacion_eventos</module>
         <module>../AccesoDatos</module>
         <module>Negocios_Usuarios</module>
+        <module>../Infraestructura</module>
+        <module>../InfraestructuraMapa</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

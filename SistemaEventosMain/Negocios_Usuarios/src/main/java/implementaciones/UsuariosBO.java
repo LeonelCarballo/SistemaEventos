@@ -9,8 +9,8 @@ import interfaz.IUsuariosBO;
 import javax.swing.JOptionPane;
 import linkup.dtosnegocios.NuevoUsuarioDTO;
 import linkup.dtosnegocios.UsuarioDTO;
-import linkup.entidades.Usuario;
 import linkup.interfaces.IUsuariosDAO;
+
 
 /**
  *

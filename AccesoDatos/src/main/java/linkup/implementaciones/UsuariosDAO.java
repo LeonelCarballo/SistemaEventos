@@ -4,8 +4,11 @@
  */
 package linkup.implementaciones;
 
-import DTOs.NuevoUsuarioDTO;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.TypedQuery;
+import linkup.dtosnegocios.NuevoUsuarioDTO;
+import linkup.dtosnegocios.UsuarioDTO;
 import linkup.entidades.Usuario;
 import linkup.interfaces.IUsuariosDAO;
 
@@ -16,20 +19,73 @@ import linkup.interfaces.IUsuariosDAO;
 public class UsuariosDAO implements IUsuariosDAO {
 
     @Override
-    public Usuario registrarUsuario(NuevoUsuarioDTO nuevoUsuario) {
+    public boolean registrarUsuario(NuevoUsuarioDTO nuevoUsuario) {
         EntityManager entityManager = ManejadorConexiones.getEntityManager();
 
-        entityManager.getTransaction().begin();
-        Usuario usuario = new Usuario();
-        usuario.setUsername(nuevoUsuario.getUsername());
-        usuario.setContrasenia(nuevoUsuario.getContrasenia());
-        usuario.setNombre(nuevoUsuario.getNombre());
-        usuario.setApellido(nuevoUsuario.getApellido());
-        
-        entityManager.persist(usuario);
-        entityManager.getTransaction().commit();
-        
-        return usuario;
+        try {
+            entityManager.getTransaction().begin();
+
+            Usuario usuario = new Usuario();
+            usuario.setUsername(nuevoUsuario.getUsername());
+            usuario.setContrasenia(nuevoUsuario.getContrasenia());
+            usuario.setNombre(nuevoUsuario.getNombre());
+            usuario.setApellido(nuevoUsuario.getApellido());
+
+            entityManager.persist(usuario);
+            entityManager.getTransaction().commit();
+
+            return true;
+        } catch (Exception e) {
+            System.out.println("Error al registrar usuario: " + e.getMessage());
+            if (entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
+            return false;
+        } finally {
+            entityManager.close();
+        }
     }
+
+    @Override
+    public UsuarioDTO iniciarSesionUsuario(String username, String contrasenia) {
+            EntityManager entityManager = ManejadorConexiones.getEntityManager();
+        UsuarioDTO usuarioDTO = null;
+
+        try {
+            entityManager.getTransaction().begin();
+
+            TypedQuery<Usuario> query = entityManager.createQuery(
+                "SELECT u FROM Usuario u WHERE u.username = :username AND u.contrasenia = :contrasenia", 
+                Usuario.class
+            );
+            query.setParameter("username", username);
+            query.setParameter("contrasenia", contrasenia);
+
+            Usuario usuario = query.getSingleResult();
+
+            if (usuario != null) {
+                usuarioDTO = new UsuarioDTO(
+                    usuario.getId(),
+                    usuario.getUsername(),
+                    usuario.getContrasenia(),
+                    usuario.getNombre(),
+                    usuario.getApellido()
+                );
+            }
+
+            entityManager.getTransaction().commit();
+        } catch (NoResultException e) {
+            entityManager.getTransaction().rollback();
+            // Usuario no encontrado
+        } catch (Exception e) {
+            entityManager.getTransaction().rollback();
+            e.printStackTrace();
+        } finally {
+            entityManager.close();
+        }
+
+        return usuarioDTO;
+        }
+    
     
 }

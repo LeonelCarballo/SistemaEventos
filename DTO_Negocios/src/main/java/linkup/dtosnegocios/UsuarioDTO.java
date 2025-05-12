@@ -32,6 +32,8 @@ public class UsuarioDTO {
         this.nombre = nombre;
         this.apellido = apellido;
     }
+    
+    
 
     public UsuarioDTO(String username, String contrasenia) {
         this.username = username;

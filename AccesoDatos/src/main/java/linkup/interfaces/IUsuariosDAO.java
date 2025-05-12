@@ -4,7 +4,9 @@
  */
 package linkup.interfaces;
 
-import DTOs.NuevoUsuarioDTO;
+
+import linkup.dtosnegocios.NuevoUsuarioDTO;
+import linkup.dtosnegocios.UsuarioDTO;
 import linkup.entidades.Usuario;
 
 /**
@@ -12,5 +14,6 @@ import linkup.entidades.Usuario;
  * @author gael_
  */
 public interface IUsuariosDAO {
-    public abstract Usuario registrarUsuario(NuevoUsuarioDTO nuevoUsuario);
+    public abstract boolean registrarUsuario(NuevoUsuarioDTO nuevoUsuario);
+    public abstract UsuarioDTO iniciarSesionUsuario(String username, String contrasenia);
 }
