@@ -5,7 +5,6 @@
 package linkup.presentacion;
 
 import exception.NegocioException;
-import implementaciones.UsuariosBO;
 import javax.swing.JOptionPane;
 import linkup.presentacion.control.ControlIniciarSesion;
 import linkup.presentacion.control.ControlRegistrarUsuario;

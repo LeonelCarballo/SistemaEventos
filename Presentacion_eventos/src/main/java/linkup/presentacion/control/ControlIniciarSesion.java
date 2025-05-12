@@ -5,10 +5,11 @@
 package linkup.presentacion.control;
 
 import exception.NegocioException;
-import interfaz.IUsuariosBO;
 import linkup.dtosnegocios.UsuarioDTO;
+import linkup.objetosnegocio.fabrica.FabricaObjetosNegocio;
+import linkup.objetosnegocio.interfaz.IUsuariosBO;
 import linkup.presentacion.IniciarSesion;
-import fabrica.FabricaObjetosNegocio;
+
 
 /**
  *

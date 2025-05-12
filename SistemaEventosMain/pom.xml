@@ -13,7 +13,6 @@
         <module>../Objetos_Negocio</module>
         <module>../Presentacion_eventos</module>
         <module>../AccesoDatos</module>
-        <module>Negocios_Usuarios</module>
         <module>../Infraestructura</module>
         <module>../InfraestructuraMapa</module>
     </modules>

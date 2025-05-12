@@ -2,15 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package implementaciones;
+package linkup.objetosnegocio.implementaciones;
 
 import exception.NegocioException;
-import interfaz.IUsuariosBO;
 import javax.swing.JOptionPane;
 import linkup.dtosnegocios.NuevoUsuarioDTO;
 import linkup.dtosnegocios.UsuarioDTO;
 import linkup.interfaces.IUsuariosDAO;
-
+import linkup.objetosnegocio.interfaz.IUsuariosBO;
 
 /**
  *
@@ -64,3 +63,4 @@ public class UsuariosBO implements IUsuariosBO {
         return usuariosDAO.iniciarSesionUsuario(username, contrasenia);
     }
 }
+

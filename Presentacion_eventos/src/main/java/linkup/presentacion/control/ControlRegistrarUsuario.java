@@ -4,14 +4,16 @@
  */
 package linkup.presentacion.control;
 
-import interfaz.IUsuariosBO;
+
 import javax.swing.JOptionPane;
 import linkup.dtosnegocios.NuevoUsuarioDTO;
 import linkup.dtosnegocios.UsuarioDTO;
 import linkup.exception.NegocioException;
+import linkup.objetosnegocio.fabrica.FabricaObjetosNegocio;
+import linkup.objetosnegocio.interfaz.IUsuariosBO;
 import linkup.presentacion.IniciarSesion;
 import linkup.presentacion.RegistrarUsuario;
-import fabrica.FabricaObjetosNegocio;
+
 
 /**
  *
