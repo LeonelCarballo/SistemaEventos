@@ -214,26 +214,26 @@ public class IngresarDetallesEvento extends javax.swing.JFrame {
     private void jButtonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteActionPerformed
         Etiqueta etiqueta = Etiqueta.CUMPLEAÑOS;
 
-    String seleccion = (String) jComboBoxEtiqueta.getSelectedItem();
-    if ("Cumpleaños".equals(seleccion)) {
-        etiqueta = Etiqueta.CUMPLEAÑOS;
-    } else if ("Boda".equals(seleccion)) {
-        etiqueta = Etiqueta.BODA;
-    } else if ("Reunion".equals(seleccion)) {
-        etiqueta = Etiqueta.REUNION;
-    }
+        String seleccion = (String) jComboBoxEtiqueta.getSelectedItem();
+        if ("Cumpleaños".equals(seleccion)) {
+            etiqueta = Etiqueta.CUMPLEAÑOS;
+        } else if ("Boda".equals(seleccion)) {
+            etiqueta = Etiqueta.BODA;
+        } else if ("Reunion".equals(seleccion)) {
+            etiqueta = Etiqueta.REUNION;
+        }
 
-    eventoDTO.setNombreEvento(jTextFieldNombreEvento.getText());
-    eventoDTO.setDescripcion(jTextFieldDescripcion.getText());
-    eventoDTO.setEtiqueta(etiqueta);
+        eventoDTO.setNombreEvento(jTextFieldNombreEvento.getText());
+        eventoDTO.setDescripcion(jTextFieldDescripcion.getText());
+        eventoDTO.setEtiqueta(etiqueta);
 
-    try {
-        eventoDTO = controlador.validarDetallesEventoDTO(eventoDTO);
-        controlador.mostrarSeleccionFechaHora(eventoDTO);
-        cerrar();
-    } catch (NegocioException ex) {
-        JOptionPane.showMessageDialog(this, ex.getMessage(), "Error de validación", JOptionPane.ERROR_MESSAGE);
-    }
+        try {
+            eventoDTO = controlador.validarDetallesEventoDTO(eventoDTO);
+            controlador.mostrarSeleccionFechaHora(eventoDTO);
+            cerrar();
+        } catch (NegocioException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error de validación", JOptionPane.ERROR_MESSAGE);
+        }
 
 
     }//GEN-LAST:event_jButtonSiguienteActionPerformed

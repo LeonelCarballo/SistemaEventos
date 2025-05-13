@@ -254,16 +254,11 @@ public class EnviarInvitaciones extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAnteriorActionPerformed
 
     private void jButtonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteActionPerformed
-        eventoDTO.setDireccion(jTextFieldUbicacion.getText());
-
-        try {
-            eventoDTO = controlador.validarUbicacionEventoDTO(eventoDTO);
-
-            controlador.mostrarEnviarInvitaciones(eventoDTO);
-            cerrar();
-        } catch (NegocioException ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error de validación", JOptionPane.ERROR_MESSAGE);
-        }
+        generarListaSeleccionados();
+        eventoDTO.setInvitados(seleccionados);
+        
+        controlador.mostrarConfirmacionEvento(eventoDTO);
+        cerrar();
     }//GEN-LAST:event_jButtonSiguienteActionPerformed
 
     private void jButtonInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInicioActionPerformed
