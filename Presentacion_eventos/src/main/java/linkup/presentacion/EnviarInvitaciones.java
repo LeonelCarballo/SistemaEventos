@@ -249,7 +249,7 @@ public class EnviarInvitaciones extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorActionPerformed
-        controlador.mostrarSeleccionFechaHora(eventoDTO);
+        controlador.mostrarSeleccionarUbicacion(eventoDTO);
         cerrar();
     }//GEN-LAST:event_jButtonAnteriorActionPerformed
 

@@ -252,7 +252,7 @@ public class ConfirmacionEvento extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorActionPerformed
-        //controlador.mostrarEnviarInvitaciones();
+        controlador.mostrarEnviarInvitaciones(eventoDTO);
         cerrar();
     }//GEN-LAST:event_jButtonAnteriorActionPerformed
 
