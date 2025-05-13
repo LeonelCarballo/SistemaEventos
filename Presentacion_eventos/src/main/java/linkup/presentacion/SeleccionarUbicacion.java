@@ -53,21 +53,20 @@ public class SeleccionarUbicacion extends javax.swing.JFrame {
 
         jLabel7 = new javax.swing.JLabel();
         jPanelFondoBlanco = new javax.swing.JPanel();
-        jPanelColorRosa = new javax.swing.JPanel();
-        jButtonMenu = new javax.swing.JButton();
         jLabelLogo = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButtonMenu = new javax.swing.JButton();
         jButtonInicio = new javax.swing.JButton();
-        jButtonExplorar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jPanelColorFondo = new javax.swing.JPanel();
-        jLabelTituloSeleccionar = new javax.swing.JLabel();
-        jButtonSiguiente = new javax.swing.JButton();
-        jButtonCancelar = new javax.swing.JButton();
-        jButtonAnterior = new javax.swing.JButton();
         jTextFieldUbicacion = new javax.swing.JTextField();
         jButtonSeleccionarUbicacion = new javax.swing.JButton();
-        jPanelColorSeparador = new javax.swing.JPanel();
-        jLabelTituloNuevoEvento = new javax.swing.JLabel();
+        jButtonCancelar = new javax.swing.JButton();
+        jButtonAnterior = new javax.swing.JButton();
+        jButtonSiguiente = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabelFondo = new javax.swing.JLabel();
 
         jLabel7.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(168, 91, 102));
@@ -79,91 +78,88 @@ public class SeleccionarUbicacion extends javax.swing.JFrame {
         jPanelFondoBlanco.setBackground(new java.awt.Color(255, 255, 255));
         jPanelFondoBlanco.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanelColorRosa.setBackground(new java.awt.Color(253, 166, 179));
-        jPanelColorRosa.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/LINK UP.png"))); // NOI18N
+        jPanelFondoBlanco.add(jLabelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 250, 50));
 
-        jButtonMenu.setBackground(new java.awt.Color(253, 166, 179));
-        jButtonMenu.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotonmenu.png"))); // NOI18N
-        jPanelColorRosa.add(jButtonMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonmiseventos.png"))); // NOI18N
+        jButton3.setContentAreaFilled(false);
+        jPanelFondoBlanco.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 60, -1));
 
-        jPanelFondoBlanco.add(jPanelColorRosa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 560));
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonchat.png"))); // NOI18N
+        jButton4.setContentAreaFilled(false);
+        jPanelFondoBlanco.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 60, -1));
 
-        jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linklogo.png"))); // NOI18N
-        jPanelFondoBlanco.add(jLabelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 210, 50));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botoncalendario.png"))); // NOI18N
+        jButton2.setContentAreaFilled(false);
+        jPanelFondoBlanco.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 60, -1));
+
+        jButtonMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonmenu.png"))); // NOI18N
+        jButtonMenu.setContentAreaFilled(false);
+        jPanelFondoBlanco.add(jButtonMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 60, -1));
 
         jButtonInicio.setBackground(new java.awt.Color(255, 255, 255));
-        jButtonInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupinicio.png"))); // NOI18N
+        jButtonInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botoninicio.png"))); // NOI18N
         jButtonInicio.setBorder(null);
         jButtonInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonInicioActionPerformed(evt);
             }
         });
-        jPanelFondoBlanco.add(jButtonInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 110, 50));
+        jPanelFondoBlanco.add(jButtonInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 200, 50));
 
-        jButtonExplorar.setBackground(new java.awt.Color(255, 255, 255));
-        jButtonExplorar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupexplorar.png"))); // NOI18N
-        jPanelFondoBlanco.add(jButtonExplorar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 160, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lblcreandoevento.png"))); // NOI18N
+        jPanelFondoBlanco.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 610, 210, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupcreandoevento.png"))); // NOI18N
-        jPanelFondoBlanco.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 480, -1, -1));
+        jTextFieldUbicacion.setBackground(new java.awt.Color(246, 227, 230));
+        jTextFieldUbicacion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(148, 63, 75)));
+        jPanelFondoBlanco.add(jTextFieldUbicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 260, 260, 40));
 
-        jPanelColorFondo.setBackground(new java.awt.Color(246, 227, 230));
-        jPanelColorFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabelTituloSeleccionar.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        jLabelTituloSeleccionar.setForeground(new java.awt.Color(168, 91, 102));
-        jLabelTituloSeleccionar.setText("Seleccionar ubicacion");
-        jPanelColorFondo.add(jLabelTituloSeleccionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
-
-        jButtonSiguiente.setBackground(new java.awt.Color(246, 227, 230));
-        jButtonSiguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotonsiguiente.png"))); // NOI18N
-        jButtonSiguiente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSiguienteActionPerformed(evt);
-            }
-        });
-        jPanelColorFondo.add(jButtonSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, -1, -1));
+        jButtonSeleccionarUbicacion.setBackground(new java.awt.Color(246, 227, 230));
+        jButtonSeleccionarUbicacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotonubicacion.png"))); // NOI18N
+        jPanelFondoBlanco.add(jButtonSeleccionarUbicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 550, 260, 50));
 
         jButtonCancelar.setBackground(new java.awt.Color(246, 227, 230));
-        jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotoncancelar.png"))); // NOI18N
+        jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botoncancelar.png"))); // NOI18N
+        jButtonCancelar.setContentAreaFilled(false);
+        jButtonCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCancelarActionPerformed(evt);
             }
         });
-        jPanelColorFondo.add(jButtonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, -1, -1));
+        jPanelFondoBlanco.add(jButtonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 610, -1, -1));
 
         jButtonAnterior.setBackground(new java.awt.Color(246, 227, 230));
-        jButtonAnterior.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotonregresar.png"))); // NOI18N
+        jButtonAnterior.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonregresar.png"))); // NOI18N
+        jButtonAnterior.setContentAreaFilled(false);
+        jButtonAnterior.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonAnterior.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAnteriorActionPerformed(evt);
             }
         });
-        jPanelColorFondo.add(jButtonAnterior, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 340, -1, -1));
+        jPanelFondoBlanco.add(jButtonAnterior, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 610, -1, -1));
 
-        jTextFieldUbicacion.setBackground(new java.awt.Color(246, 227, 230));
-        jTextFieldUbicacion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(148, 63, 75)));
-        jPanelColorFondo.add(jTextFieldUbicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 260, 40));
+        jButtonSiguiente.setBackground(new java.awt.Color(246, 227, 230));
+        jButtonSiguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonsiguiente.png"))); // NOI18N
+        jButtonSiguiente.setContentAreaFilled(false);
+        jButtonSiguiente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSiguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSiguienteActionPerformed(evt);
+            }
+        });
+        jPanelFondoBlanco.add(jButtonSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 610, -1, -1));
 
-        jButtonSeleccionarUbicacion.setBackground(new java.awt.Color(246, 227, 230));
-        jButtonSeleccionarUbicacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotonubicacion.png"))); // NOI18N
-        jPanelColorFondo.add(jButtonSeleccionarUbicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, 50));
+        jLabel4.setFont(new java.awt.Font("Arial Black", 0, 15)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(168, 91, 102));
+        jLabel4.setText("Seleccionar Ubicacion");
+        jPanelFondoBlanco.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, -1, -1));
 
-        jPanelFondoBlanco.add(jPanelColorFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 300, 400));
+        jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/nuevoevento.png"))); // NOI18N
+        jPanelFondoBlanco.add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-8, 0, 1200, -1));
 
-        jPanelColorSeparador.setBackground(new java.awt.Color(195, 123, 133));
-        jPanelFondoBlanco.add(jPanelColorSeparador, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, 300, 10));
-
-        jLabelTituloNuevoEvento.setBackground(new java.awt.Color(255, 255, 255));
-        jLabelTituloNuevoEvento.setFont(new java.awt.Font("Arial Black", 0, 20)); // NOI18N
-        jLabelTituloNuevoEvento.setForeground(new java.awt.Color(168, 91, 102));
-        jLabelTituloNuevoEvento.setText("Nuevo evento");
-        jPanelFondoBlanco.add(jLabelTituloNuevoEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, -1, -1));
-
-        getContentPane().add(jPanelFondoBlanco, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 864, 558));
+        getContentPane().add(jPanelFondoBlanco, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1160, 750));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -172,29 +168,29 @@ public class SeleccionarUbicacion extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonInicioActionPerformed
 
-    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
-        
-        controlador.mostrarVentanaPrincipal();
-        cerrar();
-    }//GEN-LAST:event_jButtonCancelarActionPerformed
+    private void jButtonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteActionPerformed
+        eventoDTO.setDireccion(jTextFieldUbicacion.getText());
+
+        try {
+            eventoDTO = controlador.validarUbicacionEventoDTO(eventoDTO);
+
+            controlador.mostrarEnviarInvitaciones(eventoDTO);
+            cerrar();
+        } catch (NegocioException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error de validación", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonSiguienteActionPerformed
 
     private void jButtonAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorActionPerformed
         controlador.mostrarSeleccionFechaHora(eventoDTO);
         cerrar();
     }//GEN-LAST:event_jButtonAnteriorActionPerformed
 
-    private void jButtonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteActionPerformed
-        eventoDTO.setDireccion(jTextFieldUbicacion.getText());
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
 
-    try {
-        eventoDTO = controlador.validarUbicacionEventoDTO(eventoDTO);
-
-        controlador.mostrarEnviarInvitaciones(eventoDTO);
+        controlador.mostrarVentanaPrincipal();
         cerrar();
-    } catch (NegocioException ex) {
-        JOptionPane.showMessageDialog(this, ex.getMessage(), "Error de validación", JOptionPane.ERROR_MESSAGE);
-    }
-    }//GEN-LAST:event_jButtonSiguienteActionPerformed
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -247,21 +243,20 @@ public class SeleccionarUbicacion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButtonAnterior;
     private javax.swing.JButton jButtonCancelar;
-    private javax.swing.JButton jButtonExplorar;
     private javax.swing.JButton jButtonInicio;
     private javax.swing.JButton jButtonMenu;
     private javax.swing.JButton jButtonSeleccionarUbicacion;
     private javax.swing.JButton jButtonSiguiente;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabelFondo;
     private javax.swing.JLabel jLabelLogo;
-    private javax.swing.JLabel jLabelTituloNuevoEvento;
-    private javax.swing.JLabel jLabelTituloSeleccionar;
-    private javax.swing.JPanel jPanelColorFondo;
-    private javax.swing.JPanel jPanelColorRosa;
-    private javax.swing.JPanel jPanelColorSeparador;
     private javax.swing.JPanel jPanelFondoBlanco;
     private javax.swing.JTextField jTextFieldUbicacion;
     // End of variables declaration//GEN-END:variables

@@ -50,9 +50,9 @@ public class RegistrarUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabelFondo = new javax.swing.JLabel();
+        jLabelLogo1 = new javax.swing.JLabel();
         panelBlanco = new javax.swing.JPanel();
-        jPanelColorRosa = new javax.swing.JPanel();
-        jLabelLogo = new javax.swing.JLabel();
         labelTitulo = new javax.swing.JLabel();
         panelRosita = new javax.swing.JPanel();
         labelApellido = new javax.swing.JLabel();
@@ -66,21 +66,24 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         btnContinuar = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
         jPanelColorSeparador = new javax.swing.JPanel();
+        jLabelLogo = new javax.swing.JLabel();
+        jLabelFondo1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(864, 558));
         setPreferredSize(new java.awt.Dimension(864, 558));
 
+        jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/nuevoevento.png"))); // NOI18N
+
+        jLabelLogo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/LINK UP.png"))); // NOI18N
+
         panelBlanco.setBackground(new java.awt.Color(255, 255, 255));
-
-        jPanelColorRosa.setBackground(new java.awt.Color(253, 166, 179));
-        jPanelColorRosa.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linklogo.png"))); // NOI18N
+        panelBlanco.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         labelTitulo.setFont(new java.awt.Font("Arial Black", 0, 20)); // NOI18N
         labelTitulo.setForeground(new java.awt.Color(168, 91, 102));
         labelTitulo.setText("Datos del usuario");
+        panelBlanco.add(labelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, -1, -1));
 
         panelRosita.setBackground(new java.awt.Color(246, 227, 230));
         panelRosita.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(195, 123, 133)));
@@ -101,14 +104,16 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         labelContraseña.setForeground(new java.awt.Color(168, 91, 102));
         labelContraseña.setText("Contraseña:");
 
-        btnContinuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotonsiguiente.png"))); // NOI18N
+        btnContinuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonsiguiente.png"))); // NOI18N
+        btnContinuar.setContentAreaFilled(false);
         btnContinuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnContinuarActionPerformed(evt);
             }
         });
 
-        btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotoncancelar.png"))); // NOI18N
+        btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botoncancelar.png"))); // NOI18N
+        btnRegresar.setContentAreaFilled(false);
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegresarActionPerformed(evt);
@@ -164,50 +169,46 @@ public class RegistrarUsuario extends javax.swing.JFrame {
                 .addGap(17, 17, 17))
         );
 
-        jPanelColorSeparador.setBackground(new java.awt.Color(195, 123, 133));
+        panelBlanco.add(panelRosita, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 230, -1, -1));
 
-        javax.swing.GroupLayout panelBlancoLayout = new javax.swing.GroupLayout(panelBlanco);
-        panelBlanco.setLayout(panelBlancoLayout);
-        panelBlancoLayout.setHorizontalGroup(
-            panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBlancoLayout.createSequentialGroup()
-                .addComponent(jPanelColorRosa, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelBlancoLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelBlancoLayout.createSequentialGroup()
-                        .addGap(257, 257, 257)
-                        .addGroup(panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(labelTitulo)
-                            .addComponent(panelRosita, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanelColorSeparador, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(147, Short.MAX_VALUE))
-        );
-        panelBlancoLayout.setVerticalGroup(
-            panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelColorRosa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(panelBlancoLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
-                .addComponent(labelTitulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelColorSeparador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8)
-                .addComponent(panelRosita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(59, Short.MAX_VALUE))
-        );
+        jPanelColorSeparador.setBackground(new java.awt.Color(195, 123, 133));
+        panelBlanco.add(jPanelColorSeparador, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, 390, -1));
+
+        jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/LINK UP.png"))); // NOI18N
+        panelBlanco.add(jLabelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 250, 50));
+
+        jLabelFondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondosimple.png"))); // NOI18N
+        panelBlanco.add(jLabelFondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-9, 0, 1160, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelBlanco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabelFondo)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabelLogo1)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelBlanco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabelFondo)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabelLogo1)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
@@ -226,8 +227,10 @@ public class RegistrarUsuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnContinuar;
     private javax.swing.JButton btnRegresar;
+    private javax.swing.JLabel jLabelFondo;
+    private javax.swing.JLabel jLabelFondo1;
     private javax.swing.JLabel jLabelLogo;
-    private javax.swing.JPanel jPanelColorRosa;
+    private javax.swing.JLabel jLabelLogo1;
     private javax.swing.JPanel jPanelColorSeparador;
     private javax.swing.JLabel labelApellido;
     private javax.swing.JLabel labelContraseña;

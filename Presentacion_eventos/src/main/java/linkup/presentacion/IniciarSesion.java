@@ -64,88 +64,57 @@ public class IniciarSesion extends javax.swing.JFrame {
     private void initComponents() {
 
         panelBlanco = new javax.swing.JPanel();
-        jPanelColorRosa = new javax.swing.JPanel();
-        jLabelLogo = new javax.swing.JLabel();
         labelUsuario = new javax.swing.JLabel();
         labelContraseña = new javax.swing.JLabel();
         txtUsername = new javax.swing.JTextField();
         txtConstraseña = new javax.swing.JTextField();
         btnIniciarSesion = new javax.swing.JButton();
         btnRegistrarse = new javax.swing.JButton();
+        jLabelLogo1 = new javax.swing.JLabel();
+        jLabelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(864, 558));
         setPreferredSize(new java.awt.Dimension(864, 558));
 
         panelBlanco.setBackground(new java.awt.Color(255, 255, 255));
-
-        jPanelColorRosa.setBackground(new java.awt.Color(253, 166, 179));
-        jPanelColorRosa.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linklogo.png"))); // NOI18N
+        panelBlanco.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         labelUsuario.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         labelUsuario.setForeground(new java.awt.Color(168, 91, 102));
         labelUsuario.setText("Usuario:");
+        panelBlanco.add(labelUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, 90, 30));
 
         labelContraseña.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         labelContraseña.setForeground(new java.awt.Color(168, 91, 102));
         labelContraseña.setText("Contraseña:");
+        panelBlanco.add(labelContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 380, 110, 30));
+        panelBlanco.add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 320, 220, 40));
+        panelBlanco.add(txtConstraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 410, 220, 40));
 
         btnIniciarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotoniniciarsesion.png"))); // NOI18N
+        btnIniciarSesion.setContentAreaFilled(false);
         btnIniciarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIniciarSesionActionPerformed(evt);
             }
         });
+        panelBlanco.add(btnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 480, 220, -1));
 
         btnRegistrarse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotonregistrarse.png"))); // NOI18N
+        btnRegistrarse.setContentAreaFilled(false);
         btnRegistrarse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarseActionPerformed(evt);
             }
         });
+        panelBlanco.add(btnRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 530, 220, -1));
 
-        javax.swing.GroupLayout panelBlancoLayout = new javax.swing.GroupLayout(panelBlanco);
-        panelBlanco.setLayout(panelBlancoLayout);
-        panelBlancoLayout.setHorizontalGroup(
-            panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBlancoLayout.createSequentialGroup()
-                .addComponent(jPanelColorRosa, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(272, 272, 272)
-                .addGroup(panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelUsuario)
-                    .addComponent(labelContraseña)
-                    .addGroup(panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(txtConstraseña, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
-                        .addComponent(txtUsername, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addComponent(btnIniciarSesion)
-                    .addComponent(btnRegistrarse))
-                .addGap(0, 393, Short.MAX_VALUE))
-        );
-        panelBlancoLayout.setVerticalGroup(
-            panelBlancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(panelBlancoLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanelColorRosa, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(panelBlancoLayout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
-                .addComponent(labelUsuario)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(labelContraseña)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtConstraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnIniciarSesion)
-                .addGap(18, 18, 18)
-                .addComponent(btnRegistrarse)
-                .addGap(111, 111, 111))
-        );
+        jLabelLogo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/LINK UP.png"))); // NOI18N
+        panelBlanco.add(jLabelLogo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 250, 50));
+
+        jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondosimple.png"))); // NOI18N
+        panelBlanco.add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-9, 0, 1160, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -173,8 +142,8 @@ public class IniciarSesion extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIniciarSesion;
     private javax.swing.JButton btnRegistrarse;
-    private javax.swing.JLabel jLabelLogo;
-    private javax.swing.JPanel jPanelColorRosa;
+    private javax.swing.JLabel jLabelFondo;
+    private javax.swing.JLabel jLabelLogo1;
     private javax.swing.JLabel labelContraseña;
     private javax.swing.JLabel labelUsuario;
     private javax.swing.JPanel panelBlanco;
