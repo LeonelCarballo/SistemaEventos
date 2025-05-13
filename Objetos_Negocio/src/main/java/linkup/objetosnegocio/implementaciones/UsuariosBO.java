@@ -5,9 +5,11 @@
 package linkup.objetosnegocio.implementaciones;
 
 import exception.NegocioException;
+import java.util.List;
 import javax.swing.JOptionPane;
 import linkup.dtosnegocios.NuevoUsuarioDTO;
 import linkup.dtosnegocios.UsuarioDTO;
+import linkup.entidades.Usuario;
 import linkup.interfaces.IUsuariosDAO;
 import linkup.objetosnegocio.interfaz.IUsuariosBO;
 
@@ -47,6 +49,11 @@ public class UsuariosBO implements IUsuariosBO {
             JOptionPane.showMessageDialog(null, "El nombre de usuario y la contraseña deben ser alfanuméricos.", "Error de validación", JOptionPane.ERROR_MESSAGE);
             return false;
         }
+        
+        if (usuariosDAO.existeUsername(nuevoUsuario.getUsername())) {
+            JOptionPane.showMessageDialog(null, "El nombre de usuario ya está en uso.", "Error de validación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
         return usuariosDAO.registrarUsuario(nuevoUsuario);
     }
     
@@ -60,7 +67,19 @@ public class UsuariosBO implements IUsuariosBO {
         if (!username.matches("^[a-zA-Z0-9]+$") || !contrasenia.matches("^[a-zA-Z0-9]+$")) {
             throw new NegocioException("El nombre de usuario y la contraseña deben ser alfanuméricos.");
         }
+        
+        
         return usuariosDAO.iniciarSesionUsuario(username, contrasenia);
+    }
+
+    @Override
+    public boolean existeUsername(String username) {
+        return usuariosDAO.existeUsername(username);
+    }
+
+    @Override
+    public List<Usuario> obtenerTodosLosUsuarios() {
+        return usuariosDAO.obtenerTodosLosUsuarios();
     }
 }
 

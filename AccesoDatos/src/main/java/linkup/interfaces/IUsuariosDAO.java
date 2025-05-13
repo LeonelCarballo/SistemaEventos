@@ -16,4 +16,5 @@ import linkup.entidades.Usuario;
 public interface IUsuariosDAO {
     public abstract boolean registrarUsuario(NuevoUsuarioDTO nuevoUsuario);
     public abstract UsuarioDTO iniciarSesionUsuario(String username, String contrasenia);
+    public boolean existeUsername(String username);
 }

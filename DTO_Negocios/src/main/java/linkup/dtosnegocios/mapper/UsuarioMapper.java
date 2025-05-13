@@ -4,6 +4,8 @@
  */
 package linkup.dtosnegocios.mapper;
 
+import java.util.List;
+import java.util.stream.Collectors;
 import linkup.dtosnegocios.UsuarioDTO;
 //import linkup.entidades.Usuario;
 
@@ -11,6 +13,11 @@ import linkup.dtosnegocios.UsuarioDTO;
  *
  * @author gael_
  */
+
+
+//PONER ESTA CLASE EN UN PROYECTO DIFERENTE YA QUE NECESITA LA DEPENDENCIA ACCESODATOS Y NO SE PUEDE PONER 
+//PORQUE CREARIA UN CICLO QUE MAVEN NO PERMITE
+
 public class UsuarioMapper {
 //    public static Usuario toUsuario(UsuarioDTO usuarioDTO){
 //        Usuario usuario = new Usuario();
@@ -32,4 +39,12 @@ public class UsuarioMapper {
 //        usuarioDTO.setApellido(usuario.getApellido());
 //        return usuarioDTO;
 //    }
+        
+//        public static List<UsuarioDTO> toUsuarioDTOList(List<Usuario> usuarios) {
+//            return usuarios.stream()
+//                           .map(UsuarioMapper::toUsuarioDTO)
+//                           .collect(Collectors.toList());
+//        }
+//    
+        
 }

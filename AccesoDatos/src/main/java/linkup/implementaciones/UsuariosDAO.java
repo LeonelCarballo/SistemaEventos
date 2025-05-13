@@ -4,6 +4,7 @@
  */
 package linkup.implementaciones;
 
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
@@ -48,7 +49,7 @@ public class UsuariosDAO implements IUsuariosDAO {
 
     @Override
     public UsuarioDTO iniciarSesionUsuario(String username, String contrasenia) {
-            EntityManager entityManager = ManejadorConexiones.getEntityManager();
+        EntityManager entityManager = ManejadorConexiones.getEntityManager();
         UsuarioDTO usuarioDTO = null;
 
         try {
@@ -87,5 +88,29 @@ public class UsuariosDAO implements IUsuariosDAO {
         return usuarioDTO;
         }
     
-    
+        @Override
+        public boolean existeUsername(String username) {
+            EntityManager em = ManejadorConexiones.getEntityManager();
+            try {
+                Long count = em.createQuery(
+                    "SELECT COUNT(u) FROM Usuario u WHERE u.username = :username", Long.class)
+                    .setParameter("username", username)
+                    .getSingleResult();
+                return count > 0;
+            } finally {
+                em.close();
+            }
+        }
+        
+        @Override
+        public List<Usuario> obtenerTodosLosUsuarios() {
+            EntityManager em = ManejadorConexiones.getEntityManager();
+            try {
+                return em.createQuery("SELECT u FROM Usuario u", Usuario.class)
+                         .getResultList();
+            } finally {
+                em.close();
+            }
+        }
+
 }
