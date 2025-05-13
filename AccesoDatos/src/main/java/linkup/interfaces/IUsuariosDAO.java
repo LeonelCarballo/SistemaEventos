@@ -5,6 +5,7 @@
 package linkup.interfaces;
 
 
+import java.util.List;
 import linkup.dtosnegocios.NuevoUsuarioDTO;
 import linkup.dtosnegocios.UsuarioDTO;
 import linkup.entidades.Usuario;
@@ -16,5 +17,6 @@ import linkup.entidades.Usuario;
 public interface IUsuariosDAO {
     public abstract boolean registrarUsuario(NuevoUsuarioDTO nuevoUsuario);
     public abstract UsuarioDTO iniciarSesionUsuario(String username, String contrasenia);
-    public boolean existeUsername(String username);
+    public abstract boolean existeUsername(String username);
+    public abstract List<Usuario> obtenerTodosLosUsuarios();
 }

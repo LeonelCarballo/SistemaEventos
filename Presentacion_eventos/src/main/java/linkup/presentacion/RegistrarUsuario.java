@@ -50,8 +50,6 @@ public class RegistrarUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabelFondo = new javax.swing.JLabel();
-        jLabelLogo1 = new javax.swing.JLabel();
         panelBlanco = new javax.swing.JPanel();
         labelTitulo = new javax.swing.JLabel();
         panelRosita = new javax.swing.JPanel();
@@ -70,12 +68,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         jLabelFondo1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(864, 558));
-        setPreferredSize(new java.awt.Dimension(864, 558));
-
-        jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/nuevoevento.png"))); // NOI18N
-
-        jLabelLogo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/LINK UP.png"))); // NOI18N
+        setMinimumSize(new java.awt.Dimension(1151, 744));
 
         panelBlanco.setBackground(new java.awt.Color(255, 255, 255));
         panelBlanco.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -98,7 +91,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
 
         labelUsername.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         labelUsername.setForeground(new java.awt.Color(168, 91, 102));
-        labelUsername.setText("Username:");
+        labelUsername.setText("Usuario:");
 
         labelContraseña.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         labelContraseña.setForeground(new java.awt.Color(168, 91, 102));
@@ -126,27 +119,27 @@ public class RegistrarUsuario extends javax.swing.JFrame {
             panelRositaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRositaLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addGroup(panelRositaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelContraseña)
-                    .addComponent(labelUsername)
-                    .addComponent(labelNombre)
-                    .addComponent(labelApellido)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(169, Short.MAX_VALUE))
-            .addGroup(panelRositaLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
                 .addComponent(btnRegresar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnContinuar)
                 .addGap(18, 18, 18))
+            .addGroup(panelRositaLayout.createSequentialGroup()
+                .addGap(79, 79, 79)
+                .addGroup(panelRositaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(labelContraseña)
+                    .addComponent(labelUsername)
+                    .addComponent(labelNombre)
+                    .addComponent(labelApellido)
+                    .addComponent(txtUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
+                    .addComponent(txtApellido)
+                    .addComponent(txtNombre)
+                    .addComponent(txtContrasenia))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
         panelRositaLayout.setVerticalGroup(
             panelRositaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRositaLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addContainerGap(48, Short.MAX_VALUE)
                 .addComponent(labelNombre)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -162,7 +155,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
                 .addComponent(labelContraseña)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addGap(25, 25, 25)
                 .addGroup(panelRositaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnRegresar)
                     .addComponent(btnContinuar))
@@ -185,30 +178,10 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelBlanco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabelFondo)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabelLogo1)
-                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelBlanco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabelFondo)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabelLogo1)
-                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
@@ -227,10 +200,8 @@ public class RegistrarUsuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnContinuar;
     private javax.swing.JButton btnRegresar;
-    private javax.swing.JLabel jLabelFondo;
     private javax.swing.JLabel jLabelFondo1;
     private javax.swing.JLabel jLabelLogo;
-    private javax.swing.JLabel jLabelLogo1;
     private javax.swing.JPanel jPanelColorSeparador;
     private javax.swing.JLabel labelApellido;
     private javax.swing.JLabel labelContraseña;

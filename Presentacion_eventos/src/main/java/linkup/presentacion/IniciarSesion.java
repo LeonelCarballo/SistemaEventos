@@ -74,8 +74,7 @@ public class IniciarSesion extends javax.swing.JFrame {
         jLabelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(864, 558));
-        setPreferredSize(new java.awt.Dimension(864, 558));
+        setMinimumSize(new java.awt.Dimension(1151, 744));
 
         panelBlanco.setBackground(new java.awt.Color(255, 255, 255));
         panelBlanco.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -88,9 +87,17 @@ public class IniciarSesion extends javax.swing.JFrame {
         labelContraseña.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         labelContraseña.setForeground(new java.awt.Color(168, 91, 102));
         labelContraseña.setText("Contraseña:");
-        panelBlanco.add(labelContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 380, 110, 30));
+        panelBlanco.add(labelContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 370, 110, 30));
+
+        txtUsername.setBackground(new java.awt.Color(247, 165, 165));
+        txtUsername.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtUsername.setForeground(new java.awt.Color(255, 255, 255));
         panelBlanco.add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 320, 220, 40));
-        panelBlanco.add(txtConstraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 410, 220, 40));
+
+        txtConstraseña.setBackground(new java.awt.Color(247, 165, 165));
+        txtConstraseña.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtConstraseña.setForeground(new java.awt.Color(255, 255, 255));
+        panelBlanco.add(txtConstraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 400, 220, 40));
 
         btnIniciarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotoniniciarsesion.png"))); // NOI18N
         btnIniciarSesion.setContentAreaFilled(false);
@@ -99,19 +106,20 @@ public class IniciarSesion extends javax.swing.JFrame {
                 btnIniciarSesionActionPerformed(evt);
             }
         });
-        panelBlanco.add(btnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 480, 220, -1));
+        panelBlanco.add(btnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 450, 220, -1));
 
-        btnRegistrarse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotonregistrarse.png"))); // NOI18N
+        btnRegistrarse.setForeground(new java.awt.Color(168, 91, 102));
+        btnRegistrarse.setText("No cuentas con una cuenta? Registrate");
         btnRegistrarse.setContentAreaFilled(false);
         btnRegistrarse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarseActionPerformed(evt);
             }
         });
-        panelBlanco.add(btnRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 530, 220, -1));
+        panelBlanco.add(btnRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 510, 260, -1));
 
         jLabelLogo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/LINK UP.png"))); // NOI18N
-        panelBlanco.add(jLabelLogo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 250, 50));
+        panelBlanco.add(jLabelLogo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 210, 250, 50));
 
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondosimple.png"))); // NOI18N
         panelBlanco.add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-9, 0, 1160, -1));
