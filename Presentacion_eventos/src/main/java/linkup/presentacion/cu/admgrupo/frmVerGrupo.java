@@ -342,10 +342,12 @@ public class frmVerGrupo extends javax.swing.JFrame {
 
     private void btnGruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGruposActionPerformed
         ControlAdministrarGrupo.getInstancia().iniciarFlujoGrupos();
+        this.dispose();
     }//GEN-LAST:event_btnGruposActionPerformed
 
     private void btnEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEventosActionPerformed
         ControlCrearEvento.getInstancia().iniciarFlujoCreacionEvento();
+        this.dispose();
     }//GEN-LAST:event_btnEventosActionPerformed
 
 

@@ -169,6 +169,7 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
 
     private void btnGruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGruposActionPerformed
         ControlAdministrarGrupo.getInstancia().iniciarFlujoGrupos();
+        cerrar();
     }//GEN-LAST:event_btnGruposActionPerformed
 
     /**
