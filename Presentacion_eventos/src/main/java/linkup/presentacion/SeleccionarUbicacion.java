@@ -203,6 +203,15 @@ public class SeleccionarUbicacion extends javax.swing.JFrame {
         eventoDTO.setLongitud(coordenadas.get("longitud"));
         //por cambiar
         eventoDTO.setDireccion("");
+        
+        try {
+        eventoDTO = controlador.validarUbicacionEventoDTO(eventoDTO);
+
+        controlador.mostrarEnviarInvitaciones(eventoDTO);
+        cerrar();
+    } catch (NegocioException ex) {
+        JOptionPane.showMessageDialog(this, ex.getMessage(), "Error de validación", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_jButtonSeleccionarUbicacionActionPerformed
 
     /**
