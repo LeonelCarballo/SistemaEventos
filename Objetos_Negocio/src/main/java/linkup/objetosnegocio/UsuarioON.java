@@ -43,6 +43,10 @@ public class UsuarioON {
         }
         return instance;
     }
+    
+    public static void cerrarSesion() {
+        instance = null;
+    }
 
     public Long getId() {
         return id;

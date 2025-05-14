@@ -206,6 +206,11 @@ public class ControlCrearEvento {
             ventana.dispose();
         }
     }
+     
+    public void cerrarSesion(){
+        UsuarioON.cerrarSesion();
+        mostrarInicioSesion(this);
+    }
 
     public EventoDTO getEventoDTO() {
         return eventoDTO;

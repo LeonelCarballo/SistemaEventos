@@ -37,6 +37,7 @@ linkup\presentacion\control\ControlRegistrarUsuario.class
 linkup\exception\NegocioException.class
 linkup\presentacion\cu\admGrupo\frmCrearGrupo$6.class
 linkup\presentacion\cu\admGrupo\frmOpcionesGrupo$3.class
+linkup\presentacion\VentanaPrincipalCrearEvento$6.class
 linkup\presentacion\cu\admGrupo\frmGruposPrincipal$1.class
 linkup\presentacion\RegistrarUsuario$1.class
 linkup\presentacion\cu\admGrupo\frmGruposPrincipal$4.class
