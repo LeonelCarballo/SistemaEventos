@@ -8,7 +8,6 @@ package linkup.objetosnegocio.interfaz;
 import exception.NegocioException;
 import java.util.List;
 import linkup.entidades.Usuario;
-import linkup.objetosnegocio.ServicioUsuario;
 import linkup.objetosnegocio.UsuarioON;
 
 /**
@@ -16,8 +15,8 @@ import linkup.objetosnegocio.UsuarioON;
  * @author gael_
  */
 public interface IUsuariosBO {
-    public boolean registrarUsuario(Usuario nuevoUsuario);
-    public ServicioUsuario iniciarSesionUsuario(String username, String contrasenia)  throws NegocioException;
+    public boolean registrarUsuario(UsuarioON nuevoUsuario);
+    public UsuarioON iniciarSesionUsuario(String username, String contrasenia)  throws NegocioException;
     public boolean existeUsername(String username);
     public List<Usuario> obtenerTodosLosUsuarios();
     

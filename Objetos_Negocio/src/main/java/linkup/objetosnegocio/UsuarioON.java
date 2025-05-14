@@ -1,28 +1,47 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package linkup.objetosnegocio;
 
 import java.util.Objects;
 import linkup.entidades.Usuario;
 
-/**
- *
- * @author gael_
- */
 public class UsuarioON {
+    private static UsuarioON instance; 
+    private Long id;
+    private String username;
+    private String contrasenia;
+    private String nombre;
+    private String apellido;
 
-    private final String username;
-    private final String contrasenia;
-    private final String nombre;
-    private final String apellido;
+    public UsuarioON(Long id, String username, String contrasenia, String nombre, String apellido) {
+        this.id = id;
+        this.username = username;
+        this.contrasenia = contrasenia;
+        this.nombre = nombre;
+        this.apellido = apellido;
+    }
+
+    public static UsuarioON getInstance(Long id, String username, String contrasenia, String nombre, String apellido) {
+        if (instance == null) {
+            instance = new UsuarioON(id, username, contrasenia, nombre, apellido);
+        }
+        return instance;
+    }
 
     public UsuarioON(String username, String contrasenia, String nombre, String apellido) {
-        this.username = Objects.requireNonNull(username, "Debe ingresar un username");
-        this.contrasenia = Objects.requireNonNull(contrasenia, "Debe ingresar una contraseña");
-        this.nombre = Objects.requireNonNull(nombre, "Debe ingresar su nombre");
-        this.apellido = Objects.requireNonNull(apellido, "Debe ingrear su apellido");
+        this.username = username;
+        this.contrasenia = contrasenia;
+        this.nombre = nombre;
+        this.apellido = apellido;
+    }
+
+    public static UsuarioON getInstance() {
+        if (instance == null) {
+            throw new IllegalStateException("Instance not initialized");
+        }
+        return instance;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getUsername() {
@@ -43,8 +62,7 @@ public class UsuarioON {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        return hash;
+        return Objects.hash(username);
     }
 
     @Override
@@ -52,13 +70,10 @@ public class UsuarioON {
         if (this == obj) {
             return true;
         }
-        if (obj == null) {
+        if (obj == null || getClass() != obj.getClass()) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final UsuarioON other = (UsuarioON) obj;
+        UsuarioON other = (UsuarioON) obj;
         return Objects.equals(this.username, other.username);
     }
 
@@ -66,14 +81,22 @@ public class UsuarioON {
     public String toString() {
         return "UsuarioON{" + "username=" + username + ", contrasenia=" + contrasenia + ", nombre=" + nombre + ", apellido=" + apellido + '}';
     }
-    
-    public static Usuario toEntidad(UsuarioON on) {
+
+    public Usuario toEntidad() {
         Usuario entidad = new Usuario();
-        entidad.setUsername(on.getUsername());
-        entidad.setContrasenia(on.getContrasenia());
-        entidad.setNombre(on.getNombre());
-        entidad.setApellido(on.getApellido());
+        entidad.setId(this.id);
+        entidad.setUsername(this.username);
+        entidad.setContrasenia(this.contrasenia);
+        entidad.setNombre(this.nombre);
+        entidad.setApellido(this.apellido);
         return entidad;
     }
-    
+
+    public void fromEntidad(Usuario entidad) {
+        this.id = entidad.getId();
+        this.username = entidad.getUsername();
+        this.contrasenia = entidad.getContrasenia();
+        this.nombre = entidad.getNombre();
+        this.apellido = entidad.getApellido();
+    }
 }
