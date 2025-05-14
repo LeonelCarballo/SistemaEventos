@@ -13,7 +13,7 @@ import linkup.infraestructura.interfaces.IConector;
 
 public class ConectorMapa implements IConector {
 
-    private static final String HOST = "http://localhost:5000/obtener_ubicacion";
+    private static final String HOST = "http://localhost:5001/obtener_ubicacion";
 
     @Override
     public String invocarServicioJson(String jsonIgnorado) {
