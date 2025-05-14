@@ -67,6 +67,7 @@ public class SeleccionarUbicacion extends javax.swing.JFrame {
         jButtonCancelar = new javax.swing.JButton();
         jButtonAnterior = new javax.swing.JButton();
         jButtonSiguiente = new javax.swing.JButton();
+        jTextFieldDireccion = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabelFondo = new javax.swing.JLabel();
 
@@ -79,7 +80,7 @@ public class SeleccionarUbicacion extends javax.swing.JFrame {
 
         jPanelFondoBlanco.setBackground(new java.awt.Color(255, 255, 255));
         jPanelFondoBlanco.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanelFondoBlanco.add(jPanelMapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 270, 260, 250));
+        jPanelFondoBlanco.add(jPanelMapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 310, 260, 210));
 
         jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/LINK UP.png"))); // NOI18N
         jPanelFondoBlanco.add(jLabelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 250, 50));
@@ -155,6 +156,9 @@ public class SeleccionarUbicacion extends javax.swing.JFrame {
         });
         jPanelFondoBlanco.add(jButtonSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 610, -1, -1));
 
+        jTextFieldDireccion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(148, 63, 75)));
+        jPanelFondoBlanco.add(jTextFieldDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 260, 260, 40));
+
         jLabel4.setFont(new java.awt.Font("Arial Black", 0, 15)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(168, 91, 102));
         jLabel4.setText("Seleccionar Ubicacion");
@@ -174,7 +178,7 @@ public class SeleccionarUbicacion extends javax.swing.JFrame {
 
     private void jButtonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteActionPerformed
 
-        eventoDTO.setDireccion("dwasdawda");
+        eventoDTO.setDireccion(jTextFieldDireccion.getText());
 
         try {
             eventoDTO = controlador.validarUbicacionEventoDTO(eventoDTO);
@@ -282,5 +286,6 @@ public class SeleccionarUbicacion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelLogo;
     private javax.swing.JPanel jPanelFondoBlanco;
     private javax.swing.JPanel jPanelMapa;
+    private javax.swing.JTextField jTextFieldDireccion;
     // End of variables declaration//GEN-END:variables
 }
