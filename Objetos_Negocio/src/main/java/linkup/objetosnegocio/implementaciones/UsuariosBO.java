@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import linkup.entidades.Usuario;
 import linkup.interfaces.IUsuariosDAO;
 import linkup.objetosnegocio.ServicioUsuario;
+import linkup.objetosnegocio.UsuarioON;
 import linkup.objetosnegocio.interfaz.IUsuariosBO;
 
 /**
@@ -27,7 +28,7 @@ public class UsuariosBO implements IUsuariosBO {
     
     
     @Override
-    public boolean registrarUsuario(Usuario nuevoUsuario) {
+    public boolean registrarUsuario(UsuarioON nuevoUsuario) {
          if (nuevoUsuario == null ||
             nuevoUsuario.getUsername() == null || nuevoUsuario.getUsername().trim().isEmpty() ||
             nuevoUsuario.getContrasenia() == null || nuevoUsuario.getContrasenia().trim().isEmpty() ||
@@ -54,13 +55,16 @@ public class UsuariosBO implements IUsuariosBO {
                 return false;
             }
 
-            Usuario usuario = new Usuario();
-            usuario.setUsername(nuevoUsuario.getUsername());
-            usuario.setContrasenia(nuevoUsuario.getContrasenia());
-            usuario.setNombre(nuevoUsuario.getNombre());
-            usuario.setApellido(nuevoUsuario.getApellido());
+//            Usuario usuario = new Usuario();
+//            usuario.setUsername(nuevoUsuario.getUsername());
+//            usuario.setContrasenia(nuevoUsuario.getContrasenia());
+//            usuario.setNombre(nuevoUsuario.getNombre());
+//            usuario.setApellido(nuevoUsuario.getApellido());
+//
+//            return usuariosDAO.registrarUsuario(usuario);
 
-            return usuariosDAO.registrarUsuario(usuario);
+              Usuario entidad = UsuarioON.toEntidad(nuevoUsuario);
+                return usuariosDAO.registrarUsuario(entidad);  
     }
     
     @Override
@@ -98,5 +102,7 @@ public class UsuariosBO implements IUsuariosBO {
     public List<Usuario> obtenerTodosLosUsuarios() {
         return usuariosDAO.obtenerTodosLosUsuarios();
     }
+    
+    
 }
 
