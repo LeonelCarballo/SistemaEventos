@@ -13,6 +13,7 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import linkup.dtosnegocios.EventoDTO;
+import linkup.presentacion.control.ControlAdministrarGrupo;
 import linkup.presentacion.control.ControlCrearEvento;
 
 /**
@@ -90,7 +91,7 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
         jButtonInicio1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnGrupos = new javax.swing.JButton();
         jButtonMenu = new javax.swing.JButton();
         jLabelFondo = new javax.swing.JLabel();
 
@@ -100,11 +101,9 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
         jPanelFondoBlanco.setBackground(new java.awt.Color(255, 255, 255));
         jPanelFondoBlanco.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButtonExplorar.setBackground(new java.awt.Color(255, 255, 255));
         jButtonExplorar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonexplorar.png"))); // NOI18N
         jPanelFondoBlanco.add(jButtonExplorar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, 200, -1));
 
-        jButtonCrearEvento.setBackground(new java.awt.Color(255, 255, 255));
         jButtonCrearEvento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botoncrearevento.png"))); // NOI18N
         jButtonCrearEvento.setContentAreaFilled(false);
         jButtonCrearEvento.addActionListener(new java.awt.event.ActionListener() {
@@ -121,7 +120,6 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
         jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/LINK UP.png"))); // NOI18N
         jPanelFondoBlanco.add(jLabelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 250, 50));
 
-        jButtonInicio1.setBackground(new java.awt.Color(255, 255, 255));
         jButtonInicio1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botoninicio.png"))); // NOI18N
         jButtonInicio1.setBorder(null);
         jButtonInicio1.addActionListener(new java.awt.event.ActionListener() {
@@ -137,11 +135,21 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonmiseventos.png"))); // NOI18N
         jButton3.setContentAreaFilled(false);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanelFondoBlanco.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 60, -1));
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonchat.png"))); // NOI18N
-        jButton4.setContentAreaFilled(false);
-        jPanelFondoBlanco.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 60, -1));
+        btnGrupos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonchat.png"))); // NOI18N
+        btnGrupos.setContentAreaFilled(false);
+        btnGrupos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGruposActionPerformed(evt);
+            }
+        });
+        jPanelFondoBlanco.add(btnGrupos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 60, -1));
 
         jButtonMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonmenu.png"))); // NOI18N
         jButtonMenu.setContentAreaFilled(false);
@@ -163,6 +171,15 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
     private void jButtonInicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInicio1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonInicio1ActionPerformed
+
+    private void btnGruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGruposActionPerformed
+        ControlAdministrarGrupo.getInstancia().iniciarFlujoGrupos();
+        cerrar();
+    }//GEN-LAST:event_btnGruposActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -200,9 +217,9 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGrupos;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButtonCrearEvento;
     private javax.swing.JButton jButtonExplorar;
     private javax.swing.JButton jButtonInicio1;

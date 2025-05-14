@@ -19,6 +19,8 @@ import linkup.dtosnegocios.UsuarioDTO;
 //PORQUE CREARIA UN CICLO QUE MAVEN NO PERMITE
 
 public class UsuarioMapper {
+    
+    
 //    public static Usuario toUsuario(UsuarioDTO usuarioDTO){
 //        Usuario usuario = new Usuario();
 //        usuario.setId(usuarioDTO.getId());

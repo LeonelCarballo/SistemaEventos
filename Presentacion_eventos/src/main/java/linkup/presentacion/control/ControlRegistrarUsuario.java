@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import linkup.dtosnegocios.NuevoUsuarioDTO;
 import linkup.dtosnegocios.UsuarioDTO;
 import linkup.exception.NegocioException;
+import linkup.objetosnegocio.UsuarioON;
 import linkup.objetosnegocio.fabrica.FabricaObjetosNegocio;
 import linkup.objetosnegocio.interfaz.IUsuariosBO;
 import linkup.presentacion.IniciarSesion;
@@ -35,23 +36,23 @@ public class ControlRegistrarUsuario {
     }
     
     public boolean registrarUsuario(String username, String contrasenia, String nombre, String apellido){
-//        
-//        NuevoUsuarioDTO usuario = new NuevoUsuarioDTO(username, contrasenia, nombre, apellido);
-//        
-//        boolean registrado = usuariosBO.registrarUsuario(usuario);
-//        
-//        if (registrado) {
-//            
-//            JOptionPane.showMessageDialog(null, "Usuario registrado con éxito");
-//            frmRegistrarUsuario.dispose();  
-//            frmIniciarSesion.setVisible(true);
-//        } else {
-//        throw new NegocioException("Error al registrar el usuario. Inténtalo de nuevo.");
-//    }
-//
-//        return registrado;
-//    }
-        return false;
+        
+        UsuarioON usuario = new UsuarioON(username, contrasenia, nombre, apellido);
+        
+        boolean registrado = usuariosBO.registrarUsuario(usuario);
+        
+        if (registrado) {
+            
+            JOptionPane.showMessageDialog(null, "Usuario registrado con éxito");
+            frmRegistrarUsuario.dispose();  
+            frmIniciarSesion.setVisible(true);
+        } else {
+        throw new NegocioException("Error al registrar el usuario. Inténtalo de nuevo.");
     }
+
+        return registrado;
+    }
+
+    
     
 }
