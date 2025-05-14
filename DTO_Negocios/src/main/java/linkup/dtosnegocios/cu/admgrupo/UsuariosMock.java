@@ -20,7 +20,15 @@ public class UsuariosMock {
             new UsuarioAG("Ana", "ana@email.com", "123"),
             new UsuarioAG("Luis", "luis@email.com", "abc"),
             new UsuarioAG("Karla", "karla@email.com", "pass"),
-            new UsuarioAG("Pablo", "pablo@email.com", "clave")
+            new UsuarioAG("Pablo", "pablo@email.com", "clave"),
+            new UsuarioAG("Sofía", "sofia@email.com", "qwerty"),
+            new UsuarioAG("Diego", "diego@email.com", "asd123"),
+            new UsuarioAG("Fernanda", "fer@email.com", "pass123"),
+            new UsuarioAG("Andrés", "andres@email.com", "andres1"),
+            new UsuarioAG("Valeria", "valeria@email.com", "val123"),
+            new UsuarioAG("Carlos", "carlos@email.com", "clave123"),
+            new UsuarioAG("Mariana", "mariana@email.com", "mari456"),
+            new UsuarioAG("Javier", "javier@email.com", "jav789")
         );
     }
         

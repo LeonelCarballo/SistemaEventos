@@ -12,6 +12,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import linkup.dtosnegocios.cu.admgrupo.GrupoDTO;
 import linkup.dtosnegocios.cu.admgrupo.UsuariosMock;
+import linkup.objetosnegocio.cu.admgrupo.Grupo;
 import linkup.objetosnegocio.cu.admgrupo.UsuarioAG;
 import linkup.presentacion.control.ControlAdministrarGrupo;
 import linkup.presentacion.control.ControlCrearEvento;
@@ -88,6 +89,14 @@ public class frmCrearGrupo extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "El nombre del grupo no puede estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
+        
+        List<Grupo> gruposExistentes = controlador.obtenerGrupos();
+        for (Grupo grupo : gruposExistentes) {
+            if (grupo.getNombre().equalsIgnoreCase(nombreGrupo)) {
+                JOptionPane.showMessageDialog(this, "Ya existe un grupo con ese nombre", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        }
 
         List<UsuarioAG> miembrosSeleccionados = seleccionarMiembros();
         
@@ -100,6 +109,7 @@ public class frmCrearGrupo extends javax.swing.JFrame {
         for (UsuarioAG u : miembrosSeleccionados) {
             nombresMiembros.add(u.getNombre());
         }
+        
         
         GrupoDTO nuevoGrupoDTO = new GrupoDTO(nombreGrupo, nombresMiembros);
         nuevoGrupoDTO.setMensajes(null);
