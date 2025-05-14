@@ -7,10 +7,9 @@ package linkup.objetosnegocio.implementaciones;
 import exception.NegocioException;
 import java.util.List;
 import javax.swing.JOptionPane;
-import linkup.dtosnegocios.NuevoUsuarioDTO;
-import linkup.dtosnegocios.UsuarioDTO;
 import linkup.entidades.Usuario;
 import linkup.interfaces.IUsuariosDAO;
+import linkup.objetosnegocio.ServicioUsuario;
 import linkup.objetosnegocio.interfaz.IUsuariosBO;
 
 /**
@@ -28,7 +27,7 @@ public class UsuariosBO implements IUsuariosBO {
     
     
     @Override
-    public boolean registrarUsuario(NuevoUsuarioDTO nuevoUsuario) {
+    public boolean registrarUsuario(Usuario nuevoUsuario) {
          if (nuevoUsuario == null ||
             nuevoUsuario.getUsername() == null || nuevoUsuario.getUsername().trim().isEmpty() ||
             nuevoUsuario.getContrasenia() == null || nuevoUsuario.getContrasenia().trim().isEmpty() ||
@@ -51,15 +50,22 @@ public class UsuariosBO implements IUsuariosBO {
         }
         
         if (usuariosDAO.existeUsername(nuevoUsuario.getUsername())) {
-            JOptionPane.showMessageDialog(null, "El nombre de usuario ya está en uso.", "Error de validación", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
-        return usuariosDAO.registrarUsuario(nuevoUsuario);
+                JOptionPane.showMessageDialog(null, "El nombre de usuario ya está en uso.", "Error de validación", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+
+            Usuario usuario = new Usuario();
+            usuario.setUsername(nuevoUsuario.getUsername());
+            usuario.setContrasenia(nuevoUsuario.getContrasenia());
+            usuario.setNombre(nuevoUsuario.getNombre());
+            usuario.setApellido(nuevoUsuario.getApellido());
+
+            return usuariosDAO.registrarUsuario(usuario);
     }
     
     @Override
-    public UsuarioDTO iniciarSesionUsuario(String username, String contrasenia) throws NegocioException{
-         if (username == null || username.trim().isEmpty() ||
+    public ServicioUsuario iniciarSesionUsuario(String username, String contrasenia) throws NegocioException {
+        if (username == null || username.trim().isEmpty() ||
             contrasenia == null || contrasenia.trim().isEmpty()) {
             throw new NegocioException("El nombre de usuario y la contraseña no pueden estar vacíos.");
         }
@@ -67,9 +73,20 @@ public class UsuariosBO implements IUsuariosBO {
         if (!username.matches("^[a-zA-Z0-9]+$") || !contrasenia.matches("^[a-zA-Z0-9]+$")) {
             throw new NegocioException("El nombre de usuario y la contraseña deben ser alfanuméricos.");
         }
-        
-        
-        return usuariosDAO.iniciarSesionUsuario(username, contrasenia);
+
+        Usuario usuario = usuariosDAO.iniciarSesionUsuario(username, contrasenia);
+
+        if (usuario == null) {
+            return null;
+        }
+
+        return new ServicioUsuario(
+//            usuario.getId(),
+//            usuario.getUsername(),
+//            usuario.getContrasenia(),
+//            usuario.getNombre(),
+//            usuario.getApellido()
+        );
     }
 
     @Override

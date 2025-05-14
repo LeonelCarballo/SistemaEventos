@@ -1,10 +1,14 @@
-linkup\infraestructura\conectores\ConectorMapa.class
+linkup\infraestructura\ContactosAPI.class
 linkup\infraestructura\utils\LocalDateTimeAdapter.class
-linkup\infraestructura\Integracion.class
+linkup\infraestructura\interfaces\IContactosAPI.class
 linkup\infraestructura\interfaces\IIntegracion.class
 linkup\infraestructura\conectores\ConectorCalendario.class
 linkup\infraestructura\control\ControlInfraestructura.class
-linkup\infraestructura\interfaces\IConector.class
 linkup\infraestructura\conectores\FabricaConectores.class
 linkup\infraestructura\Integracion$CalendarioPayload.class
 linkup\infraestructura\Integracion$1.class
+linkup\infraestructura\conectores\ConectorMapa.class
+linkup\infraestructura\conectores\ConectorContactos.class
+linkup\infraestructura\Integracion.class
+linkup\infraestructura\ContactosAPI$1.class
+linkup\infraestructura\interfaces\IConector.class

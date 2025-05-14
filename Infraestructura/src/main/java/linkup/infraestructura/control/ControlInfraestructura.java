@@ -24,6 +24,9 @@ public class ControlInfraestructura {
     return conector.invocarServicioJson(""); // No se envía JSON, solo se hace GET
     }
 
-
+    public String obtenerContactos(String json) {
+        IConector conector = FabricaConectores.crearConector("contactos");
+        return conector.invocarServicioJson(json);
+    }
 }
 

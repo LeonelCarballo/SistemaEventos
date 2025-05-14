@@ -4,10 +4,16 @@
  */
 package linkup.infraestructura.interfaces;
 
+import java.util.List;
+import linkup.dtoinfraestructura.ContactoInfraestructuraDTO;
+
 /**
  *
  * @author Dana Chavez
  */
 public interface IContactosAPI {
     
+    public abstract boolean enviarInvitaciones(String usuario, String idEvento, List<ContactoInfraestructuraDTO> contactos);
+    
+    public abstract List<ContactoInfraestructuraDTO> obtenerContactos(String usuario);
 }

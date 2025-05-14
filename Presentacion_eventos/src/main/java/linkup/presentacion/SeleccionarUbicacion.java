@@ -63,7 +63,6 @@ public class SeleccionarUbicacion extends javax.swing.JFrame {
         jButtonMenu = new javax.swing.JButton();
         jButtonInicio = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jTextFieldUbicacion = new javax.swing.JTextField();
         jButtonSeleccionarUbicacion = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
         jButtonAnterior = new javax.swing.JButton();
@@ -80,7 +79,7 @@ public class SeleccionarUbicacion extends javax.swing.JFrame {
 
         jPanelFondoBlanco.setBackground(new java.awt.Color(255, 255, 255));
         jPanelFondoBlanco.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanelFondoBlanco.add(jPanelMapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 320, 250, 200));
+        jPanelFondoBlanco.add(jPanelMapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 270, 260, 250));
 
         jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/LINK UP.png"))); // NOI18N
         jPanelFondoBlanco.add(jLabelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 250, 50));
@@ -113,10 +112,6 @@ public class SeleccionarUbicacion extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lblcreandoevento.png"))); // NOI18N
         jPanelFondoBlanco.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 610, 210, -1));
-
-        jTextFieldUbicacion.setBackground(new java.awt.Color(246, 227, 230));
-        jTextFieldUbicacion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(148, 63, 75)));
-        jPanelFondoBlanco.add(jTextFieldUbicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 260, 260, 40));
 
         jButtonSeleccionarUbicacion.setBackground(new java.awt.Color(246, 227, 230));
         jButtonSeleccionarUbicacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotonubicacion.png"))); // NOI18N
@@ -178,7 +173,7 @@ public class SeleccionarUbicacion extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonInicioActionPerformed
 
     private void jButtonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteActionPerformed
-        eventoDTO.setDireccion(jTextFieldUbicacion.getText());
+
 
         try {
             eventoDTO = controlador.validarUbicacionEventoDTO(eventoDTO);
@@ -206,7 +201,8 @@ public class SeleccionarUbicacion extends javax.swing.JFrame {
          Map<String, Double> coordenadas = controlador.obtenerUbicacion();
         eventoDTO.setLatitud(coordenadas.get("latitud"));
         eventoDTO.setLongitud(coordenadas.get("longitud"));
-        eventoDTO.setDireccion(jTextFieldUbicacion.getText());
+        //por cambiar
+        eventoDTO.setDireccion("");
     }//GEN-LAST:event_jButtonSeleccionarUbicacionActionPerformed
 
     /**
@@ -276,6 +272,5 @@ public class SeleccionarUbicacion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelLogo;
     private javax.swing.JPanel jPanelFondoBlanco;
     private javax.swing.JPanel jPanelMapa;
-    private javax.swing.JTextField jTextFieldUbicacion;
     // End of variables declaration//GEN-END:variables
 }

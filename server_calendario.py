@@ -68,7 +68,7 @@ def procesar_mensaje(data):
                         "error": "Conflicto de horario: ya existe un evento en esa fecha/hora"
                     })
 
-            # ✅ Agregar evento si no hay conflicto
+            #  Agregar evento si no hay conflicto
             calendario["eventos"].append(evento)
             guardar_datos()
             return json.dumps({"exito": True})

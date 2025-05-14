@@ -10,16 +10,6 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>Objetos_Negocio</artifactId>
             <version>${project.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.mycompany</groupId>
-                    <artifactId>InfraestructuraCalendario</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.mycompany</groupId>
-                    <artifactId>DTO_Infraestructura</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
     </dependencies>
     <properties>

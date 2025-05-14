@@ -35,21 +35,23 @@ public class ControlRegistrarUsuario {
     }
     
     public boolean registrarUsuario(String username, String contrasenia, String nombre, String apellido){
-        
-        NuevoUsuarioDTO usuario = new NuevoUsuarioDTO(username, contrasenia, nombre, apellido);
-        
-        boolean registrado = usuariosBO.registrarUsuario(usuario);
-        
-        if (registrado) {
-            
-            JOptionPane.showMessageDialog(null, "Usuario registrado con éxito");
-            frmRegistrarUsuario.dispose();  
-            frmIniciarSesion.setVisible(true);
-        } else {
-        throw new NegocioException("Error al registrar el usuario. Inténtalo de nuevo.");
-    }
-
-        return registrado;
+//        
+//        NuevoUsuarioDTO usuario = new NuevoUsuarioDTO(username, contrasenia, nombre, apellido);
+//        
+//        boolean registrado = usuariosBO.registrarUsuario(usuario);
+//        
+//        if (registrado) {
+//            
+//            JOptionPane.showMessageDialog(null, "Usuario registrado con éxito");
+//            frmRegistrarUsuario.dispose();  
+//            frmIniciarSesion.setVisible(true);
+//        } else {
+//        throw new NegocioException("Error al registrar el usuario. Inténtalo de nuevo.");
+//    }
+//
+//        return registrado;
+//    }
+        return false;
     }
     
 }
