@@ -64,7 +64,7 @@ public class AdministrarEvento extends javax.swing.JFrame {
         jTextField4.setText(fechaTexto);
 
         jTextField1.setText(eventoDTO.getNombreEvento());
-        jTextField2.setText(eventoDTO.getEtiqueta().getTexto());
+//        jTextField2.setText(eventoDTO.getEtiqueta().getTexto());
         jTextField3.setText(eventoDTO.getDescripcion());
         jTextField4.setText(fechaTexto);
         jTextField5.setText(horaTexto);

@@ -121,7 +121,7 @@ public class EventoPanel extends JPanel {
         btnOpciones.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btnOpciones.addActionListener(e -> controlEvento.mostrarAdministrarEvento(evento, controlEvento, eventos));
 
-        JPanel botonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 10));
+        JPanel botonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));
         botonPanel.setOpaque(false);
         botonPanel.add(btnOpciones);
 

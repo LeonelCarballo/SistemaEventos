@@ -72,9 +72,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButtonExplorar">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/imagenes/botonexplorar.png"/>
             </Property>
@@ -114,6 +111,9 @@
           </Constraints>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPaneListaEvento">
+          <Properties>
+            <Property name="horizontalScrollBarPolicy" type="int" value="31"/>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="430" y="210" width="380" height="450"/>
@@ -142,9 +142,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButtonInicio1">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/imagenes/botoninicio.png"/>
             </Property>
@@ -287,7 +284,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="10" y="680" width="60" height="60"/>
+              <AbsoluteConstraints x="10" y="590" width="60" height="60"/>
             </Constraint>
           </Constraints>
         </Component>
