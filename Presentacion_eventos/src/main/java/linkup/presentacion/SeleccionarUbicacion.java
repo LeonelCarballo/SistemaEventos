@@ -174,6 +174,7 @@ public class SeleccionarUbicacion extends javax.swing.JFrame {
 
     private void jButtonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteActionPerformed
 
+        eventoDTO.setDireccion("dwasdawda");
 
         try {
             eventoDTO = controlador.validarUbicacionEventoDTO(eventoDTO);
@@ -198,11 +199,11 @@ public class SeleccionarUbicacion extends javax.swing.JFrame {
 
     private void jButtonSeleccionarUbicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeleccionarUbicacionActionPerformed
         // TODO add your handling code here:
-         Map<String, Double> coordenadas = controlador.obtenerUbicacion();
-        eventoDTO.setLatitud(coordenadas.get("latitud"));
-        eventoDTO.setLongitud(coordenadas.get("longitud"));
+//         Map<String, Double> coordenadas = controlador.obtenerUbicacion();
+//        eventoDTO.setLatitud(coordenadas.get("latitud"));
+//        eventoDTO.setLongitud(coordenadas.get("longitud"));
         //por cambiar
-        eventoDTO.setDireccion("");
+        eventoDTO.setDireccion("dwasdawda");
         
         try {
         eventoDTO = controlador.validarUbicacionEventoDTO(eventoDTO);

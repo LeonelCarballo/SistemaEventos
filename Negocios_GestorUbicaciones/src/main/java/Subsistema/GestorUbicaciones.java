@@ -9,11 +9,11 @@ import java.io.File;
 
 import java.util.List;
 import java.util.Map;
-//import javafx.application.Platform;
-//import javafx.embed.swing.JFXPanel;
-//import javafx.scene.Scene;
-//import javafx.scene.web.WebEngine;
-//import javafx.scene.web.WebView;
+import javafx.application.Platform;
+import javafx.embed.swing.JFXPanel;
+import javafx.scene.Scene;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javax.swing.JPanel;
 import linkup.dtosnegocios.EventoDTO;
 import linkup.exception.NegocioException;
@@ -35,19 +35,19 @@ public class GestorUbicaciones implements IGestorUbicaciones {
     }
 
     public void mostrarMapa(JPanel destino) {
-//        JFXPanel jfxPanel = new JFXPanel();
-//        destino.setLayout(new java.awt.BorderLayout()); 
-//        destino.add(jfxPanel);
-//
-//        Platform.runLater(() -> {
-//            WebView webView = new WebView();
-//            WebEngine engine = webView.getEngine();
-//
-//            File file = new File("mapa.html");
-//            engine.load(file.toURI().toString());
-//
-//            jfxPanel.setScene(new Scene(webView));
-//        });
+        JFXPanel jfxPanel = new JFXPanel();
+        destino.setLayout(new java.awt.BorderLayout()); 
+        destino.add(jfxPanel);
+
+        Platform.runLater(() -> {
+            WebView webView = new WebView();
+            WebEngine engine = webView.getEngine();
+
+            File file = new File("mapa.html");
+            engine.load(file.toURI().toString());
+
+            jfxPanel.setScene(new Scene(webView));
+        });
     }
 
     @Override
