@@ -4,6 +4,7 @@
  */
 package linkup.presentacion;
 
+import java.util.Map;
 import javax.swing.JOptionPane;
 import linkup.dtosnegocios.EventoDTO;
 import linkup.exception.NegocioException;
@@ -27,6 +28,7 @@ public class SeleccionarUbicacion extends javax.swing.JFrame {
         this.eventoDTO = eventoDTO;
         initComponents();
         setLocationRelativeTo(null);
+        controlador.showMapa(jPanelMapa);
     }
 
     public SeleccionarUbicacion() {
@@ -53,6 +55,7 @@ public class SeleccionarUbicacion extends javax.swing.JFrame {
 
         jLabel7 = new javax.swing.JLabel();
         jPanelFondoBlanco = new javax.swing.JPanel();
+        jPanelMapa = new javax.swing.JPanel();
         jLabelLogo = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -77,6 +80,7 @@ public class SeleccionarUbicacion extends javax.swing.JFrame {
 
         jPanelFondoBlanco.setBackground(new java.awt.Color(255, 255, 255));
         jPanelFondoBlanco.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanelFondoBlanco.add(jPanelMapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 320, 250, 200));
 
         jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/LINK UP.png"))); // NOI18N
         jPanelFondoBlanco.add(jLabelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 250, 50));
@@ -116,6 +120,11 @@ public class SeleccionarUbicacion extends javax.swing.JFrame {
 
         jButtonSeleccionarUbicacion.setBackground(new java.awt.Color(246, 227, 230));
         jButtonSeleccionarUbicacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotonubicacion.png"))); // NOI18N
+        jButtonSeleccionarUbicacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSeleccionarUbicacionActionPerformed(evt);
+            }
+        });
         jPanelFondoBlanco.add(jButtonSeleccionarUbicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 550, 260, 50));
 
         jButtonCancelar.setBackground(new java.awt.Color(246, 227, 230));
@@ -192,6 +201,14 @@ public class SeleccionarUbicacion extends javax.swing.JFrame {
         cerrar();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
+    private void jButtonSeleccionarUbicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeleccionarUbicacionActionPerformed
+        // TODO add your handling code here:
+         Map<String, Double> coordenadas = controlador.obtenerUbicacion();
+        eventoDTO.setLatitud(coordenadas.get("latitud"));
+        eventoDTO.setLongitud(coordenadas.get("longitud"));
+        eventoDTO.setDireccion(jTextFieldUbicacion.getText());
+    }//GEN-LAST:event_jButtonSeleccionarUbicacionActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -258,6 +275,7 @@ public class SeleccionarUbicacion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelFondo;
     private javax.swing.JLabel jLabelLogo;
     private javax.swing.JPanel jPanelFondoBlanco;
+    private javax.swing.JPanel jPanelMapa;
     private javax.swing.JTextField jTextFieldUbicacion;
     // End of variables declaration//GEN-END:variables
 }

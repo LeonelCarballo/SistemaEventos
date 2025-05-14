@@ -1,3 +1,4 @@
+linkup\presentacion\control\ControlRegistrarUsuario.class
 linkup\exception\NegocioException.class
 linkup\presentacion\IngresarDetallesEvento$2.class
 linkup\presentacion\ConfirmacionEvento$4.class
@@ -5,10 +6,10 @@ linkup\presentacion\IniciarSesion$2.class
 linkup\presentacion\RegistrarUsuario$1.class
 linkup\presentacion\SeleccionarFechaHora$4.class
 linkup\presentacion\EnviarInvitaciones$7.class
-linkup\presentacion\ConfirmacionEvento$5.class
 linkup\presentacion\VentanaPrincipalCrearEvento.class
 linkup\presentacion\IngresarDetallesEvento.class
 linkup\presentacion\IngresarDetallesEvento$6.class
+linkup\presentacion\SeleccionarUbicacion$6.class
 linkup\presentacion\EnviarInvitaciones$4.class
 linkup\presentacion\EnviarInvitaciones$1.class
 linkup\presentacion\SeleccionarUbicacion$3.class
@@ -27,8 +28,8 @@ linkup\presentacion\SeleccionarFechaHora$2.class
 linkup\presentacion\VentanaPrincipalCrearEvento$1.class
 linkup\presentacion\IngresarDetallesEvento$4.class
 linkup\presentacion\EnviarInvitaciones$2.class
-linkup\presentacion\IniciarSesion$3.class
 linkup\presentacion\control\ControlCrearEvento.class
+linkup\presentacion\control\ControlIniciarSesion.class
 linkup\presentacion\ConfirmacionEvento$2.class
 linkup\presentacion\SeleccionarUbicacion.class
 linkup\presentacion\SeleccionarUbicacion$5.class

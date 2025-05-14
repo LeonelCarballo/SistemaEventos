@@ -4,8 +4,10 @@
  */
 package ISubsistema;
 
+import java.util.Map;
+import javax.swing.JPanel;
 import linkup.dtosnegocios.EventoDTO;
-import linkup.infraestructura.mapa.Location;
+
 
 
 
@@ -15,8 +17,8 @@ import linkup.infraestructura.mapa.Location;
  */
 public interface IGestorUbicaciones {
 
-    public abstract void mostrarMapa();
-    public abstract Location elegirUbicacion(String nombre);
-    public abstract Location getUbicacionSeleccionada();
+    public abstract void mostrarMapa(JPanel destino);
+    public abstract EventoDTO elegirUbicacion(String nombre);
+    public abstract Map<String, Double> getUbicacionSeleccionada();
     public abstract EventoDTO validarUbicacionEvento(EventoDTO dto);
 }
