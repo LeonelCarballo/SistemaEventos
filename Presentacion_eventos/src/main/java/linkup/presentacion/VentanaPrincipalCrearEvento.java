@@ -82,7 +82,9 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel4 = new javax.swing.JLabel();
         jPanelFondoBlanco = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
         jButtonExplorar = new javax.swing.JButton();
         jButtonCrearEvento = new javax.swing.JButton();
         jScrollPaneListaEvento = new javax.swing.JScrollPane();
@@ -93,7 +95,12 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         btnGrupos = new javax.swing.JButton();
         jButtonMenu = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         jLabelFondo = new javax.swing.JLabel();
+
+        jLabel4.setFont(new java.awt.Font("Arial Black", 0, 15)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(168, 91, 102));
+        jLabel4.setText("Seleccionar Ubicacion");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -101,17 +108,26 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
         jPanelFondoBlanco.setBackground(new java.awt.Color(255, 255, 255));
         jPanelFondoBlanco.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel5.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(168, 91, 102));
+        jLabel5.setText("Mis Eventos");
+        jPanelFondoBlanco.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 180, -1, -1));
+
         jButtonExplorar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonexplorar.png"))); // NOI18N
+        jButtonExplorar.setBorder(null);
+        jButtonExplorar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelFondoBlanco.add(jButtonExplorar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, 200, -1));
 
         jButtonCrearEvento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botoncrearevento.png"))); // NOI18N
+        jButtonCrearEvento.setBorder(null);
         jButtonCrearEvento.setContentAreaFilled(false);
+        jButtonCrearEvento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonCrearEvento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCrearEventoActionPerformed(evt);
             }
         });
-        jPanelFondoBlanco.add(jButtonCrearEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 600, 230, 60));
+        jPanelFondoBlanco.add(jButtonCrearEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 600, 190, 60));
 
         jScrollPaneListaEvento.setViewportView(jPanelListaEventos);
 
@@ -122,6 +138,7 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
 
         jButtonInicio1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botoninicio.png"))); // NOI18N
         jButtonInicio1.setBorder(null);
+        jButtonInicio1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonInicio1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonInicio1ActionPerformed(evt);
@@ -130,11 +147,15 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
         jPanelFondoBlanco.add(jButtonInicio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 200, 50));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botoncalendario.png"))); // NOI18N
+        jButton2.setBorder(null);
         jButton2.setContentAreaFilled(false);
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelFondoBlanco.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 60, -1));
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonmiseventos.png"))); // NOI18N
+        jButton3.setBorder(null);
         jButton3.setContentAreaFilled(false);
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -143,7 +164,9 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
         jPanelFondoBlanco.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 60, -1));
 
         btnGrupos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonchat.png"))); // NOI18N
+        btnGrupos.setBorder(null);
         btnGrupos.setContentAreaFilled(false);
+        btnGrupos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnGrupos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGruposActionPerformed(evt);
@@ -152,8 +175,13 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
         jPanelFondoBlanco.add(btnGrupos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 60, -1));
 
         jButtonMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonmenu.png"))); // NOI18N
+        jButtonMenu.setBorder(null);
         jButtonMenu.setContentAreaFilled(false);
+        jButtonMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelFondoBlanco.add(jButtonMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 60, -1));
+
+        jPanel1.setBackground(new java.awt.Color(255, 248, 247));
+        jPanelFondoBlanco.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 170, 380, 490));
 
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondosimple.png"))); // NOI18N
         jPanelFondoBlanco.add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-9, 0, 1160, -1));
@@ -224,8 +252,11 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
     private javax.swing.JButton jButtonExplorar;
     private javax.swing.JButton jButtonInicio1;
     private javax.swing.JButton jButtonMenu;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabelFondo;
     private javax.swing.JLabel jLabelLogo;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelFondoBlanco;
     private javax.swing.JPanel jPanelListaEventos;
     private javax.swing.JScrollPane jScrollPaneListaEvento;
