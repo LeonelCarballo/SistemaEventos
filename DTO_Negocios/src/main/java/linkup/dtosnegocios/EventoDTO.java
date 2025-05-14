@@ -20,15 +20,25 @@ public final class EventoDTO {
     private LocalDateTime fechaRecordatorio;
     private List<ContactoDTO> invitados;
     private String bannerPath;
+    private String username;
 
     public EventoDTO() {}
 
-    public EventoDTO(String idExterno, String nombreEvento, Etiqueta etiqueta, 
+    public EventoDTO(String idExterno, String username, String nombreEvento, Etiqueta etiqueta, 
                    LocalDateTime fechaHora) {
         this.idExterno = Objects.requireNonNull(idExterno);
+        this.username = Objects.requireNonNull(username);
         this.nombreEvento = Objects.requireNonNull(nombreEvento);
         this.etiqueta = Objects.requireNonNull(etiqueta);
         this.fechaHora = Objects.requireNonNull(fechaHora);
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getIdExterno() {

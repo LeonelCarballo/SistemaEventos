@@ -5,6 +5,7 @@ linkup\presentacion\IniciarSesion$2.class
 linkup\presentacion\SeleccionarFechaHora$4.class
 linkup\presentacion\cu\admGrupo\frmVerGrupo$7.class
 linkup\presentacion\cu\admGrupo\frmOpcionesGrupo$7.class
+linkup\presentacion\VentanaPrincipalCrearEvento$7.class
 linkup\presentacion\VentanaPrincipalCrearEvento.class
 linkup\presentacion\IngresarDetallesEvento.class
 linkup\presentacion\AdministrarEvento$1.class
@@ -41,6 +42,7 @@ linkup\presentacion\AdministrarEvento$2.class
 linkup\exception\NegocioException.class
 linkup\presentacion\cu\admGrupo\frmCrearGrupo$6.class
 linkup\presentacion\cu\admGrupo\frmOpcionesGrupo$3.class
+linkup\presentacion\VentanaPrincipalCrearEvento$6.class
 linkup\presentacion\cu\admGrupo\frmGruposPrincipal$1.class
 linkup\presentacion\RegistrarUsuario$1.class
 linkup\presentacion\cu\admGrupo\frmGruposPrincipal$4.class

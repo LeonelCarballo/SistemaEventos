@@ -1,38 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>Mapa</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  <style> #map { height: 100vh; margin: 0; } </style>
+    <title>Mapa Interactivo</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        #map { height: 100vh; }
+    </style>
 </head>
 <body>
-  <div id="map"></div>
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <script>
-    const map = L.map('map').setView([20.67, -103.35], 13);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
+    <div id="map"></div>
 
-    let marker;
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // Configuración del mapa
+        const map = L.map('map').setView([19.4326, -99.1332], 13);  // Centro en CDMX
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
-    map.on('click', function(e) {
-      const { lat, lng } = e.latlng;
-      if (marker) map.removeLayer(marker);
-      marker = L.marker([lat, lng]).addTo(map);
-
-      fetch('http://localhost:5000/guardar_evento', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ latitud: lat, longitud: lng })
-      }).then(response => {
-        if (!response.ok) {
-         
+        // Función ultra-simple para enviar coordenadas
+        function enviarCoordenadas(lat, lng) {
+            const url = `http://localhost:5001/guardar_ubicacion?lat=${lat}&lng=${lng}`;
+            new Image().src = url;  // Truco infalible para evitar CORS
+            
+            console.log("📤 Enviadas:", lat, lng);
+            L.marker([lat, lng]).addTo(map)
+                .bindPopup(`<b>Enviado al servidor</b><br>Lat: ${lat}<br>Lng: ${lng}`);
         }
-      });
-    });
-  </script>
+
+        // Evento al hacer clic
+        map.on('click', (e) => {
+            // Elimina todos los marcadores antes de añadir uno nuevo
+map.eachLayer(layer => {
+    if (layer instanceof L.Marker) map.removeLayer(layer);
+});
+            enviarCoordenadas(e.latlng.lat.toFixed(6), e.latlng.lng.toFixed(6));
+        });
+    </script>
 </body>
 </html>
-

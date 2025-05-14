@@ -78,6 +78,7 @@ public class IniciarSesion extends javax.swing.JFrame {
         txtConstraseña = new javax.swing.JTextField();
         btnIniciarSesion = new javax.swing.JButton();
         btnRegistrarse = new javax.swing.JButton();
+        jLabelRegistrar = new javax.swing.JLabel();
         jLabelLogo1 = new javax.swing.JLabel();
         jLabelFondo = new javax.swing.JLabel();
 
@@ -108,7 +109,9 @@ public class IniciarSesion extends javax.swing.JFrame {
         panelBlanco.add(txtConstraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 400, 220, 40));
 
         btnIniciarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linkupbotoniniciarsesion.png"))); // NOI18N
+        btnIniciarSesion.setBorder(null);
         btnIniciarSesion.setContentAreaFilled(false);
+        btnIniciarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnIniciarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIniciarSesionActionPerformed(evt);
@@ -117,14 +120,20 @@ public class IniciarSesion extends javax.swing.JFrame {
         panelBlanco.add(btnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 450, 220, -1));
 
         btnRegistrarse.setForeground(new java.awt.Color(168, 91, 102));
-        btnRegistrarse.setText("No cuentas con una cuenta? Registrate");
+        btnRegistrarse.setText("Registrate");
+        btnRegistrarse.setBorder(null);
         btnRegistrarse.setContentAreaFilled(false);
+        btnRegistrarse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegistrarse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarseActionPerformed(evt);
             }
         });
-        panelBlanco.add(btnRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 510, 260, -1));
+        panelBlanco.add(btnRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 510, 100, 40));
+
+        jLabelRegistrar.setForeground(new java.awt.Color(204, 127, 138));
+        jLabelRegistrar.setText("No tienes una cuenta? ");
+        panelBlanco.add(jLabelRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 520, -1, -1));
 
         jLabelLogo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/LINK UP.png"))); // NOI18N
         panelBlanco.add(jLabelLogo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 210, 250, 50));
@@ -162,6 +171,7 @@ public class IniciarSesion extends javax.swing.JFrame {
     private javax.swing.JButton btnRegistrarse;
     private javax.swing.JLabel jLabelFondo;
     private javax.swing.JLabel jLabelLogo1;
+    private javax.swing.JLabel jLabelRegistrar;
     private javax.swing.JLabel labelContraseña;
     private javax.swing.JLabel labelUsuario;
     private javax.swing.JPanel panelBlanco;

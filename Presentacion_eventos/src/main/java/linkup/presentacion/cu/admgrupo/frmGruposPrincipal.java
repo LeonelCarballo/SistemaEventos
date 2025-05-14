@@ -260,7 +260,7 @@ public class frmGruposPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGruposActionPerformed
 
     private void btnEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEventosActionPerformed
-        ControlCrearEvento.getInstancia().iniciarFlujoCreacionEvento();
+        ControlCrearEvento.getInstancia().mostrarVentanaPrincipal();
         this.dispose();
     }//GEN-LAST:event_btnEventosActionPerformed
 

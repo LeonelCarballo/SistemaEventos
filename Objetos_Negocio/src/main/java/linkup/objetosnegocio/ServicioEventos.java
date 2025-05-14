@@ -54,6 +54,7 @@ public final class ServicioEventos {
     private Evento convertirADominio(EventoInfraestructuraDTO dto) {
         return new Evento(
             dto.idExterno,
+            dto.username,
             dto.nombreEvento,
             Etiqueta.valueOf(dto.etiqueta),
             dto.descripcion,
@@ -71,6 +72,7 @@ public final class ServicioEventos {
     private EventoInfraestructuraDTO convertirADTO() {
         EventoInfraestructuraDTO dto = new EventoInfraestructuraDTO();
         dto.idExterno = evento.getIdExterno();
+       
         dto.nombreEvento = evento.getNombreEvento();
         dto.descripcion = evento.getDescripcion();
         dto.etiqueta = evento.getEtiqueta().name();
@@ -96,6 +98,8 @@ public final class ServicioEventos {
     public Evento getEvento() {
         return evento;
     }
+    
+    
     
     
    

@@ -14,6 +14,7 @@ public final class EventoMapper {
         EventoDTO dto = new EventoDTO();
 
         dto.setIdExterno(evento.getIdExterno());
+        dto.setUsername(evento.getUsername());
         dto.setNombreEvento(evento.getNombreEvento());
         dto.setEtiqueta(evento.getEtiqueta());
         dto.setDescripcion(evento.getDescripcion());
@@ -38,6 +39,7 @@ public final class EventoMapper {
         
         Evento evento = new Evento(
             dto.getIdExterno(),
+            dto.getUsername(),
             dto.getNombreEvento(),
             dto.getEtiqueta(),
             dto.getDescripcion(),
@@ -56,6 +58,7 @@ public final class EventoMapper {
     public static Evento toEvento(EventoDTO dto) {
         return new Evento(
             dto.getIdExterno(),
+            dto.getUsername(),
             dto.getNombreEvento(),
             dto.getEtiqueta(),
             dto.getDescripcion(),

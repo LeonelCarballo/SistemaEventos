@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
  */
 public class EventoInfraestructuraDTO {
     public String idExterno;
+    public String username;
     public String nombreEvento;
     public String descripcion;
     public String etiqueta; 
@@ -29,6 +30,10 @@ public class EventoInfraestructuraDTO {
 
     public String getIdExterno() {
         return idExterno;
+    }
+
+    public String getUsername() {
+        return username;
     }
 
     public String getNombreEvento() {
