@@ -18,6 +18,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import linkup.dtosnegocios.mapper.EventoMapper;
 import linkup.objetosnegocio.Evento;
+import linkup.objetosnegocio.UsuarioON;
 import linkup.organizadoreventos.OrganizadorEventos;
 import linkup.organizadoreventos.interfaces.IOrganizadorEventos;
 import linkup.presentacion.ConfirmacionEvento;
@@ -144,6 +145,9 @@ public class ControlCrearEvento {
         if(validado.getIdExterno() == null) {
             validado.setIdExterno(EventoMapper.generarNuevoId());
         }
+        
+        String username = UsuarioON.getInstance().getUsername();
+        validado.setUsername(username);
 
         this.eventoDTO = validado;
         validadorEvento.agregarEvento(validado);

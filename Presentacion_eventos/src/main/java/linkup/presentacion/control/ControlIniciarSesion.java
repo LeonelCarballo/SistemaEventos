@@ -31,6 +31,7 @@ public class ControlIniciarSesion {
         UsuarioON usuario = usuariosBO.iniciarSesionUsuario(username, contraseña);
         if (usuario != null) {
             usuarioActual = usuario;
+            UsuarioON.setInstance(usuario);
             return true;
         }
         return false;

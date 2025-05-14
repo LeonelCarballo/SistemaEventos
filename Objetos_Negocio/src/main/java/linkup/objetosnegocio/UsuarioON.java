@@ -25,6 +25,10 @@ public class UsuarioON {
         }
         return instance;
     }
+    
+    public static void setInstance(UsuarioON usuario) {
+        instance = usuario;
+    }
 
     public UsuarioON(String username, String contrasenia, String nombre, String apellido) {
         this.username = username;

@@ -105,7 +105,9 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         labelContraseña.setText("Contraseña:");
 
         btnContinuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonsiguiente.png"))); // NOI18N
+        btnContinuar.setBorder(null);
         btnContinuar.setContentAreaFilled(false);
+        btnContinuar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnContinuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnContinuarActionPerformed(evt);
@@ -113,7 +115,9 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         });
 
         btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botoncancelar.png"))); // NOI18N
+        btnRegresar.setBorder(null);
         btnRegresar.setContentAreaFilled(false);
+        btnRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegresarActionPerformed(evt);

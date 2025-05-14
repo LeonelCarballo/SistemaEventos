@@ -220,7 +220,7 @@ public class SeleccionarUbicacion extends javax.swing.JFrame {
 //        eventoDTO.setLatitud(coordenadas.get("latitud"));
 //        eventoDTO.setLongitud(coordenadas.get("longitud"));
         //por cambiar
-        eventoDTO.setDireccion("dwasdawda");
+        eventoDTO.setDireccion("20.66682, -103.39182");
         
         try {
         eventoDTO = controlador.validarUbicacionEventoDTO(eventoDTO);

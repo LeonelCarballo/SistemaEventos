@@ -6,6 +6,7 @@ import java.util.Objects;
 public final class Evento {
     
     private final String idExterno;
+    private String username;
     private final String nombreEvento;
     private final Etiqueta etiqueta;
     private final String descripcion;
@@ -18,7 +19,7 @@ public final class Evento {
     private final LocalDateTime fechaRecordatorio;
     private final String bannerPath;
 
-    public Evento(String idExterno,
+    public Evento(String idExterno, String username, 
                  String nombreEvento,
                  Etiqueta etiqueta,
                  String descripcion,
@@ -32,6 +33,7 @@ public final class Evento {
                  String bannerPath) {
         
         this.idExterno = Objects.requireNonNull(idExterno, "ID externo no puede ser nulo");
+        this.username = Objects.requireNonNull(username, "ID externo no puede ser nulo");
         this.nombreEvento = Objects.requireNonNull(nombreEvento, "Nombre no puede ser nulo");
         this.etiqueta = Objects.requireNonNull(etiqueta, "Etiqueta no puede ser nula");
         this.descripcion = Objects.requireNonNull(descripcion, "Descripción no puede ser nula");
@@ -102,6 +104,10 @@ public final class Evento {
 
     public String getBannerPath() {
         return bannerPath;
+    }
+
+    public String getUsername() {
+        return username;
     }
 
     public boolean esEventoPasado() {

@@ -114,7 +114,9 @@ public class ConfirmacionEvento extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonchat.png"))); // NOI18N
+        jButton4.setBorder(null);
         jButton4.setContentAreaFilled(false);
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 60, -1));
 
         jPanelDetalles.setBackground(new java.awt.Color(152, 79, 89));
@@ -163,7 +165,9 @@ public class ConfirmacionEvento extends javax.swing.JFrame {
         getContentPane().add(jLabelDetallesEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 220, 160, 20));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonconfirmar.png"))); // NOI18N
+        jButton1.setBorder(null);
         jButton1.setContentAreaFilled(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -172,23 +176,30 @@ public class ConfirmacionEvento extends javax.swing.JFrame {
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 610, -1, -1));
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonmiseventos.png"))); // NOI18N
+        jButton3.setBorder(null);
         jButton3.setContentAreaFilled(false);
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 60, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lblcreandoevento.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 610, 210, -1));
 
         jButtonMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonmenu.png"))); // NOI18N
+        jButtonMenu.setBorder(null);
         jButtonMenu.setContentAreaFilled(false);
+        jButtonMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(jButtonMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 60, -1));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botoncalendario.png"))); // NOI18N
+        jButton2.setBorder(null);
         jButton2.setContentAreaFilled(false);
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 60, -1));
 
         jButtonInicio1.setBackground(new java.awt.Color(255, 255, 255));
         jButtonInicio1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botoninicio.png"))); // NOI18N
         jButtonInicio1.setBorder(null);
+        jButtonInicio1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonInicio1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonInicio1ActionPerformed(evt);
@@ -198,6 +209,7 @@ public class ConfirmacionEvento extends javax.swing.JFrame {
 
         jButtonCancelar1.setBackground(new java.awt.Color(246, 227, 230));
         jButtonCancelar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botoncancelar.png"))); // NOI18N
+        jButtonCancelar1.setBorder(null);
         jButtonCancelar1.setContentAreaFilled(false);
         jButtonCancelar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonCancelar1.addActionListener(new java.awt.event.ActionListener() {
@@ -205,13 +217,14 @@ public class ConfirmacionEvento extends javax.swing.JFrame {
                 jButtonCancelar1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonCancelar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 610, -1, -1));
+        getContentPane().add(jButtonCancelar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 610, -1, -1));
 
         jLabelLogo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/LINK UP.png"))); // NOI18N
         getContentPane().add(jLabelLogo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 250, 50));
 
         jButtonAnterior1.setBackground(new java.awt.Color(246, 227, 230));
         jButtonAnterior1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonregresar.png"))); // NOI18N
+        jButtonAnterior1.setBorder(null);
         jButtonAnterior1.setContentAreaFilled(false);
         jButtonAnterior1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonAnterior1.addActionListener(new java.awt.event.ActionListener() {

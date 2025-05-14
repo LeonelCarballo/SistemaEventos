@@ -86,17 +86,21 @@ public class IngresarDetallesEvento extends javax.swing.JFrame {
 
         jButtonCancelar.setBackground(new java.awt.Color(246, 227, 230));
         jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botoncancelar.png"))); // NOI18N
+        jButtonCancelar.setBorder(null);
         jButtonCancelar.setContentAreaFilled(false);
+        jButtonCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 610, -1, -1));
+        getContentPane().add(jButtonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 610, -1, -1));
 
         jButtonSiguiente.setBackground(new java.awt.Color(246, 227, 230));
         jButtonSiguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonsiguiente.png"))); // NOI18N
+        jButtonSiguiente.setBorder(null);
         jButtonSiguiente.setContentAreaFilled(false);
+        jButtonSiguiente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonSiguiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSiguienteActionPerformed(evt);
@@ -118,7 +122,9 @@ public class IngresarDetallesEvento extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 610, 210, -1));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botoncalendario.png"))); // NOI18N
+        jButton2.setBorder(null);
         jButton2.setContentAreaFilled(false);
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 60, -1));
 
         jPanelRosaClaro.setBackground(new java.awt.Color(246, 227, 230));
@@ -171,18 +177,24 @@ public class IngresarDetallesEvento extends javax.swing.JFrame {
         getContentPane().add(jPanelRosaClaro, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 230, 310, 400));
 
         jButtonMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonmenu.png"))); // NOI18N
+        jButtonMenu.setBorder(null);
         jButtonMenu.setContentAreaFilled(false);
+        jButtonMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(jButtonMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 60, -1));
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonchat.png"))); // NOI18N
+        jButton4.setBorder(null);
         jButton4.setContentAreaFilled(false);
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 60, -1));
 
         jLabelLogo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/LINK UP.png"))); // NOI18N
         getContentPane().add(jLabelLogo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 250, 50));
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonmiseventos.png"))); // NOI18N
+        jButton3.setBorder(null);
         jButton3.setContentAreaFilled(false);
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 60, -1));
 
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/nuevoevento.png"))); // NOI18N

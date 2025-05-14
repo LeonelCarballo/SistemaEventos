@@ -113,6 +113,7 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
         jLabel5.setText("Mis Eventos");
         jPanelFondoBlanco.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 180, -1, -1));
 
+        jButtonExplorar.setBackground(new java.awt.Color(255, 255, 255));
         jButtonExplorar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonexplorar.png"))); // NOI18N
         jButtonExplorar.setBorder(null);
         jButtonExplorar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -136,6 +137,7 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
         jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/LINK UP.png"))); // NOI18N
         jPanelFondoBlanco.add(jLabelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 250, 50));
 
+        jButtonInicio1.setBackground(new java.awt.Color(255, 255, 255));
         jButtonInicio1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botoninicio.png"))); // NOI18N
         jButtonInicio1.setBorder(null);
         jButtonInicio1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));

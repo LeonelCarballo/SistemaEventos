@@ -92,19 +92,27 @@ public class SeleccionarFechaHora extends javax.swing.JFrame {
         jPanelFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonchat.png"))); // NOI18N
+        jButton4.setBorder(null);
         jButton4.setContentAreaFilled(false);
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelFondo.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 60, -1));
 
         jButtonMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonmenu.png"))); // NOI18N
+        jButtonMenu.setBorder(null);
         jButtonMenu.setContentAreaFilled(false);
+        jButtonMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelFondo.add(jButtonMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 60, -1));
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonmiseventos.png"))); // NOI18N
+        jButton3.setBorder(null);
         jButton3.setContentAreaFilled(false);
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelFondo.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 60, -1));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botoncalendario.png"))); // NOI18N
+        jButton2.setBorder(null);
         jButton2.setContentAreaFilled(false);
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelFondo.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 60, -1));
 
         jLabel6.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
@@ -136,6 +144,7 @@ public class SeleccionarFechaHora extends javax.swing.JFrame {
 
         jButtonAnterior.setBackground(new java.awt.Color(246, 227, 230));
         jButtonAnterior.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonregresar.png"))); // NOI18N
+        jButtonAnterior.setBorder(null);
         jButtonAnterior.setContentAreaFilled(false);
         jButtonAnterior.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonAnterior.addActionListener(new java.awt.event.ActionListener() {
@@ -147,6 +156,7 @@ public class SeleccionarFechaHora extends javax.swing.JFrame {
 
         jButtonSiguiente.setBackground(new java.awt.Color(246, 227, 230));
         jButtonSiguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonsiguiente.png"))); // NOI18N
+        jButtonSiguiente.setBorder(null);
         jButtonSiguiente.setContentAreaFilled(false);
         jButtonSiguiente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonSiguiente.addActionListener(new java.awt.event.ActionListener() {
@@ -158,6 +168,7 @@ public class SeleccionarFechaHora extends javax.swing.JFrame {
 
         jButtonCancelar.setBackground(new java.awt.Color(246, 227, 230));
         jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botoncancelar.png"))); // NOI18N
+        jButtonCancelar.setBorder(null);
         jButtonCancelar.setContentAreaFilled(false);
         jButtonCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -165,11 +176,12 @@ public class SeleccionarFechaHora extends javax.swing.JFrame {
                 jButtonCancelarActionPerformed(evt);
             }
         });
-        jPanelFondo.add(jButtonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 610, -1, -1));
+        jPanelFondo.add(jButtonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 610, -1, -1));
 
         jButtonInicio.setBackground(new java.awt.Color(255, 255, 255));
         jButtonInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botoninicio.png"))); // NOI18N
         jButtonInicio.setBorder(null);
+        jButtonInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonInicioActionPerformed(evt);
