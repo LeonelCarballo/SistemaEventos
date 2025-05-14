@@ -59,6 +59,8 @@ public class ControlCrearEvento {
     
     private IniciarSesion frmIniciarSesion;
     private RegistrarUsuario frmRegistrarUsuario;  
+    
+    private ControlIniciarSesion controlIS = new ControlIniciarSesion();
 
     private ControlCrearEvento() {
     }
@@ -71,7 +73,7 @@ public class ControlCrearEvento {
     }
 
     public void iniciarFlujoCreacionEvento() {
-        mostrarVentanaPrincipal();
+        mostrarInicioSesion();
     }
 
     public void mostrarVentanaPrincipal() {
@@ -79,6 +81,11 @@ public class ControlCrearEvento {
         frmPrincipal = new VentanaPrincipalCrearEvento(this, eventos);
 
         frmPrincipal.setVisible(true);
+    }
+    
+    public void mostrarInicioSesion() {
+        IniciarSesion frmIniciarSesion = new IniciarSesion(controlIS);
+        frmIniciarSesion.setVisible(true);
     }
 
     public void mostrarVentanaPrincipalAlCrear(List<EventoDTO> eventos) {
