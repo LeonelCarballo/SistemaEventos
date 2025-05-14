@@ -7,15 +7,15 @@ package linkup.presentacion.control;
 import linkup.dtosnegocios.ContactoDTO;
 import linkup.dtosnegocios.EventoCompletoDTO;
 import linkup.dtosnegocios.EventoDTO;
-import linkup.infraestructura.mapa.InfraestructuraMapa;
-import linkup.infraestructura.mapa.Location;
 import ISubsistema.IGestorContactos;
 import ISubsistema.IGestorUbicaciones;
 import Subsistema.GestorContactos;
 import Subsistema.GestorUbicaciones;
 import exception.NegocioException;
 import java.util.List;
+import java.util.Map;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import linkup.dtosnegocios.mapper.EventoMapper;
 import linkup.objetosnegocio.Evento;
 import linkup.organizadoreventos.OrganizadorEventos;
@@ -37,9 +37,9 @@ public class ControlCrearEvento {
 
     private static ControlCrearEvento instancia;
 
-    private static InfraestructuraMapa mapService = new InfraestructuraMapa();
+    
     private static IOrganizadorEventos validadorEvento = new OrganizadorEventos("1");
-    private static IGestorUbicaciones gestorUbicaciones = new GestorUbicaciones(mapService);
+    private static IGestorUbicaciones gestorUbicaciones = new GestorUbicaciones();
     private static IGestorContactos gestorContactos = new GestorContactos();
     private static IOrganizadorEventos guardarEventoDTO = new OrganizadorEventos("1");
 
@@ -215,4 +215,14 @@ public class ControlCrearEvento {
     public EventoDTO validarUbicacionEventoDTO(EventoDTO evento) {
         return gestorUbicaciones.validarUbicacionEvento(evento);
     }
+    
+    public void showMapa(JPanel destino){
+        gestorUbicaciones.mostrarMapa(destino);
+    }
+    
+    public Map<String, Double> obtenerUbicacion(){
+        return gestorUbicaciones.getUbicacionSeleccionada();
+    }
+    
+    
 }

@@ -5,12 +5,21 @@
 package Subsistema;
 
 import ISubsistema.IGestorUbicaciones;
+import java.io.File;
 
 import java.util.List;
+import java.util.Map;
+import javafx.application.Platform;
+import javafx.embed.swing.JFXPanel;
+import javafx.scene.Scene;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
+import javax.swing.JPanel;
 import linkup.dtosnegocios.EventoDTO;
 import linkup.exception.NegocioException;
-import linkup.infraestructura.mapa.InfraestructuraMapa;
-import linkup.infraestructura.mapa.Location;
+import linkup.infraestructura.Integracion;
+import linkup.infraestructura.interfaces.IIntegracion;
+
 
 /**
  *
@@ -18,27 +27,39 @@ import linkup.infraestructura.mapa.Location;
  */
 public class GestorUbicaciones implements IGestorUbicaciones {
 
-    private InfraestructuraMapa mapService;
-    private Location ubicacionSeleccionada;
+    
+    
+    private final IIntegracion integracion;
+    public GestorUbicaciones() {
+        this.integracion = new Integracion();
+    }
 
-    public GestorUbicaciones(InfraestructuraMapa mapService) {
-        this.mapService = mapService;
+    public void mostrarMapa(JPanel destino) {
+        JFXPanel jfxPanel = new JFXPanel();
+        destino.setLayout(new java.awt.BorderLayout()); 
+        destino.add(jfxPanel);
+
+        Platform.runLater(() -> {
+            WebView webView = new WebView();
+            WebEngine engine = webView.getEngine();
+
+            File file = new File("mapa.html");
+            engine.load(file.toURI().toString());
+
+            jfxPanel.setScene(new Scene(webView));
+        });
     }
 
     @Override
-    public void mostrarMapa() {
-        mapService.showMap();
+    public EventoDTO elegirUbicacion(String nombre) {
+        return null;        
     }
 
     @Override
-    public Location elegirUbicacion(String nombre) {
-        ubicacionSeleccionada = mapService.selectLocation(nombre);
-        return ubicacionSeleccionada;
-    }
-
-    @Override
-    public Location getUbicacionSeleccionada() {
-        return ubicacionSeleccionada;
+    public Map<String, Double> getUbicacionSeleccionada() {
+        
+        Map<String, Double> coordenadas = integracion.obtenerUbicacionMapa();
+        return coordenadas;
     }
 
     @Override

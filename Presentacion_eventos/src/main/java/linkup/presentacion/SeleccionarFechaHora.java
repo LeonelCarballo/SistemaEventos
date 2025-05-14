@@ -203,10 +203,10 @@ public class SeleccionarFechaHora extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAnteriorActionPerformed
 
     private void jButtonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteActionPerformed
-        eventoDTO.setDireccion(jTextFieldUbicacion.getText());
+        
 
         try {
-            eventoDTO = controlador.validarUbicacionEventoDTO(eventoDTO);
+           
 
             controlador.mostrarEnviarInvitaciones(eventoDTO);
             cerrar();
