@@ -24,14 +24,15 @@ public class ControlRegistrarUsuario {
     private RegistrarUsuario frmRegistrarUsuario;
     private IniciarSesion frmIniciarSesion; 
     private final IUsuariosBO usuariosBO;
+    ControlCrearEvento controlEvento;
 
     public ControlRegistrarUsuario(IniciarSesion frmIniciarSesion) {
         this.frmIniciarSesion = frmIniciarSesion;
         this.usuariosBO = FabricaObjetosNegocio.crearUsuariosBO();
     }
 
-    public void iniciarCasoUso() {
-        this.frmRegistrarUsuario = new RegistrarUsuario(this);
+    public void iniciarCasoUso(ControlCrearEvento controlEvento) {
+        this.frmRegistrarUsuario = new RegistrarUsuario(this,controlEvento);
         frmRegistrarUsuario.setVisible(true);
     }
     
@@ -44,8 +45,7 @@ public class ControlRegistrarUsuario {
         if (registrado) {
             
             JOptionPane.showMessageDialog(null, "Usuario registrado con éxito");
-            frmRegistrarUsuario.dispose();  
-            frmIniciarSesion.setVisible(true);
+
         } else {
         throw new NegocioException("Error al registrar el usuario. Inténtalo de nuevo.");
     }

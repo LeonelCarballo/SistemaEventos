@@ -5,6 +5,7 @@
 package linkup.presentacion;
 
 import javax.swing.JOptionPane;
+import linkup.presentacion.control.ControlCrearEvento;
 import linkup.presentacion.control.ControlRegistrarUsuario;
 
 /**
@@ -13,15 +14,19 @@ import linkup.presentacion.control.ControlRegistrarUsuario;
  */
 public class RegistrarUsuario extends javax.swing.JFrame {
 
-    ControlRegistrarUsuario controlador;
+    ControlRegistrarUsuario controlRegistrar;
+    ControlCrearEvento controlEvento;
     /**
      * Creates new form RegistrarUsuario
      */
-    public RegistrarUsuario(ControlRegistrarUsuario controlador) {
-        this.controlador=controlador;
-        initComponents();
-    }
     
+    public RegistrarUsuario(ControlRegistrarUsuario controlRegistrar, ControlCrearEvento controlEvento) {
+        this.controlRegistrar = controlRegistrar;
+        this.controlEvento = controlEvento;
+        initComponents();
+        setLocationRelativeTo(null);
+    }
+
     public void registrarUsuario() {
         try {
             String username = txtUsername.getText().trim();
@@ -29,13 +34,15 @@ public class RegistrarUsuario extends javax.swing.JFrame {
             String nombre = txtNombre.getText().trim();
             String apellido = txtApellido.getText().trim();
 
-            controlador.registrarUsuario(username, contrasenia, nombre, apellido);
+            controlRegistrar.registrarUsuario(username, contrasenia, nombre, apellido);
+            controlEvento.mostrarInicioSesion(controlEvento);
+            this.dispose();
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,
-                "Ocurrió un error al registrar el usuario: " + e.getMessage(),
-                "Error",
-                JOptionPane.ERROR_MESSAGE);
+                    "Ocurrió un error al registrar el usuario: " + e.getMessage(),
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
             e.printStackTrace(); // Opcional: para debug en consola
         }
     }

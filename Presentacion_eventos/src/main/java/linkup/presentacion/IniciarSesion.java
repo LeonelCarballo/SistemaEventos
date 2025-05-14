@@ -8,6 +8,7 @@ import exception.NegocioException;
 import javax.swing.JOptionPane;
 import linkup.presentacion.control.ControlIniciarSesion;
 import linkup.presentacion.control.ControlRegistrarUsuario;
+import linkup.presentacion.control.ControlCrearEvento;
 
 /**
  *
@@ -16,42 +17,49 @@ import linkup.presentacion.control.ControlRegistrarUsuario;
 public class IniciarSesion extends javax.swing.JFrame {
 
     
-    ControlIniciarSesion controlador;
+    ControlIniciarSesion controlIniciarSesion;
+    ControlCrearEvento controlEvento;
+    ControlRegistrarUsuario controlRegistrar;
+    
     /**
      * Creates new form IniciarSesion
      */
-    public IniciarSesion(ControlIniciarSesion controlador) {
-        this.controlador=controlador;
+    
+
+    public IniciarSesion(ControlIniciarSesion controlIniciarSesion, ControlCrearEvento controlEvento) {
+        this.controlIniciarSesion = controlIniciarSesion;
+        this.controlEvento = controlEvento;
+        this.controlRegistrar = controlRegistrar;
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     private void iniciarSesion() {
-        try {
-            String username = txtUsername.getText().trim();
-            String contrasenia = txtConstraseña.getText().trim();
+    try {
+        String username = txtUsername.getText().trim();
+        String contrasenia = txtConstraseña.getText().trim();
 
-            if (username.isEmpty() || contrasenia.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Por favor, completa todos los campos.", "Campos vacíos", JOptionPane.WARNING_MESSAGE);
-                return;
-            }
-
-            boolean autenticado = controlador.iniciarSesion(username, contrasenia);
-
-            if (autenticado) {
-                JOptionPane.showMessageDialog(null, "Inicio de sesión exitoso.", "Bienvenido", JOptionPane.INFORMATION_MESSAGE);
-                //MODIFICAR CONSTRUCTOR DE CREAR EVENTOS PA QUE SIRVA
-                //new VentanaPrincipalCrearEvento(controlador, eventos, controlador.getUsuarioActual());
-                this.dispose();
-            } else {
-                JOptionPane.showMessageDialog(null, "Nombre de usuario o contraseña incorrectos.", "Error de autenticación", JOptionPane.ERROR_MESSAGE);
-            }
-        } catch (NegocioException ex) {
-            JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage(), "Error de negocio", JOptionPane.ERROR_MESSAGE);
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Ha ocurrido un error inesperado. Inténtalo de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
-            ex.printStackTrace(); // Opcional: para depuración
+        if (username.isEmpty() || contrasenia.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Por favor, completa todos los campos.", "Campos vacíos", JOptionPane.WARNING_MESSAGE);
+            return;
         }
+
+        boolean autenticado = controlIniciarSesion.iniciarSesion(username, contrasenia);
+
+        if (autenticado) {
+            JOptionPane.showMessageDialog(null, "Inicio de sesión exitoso.", "Bienvenido", JOptionPane.INFORMATION_MESSAGE);
+            controlEvento.mostrarVentanaPrincipal();
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Nombre de usuario o contraseña incorrectos.", "Error de autenticación", JOptionPane.ERROR_MESSAGE);
+        }
+    } catch (NegocioException ex) {
+        JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage(), "Error de negocio", JOptionPane.ERROR_MESSAGE);
+    } catch (Exception ex) {
+        JOptionPane.showMessageDialog(null, "Ha ocurrido un error inesperado. Inténtalo de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
+        ex.printStackTrace(); // Para depuración
     }
+}
 
     
     /**
@@ -144,6 +152,8 @@ public class IniciarSesion extends javax.swing.JFrame {
 
     private void btnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarseActionPerformed
         ControlRegistrarUsuario control = new ControlRegistrarUsuario(this);
+        controlEvento.mostrarRegistrar(controlEvento);
+        this.dispose();
     }//GEN-LAST:event_btnRegistrarseActionPerformed
 
 

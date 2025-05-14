@@ -15,13 +15,15 @@ public class ControlIniciarSesion {
     private IniciarSesion frmIniciarSesion;
     private final IUsuariosBO usuariosBO;
     private UsuarioON usuarioActual;
+    private ControlCrearEvento controlEvento;
 
     public ControlIniciarSesion() {
         this.usuariosBO = FabricaObjetosNegocio.crearUsuariosBO();
     }
 
-    public void iniciarCasoUso(){
-        this.frmIniciarSesion = new IniciarSesion(this);
+    public void iniciarCasoUso(ControlCrearEvento controlEvento){
+        this.controlEvento = controlEvento;
+        this.frmIniciarSesion = new IniciarSesion(this, controlEvento);
         this.frmIniciarSesion.setVisible(true);
     }
     
