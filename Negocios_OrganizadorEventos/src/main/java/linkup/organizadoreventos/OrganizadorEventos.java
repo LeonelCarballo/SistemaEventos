@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import linkup.dtosnegocios.EventoDTO;
 import linkup.exception.NegocioException;
 import linkup.objetosnegocio.ServicioEventos;
+import linkup.objetosnegocio.UsuarioON;
 import linkup.organizadoreventos.interfaces.IOrganizadorEventos;
 
 public class OrganizadorEventos implements IOrganizadorEventos {
@@ -25,7 +26,7 @@ public class OrganizadorEventos implements IOrganizadorEventos {
         EventoDTO eventoValidado = validarEventoCompleto(dto);
         ServicioEventos nuevoEvento = EventoMapper.toServicioEvento(eventoValidado);
         nuevoEvento.publicarEnCalendario(idCalendario);
-        eventos.add(nuevoEvento);
+
     }
 
     @Override
@@ -39,7 +40,13 @@ public class OrganizadorEventos implements IOrganizadorEventos {
 
     @Override
     public List<EventoDTO> consultarEventos() {
+//        return eventos.stream()
+//                .map(EventoMapper::toDTO)
+//                .collect(Collectors.toList());
+        String usernameActual = UsuarioON.getInstance().getUsername();
+
         return eventos.stream()
+                .filter(evento -> usernameActual.equals(evento.getEvento().getUsername()))
                 .map(EventoMapper::toDTO)
                 .collect(Collectors.toList());
     }

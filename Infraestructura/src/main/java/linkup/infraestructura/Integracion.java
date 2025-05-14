@@ -31,6 +31,7 @@ public class Integracion implements IIntegracion {
         Map<String, String> payload = new HashMap<>();
         payload.put("accion", "obtenerEventos");
         payload.put("idExterno", idExterno);
+        
 
         String jsonPeticion = gson.toJson(payload);
         String respuestaJson = control.agendarCalendario(jsonPeticion); 
@@ -48,6 +49,7 @@ public class Integracion implements IIntegracion {
         payload.put("accion", "agregarEvento");
         payload.put("idExterno", idCalendario);
         payload.put("evento", evento);
+        payload.put("usuario", evento.getUsername());
 
         String json = gson.toJson(payload);
         control.agendarCalendario(json); 

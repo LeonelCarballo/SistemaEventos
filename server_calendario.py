@@ -71,6 +71,7 @@ def procesar_mensaje(data):
             #  Agregar evento si no hay conflicto
             calendario["eventos"].append(evento)
             guardar_datos()
+            print(f"Evento agregado para el usuario '{usuario}': {evento}")
             return json.dumps({"exito": True})
 
         elif accion == "validarHorario":
