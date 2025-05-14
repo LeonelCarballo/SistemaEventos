@@ -123,7 +123,7 @@ public class frmGruposPrincipal extends javax.swing.JFrame {
             }
         });
         PanelRosa.add(jButtonMenu);
-        jButtonMenu.setBounds(10, 20, 50, 51);
+        jButtonMenu.setBounds(10, 20, 46, 47);
 
         btnCalendario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botoncalendario.png"))); // NOI18N
         btnCalendario.setContentAreaFilled(false);
@@ -133,7 +133,7 @@ public class frmGruposPrincipal extends javax.swing.JFrame {
             }
         });
         PanelRosa.add(btnCalendario);
-        btnCalendario.setBounds(10, 100, 50, 51);
+        btnCalendario.setBounds(10, 100, 46, 47);
 
         btnGrupos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonchat.png"))); // NOI18N
         btnGrupos.setContentAreaFilled(false);
@@ -143,7 +143,7 @@ public class frmGruposPrincipal extends javax.swing.JFrame {
             }
         });
         PanelRosa.add(btnGrupos);
-        btnGrupos.setBounds(10, 160, 50, 51);
+        btnGrupos.setBounds(10, 160, 46, 47);
 
         btnEventos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonmiseventos.png"))); // NOI18N
         btnEventos.setContentAreaFilled(false);
@@ -153,7 +153,7 @@ public class frmGruposPrincipal extends javax.swing.JFrame {
             }
         });
         PanelRosa.add(btnEventos);
-        btnEventos.setBounds(10, 220, 50, 51);
+        btnEventos.setBounds(10, 220, 46, 47);
 
         PanelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/LINK UP.png"))); // NOI18N
 
@@ -260,7 +260,7 @@ public class frmGruposPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGruposActionPerformed
 
     private void btnEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEventosActionPerformed
-        ControlCrearEvento.getInstancia().iniciarFlujoCreacionEvento();
+        ControlCrearEvento.getInstancia().mostrarVentanaPrincipal();
         this.dispose();
     }//GEN-LAST:event_btnEventosActionPerformed
 
