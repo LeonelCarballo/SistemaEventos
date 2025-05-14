@@ -6,22 +6,28 @@ package linkup.presentacion;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.Insets;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import linkup.dtosnegocios.EventoDTO;
+import linkup.presentacion.control.ControlCrearEvento;
 
 /**
  *
@@ -30,9 +36,13 @@ import linkup.dtosnegocios.EventoDTO;
 public class EventoPanel extends JPanel {
 
     private EventoDTO evento;
+    private ControlCrearEvento controlEvento;
+    private List<EventoDTO> eventos;
 
-    public EventoPanel(EventoDTO evento) {
+    public EventoPanel(EventoDTO evento, ControlCrearEvento controlEvento, List<EventoDTO> eventos) {
         this.evento = evento;
+        this.controlEvento = controlEvento;
+        this.eventos = eventos;
         initUI();
     }
 
@@ -40,9 +50,10 @@ public class EventoPanel extends JPanel {
         setLayout(new BorderLayout());
         setBackground(Color.WHITE);
         setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 1));
-        setPreferredSize(new Dimension(400, 220)); 
+        setPreferredSize(new Dimension(400, 220));
 
-        JPanel imagenPanel = new JPanel() {
+        // Imagen y botón superior
+        JPanel imagenPanel = new JPanel(new BorderLayout()) {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 boolean bannerCargado = false;
@@ -98,9 +109,26 @@ public class EventoPanel extends JPanel {
                 }
             }
         };
-        imagenPanel.setPreferredSize(new Dimension(400, 120)); 
+        imagenPanel.setPreferredSize(new Dimension(400, 120));
+
+        // Botón alineado a la derecha arriba
+        JButton btnOpciones = new JButton("⋯");
+        btnOpciones.setMargin(new Insets(2, 8, 2, 8));
+        btnOpciones.setFocusPainted(false);
+        btnOpciones.setFont(new Font("SansSerif", Font.BOLD, 14));
+        btnOpciones.setBackground(Color.WHITE);
+        btnOpciones.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
+        btnOpciones.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        btnOpciones.addActionListener(e -> controlEvento.mostrarAdministrarEvento(evento, controlEvento, eventos));
+
+        JPanel botonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 10));
+        botonPanel.setOpaque(false);
+        botonPanel.add(btnOpciones);
+
+        imagenPanel.add(botonPanel, BorderLayout.NORTH);
         add(imagenPanel, BorderLayout.NORTH);
 
+        // Panel de información
         JPanel infoPanel = new JPanel(new GridLayout(4, 1));
         infoPanel.setBackground(Color.WHITE);
         infoPanel.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15));

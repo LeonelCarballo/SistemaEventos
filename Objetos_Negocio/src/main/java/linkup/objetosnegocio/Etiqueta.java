@@ -9,5 +9,10 @@ package linkup.objetosnegocio;
  * @author Dana Chavez
  */
 public enum Etiqueta {
-    CUMPLEAÑOS, BODA, REUNION
+    CUMPLEAÑOS, BODA, REUNION;
+
+    public String getTexto() {
+        String nombre = this.name().toLowerCase();
+        return nombre.substring(0, 1).toUpperCase() + nombre.substring(1);
+    }
 }

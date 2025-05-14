@@ -20,6 +20,7 @@ import linkup.dtosnegocios.mapper.EventoMapper;
 import linkup.objetosnegocio.Evento;
 import linkup.organizadoreventos.OrganizadorEventos;
 import linkup.organizadoreventos.interfaces.IOrganizadorEventos;
+import linkup.presentacion.AdministrarEvento;
 import linkup.presentacion.ConfirmacionEvento;
 import linkup.presentacion.EnviarInvitaciones;
 import linkup.presentacion.IngresarDetallesEvento;
@@ -56,6 +57,7 @@ public class ControlCrearEvento {
     private SeleccionarUbicacion frmUbicacion;
     private EnviarInvitaciones frmInvitaciones;
     private ConfirmacionEvento frmConfirmacion;
+    private AdministrarEvento frmAdministrarEvento;
     
     private IniciarSesion frmIniciarSesion;
     private RegistrarUsuario frmRegistrarUsuario;  
@@ -86,7 +88,7 @@ public class ControlCrearEvento {
     }
     
     public void mostrarInicioSesion(ControlCrearEvento controlEvento) {
-        IniciarSesion frmIniciarSesion = new IniciarSesion(controlIniciarSesion,this);
+        frmIniciarSesion = new IniciarSesion(controlIniciarSesion,this);
         frmIniciarSesion.setVisible(true);
     }
     
@@ -96,7 +98,7 @@ public class ControlCrearEvento {
     }
 
     public void mostrarVentanaPrincipalAlCrear(List<EventoDTO> eventos) {
-        this.eventos = eventos;
+        eventos = validadorEvento.consultarEventos();
 
         frmPrincipal = new VentanaPrincipalCrearEvento(this, eventos);
 
@@ -135,6 +137,13 @@ public class ControlCrearEvento {
         frmConfirmacion = new ConfirmacionEvento(this, eventoDTO, validadorEvento);
 
         frmConfirmacion.setVisible(true);
+    }
+    
+    public void mostrarAdministrarEvento(EventoDTO eventoDTO, ControlCrearEvento controlEvento, List<EventoDTO> eventos) {
+
+        frmAdministrarEvento = new AdministrarEvento(eventoDTO, controlEvento, eventos);
+
+        frmAdministrarEvento.setVisible(true);
     }
 
     public void intentarCrearEvento(EventoDTO evento) {
@@ -237,6 +246,13 @@ public class ControlCrearEvento {
     public Map<String, Double> obtenerUbicacion(){
         return gestorUbicaciones.getUbicacionSeleccionada();
     }
-    
-    
+
+    public void setEventos(List<EventoDTO> eventos) {
+        this.eventos = eventos;
+    }
+
+    public List<EventoDTO> getEventos() {
+        return eventos;
+    }
+
 }

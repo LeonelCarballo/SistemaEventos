@@ -57,7 +57,7 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
 
     if (eventos != null && !eventos.isEmpty()) {
         for (EventoDTO evento : eventos) {
-            EventoPanel panelEvento = new EventoPanel(evento);
+            EventoPanel panelEvento = new EventoPanel(evento, controlador, this.eventos);
             jPanelListaEventos.add(panelEvento);
             jPanelListaEventos.add(Box.createRigidArea(new Dimension(0, 10))); 
         }

@@ -7,6 +7,7 @@ linkup\presentacion\cu\admGrupo\frmVerGrupo$7.class
 linkup\presentacion\cu\admGrupo\frmOpcionesGrupo$7.class
 linkup\presentacion\VentanaPrincipalCrearEvento.class
 linkup\presentacion\IngresarDetallesEvento.class
+linkup\presentacion\AdministrarEvento$1.class
 linkup\presentacion\cu\admGrupo\frmCrearGrupo.class
 linkup\presentacion\cu\admGrupo\frmOpcionesGrupo$4.class
 linkup\presentacion\cu\admGrupo\frmCrearGrupo$7.class
@@ -19,9 +20,11 @@ linkup\presentacion\VentanaPrincipalCrearEvento$1.class
 linkup\presentacion\EnviarInvitaciones$2.class
 linkup\presentacion\cu\admGrupo\frmOpcionesGrupo$2.class
 linkup\presentacion\cu\admGrupo\frmVerGrupo$2.class
+linkup\presentacion\AdministrarEvento$4.class
 linkup\presentacion\SeleccionarUbicacion$5.class
 linkup\presentacion\IngresarDetallesEvento$1.class
 linkup\presentacion\VentanaPrincipalCrearEvento$2.class
+linkup\presentacion\AdministrarEvento$3.class
 linkup\presentacion\cu\admGrupo\frmCrearGrupo$5.class
 linkup\presentacion\cu\admGrupo\frmGruposPrincipal$5.class
 linkup\presentacion\cu\admGrupo\frmVerGrupo$1.class
@@ -34,6 +37,7 @@ linkup\presentacion\cu\admGrupo\frmOpcionesGrupo$9.class
 linkup\presentacion\SeleccionarUbicacion$4.class
 linkup\presentacion\RegistrarUsuario.class
 linkup\presentacion\control\ControlRegistrarUsuario.class
+linkup\presentacion\AdministrarEvento$2.class
 linkup\exception\NegocioException.class
 linkup\presentacion\cu\admGrupo\frmCrearGrupo$6.class
 linkup\presentacion\cu\admGrupo\frmOpcionesGrupo$3.class
@@ -43,6 +47,7 @@ linkup\presentacion\cu\admGrupo\frmGruposPrincipal$4.class
 linkup\presentacion\EnviarInvitaciones$7.class
 linkup\presentacion\ConfirmacionEvento$5.class
 linkup\presentacion\cu\admGrupo\frmGruposPrincipal$7.class
+linkup\presentacion\AdministrarEvento.class
 linkup\presentacion\IngresarDetallesEvento$6.class
 linkup\presentacion\SeleccionarUbicacion$6.class
 linkup\presentacion\cu\admGrupo\frmVerGrupo$6.class
@@ -54,12 +59,14 @@ linkup\presentacion\IngresarDetallesEvento$3.class
 linkup\presentacion\cu\admGrupo\frmOpcionesGrupo$8.class
 linkup\presentacion\ConfirmacionEvento$3.class
 linkup\presentacion\EventoPanel.class
+linkup\presentacion\AdministrarEvento$5.class
 linkup\presentacion\cu\admGrupo\frmCrearGrupo$1.class
 linkup\presentacion\IniciarSesion$1.class
 linkup\presentacion\cu\admGrupo\frmVerGrupo$3.class
 linkup\presentacion\SeleccionarFechaHora$3.class
 Main\Main.class
 linkup\presentacion\VentanaPrincipalCrearEvento$3.class
+linkup\presentacion\AdministrarEvento$8.class
 linkup\presentacion\cu\admGrupo\frmOpcionesGrupo$5.class
 linkup\presentacion\EnviarInvitaciones$5.class
 linkup\presentacion\cu\admGrupo\frmGruposPrincipal.class
@@ -69,6 +76,7 @@ linkup\presentacion\cu\admGrupo\frmVerGrupo$5.class
 linkup\presentacion\IngresarDetallesEvento$4.class
 linkup\presentacion\VentanaPrincipalCrearEvento$4.class
 linkup\presentacion\control\ControlCrearEvento.class
+linkup\presentacion\AdministrarEvento$7.class
 linkup\presentacion\cu\admGrupo\frmGruposPrincipal$2.class
 linkup\presentacion\control\ControlIniciarSesion.class
 linkup\presentacion\ConfirmacionEvento$2.class
@@ -83,6 +91,7 @@ linkup\presentacion\cu\admGrupo\frmCrearGrupo$3.class
 linkup\presentacion\SeleccionarFechaHora.class
 linkup\presentacion\control\ControlAdministrarGrupo.class
 linkup\presentacion\IniciarSesion.class
+linkup\presentacion\AdministrarEvento$6.class
 linkup\presentacion\VentanaPrincipalCrearEvento$5.class
 linkup\presentacion\cu\admGrupo\frmGruposPrincipal$8.class
 linkup\presentacion\cu\admGrupo\frmOpcionesGrupo.class
