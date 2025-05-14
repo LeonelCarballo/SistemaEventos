@@ -13,9 +13,10 @@ import linkup.objetosnegocio.UsuarioON;
 import linkup.organizadoreventos.interfaces.IOrganizadorEventos;
 
 public class OrganizadorEventos implements IOrganizadorEventos {
-    private final List<ServicioEventos> eventos;
-    private final String idCalendario;    
-    
+
+    private final List<EventoDTO> eventos;
+    private final String idCalendario;
+
     public OrganizadorEventos(String idCalendario) {
         this.eventos = new ArrayList<>();
         this.idCalendario = Objects.requireNonNull(idCalendario, "ID de calendario no puede ser nulo");
@@ -26,16 +27,17 @@ public class OrganizadorEventos implements IOrganizadorEventos {
         EventoDTO eventoValidado = validarEventoCompleto(dto);
         ServicioEventos nuevoEvento = EventoMapper.toServicioEvento(eventoValidado);
         nuevoEvento.publicarEnCalendario(idCalendario);
-
+        eventos.add(dto);
     }
 
     @Override
     public EventoDTO consultarEventoPorId(String idExterno) {
-        return eventos.stream()
-                .filter(e -> e.getIdExterno().equals(idExterno))
-                .findFirst()
-                .map(EventoMapper::toDTO)
-                .orElse(null);
+//        return eventos.stream()
+//                .filter(e -> e.getIdExterno().equals(idExterno))
+//                .findFirst()
+//                .map(EventoMapper::toDTO)
+//                .orElse(null);
+        return null;
     }
 
     @Override
@@ -43,12 +45,13 @@ public class OrganizadorEventos implements IOrganizadorEventos {
 //        return eventos.stream()
 //                .map(EventoMapper::toDTO)
 //                .collect(Collectors.toList());
-        String usernameActual = UsuarioON.getInstance().getUsername();
-
-        return eventos.stream()
-                .filter(evento -> usernameActual.equals(evento.getEvento().getUsername()))
-                .map(EventoMapper::toDTO)
-                .collect(Collectors.toList());
+//        String usernameActual = UsuarioON.getInstance().getUsername();
+//
+//        return eventos.stream()
+//                .filter(evento -> usernameActual.equals(evento.getEvento().getUsername()))
+//                .map(EventoMapper::toDTO)
+//                .collect(Collectors.toList());
+        return eventos;
     }
 
     @Override
@@ -83,7 +86,7 @@ public class OrganizadorEventos implements IOrganizadorEventos {
             throw new NegocioException("La fecha de fin no puede ser anterior a la de inicio.");
         }
         return dto;
-    
+
     }
 
     @Override

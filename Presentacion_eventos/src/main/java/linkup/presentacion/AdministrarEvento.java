@@ -180,13 +180,15 @@ public class AdministrarEvento extends javax.swing.JFrame {
         });
         getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 640, 30, 30));
 
-        jButtonConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonregresar.png"))); // NOI18N
+        jButtonConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonconfirmar.png"))); // NOI18N
+        jButtonConfirmar.setBorderPainted(false);
+        jButtonConfirmar.setContentAreaFilled(false);
         jButtonConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonConfirmarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 650, 180, 70));
+        getContentPane().add(jButtonConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 630, 100, 50));
 
         jComboBoxEtiqueta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cumpleaños", "Boda", "Reunion" }));
         getContentPane().add(jComboBoxEtiqueta, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 310, 270, -1));
