@@ -7,6 +7,7 @@ package linkup.dtosnegocios.cu.admgrupo;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import linkup.objetosnegocio.UsuarioON;
 import linkup.objetosnegocio.cu.admgrupo.Grupo;
 import linkup.objetosnegocio.cu.admgrupo.UsuarioAG;
 
@@ -18,12 +19,12 @@ public class GrupoMapper {
     public GrupoMapper() {
     }
     
-      public static Grupo toEntidad(GrupoDTO dto, List<UsuarioAG> usuariosDisponibles) {
+      public static Grupo toEntidad(GrupoDTO dto, List<UsuarioON> usuariosDisponibles) {
         if (dto == null) return null;
 
-        List<UsuarioAG> miembros = new ArrayList<>();
+        List<UsuarioON> miembros = new ArrayList<>();
         for (String nombre : dto.getNombreMiembros()) {
-            for (UsuarioAG u : usuariosDisponibles) {
+            for (UsuarioON u : usuariosDisponibles) {
                 if (u.getNombre().equalsIgnoreCase(nombre)) {
                     miembros.add(u);
                     break;

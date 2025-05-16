@@ -6,16 +6,14 @@ package linkup.objetosnegocio.fabrica;
 
 import linkup.implementaciones.UsuariosDAO;
 import linkup.interfaces.IUsuariosDAO;
-import linkup.objetosnegocio.implementaciones.UsuariosBO;
-import linkup.objetosnegocio.interfaz.IUsuariosBO;
+import linkup.objetosnegocio.UsuarioON;
 
 /**
  *
  * @author gael_
  */
 public class FabricaObjetosNegocio {
-       public static IUsuariosBO crearUsuariosBO(){
-        IUsuariosDAO usuariosDAO = new UsuariosDAO();
-        return new UsuariosBO(usuariosDAO);
+    public static UsuarioON crearUsuarioON() {
+        return new UsuarioON(new UsuariosDAO());
     }
 }

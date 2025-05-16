@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import linkup.exception.NegocioException;
+import linkup.objetosnegocio.UsuarioON;
 import linkup.objetosnegocio.cu.admgrupo.Grupo;
 import linkup.objetosnegocio.cu.admgrupo.UsuarioAG;
 import linkup.presentacion.control.ControlAdministrarGrupo;
@@ -42,18 +43,18 @@ public class frmOpcionesGrupo extends javax.swing.JFrame {
 
     }
     
-        private List<UsuarioAG> mostrarUsuariosGrupo() {
-            List<UsuarioAG> usuarios = grupo.getMiembros(); 
+        private List<UsuarioON> mostrarUsuariosGrupo() {
+            List<UsuarioON> usuarios = grupo.getMiembros(); 
             llenarTablaUsuarios(usuarios);
             return usuarios;
         }
         
-        private void llenarTablaUsuarios(List<UsuarioAG> usuarios) {
+        private void llenarTablaUsuarios(List<UsuarioON> usuarios) {
             
             DefaultTableModel modeloTabla = (DefaultTableModel) this.tablaUsuarios.getModel();
             modeloTabla.setRowCount(0);
             
-            for(UsuarioAG u : usuarios){
+            for(UsuarioON u : usuarios){
                 Object[] fila = {
                     u.getNombre()
                 };
@@ -78,8 +79,8 @@ public class frmOpcionesGrupo extends javax.swing.JFrame {
 
             String nombreUsuario = (String) tablaUsuarios.getValueAt(filaSeleccionada, 0);
 
-            UsuarioAG usuarioAEliminar = null;
-            for (UsuarioAG u : grupo.getMiembros()) {
+            UsuarioON usuarioAEliminar = null;
+            for (UsuarioON u : grupo.getMiembros()) {
                 if (u.getNombre().equals(nombreUsuario)) {
                     usuarioAEliminar = u;
                     break;

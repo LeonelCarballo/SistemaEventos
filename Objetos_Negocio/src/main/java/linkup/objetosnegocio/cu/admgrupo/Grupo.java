@@ -6,6 +6,7 @@ package linkup.objetosnegocio.cu.admgrupo;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import linkup.objetosnegocio.UsuarioON;
 
 /**
  *
@@ -14,10 +15,10 @@ import java.util.List;
 public class Grupo {
     private String nombre;
     private LocalDateTime fechaCreaciom;
-    private List<UsuarioAG> miembros;
+    private List<UsuarioON> miembros;
     private List<Mensaje> mensajes;
 
-    public Grupo(String nombre, LocalDateTime fechaCreaciom, List<UsuarioAG> miembros, List<Mensaje> mensajes) {
+    public Grupo(String nombre, LocalDateTime fechaCreaciom, List<UsuarioON> miembros, List<Mensaje> mensajes) {
         this.nombre = nombre;
         this.fechaCreaciom = fechaCreaciom;
         this.miembros = miembros;
@@ -37,7 +38,7 @@ public class Grupo {
         return fechaCreaciom;
     }
 
-    public List<UsuarioAG> getMiembros() {
+    public List<UsuarioON> getMiembros() {
         return miembros;
     }
 
@@ -53,7 +54,7 @@ public class Grupo {
         this.fechaCreaciom = fechaCreaciom;
     }
 
-    public void setMiembros(List<UsuarioAG> miembros) {
+    public void setMiembros(List<UsuarioON> miembros) {
         this.miembros = miembros;
     }
 

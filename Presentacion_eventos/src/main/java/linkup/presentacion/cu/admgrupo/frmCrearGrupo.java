@@ -11,9 +11,9 @@ import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import linkup.dtosnegocios.cu.admgrupo.GrupoDTO;
-import linkup.dtosnegocios.cu.admgrupo.UsuariosMock;
+import linkup.objetosnegocio.UsuarioON;
 import linkup.objetosnegocio.cu.admgrupo.Grupo;
-import linkup.objetosnegocio.cu.admgrupo.UsuarioAG;
+import linkup.objetosnegocio.fabrica.FabricaObjetosNegocio;
 import linkup.presentacion.control.ControlAdministrarGrupo;
 import linkup.presentacion.control.ControlCrearEvento;
 
@@ -39,15 +39,17 @@ public class frmCrearGrupo extends javax.swing.JFrame {
     }
     
    public void LlenarTablaMiembrosAInvitar(){
-        UsuariosMock usuariosMock = new UsuariosMock();
-        List<UsuarioAG> usuariosDisponibles = usuariosMock.obtenerTodosLosUsuarios();
+
+       
+       List<UsuarioON> usuariosDisponibles = UsuarioON.toUsuarioONList(FabricaObjetosNegocio.crearUsuarioON().obtenerTodosLosUsuarios());
+
 
         DefaultTableModel modeloTabla = (DefaultTableModel) this.TablaUsuarios.getModel();
         modeloTabla.setRowCount(0);
 
         TablaUsuarios.setRowHeight(30);
 
-        for (UsuarioAG usuario : usuariosDisponibles) {
+        for (UsuarioON usuario : usuariosDisponibles) {
             Object[] fila = {
                 usuario.getNombre(),
             };
@@ -55,23 +57,22 @@ public class frmCrearGrupo extends javax.swing.JFrame {
         }
     }
     
-    public List<UsuarioAG> seleccionarMiembros(){
+    public List<UsuarioON> seleccionarMiembros(){
             int[] filasSeleccionadas = TablaUsuarios.getSelectedRows();
             if (filasSeleccionadas.length == 0) {
                 
                 return null;
             }
        
-            List<UsuarioAG> miembrosSeleccionados = new ArrayList<>();
+            List<UsuarioON> miembrosSeleccionados = new ArrayList<>();
             DefaultTableModel modelo = (DefaultTableModel) TablaUsuarios.getModel();
             
-            UsuariosMock usuariosMock = new UsuariosMock();
-            List<UsuarioAG> todosLosUsuarios = usuariosMock.obtenerTodosLosUsuarios();
+            List<UsuarioON> todosLosUsuarios = UsuarioON.toUsuarioONList(FabricaObjetosNegocio.crearUsuarioON().obtenerTodosLosUsuarios());
             
             for (int fila : filasSeleccionadas) {
                 String nombreSeleccionado = (String) modelo.getValueAt(fila, 0);
 
-                for (UsuarioAG usuario : todosLosUsuarios) {
+                for (UsuarioON usuario : todosLosUsuarios) {
                     if (usuario.getNombre().equalsIgnoreCase(nombreSeleccionado)) {
                         miembrosSeleccionados.add(usuario);
                         break; // Para evitar agregar duplicados si hay varios con mismo nombre
@@ -98,7 +99,7 @@ public class frmCrearGrupo extends javax.swing.JFrame {
             }
         }
 
-        List<UsuarioAG> miembrosSeleccionados = seleccionarMiembros();
+        List<UsuarioON> miembrosSeleccionados = seleccionarMiembros();
         
         if (miembrosSeleccionados == null || miembrosSeleccionados.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Debes seleccionar al menos un miembro para el grupo", "Error", JOptionPane.ERROR_MESSAGE);
@@ -106,7 +107,7 @@ public class frmCrearGrupo extends javax.swing.JFrame {
         }
         
         List<String> nombresMiembros = new ArrayList<>();
-        for (UsuarioAG u : miembrosSeleccionados) {
+        for (UsuarioON u : miembrosSeleccionados) {
             nombresMiembros.add(u.getNombre());
         }
         

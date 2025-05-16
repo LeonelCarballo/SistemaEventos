@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import linkup.exception.NegocioException;
+import linkup.objetosnegocio.UsuarioON;
 import linkup.objetosnegocio.cu.admgrupo.Grupo;
 import linkup.objetosnegocio.cu.admgrupo.UsuarioAG;
 
@@ -20,7 +21,7 @@ import linkup.objetosnegocio.cu.admgrupo.UsuarioAG;
 public class AdministrarGrupo implements IAdministrarGrupo {
     
     @Override
-    public void eliminarUsuarioDeGrupo(Grupo grupo, UsuarioAG usuario ){
+    public void eliminarUsuarioDeGrupo(Grupo grupo, UsuarioON usuario ){
         grupo.getMiembros().remove(usuario);
     }
 

@@ -7,18 +7,17 @@ package linkup.presentacion.control;
 import exception.NegocioException;
 import linkup.objetosnegocio.UsuarioON;
 import linkup.objetosnegocio.fabrica.FabricaObjetosNegocio;
-import linkup.objetosnegocio.interfaz.IUsuariosBO;
 import linkup.presentacion.IniciarSesion;
 
 public class ControlIniciarSesion {
     
     private IniciarSesion frmIniciarSesion;
-    private final IUsuariosBO usuariosBO;
+    private final UsuarioON usuariosON;
     private UsuarioON usuarioActual;
     private ControlCrearEvento controlEvento;
 
     public ControlIniciarSesion() {
-        this.usuariosBO = FabricaObjetosNegocio.crearUsuariosBO();
+        this.usuariosON = FabricaObjetosNegocio.crearUsuarioON();
     }
 
     public void iniciarCasoUso(ControlCrearEvento controlEvento){
@@ -28,7 +27,7 @@ public class ControlIniciarSesion {
     }
     
     public boolean iniciarSesion(String username, String contraseña) throws NegocioException {
-        UsuarioON usuario = usuariosBO.iniciarSesionUsuario(username, contraseña);
+        UsuarioON usuario = usuariosON.iniciarSesionUsuario(username, contraseña);
         if (usuario != null) {
             usuarioActual = usuario;
             UsuarioON.setInstance(usuario);

@@ -15,10 +15,10 @@ import linkup.dtosnegocios.cu.admgrupo.GrupoDTO;
 import linkup.dtosnegocios.cu.admgrupo.GrupoMapper;
 import linkup.dtosnegocios.cu.admgrupo.MensajeMapper;
 import linkup.dtosnegocios.cu.admgrupo.NuevoMensajeDTO;
-import linkup.dtosnegocios.cu.admgrupo.UsuariosMock;
+import linkup.objetosnegocio.UsuarioON;
 import linkup.objetosnegocio.cu.admgrupo.Grupo;
 import linkup.objetosnegocio.cu.admgrupo.Mensaje;
-import linkup.objetosnegocio.cu.admgrupo.UsuarioAG;
+import linkup.objetosnegocio.fabrica.FabricaObjetosNegocio;
 import linkup.presentacion.cu.admGrupo.frmCrearGrupo;
 import linkup.presentacion.cu.admGrupo.frmGruposPrincipal;
 import linkup.presentacion.cu.admGrupo.frmOpcionesGrupo;
@@ -38,11 +38,11 @@ public class ControlAdministrarGrupo {
     private frmCrearGrupo crearGrupo;
      
     private List<Grupo> grupos;
-    private List<UsuarioAG> usuariosDisponibles;
+    private List<UsuarioON> usuariosDisponibles;
     
     public ControlAdministrarGrupo() {
         this.grupos = new ArrayList<>();
-        this.usuariosDisponibles = new UsuariosMock().obtenerTodosLosUsuarios();
+        this.usuariosDisponibles = UsuarioON.toUsuarioONList(FabricaObjetosNegocio.crearUsuarioON().obtenerTodosLosUsuarios());
     }
     
     public void registrarGrupo(GrupoDTO grupoDTO) {
@@ -60,7 +60,7 @@ public class ControlAdministrarGrupo {
         return grupos;
     }
 
-    public List<UsuarioAG> getUsuariosDisponibles() {
+    public List<UsuarioON> getUsuariosDisponibles() {
         return usuariosDisponibles;
     }
     
@@ -73,7 +73,7 @@ public class ControlAdministrarGrupo {
         return null;
     }
      
-    public void eliminarUsuario(Grupo grupo, UsuarioAG usuario){
+    public void eliminarUsuario(Grupo grupo, UsuarioON usuario){
         administradorGrupos.eliminarUsuarioDeGrupo(grupo, usuario);
     } 
     

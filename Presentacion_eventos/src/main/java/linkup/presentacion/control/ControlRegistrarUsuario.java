@@ -11,7 +11,6 @@ import linkup.dtosnegocios.UsuarioDTO;
 import linkup.exception.NegocioException;
 import linkup.objetosnegocio.UsuarioON;
 import linkup.objetosnegocio.fabrica.FabricaObjetosNegocio;
-import linkup.objetosnegocio.interfaz.IUsuariosBO;
 import linkup.presentacion.IniciarSesion;
 import linkup.presentacion.RegistrarUsuario;
 
@@ -23,12 +22,12 @@ import linkup.presentacion.RegistrarUsuario;
 public class ControlRegistrarUsuario {
     private RegistrarUsuario frmRegistrarUsuario;
     private IniciarSesion frmIniciarSesion; 
-    private final IUsuariosBO usuariosBO;
+    private final UsuarioON usuariosON;
     ControlCrearEvento controlEvento;
 
     public ControlRegistrarUsuario(IniciarSesion frmIniciarSesion) {
         this.frmIniciarSesion = frmIniciarSesion;
-        this.usuariosBO = FabricaObjetosNegocio.crearUsuariosBO();
+        this.usuariosON = FabricaObjetosNegocio.crearUsuarioON();
     }
 
     public void iniciarCasoUso(ControlCrearEvento controlEvento) {
@@ -40,7 +39,7 @@ public class ControlRegistrarUsuario {
         
         UsuarioON usuario = new UsuarioON(username, contrasenia, nombre, apellido);
         
-        boolean registrado = usuariosBO.registrarUsuario(usuario);
+        boolean registrado = usuariosON.registrarUsuario(usuario);
         
         if (registrado) {
             
