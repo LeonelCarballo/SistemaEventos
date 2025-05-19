@@ -130,9 +130,10 @@ public class ControlCrearEvento {
 
     public void mostrarEnviarInvitaciones(EventoDTO eventoDTO) {
 
-        frmInvitaciones = new EnviarInvitaciones(this, eventoDTO);
+        this.eventoDTO = eventoDTO;
 
-        frmInvitaciones.setVisible(true);
+        ControlEnviarInvitaciones controlInvitaciones = new ControlEnviarInvitaciones(this);
+        controlInvitaciones.iniciarFlujo();
     }
 
     public void mostrarConfirmacionEvento(EventoDTO eventoDTO) {

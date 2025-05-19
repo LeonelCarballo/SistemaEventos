@@ -69,6 +69,7 @@ public class GestorContactos implements IGestorContactos {
         return Contactos.getInstancia().enviarInvitaciones(usuario, idEvento, contactosInfra);
     }
     
+    @Override
     public boolean validarExistenciaUsername(String username) {
         if (username == null || username.trim().isEmpty()) {
             return false;

@@ -15,6 +15,7 @@ linkup\presentacion\cu\admGrupo\frmOpcionesGrupo$4.class
 linkup\presentacion\cu\admGrupo\frmCrearGrupo$7.class
 linkup\presentacion\cu\admGrupo\frmOpcionesGrupo$1.class
 linkup\presentacion\cu\admGrupo\frmCrearGrupo$4.class
+linkup\presentacion\enviarinvitaciones\ResumenParticipantes$2.class
 linkup\presentacion\cu\admGrupo\frmGruposPrincipal$3.class
 linkup\presentacion\cu\admGrupo\frmGruposPrincipal$6.class
 linkup\presentacion\EventoPanel$1.class
@@ -66,6 +67,7 @@ linkup\presentacion\cu\admGrupo\frmOpcionesGrupo$8.class
 linkup\presentacion\ConfirmacionEvento$3.class
 linkup\presentacion\EventoPanel.class
 linkup\presentacion\AdministrarEvento$5.class
+linkup\presentacion\enviarinvitaciones\PanelContacto.class
 linkup\presentacion\cu\admGrupo\frmCrearGrupo$1.class
 linkup\presentacion\IniciarSesion$1.class
 linkup\presentacion\cu\admGrupo\frmVerGrupo$3.class
