@@ -16,4 +16,7 @@ public interface IContactosAPI {
     public abstract boolean enviarInvitaciones(String usuario, String idEvento, List<ContactoInfraestructuraDTO> contactos);
     
     public abstract List<ContactoInfraestructuraDTO> obtenerContactos(String usuario);
+    
+    public abstract boolean agregarAmigo(String usuario, String amigo);
+
 }

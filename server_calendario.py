@@ -35,15 +35,37 @@ def procesar_mensaje(data):
         if not usuario:
             return json.dumps({"exito": False, "error": "Falta el campo 'usuario'"})
 
+        # Inicializar usuario si no existe
         if usuario not in usuarios:
-            return json.dumps({"exito": False, "error": f"Usuario '{usuario}' no encontrado"})
+            usuarios[usuario] = {
+                "calendarios": {}
+            }
 
         calendarios_usuario = usuarios[usuario].get("calendarios", {})
 
-        if accion == "obtenerEventos":
+        if accion == "obtenerCalendarios":
+            return json.dumps(list(calendarios_usuario.keys()))
+
+        elif accion == "crearCalendario":
+            nombre = recibido.get("nombre")
+            if not nombre or not id_externo:
+                return json.dumps({"exito": False, "error": "Faltan datos para crear el calendario"})
+
+            if id_externo in calendarios_usuario:
+                return json.dumps({"exito": False, "error": "Ya existe un calendario con ese ID"})
+
+            calendarios_usuario[id_externo] = {
+                "nombre": nombre,
+                "eventos": []
+            }
+            usuarios[usuario]["calendarios"] = calendarios_usuario
+            guardar_datos()
+            return json.dumps({"exito": True})
+
+        elif accion == "obtenerEventos":
             calendario = calendarios_usuario.get(id_externo)
             if calendario:
-                return json.dumps(calendario["eventos"])
+                return json.dumps(calendario.get("eventos", []))
             else:
                 return json.dumps([])
 
@@ -56,11 +78,12 @@ def procesar_mensaje(data):
             if not calendario:
                 return json.dumps({"exito": False, "error": "Calendario no encontrado"})
 
+            eventos = calendario.get("eventos", [])
             nueva_dt = parse_fecha_hora(evento.get("fecha"), evento.get("hora"))
             if not nueva_dt:
                 return json.dumps({"exito": False, "error": "Formato de fecha u hora inválido"})
 
-            for existente in calendario["eventos"]:
+            for existente in eventos:
                 existente_dt = parse_fecha_hora(existente.get("fecha"), existente.get("hora"))
                 if existente_dt == nueva_dt:
                     return json.dumps({
@@ -68,8 +91,8 @@ def procesar_mensaje(data):
                         "error": "Conflicto de horario: ya existe un evento en esa fecha/hora"
                     })
 
-            #  Agregar evento si no hay conflicto
-            calendario["eventos"].append(evento)
+            eventos.append(evento)
+            calendario["eventos"] = eventos
             guardar_datos()
             print(f"Evento agregado para el usuario '{usuario}': {evento}")
             return json.dumps({"exito": True})
@@ -82,7 +105,7 @@ def procesar_mensaje(data):
             if not calendario:
                 return json.dumps({"disponible": False, "error": "Calendario no encontrado"})
 
-            for evento in calendario["eventos"]:
+            for evento in calendario.get("eventos", []):
                 if evento.get("fecha") == fecha and evento.get("hora") == hora:
                     return json.dumps({
                         "disponible": False,

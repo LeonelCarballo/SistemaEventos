@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package linkup.infraestructura;
 
 import com.google.gson.Gson;
@@ -10,13 +6,13 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import linkup.dtoinfraestructura.ContactoInfraestructuraDTO;
 import linkup.infraestructura.control.ControlInfraestructura;
 import linkup.infraestructura.interfaces.IContactosAPI;
 
 /**
- *
- * @author Dana Chavez
+ * API de contactos. Enviar invitaciones ahora lo delega al servidor de calendario.
  */
 public class ContactosAPI implements IContactosAPI {
     
@@ -28,14 +24,20 @@ public class ContactosAPI implements IContactosAPI {
 
     @Override
     public boolean enviarInvitaciones(String usuario, String idEvento, List<ContactoInfraestructuraDTO> contactos) {
+        List<String> invitados = contactos.stream()
+                .map(ContactoInfraestructuraDTO::getUsuario) 
+                .collect(Collectors.toList());
+
         Map<String, Object> payload = new HashMap<>();
         payload.put("accion", "enviarInvitaciones");
         payload.put("usuario", usuario);
         payload.put("idEvento", idEvento);
-        payload.put("contactos", contactos);
+        payload.put("invitados", invitados);
 
         String jsonPeticion = gson.toJson(payload);
-        String respuestaJson = control.obtenerContactos(jsonPeticion);
+        
+        // Llamar al servidor de calendario (NO al de contactos)
+        String respuestaJson = control.obtenerCalendario(jsonPeticion); // Este método debe enviar la petición al servidor simulado de calendario
 
         Map<String, Object> respuesta = gson.fromJson(respuestaJson, Map.class);
         return Boolean.TRUE.equals(respuesta.get("exito"));
@@ -56,4 +58,18 @@ public class ContactosAPI implements IContactosAPI {
         return contactos != null ? contactos : Collections.emptyList();
     }
     
+    @Override
+    public boolean agregarAmigo(String usuario, String amigo) {
+        Map<String, String> payload = new HashMap<>();
+        payload.put("accion", "agregarAmigo");
+        payload.put("usuario", usuario);
+        payload.put("amigo", amigo);
+
+        String jsonPeticion = gson.toJson(payload);
+        String respuestaJson = control.obtenerContactos(jsonPeticion);
+
+        Map<String, Object> respuesta = gson.fromJson(respuestaJson, Map.class);
+        return Boolean.TRUE.equals(respuesta.get("exito"));
+    }
+
 }
