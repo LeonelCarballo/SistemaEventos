@@ -64,7 +64,6 @@ public class ControlCrearEvento {
     private RegistrarUsuario frmRegistrarUsuario;  
     
     private ControlIniciarSesion controlIniciarSesion = new ControlIniciarSesion();
-    private final UsuarioON usuarioActual = controlIniciarSesion.getUsuarioActual();   
     
     private ControlRegistrarUsuario controlR = new ControlRegistrarUsuario(frmIniciarSesion);
 
@@ -82,6 +81,14 @@ public class ControlCrearEvento {
         mostrarInicioSesion(this);
     }
 
+    public void mostrarVentanaPrincipalPrincipio(ControlIniciarSesion controlIniciarSesion) {
+        this.eventos = validadorEvento.consultarEventos();
+        this.controlIniciarSesion = controlIniciarSesion;
+        frmPrincipal = new VentanaPrincipalCrearEvento(this, this.eventos);
+
+        frmPrincipal.setVisible(true);
+    }
+    
     public void mostrarVentanaPrincipal() {
         this.eventos = validadorEvento.consultarEventos();
 
@@ -237,7 +244,7 @@ public class ControlCrearEvento {
     }
 
     public List<ContactoDTO> ObtenerContactos() {
-        return gestorContactos.ObtenerContactos(usuarioActual.getUsername());
+        return gestorContactos.ObtenerContactos(controlIniciarSesion.getUsuarioActual().getUsername());
     }
 
     public EventoDTO validarDetallesEventoDTO(EventoDTO evento) {
