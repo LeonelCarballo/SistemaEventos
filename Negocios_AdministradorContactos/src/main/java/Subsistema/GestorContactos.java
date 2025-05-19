@@ -4,34 +4,25 @@
  */
 package Subsistema;
 
-import linkup.dtosnegocios.ContactoDTO;
 import ISubsistema.IGestorContactos;
 import exception.NegocioException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Pattern;
+import linkup.dtosnegocios.ContactoDTO;
+import linkup.dtoinfraestructura.ContactoInfraestructuraDTO;
+import linkup.objetosnegocio.Contactos;
+import linkup.objetosnegocio.UsuarioON;
 
-/**
- *
- * @author jrasc
- */
 public class GestorContactos implements IGestorContactos {
 
-    private final List<ContactoDTO> contactos = List.of(
-    new ContactoDTO("Ana Martínez", "ana.martinez@gmail.com", "6445551234"),
-    new ContactoDTO("Luis Ramírez", "luis.ramirez@hotmail.com", "6445555678"),
-    new ContactoDTO("Carla Torres", "carla.torres@yahoo.com", "6445559012")
-    );
-    
     @Override
     public ContactoDTO validarContacto(ContactoDTO contacto) throws NegocioException {
         validarNombre(contacto);
-        validarCorreo(contacto);
-        validarTelefono(contacto);
+        validarUsuario(contacto);
         return contacto;
     }
 
-    public void validarNombre(ContactoDTO contacto) throws NegocioException {
+    private void validarNombre(ContactoDTO contacto) throws NegocioException {
         String nombre = contacto.getNombre();
         if (nombre == null || nombre.isBlank()) {
             throw new NegocioException("El nombre del contacto no puede estar vacío.");
@@ -44,31 +35,55 @@ public class GestorContactos implements IGestorContactos {
         }
     }
 
-    public void validarCorreo(ContactoDTO contacto) throws NegocioException {
-        String correo = contacto.getCorreoElectronico();
-        if (correo == null || correo.isBlank()) {
-            throw new NegocioException("El correo electrónico no puede estar vacío.");
+    private void validarUsuario(ContactoDTO contacto) throws NegocioException {
+        String usuario = contacto.getUsuario();
+        if (usuario == null || usuario.isBlank()) {
+            throw new NegocioException("El usuario no puede estar vacío.");
         }
-        String patronCorreo = "^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$";
-        if (!Pattern.matches(patronCorreo, correo)) {
-            throw new NegocioException("El formato del correo electrónico no es válido.");
-        }
-    }
-
-    public void validarTelefono(ContactoDTO contacto) throws NegocioException {
-        String telefono = contacto.getTelefono();
-        if (telefono == null || telefono.isBlank()) {
-            throw new NegocioException("El número telefónico no puede estar vacío.");
-        }
-        if (!telefono.matches("^\\d{10}$")) {
-            throw new NegocioException("El número telefónico debe contener exactamente 10 dígitos.");
+        if (!usuario.matches("[\\w.-]{3,30}")) {
+            throw new NegocioException("El usuario contiene caracteres inválidos o es muy corto.");
         }
     }
 
     @Override
-    public List<ContactoDTO> ObtenerContactos() {
-        return contactos;
+    public List<ContactoDTO> ObtenerContactos(String usuario) {
+        List<ContactoInfraestructuraDTO> contactosInfra = Contactos.getInstancia().obtenerContactos(usuario);
+        List<ContactoDTO> contactosNegocio = new ArrayList<>();
+        for (ContactoInfraestructuraDTO infra : contactosInfra) {
+            contactosNegocio.add(new ContactoDTO(infra.getNombre(), infra.getUsuario()));
+        }
+        return contactosNegocio;
+    }
+
+    @Override
+    public boolean agregarContacto(String usuario, ContactoDTO contacto) {
+        return Contactos.getInstancia().agregarContacto(usuario, contacto.getUsuario());
+    }
+
+    @Override
+    public boolean enviarInvitaciones(String usuario, String idEvento, List<ContactoDTO> contactos) {
+        List<ContactoInfraestructuraDTO> contactosInfra = new ArrayList<>();
+        for (ContactoDTO contacto : contactos) {
+            contactosInfra.add(new ContactoInfraestructuraDTO(contacto.getNombre(), contacto.getUsuario()));
+        }
+        return Contactos.getInstancia().enviarInvitaciones(usuario, idEvento, contactosInfra);
     }
     
-    
+    public boolean validarExistenciaUsername(String username) {
+        if (username == null || username.trim().isEmpty()) {
+            return false;
+        }
+
+        if (!username.matches("^[a-zA-Z0-9]+$")) {
+            return false;
+        }
+
+        try {
+            UsuarioON usuarioON = UsuarioON.getInstance();
+            return usuarioON.existeUsername(username);
+        } catch (IllegalStateException e) {
+            return false;
+        }
+    }
 }
+

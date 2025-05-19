@@ -8,12 +8,10 @@ import linkup.dtosnegocios.ContactoDTO;
 import exception.NegocioException;
 import java.util.List;
 
-/**
- *
- * @author jrasc
- */
 public interface IGestorContactos {
-    public ContactoDTO validarContacto(ContactoDTO contacto) throws NegocioException;
-    
-    public List<ContactoDTO> ObtenerContactos();
+    public abstract ContactoDTO validarContacto(ContactoDTO contacto) throws NegocioException;
+    public abstract List<ContactoDTO> ObtenerContactos(String usuario);
+    public abstract boolean agregarContacto(String usuario, ContactoDTO contacto);
+    public abstract boolean enviarInvitaciones(String usuario, String idEvento, List<ContactoDTO> contactos);
+    public abstract boolean validarExistenciaUsername(String username) throws NegocioException;
 }
