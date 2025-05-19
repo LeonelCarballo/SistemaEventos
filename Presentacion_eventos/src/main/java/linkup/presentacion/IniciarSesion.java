@@ -48,7 +48,7 @@ public class IniciarSesion extends javax.swing.JFrame {
 
         if (autenticado) {
             JOptionPane.showMessageDialog(null, "Inicio de sesión exitoso.", "Bienvenido", JOptionPane.INFORMATION_MESSAGE);
-            controlEvento.mostrarVentanaPrincipal();
+            controlEvento.mostrarVentanaPrincipalPrincipio(controlIniciarSesion);
             this.dispose();
         } else {
             JOptionPane.showMessageDialog(null, "Nombre de usuario o contraseña incorrectos.", "Error de autenticación", JOptionPane.ERROR_MESSAGE);
