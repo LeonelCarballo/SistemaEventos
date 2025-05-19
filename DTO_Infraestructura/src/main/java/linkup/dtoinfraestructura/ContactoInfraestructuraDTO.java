@@ -10,16 +10,14 @@ package linkup.dtoinfraestructura;
  */
 public class ContactoInfraestructuraDTO {
     public String nombre;
-    public String correo;
-    public String telefono;
+    public String usuario;
 
     public ContactoInfraestructuraDTO() {
     }
 
-    public ContactoInfraestructuraDTO(String nombre, String correo, String telefono) {
+    public ContactoInfraestructuraDTO(String nombre, String usuario) {
         this.nombre = nombre;
-        this.correo = correo;
-        this.telefono = telefono;
+        this.usuario = usuario;
     }
 
     public String getNombre() {
@@ -30,22 +28,12 @@ public class ContactoInfraestructuraDTO {
         this.nombre = nombre;
     }
 
-    public String getCorreo() {
-        return correo;
+    public String getUsuario() {
+        return usuario;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-    
-    
-    
+      
 }

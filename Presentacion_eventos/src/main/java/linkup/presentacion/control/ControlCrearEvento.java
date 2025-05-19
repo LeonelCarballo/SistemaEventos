@@ -64,6 +64,8 @@ public class ControlCrearEvento {
     private RegistrarUsuario frmRegistrarUsuario;  
     
     private ControlIniciarSesion controlIniciarSesion = new ControlIniciarSesion();
+    private final UsuarioON usuarioActual = controlIniciarSesion.getUsuarioActual();   
+    private final String usuario = usuarioActual.getUsername();
     
     private ControlRegistrarUsuario controlR = new ControlRegistrarUsuario(frmIniciarSesion);
 
@@ -228,12 +230,13 @@ public class ControlCrearEvento {
 //    public Infraestructura getUbicacionSeleccionada() {
 //        return ubicacionSeleccionada;
 //    }
+    
     public List<ContactoDTO> getContactosSeleccionados() {
         return contactosSeleccionados;
     }
 
     public List<ContactoDTO> ObtenerContactos() {
-        return gestorContactos.ObtenerContactos();
+        return gestorContactos.ObtenerContactos(usuario);
     }
 
     public EventoDTO validarDetallesEventoDTO(EventoDTO evento) {

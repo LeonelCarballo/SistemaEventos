@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package linkup.infraestructura.control;
 
 import com.google.gson.JsonObject;
@@ -18,10 +14,15 @@ public class ControlInfraestructura {
         IConector conector = FabricaConectores.crearConector("calendario");
         return conector.invocarServicioJson(json);
     }
-    
+
+    public String obtenerCalendario(String json) {
+        IConector conector = FabricaConectores.crearConector("calendario");
+        return conector.invocarServicioJson(json);
+    }
+
     public String obtenerUbicacionDesdeServidor() {
-    IConector conector = FabricaConectores.crearConector("mapa");
-    return conector.invocarServicioJson(""); // No se envía JSON, solo se hace GET
+        IConector conector = FabricaConectores.crearConector("mapa");
+        return conector.invocarServicioJson(""); // No se envía JSON, solo se hace GET
     }
 
     public String obtenerContactos(String json) {
@@ -29,4 +30,3 @@ public class ControlInfraestructura {
         return conector.invocarServicioJson(json);
     }
 }
-

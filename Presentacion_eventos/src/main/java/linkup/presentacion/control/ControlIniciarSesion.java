@@ -39,4 +39,8 @@ public class ControlIniciarSesion {
     public UsuarioON getUsuarioActual() {
         return usuarioActual;
     }
+    
+    public String getUsuarioActual(UsuarioON usuario){
+        return usuario.getUsername();
+    }
 }
