@@ -13,4 +13,5 @@ public interface IGestorContactos {
     public abstract List<ContactoDTO> ObtenerContactos(String usuario);
     public abstract boolean agregarContacto(String usuario, ContactoDTO contacto);
     public abstract boolean enviarInvitaciones(String usuario, String idEvento, List<ContactoDTO> contactos);
+    public abstract boolean validarExistenciaUsername(String username) throws NegocioException;
 }

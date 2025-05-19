@@ -8,10 +8,10 @@ import ISubsistema.IGestorContactos;
 import exception.NegocioException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Pattern;
 import linkup.dtosnegocios.ContactoDTO;
 import linkup.dtoinfraestructura.ContactoInfraestructuraDTO;
 import linkup.objetosnegocio.Contactos;
+import linkup.objetosnegocio.UsuarioON;
 
 public class GestorContactos implements IGestorContactos {
 
@@ -67,6 +67,23 @@ public class GestorContactos implements IGestorContactos {
             contactosInfra.add(new ContactoInfraestructuraDTO(contacto.getNombre(), contacto.getUsuario()));
         }
         return Contactos.getInstancia().enviarInvitaciones(usuario, idEvento, contactosInfra);
+    }
+    
+    public boolean validarExistenciaUsername(String username) {
+        if (username == null || username.trim().isEmpty()) {
+            return false;
+        }
+
+        if (!username.matches("^[a-zA-Z0-9]+$")) {
+            return false;
+        }
+
+        try {
+            UsuarioON usuarioON = UsuarioON.getInstance();
+            return usuarioON.existeUsername(username);
+        } catch (IllegalStateException e) {
+            return false;
+        }
     }
 }
 

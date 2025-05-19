@@ -201,4 +201,18 @@ public class UsuarioON {
         return usuariosDAO.obtenerTodosLosUsuarios();
     }
     
+    public void validarExistenciaUsername(String username) throws NegocioException {
+        if (username == null || username.trim().isEmpty()) {
+            throw new NegocioException("El nombre de usuario no puede estar vacío.");
+        }
+
+        if (!username.matches("^[a-zA-Z0-9]+$")) {
+            throw new NegocioException("El nombre de usuario contiene caracteres inválidos.");
+        }
+
+        if (!usuariosDAO.existeUsername(username)) {
+            throw new NegocioException("El nombre de usuario no existe.");
+        }
+    }
+
 }
