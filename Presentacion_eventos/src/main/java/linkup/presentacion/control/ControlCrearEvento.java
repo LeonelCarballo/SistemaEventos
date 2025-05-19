@@ -65,7 +65,6 @@ public class ControlCrearEvento {
     
     private ControlIniciarSesion controlIniciarSesion = new ControlIniciarSesion();
     private final UsuarioON usuarioActual = controlIniciarSesion.getUsuarioActual();   
-    private final String usuario = usuarioActual.getUsername();
     
     private ControlRegistrarUsuario controlR = new ControlRegistrarUsuario(frmIniciarSesion);
 
@@ -237,7 +236,7 @@ public class ControlCrearEvento {
     }
 
     public List<ContactoDTO> ObtenerContactos() {
-        return gestorContactos.ObtenerContactos(usuario);
+        return gestorContactos.ObtenerContactos(usuarioActual.getUsername());
     }
 
     public EventoDTO validarDetallesEventoDTO(EventoDTO evento) {
