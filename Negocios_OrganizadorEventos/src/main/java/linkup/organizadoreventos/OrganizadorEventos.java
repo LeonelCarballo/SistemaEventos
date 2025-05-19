@@ -8,6 +8,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import linkup.dtosnegocios.EventoDTO;
 import linkup.exception.NegocioException;
+import linkup.objetosnegocio.Evento;
 import linkup.objetosnegocio.ServicioEventos;
 import linkup.objetosnegocio.UsuarioON;
 import linkup.organizadoreventos.interfaces.IOrganizadorEventos;
@@ -15,6 +16,7 @@ import linkup.organizadoreventos.interfaces.IOrganizadorEventos;
 public class OrganizadorEventos implements IOrganizadorEventos {
 
     private final List<EventoDTO> eventos;
+
     private final String idCalendario;
 
     public OrganizadorEventos(String idCalendario) {
@@ -27,7 +29,6 @@ public class OrganizadorEventos implements IOrganizadorEventos {
         EventoDTO eventoValidado = validarEventoCompleto(dto);
         ServicioEventos nuevoEvento = EventoMapper.toServicioEvento(eventoValidado);
         nuevoEvento.publicarEnCalendario(idCalendario);
-        eventos.add(dto);
     }
 
     @Override
@@ -42,16 +43,14 @@ public class OrganizadorEventos implements IOrganizadorEventos {
 
     @Override
     public List<EventoDTO> consultarEventos() {
-//        return eventos.stream()
-//                .map(EventoMapper::toDTO)
-//                .collect(Collectors.toList());
-//        String usernameActual = UsuarioON.getInstance().getUsername();
-//
-//        return eventos.stream()
-//                .filter(evento -> usernameActual.equals(evento.getEvento().getUsername()))
-//                .map(EventoMapper::toDTO)
-//                .collect(Collectors.toList());
-        return eventos;
+        String usernameActual = UsuarioON.getInstance().getUsername();
+
+        List<Evento> eventosInfra = ServicioEventos.obtenerEventosDelCalendario(idCalendario);
+
+        return eventosInfra.stream()
+                .filter(evento -> usernameActual.equals(evento.getUsername()))
+                .map(EventoMapper::toDTO)
+                .collect(Collectors.toList());
     }
 
     @Override
