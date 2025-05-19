@@ -79,4 +79,58 @@ public class EventoInfraestructuraDTO {
     public String getBannerPath() {
         return bannerPath;
     }
+
+    public void setIdExterno(String idExterno) {
+        this.idExterno = idExterno;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setNombreEvento(String nombreEvento) {
+        this.nombreEvento = nombreEvento;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public void setEtiqueta(String etiqueta) {
+        this.etiqueta = etiqueta;
+    }
+
+    public void setFechaHora(LocalDateTime fechaHora) {
+        this.fechaHora = fechaHora;
+    }
+
+    public void setFechaFin(LocalDateTime fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public void setLatitud(Double latitud) {
+        this.latitud = latitud;
+    }
+
+    public void setLongitud(Double longitud) {
+        this.longitud = longitud;
+    }
+
+    public void setRecordatorioActivo(boolean recordatorioActivo) {
+        this.recordatorioActivo = recordatorioActivo;
+    }
+
+    public void setFechaRecordatorio(LocalDateTime fechaRecordatorio) {
+        this.fechaRecordatorio = fechaRecordatorio;
+    }
+
+    public void setBannerPath(String bannerPath) {
+        this.bannerPath = bannerPath;
+    }
+    
+    
 }

@@ -22,26 +22,37 @@ import linkup.infraestructura.utils.LocalDateTimeAdapter;
 public class Integracion implements IIntegracion {
 
     private final Gson gson = new GsonBuilder()
-        .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())
-        .create();
+            .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())
+            .create();
     private final ControlInfraestructura control = new ControlInfraestructura();
 
     @Override
-    public List<EventoInfraestructuraDTO> obtenerEventosDelCalendario(String idExterno) {
+    public List<EventoInfraestructuraDTO> obtenerEventosDelCalendario(String idExterno, String username) {
         Map<String, String> payload = new HashMap<>();
         payload.put("accion", "obtenerEventos");
         payload.put("idExterno", idExterno);
-        
+        payload.put("usuario", username);
 
         String jsonPeticion = gson.toJson(payload);
-        String respuestaJson = control.agendarCalendario(jsonPeticion); 
+        String respuestaJson = control.agendarCalendario(jsonPeticion);
 
-        java.lang.reflect.Type tipoLista = new TypeToken<List<EventoInfraestructuraDTO>>() {}.getType();
+        System.out.println("Respuesta JSON: " + respuestaJson);
+
+        try {
+            JsonObject respuestaObj = JsonParser.parseString(respuestaJson).getAsJsonObject();
+            if (respuestaObj.has("exito") && !respuestaObj.get("exito").getAsBoolean()) {
+                System.out.println("Error desde el servidor: " + respuestaObj.get("error").getAsString());
+                return Collections.emptyList();
+            }
+        } catch (Exception e) {
+        }
+
+        java.lang.reflect.Type tipoLista = new TypeToken<List<EventoInfraestructuraDTO>>() {
+        }.getType();
         List<EventoInfraestructuraDTO> eventos = gson.fromJson(respuestaJson, tipoLista);
 
         return eventos != null ? eventos : Collections.emptyList();
     }
-
 
     @Override
     public void agregarEventoACalendario(String idCalendario, EventoInfraestructuraDTO evento) {
@@ -51,8 +62,9 @@ public class Integracion implements IIntegracion {
         payload.put("evento", evento);
         payload.put("usuario", evento.getUsername());
 
+        System.out.println("Usuario en evento: " + evento.getUsername());
         String json = gson.toJson(payload);
-        control.agendarCalendario(json); 
+        control.agendarCalendario(json);
     }
 
     @Override
@@ -72,18 +84,18 @@ public class Integracion implements IIntegracion {
 
     @Override
     public Map<String, Double> obtenerUbicacionMapa() {
-    String jsonRespuesta = control.obtenerUbicacionDesdeServidor();
-    JsonObject objeto = JsonParser.parseString(jsonRespuesta).getAsJsonObject();
+        String jsonRespuesta = control.obtenerUbicacionDesdeServidor();
+        JsonObject objeto = JsonParser.parseString(jsonRespuesta).getAsJsonObject();
 
-    Map<String, Double> ubicacion = new HashMap<>();
-    ubicacion.put("latitud", objeto.get("latitud").getAsDouble());
-    ubicacion.put("longitud", objeto.get("longitud").getAsDouble());
+        Map<String, Double> ubicacion = new HashMap<>();
+        ubicacion.put("latitud", objeto.get("latitud").getAsDouble());
+        ubicacion.put("longitud", objeto.get("longitud").getAsDouble());
 
-    return ubicacion;
+        return ubicacion;
     }
 
-
     private static class CalendarioPayload {
+
         String idExterno;
         EventoInfraestructuraDTO evento;
 

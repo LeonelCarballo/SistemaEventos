@@ -236,12 +236,14 @@ public class SeleccionarFechaHora extends javax.swing.JFrame {
 
         controlador.mostrarSeleccionarUbicacion(eventoDTO);
         cerrar();
+        
 
     } catch (NegocioException ex) {
         JOptionPane.showMessageDialog(this, ex.getMessage(), "Error de validación", JOptionPane.ERROR_MESSAGE);
     } catch (DateTimeException | NumberFormatException ex) {
         JOptionPane.showMessageDialog(this, "Hora o fecha inválida.", "Error", JOptionPane.ERROR_MESSAGE);
     }
+       
     }//GEN-LAST:event_jButtonSiguienteActionPerformed
 
     private void jButtonInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInicioActionPerformed

@@ -82,8 +82,9 @@ public class ControlCrearEvento {
     }
 
     public void mostrarVentanaPrincipal() {
+        this.eventos = validadorEvento.consultarEventos();
 
-        frmPrincipal = new VentanaPrincipalCrearEvento(this, eventos);
+        frmPrincipal = new VentanaPrincipalCrearEvento(this, this.eventos);
 
         frmPrincipal.setVisible(true);
     }
@@ -98,7 +99,7 @@ public class ControlCrearEvento {
         frmRegistrarUsuario.setVisible(true);
     }
 
-    public void mostrarVentanaPrincipalAlCrear(List<EventoDTO> eventos) {
+    public void mostrarVentanaPrincipalAlCrear(List<EventoDTO> eventos1) {
         eventos = validadorEvento.consultarEventos();
 
         frmPrincipal = new VentanaPrincipalCrearEvento(this, eventos);

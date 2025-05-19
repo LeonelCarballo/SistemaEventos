@@ -19,7 +19,7 @@ public interface IIntegracion {
      * @param idExterno Identificador externo del calendario (ej. en Google)
      * @return Lista de eventos
      */
-    public abstract List<EventoInfraestructuraDTO> obtenerEventosDelCalendario(String idExterno);
+    public abstract List<EventoInfraestructuraDTO> obtenerEventosDelCalendario(String idExterno, String username);
 
     /**
      * Agrega un evento a un calendario.

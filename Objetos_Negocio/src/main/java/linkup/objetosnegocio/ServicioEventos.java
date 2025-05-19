@@ -44,7 +44,7 @@ public final class ServicioEventos {
 
     public static List<Evento> obtenerEventosDelCalendario(String idCalendarioExterno) {
         List<EventoInfraestructuraDTO> eventosInfra = getInstancia().integracion
-            .obtenerEventosDelCalendario(idCalendarioExterno);
+            .obtenerEventosDelCalendario(idCalendarioExterno, UsuarioON.getInstance().getUsername());
         
         return eventosInfra.stream()
                 .map(getInstancia()::convertirADominio)
@@ -72,7 +72,7 @@ public final class ServicioEventos {
     private EventoInfraestructuraDTO convertirADTO() {
         EventoInfraestructuraDTO dto = new EventoInfraestructuraDTO();
         dto.idExterno = evento.getIdExterno();
-       
+        dto.username = evento.getUsername();
         dto.nombreEvento = evento.getNombreEvento();
         dto.descripcion = evento.getDescripcion();
         dto.etiqueta = evento.getEtiqueta().name();
