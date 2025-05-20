@@ -29,4 +29,9 @@ public class ControlInfraestructura {
         IConector conector = FabricaConectores.crearConector("contactos");
         return conector.invocarServicioJson(json);
     }
+    
+    public String enviarContactos(String json) {
+        IConector conector = FabricaConectores.crearConector("contactos");
+        return conector.invocarServicioJson(json);
+    }
 }

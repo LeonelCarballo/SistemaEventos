@@ -51,6 +51,7 @@ public class ContactosAPI implements IContactosAPI {
 
         String jsonPeticion = gson.toJson(payload);
         String respuesta = control.obtenerContactos(jsonPeticion);
+        System.out.println("Respuesta cruda del servidor: " + respuesta);
 
         java.lang.reflect.Type tipoLista = new TypeToken<List<ContactoInfraestructuraDTO>>() {}.getType();
         List<ContactoInfraestructuraDTO> contactos = gson.fromJson(respuesta, tipoLista);
@@ -66,10 +67,12 @@ public class ContactosAPI implements IContactosAPI {
         payload.put("amigo", amigo);
 
         String jsonPeticion = gson.toJson(payload);
-        String respuestaJson = control.obtenerContactos(jsonPeticion);
+        System.out.println("JSON que se envía al servidor de contactos: " + jsonPeticion);
+        String respuestaJson = control.enviarContactos(jsonPeticion);
+
 
         Map<String, Object> respuesta = gson.fromJson(respuestaJson, Map.class);
-        System.out.println("se agrego al contacto uwu uwu");
+        System.out.println("Respuesta agregarAmigo: " + respuestaJson);
         return Boolean.TRUE.equals(respuesta.get("exito"));
     }
 

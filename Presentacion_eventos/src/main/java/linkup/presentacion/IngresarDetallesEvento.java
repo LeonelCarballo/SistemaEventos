@@ -74,6 +74,7 @@ public class IngresarDetallesEvento extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jLabelLogo1 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+        jButtonMisAmigos = new javax.swing.JButton();
         jLabelFondo = new javax.swing.JLabel();
         jPanelBlanco = new javax.swing.JPanel();
 
@@ -111,6 +112,7 @@ public class IngresarDetallesEvento extends javax.swing.JFrame {
         jButtonInicio1.setBackground(new java.awt.Color(255, 255, 255));
         jButtonInicio1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botoninicio.png"))); // NOI18N
         jButtonInicio1.setBorder(null);
+        jButtonInicio1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonInicio1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonInicio1ActionPerformed(evt);
@@ -167,12 +169,14 @@ public class IngresarDetallesEvento extends javax.swing.JFrame {
         jPanelRosaClaro.add(jLabelDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
         jButtonSeleccionarBanner.setText("Seleccionar banner");
+        jButtonSeleccionarBanner.setBorder(null);
+        jButtonSeleccionarBanner.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonSeleccionarBanner.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSeleccionarBannerActionPerformed(evt);
             }
         });
-        jPanelRosaClaro.add(jButtonSeleccionarBanner, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 270, -1));
+        jPanelRosaClaro.add(jButtonSeleccionarBanner, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 270, 30));
 
         getContentPane().add(jPanelRosaClaro, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 230, 310, 400));
 
@@ -195,7 +199,23 @@ public class IngresarDetallesEvento extends javax.swing.JFrame {
         jButton3.setBorder(null);
         jButton3.setContentAreaFilled(false);
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 60, -1));
+
+        jButtonMisAmigos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonmisamigos.png"))); // NOI18N
+        jButtonMisAmigos.setBorder(null);
+        jButtonMisAmigos.setContentAreaFilled(false);
+        jButtonMisAmigos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonMisAmigos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMisAmigosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonMisAmigos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 60, -1));
 
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/nuevoevento.png"))); // NOI18N
         getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-8, 0, 1200, -1));
@@ -260,6 +280,15 @@ public class IngresarDetallesEvento extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonInicio1ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        cerrar();
+        controlador.mostrarVentanaPrincipal();       
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButtonMisAmigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMisAmigosActionPerformed
+        controlador.mostrarAgregarContactos();
+    }//GEN-LAST:event_jButtonMisAmigosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -305,6 +334,7 @@ public class IngresarDetallesEvento extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonInicio1;
     private javax.swing.JButton jButtonMenu;
+    private javax.swing.JButton jButtonMisAmigos;
     private javax.swing.JButton jButtonSeleccionarBanner;
     private javax.swing.JButton jButtonSiguiente;
     private javax.swing.JComboBox<String> jComboBoxEtiqueta;

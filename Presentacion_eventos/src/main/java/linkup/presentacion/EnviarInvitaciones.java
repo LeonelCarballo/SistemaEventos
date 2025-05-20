@@ -95,6 +95,7 @@ public class EnviarInvitaciones extends javax.swing.JFrame {
         jCheckBoxEnviarNotificaciones = new javax.swing.JCheckBox();
         jCheckBoxGenerarAlbum = new javax.swing.JCheckBox();
         jButtonInicio = new javax.swing.JButton();
+        jButtonMisAmigos = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabelLogo1 = new javax.swing.JLabel();
         jLabelFondo = new javax.swing.JLabel();
@@ -174,6 +175,11 @@ public class EnviarInvitaciones extends javax.swing.JFrame {
         jButton3.setBorder(null);
         jButton3.setContentAreaFilled(false);
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanelBlanco.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 60, -1));
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonchat.png"))); // NOI18N
@@ -229,6 +235,17 @@ public class EnviarInvitaciones extends javax.swing.JFrame {
         });
         jPanelBlanco.add(jButtonInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 200, 50));
 
+        jButtonMisAmigos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonmisamigos.png"))); // NOI18N
+        jButtonMisAmigos.setBorder(null);
+        jButtonMisAmigos.setContentAreaFilled(false);
+        jButtonMisAmigos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonMisAmigos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMisAmigosActionPerformed(evt);
+            }
+        });
+        jPanelBlanco.add(jButtonMisAmigos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 60, -1));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lblcreandoevento.png"))); // NOI18N
         jPanelBlanco.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 610, 210, -1));
 
@@ -278,6 +295,15 @@ public class EnviarInvitaciones extends javax.swing.JFrame {
     private void jButtonInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInicioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonInicioActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        cerrar();
+        controlador.mostrarVentanaPrincipal();        
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButtonMisAmigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMisAmigosActionPerformed
+        controlador.mostrarAgregarContactos();
+    }//GEN-LAST:event_jButtonMisAmigosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -339,6 +365,7 @@ public class EnviarInvitaciones extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCopiarEnlace;
     private javax.swing.JButton jButtonInicio;
     private javax.swing.JButton jButtonMenu;
+    private javax.swing.JButton jButtonMisAmigos;
     private javax.swing.JButton jButtonSiguiente;
     private javax.swing.JCheckBox jCheckBoxEnviarNotificaciones;
     private javax.swing.JCheckBox jCheckBoxGenerarAlbum;

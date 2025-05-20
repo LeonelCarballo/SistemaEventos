@@ -38,7 +38,7 @@ public class SeleccionarParticipantes extends javax.swing.JFrame {
         panelesContactos = new ArrayList<>();
 
         this.contactos = new ArrayList<>();
-        List<ContactoDTO> contactosDTO = control.obtenerContactos(); 
+        this.contactosDTO = control.obtenerContactos(); 
 
         for (ContactoDTO contacto : contactosDTO) {
             this.contactos.add(contacto.getNombre());

@@ -129,7 +129,7 @@ public class IniciarSesion extends javax.swing.JFrame {
                 btnRegistrarseActionPerformed(evt);
             }
         });
-        panelBlanco.add(btnRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 510, 100, 40));
+        panelBlanco.add(btnRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 510, 100, 40));
 
         jLabelRegistrar.setForeground(new java.awt.Color(204, 127, 138));
         jLabelRegistrar.setText("No tienes una cuenta? ");

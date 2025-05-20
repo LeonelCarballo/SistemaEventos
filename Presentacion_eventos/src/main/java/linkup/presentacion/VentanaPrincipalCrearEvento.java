@@ -142,13 +142,16 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
         jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/LINK UP.png"))); // NOI18N
         jPanelFondoBlanco.add(jLabelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 250, 50));
 
-        jButtonMisAmigos.setText("jButton4");
+        jButtonMisAmigos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonmisamigos.png"))); // NOI18N
+        jButtonMisAmigos.setBorder(null);
+        jButtonMisAmigos.setContentAreaFilled(false);
+        jButtonMisAmigos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonMisAmigos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonMisAmigosActionPerformed(evt);
             }
         });
-        jPanelFondoBlanco.add(jButtonMisAmigos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 50, -1));
+        jPanelFondoBlanco.add(jButtonMisAmigos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 60, -1));
 
         jButtonInicio1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botoninicio.png"))); // NOI18N
         jButtonInicio1.setBorder(null);
@@ -214,7 +217,7 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanelFondoBlanco.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 590, 60, 60));
+        jPanelFondoBlanco.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 670, 60, 60));
 
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondosimple.png"))); // NOI18N
         jPanelFondoBlanco.add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-9, 0, 1160, -1));
@@ -239,7 +242,8 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGruposActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        cerrar();
+        controlador.mostrarVentanaPrincipal();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
