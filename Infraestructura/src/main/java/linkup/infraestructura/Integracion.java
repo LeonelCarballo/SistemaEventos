@@ -82,15 +82,15 @@ public class Integracion implements IIntegracion {
         return respuestaJson.get("disponible").getAsBoolean();
     }
 
-    @Override
-    public Map<String, Double> obtenerUbicacionMapa() {
-        String jsonRespuesta = control.obtenerUbicacionDesdeServidor();
-        JsonObject objeto = JsonParser.parseString(jsonRespuesta).getAsJsonObject();
+    public Map<String, String> obtenerUbicacionMapa() {
+    String jsonRespuesta = control.obtenerUbicacionDesdeServidor();
+    JsonObject objeto = JsonParser.parseString(jsonRespuesta).getAsJsonObject();
 
-        Map<String, Double> ubicacion = new HashMap<>();
-        ubicacion.put("latitud", objeto.get("latitud").getAsDouble());
-        ubicacion.put("longitud", objeto.get("longitud").getAsDouble());
-
+    Map<String, String> ubicacion = new HashMap<>();
+    ubicacion.put("latitud", objeto.get("latitud").getAsString());
+    ubicacion.put("longitud", objeto.get("longitud").getAsString());
+    ubicacion.put("ciudad", objeto.get("ciudad").getAsString());
+    ubicacion.put("localidad", objeto.get("localidad").getAsString());
         return ubicacion;
     }
 

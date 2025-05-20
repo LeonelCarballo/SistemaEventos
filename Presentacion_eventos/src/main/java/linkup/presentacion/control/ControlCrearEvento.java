@@ -215,11 +215,50 @@ public class ControlCrearEvento {
             }
             this.contactosSeleccionados = contactos;
             cerrarVentana(frmInvitaciones);
+            System.out.println(eventoDTO.getNombreEvento()+ "hola");
             mostrarConfirmacionEvento(eventoDTO);
             return contactosSeleccionados;
         } catch (NegocioException e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);
             return null;
+        }
+    }
+    
+    /**
+     * Llama al subsistema para enviar las invitaciones
+     * usando la lista que quedó en contactosSeleccionados.
+     */
+    public void enviarInvitacionesSeleccionadas() {
+        String username = UsuarioON.getInstance().getUsername();
+        String idEvento  = eventoDTO.getIdExterno();
+
+        // Debug: asegúrate de que no sea null ni vacío
+        System.out.println(
+            "▶ enviandoInvitaciones: usuario=" + username +
+            " idEvento=" + idEvento +
+            " contactos=" + contactosSeleccionados
+        );
+
+        boolean ok = gestorContactos.enviarInvitaciones(
+            username,
+            idEvento,
+            contactosSeleccionados
+        );
+
+        if (ok) {
+            JOptionPane.showMessageDialog(
+                null,
+                "Invitaciones enviadas correctamente",
+                "Éxito",
+                JOptionPane.INFORMATION_MESSAGE
+            );
+        } else {
+            JOptionPane.showMessageDialog(
+                null,
+                "Error al enviar las invitaciones",
+                "Error",
+                JOptionPane.ERROR_MESSAGE
+            );
         }
     }
 
@@ -281,8 +320,8 @@ public class ControlCrearEvento {
     public void showMapa(JPanel destino) {
         gestorUbicaciones.mostrarMapa(destino);
     }
-
-    public Map<String, Double> obtenerUbicacion() {
+    
+    public Map<String, String> obtenerUbicacion(){
         return gestorUbicaciones.getUbicacionSeleccionada();
     }
 

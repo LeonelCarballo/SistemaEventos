@@ -31,8 +31,7 @@ public interface IIntegracion {
     
     public abstract boolean validarHorario(String idCalendario, String fecha, String hora);
     
-    public abstract Map<String, Double> obtenerUbicacionMapa();
-    
     public abstract void eliminarEvento(String idCalendario, EventoInfraestructuraDTO evento);
+    public abstract Map<String, String> obtenerUbicacionMapa();
 
 }

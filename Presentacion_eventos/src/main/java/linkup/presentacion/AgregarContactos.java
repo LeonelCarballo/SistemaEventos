@@ -46,17 +46,27 @@ public class AgregarContactos extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "El usuario no existe o el username es inválido.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
-        } catch (exception.NegocioException ex) {
-            Logger.getLogger(AgregarContactos.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            } catch (exception.NegocioException ex) {
+                Logger.getLogger(AgregarContactos.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(this, "Error al validar el usuario. Inténtalo de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
 
             gestorContactos.agregarContacto(usernameActual, usernameNuevo);
             
             JOptionPane.showMessageDialog(this, "Contacto agregado exitosamente.");
             jTextFieldBuscador.setText("");
     }
-
-
+       
+    public void mostrar(){
+        setVisible(true);
+    }
+    
+    public void cerrar(){
+        setVisible(false);
+        dispose();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -78,6 +88,7 @@ public class AgregarContactos extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabelTitulo = new javax.swing.JLabel();
         jLabelLogo = new javax.swing.JLabel();
+        jButtonMisAmigos = new javax.swing.JButton();
         jLabelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -87,6 +98,11 @@ public class AgregarContactos extends javax.swing.JFrame {
         jButtonMisEventos.setBorder(null);
         jButtonMisEventos.setContentAreaFilled(false);
         jButtonMisEventos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonMisEventos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMisEventosActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonMisEventos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 60, -1));
 
         jButtonChat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonchat.png"))); // NOI18N
@@ -117,6 +133,12 @@ public class AgregarContactos extends javax.swing.JFrame {
         jPanel2.add(jTextFieldBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 360, 40));
 
         jButtonAgregar.setText("jButton1");
+        jButtonAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAgregarActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButtonAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, 110, 40));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 520, 360));
@@ -134,11 +156,35 @@ public class AgregarContactos extends javax.swing.JFrame {
         jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/LINK UP.png"))); // NOI18N
         getContentPane().add(jLabelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 250, 50));
 
+        jButtonMisAmigos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonmisamigos.png"))); // NOI18N
+        jButtonMisAmigos.setBorder(null);
+        jButtonMisAmigos.setContentAreaFilled(false);
+        jButtonMisAmigos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonMisAmigos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMisAmigosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonMisAmigos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 60, -1));
+
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondosimple.png"))); // NOI18N
         getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-9, 0, 1160, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarActionPerformed
+        agregarContacto();
+    }//GEN-LAST:event_jButtonAgregarActionPerformed
+
+    private void jButtonMisEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMisEventosActionPerformed
+        cerrar();
+        control.mostrarVentanaPrincipal();
+    }//GEN-LAST:event_jButtonMisEventosActionPerformed
+
+    private void jButtonMisAmigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMisAmigosActionPerformed
+        control.mostrarAgregarContactos();
+    }//GEN-LAST:event_jButtonMisAmigosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -146,6 +192,7 @@ public class AgregarContactos extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCalendario;
     private javax.swing.JButton jButtonChat;
     private javax.swing.JButton jButtonMenu;
+    private javax.swing.JButton jButtonMisAmigos;
     private javax.swing.JButton jButtonMisEventos;
     private javax.swing.JLabel jLabelFondo;
     private javax.swing.JLabel jLabelLogo;

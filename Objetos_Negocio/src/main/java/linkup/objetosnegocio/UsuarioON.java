@@ -16,7 +16,7 @@ public class UsuarioON {
     private String nombre;
     private String apellido;
     
-    private IUsuariosDAO usuariosDAO;
+    public IUsuariosDAO usuariosDAO;
 
     public UsuarioON(IUsuariosDAO usuariosDAO) {
         this.usuariosDAO = usuariosDAO;
@@ -31,13 +31,14 @@ public class UsuarioON {
         this.apellido = apellido;
     }
 
-    public static UsuarioON getInstance(Long id, String username, String contrasenia, String nombre, String apellido) {
+    public static UsuarioON getInstance(Long id, String username, String contrasenia, String nombre, String apellido, IUsuariosDAO usuariosDAO) {
         if (instance == null) {
             instance = new UsuarioON(id, username, contrasenia, nombre, apellido);
+            instance.usuariosDAO = usuariosDAO; 
         }
         return instance;
     }
-    
+
     public static void setInstance(UsuarioON usuario) {
         instance = usuario;
     }
@@ -161,7 +162,7 @@ public class UsuarioON {
             return false;
         }
 
-        Usuario entidad = UsuarioON.getInstance(nuevoUsuario.getId(), nuevoUsuario.getUsername(), nuevoUsuario.getContrasenia(), nuevoUsuario.getNombre(), nuevoUsuario.getApellido()).toEntidad();
+        Usuario entidad = UsuarioON.getInstance(nuevoUsuario.getId(), nuevoUsuario.getUsername(), nuevoUsuario.getContrasenia(), nuevoUsuario.getNombre(), nuevoUsuario.getApellido(), usuariosDAO).toEntidad();
 
         return usuariosDAO.registrarUsuario(entidad);
     }

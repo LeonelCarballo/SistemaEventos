@@ -103,6 +103,7 @@ public class ConfirmacionEvento extends javax.swing.JFrame {
         jButtonCancelar1 = new javax.swing.JButton();
         jLabelLogo1 = new javax.swing.JLabel();
         jButtonAnterior1 = new javax.swing.JButton();
+        jButtonMisAmigos = new javax.swing.JButton();
         jLabelFondo = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
 
@@ -179,6 +180,11 @@ public class ConfirmacionEvento extends javax.swing.JFrame {
         jButton3.setBorder(null);
         jButton3.setContentAreaFilled(false);
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 60, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lblcreandoevento.png"))); // NOI18N
@@ -199,6 +205,7 @@ public class ConfirmacionEvento extends javax.swing.JFrame {
         jButtonInicio1.setBackground(new java.awt.Color(255, 255, 255));
         jButtonInicio1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botoninicio.png"))); // NOI18N
         jButtonInicio1.setBorder(null);
+        jButtonInicio1.setContentAreaFilled(false);
         jButtonInicio1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonInicio1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -234,6 +241,17 @@ public class ConfirmacionEvento extends javax.swing.JFrame {
         });
         getContentPane().add(jButtonAnterior1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 610, -1, -1));
 
+        jButtonMisAmigos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonmisamigos.png"))); // NOI18N
+        jButtonMisAmigos.setBorder(null);
+        jButtonMisAmigos.setContentAreaFilled(false);
+        jButtonMisAmigos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonMisAmigos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMisAmigosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonMisAmigos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 60, -1));
+
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/nuevoevento.png"))); // NOI18N
         getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-8, 0, 1200, -1));
 
@@ -264,10 +282,22 @@ public class ConfirmacionEvento extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         controlador.intentarCrearEvento(eventoDTO);
-        eventos = organizadorEventos.consultarEventos();
-        controlador.mostrarVentanaPrincipalAlCrear(eventos);
-        cerrar();
+        controlador.enviarInvitacionesSeleccionadas();
+
+        List<EventoDTO> eventosActualizados = organizadorEventos.consultarEventos();
+        controlador.mostrarVentanaPrincipalAlCrear(eventosActualizados);
+
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        cerrar();
+        controlador.mostrarVentanaPrincipal();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButtonMisAmigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMisAmigosActionPerformed
+        controlador.mostrarAgregarContactos();
+    }//GEN-LAST:event_jButtonMisAmigosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -344,6 +374,7 @@ public class ConfirmacionEvento extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCancelar1;
     private javax.swing.JButton jButtonInicio1;
     private javax.swing.JButton jButtonMenu;
+    private javax.swing.JButton jButtonMisAmigos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabelDescripcion;

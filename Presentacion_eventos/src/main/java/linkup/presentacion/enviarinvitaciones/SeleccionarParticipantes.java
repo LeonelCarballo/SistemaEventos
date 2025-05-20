@@ -21,6 +21,9 @@ public class SeleccionarParticipantes extends javax.swing.JFrame {
     private List<String> seleccionados;
     private List<PanelContacto> panelesContactos;
     
+    
+    private List<ContactoDTO> contactosDTO;
+    
     private ControlEnviarInvitaciones control;
 
     public SeleccionarParticipantes(ControlEnviarInvitaciones control) {
@@ -35,7 +38,7 @@ public class SeleccionarParticipantes extends javax.swing.JFrame {
         panelesContactos = new ArrayList<>();
 
         this.contactos = new ArrayList<>();
-        List<ContactoDTO> contactosDTO = control.obtenerContactos(); 
+        this.contactosDTO = control.obtenerContactos(); 
 
         for (ContactoDTO contacto : contactosDTO) {
             this.contactos.add(contacto.getNombre());
@@ -65,7 +68,7 @@ public class SeleccionarParticipantes extends javax.swing.JFrame {
     
     private void agregarContactosAlPanel(List<String> contactos) {
         jPanelContactos.removeAll(); 
-        panelesContactos.clear(); // Limpiar la lista para evitar duplicados
+        panelesContactos.clear(); 
 
         for (String contacto : contactos) {
             PanelContacto panel = new PanelContacto(contacto, false);

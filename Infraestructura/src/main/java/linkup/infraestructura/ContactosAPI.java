@@ -24,24 +24,31 @@ public class ContactosAPI implements IContactosAPI {
 
     @Override
     public boolean enviarInvitaciones(String usuario, String idEvento, List<ContactoInfraestructuraDTO> contactos) {
+        // 1) Construir la lista de usernames
         List<String> invitados = contactos.stream()
-                .map(ContactoInfraestructuraDTO::getUsuario) 
+                .map(ContactoInfraestructuraDTO::getUsuario)
                 .collect(Collectors.toList());
 
+        // 2) Payload completo, incluyendo idEvento
         Map<String, Object> payload = new HashMap<>();
-        payload.put("accion", "enviarInvitaciones");
-        payload.put("usuario", usuario);
-        payload.put("idEvento", idEvento);
-        payload.put("invitados", invitados);
-
+        payload.put("accion",    "enviarInvitaciones");
+        payload.put("usuario",   usuario);
+        payload.put("idEvento",  idEvento);
+        payload.put("contactos", invitados);
         String jsonPeticion = gson.toJson(payload);
-        
-        // Llamar al servidor de calendario (NO al de contactos)
-        String respuestaJson = control.obtenerCalendario(jsonPeticion); // Este método debe enviar la petición al servidor simulado de calendario
 
+        // 3) Imprimir el JSON para depurar
+        System.out.println("JSON enviarInvitaciones -> " + jsonPeticion);
+
+        // 4) Invocar AL SERVIDOR SOLO UNA VEZ
+        String respuestaJson = control.obtenerCalendario(jsonPeticion);
+        System.out.println("Respuesta cruda del servidor -> " + respuestaJson);
+
+        // 5) Parsear la respuesta
         Map<String, Object> respuesta = gson.fromJson(respuestaJson, Map.class);
         return Boolean.TRUE.equals(respuesta.get("exito"));
     }
+
 
     @Override
     public List<ContactoInfraestructuraDTO> obtenerContactos(String usuario) {
@@ -51,6 +58,7 @@ public class ContactosAPI implements IContactosAPI {
 
         String jsonPeticion = gson.toJson(payload);
         String respuesta = control.obtenerContactos(jsonPeticion);
+        System.out.println("Respuesta cruda del servidor: " + respuesta);
 
         java.lang.reflect.Type tipoLista = new TypeToken<List<ContactoInfraestructuraDTO>>() {}.getType();
         List<ContactoInfraestructuraDTO> contactos = gson.fromJson(respuesta, tipoLista);
@@ -66,10 +74,13 @@ public class ContactosAPI implements IContactosAPI {
         payload.put("amigo", amigo);
 
         String jsonPeticion = gson.toJson(payload);
-        String respuestaJson = control.obtenerContactos(jsonPeticion);
+        System.out.println(jsonPeticion);
+        System.out.println("JSON que se envía al servidor de contactos: " + jsonPeticion);
+        String respuestaJson = control.enviarContactos(jsonPeticion);
+
 
         Map<String, Object> respuesta = gson.fromJson(respuestaJson, Map.class);
-        System.out.println("se agrego al contacto uwu uwu");
+        System.out.println("Respuesta agregarAmigo: " + respuestaJson);
         return Boolean.TRUE.equals(respuesta.get("exito"));
     }
 

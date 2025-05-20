@@ -19,6 +19,6 @@ public interface IGestorUbicaciones {
 
     public abstract void mostrarMapa(JPanel destino);
     public abstract EventoDTO elegirUbicacion(String nombre);
-    public abstract Map<String, Double> getUbicacionSeleccionada();
+    public abstract Map<String, String> getUbicacionSeleccionada();
     public abstract EventoDTO validarUbicacionEvento(EventoDTO dto);
 }

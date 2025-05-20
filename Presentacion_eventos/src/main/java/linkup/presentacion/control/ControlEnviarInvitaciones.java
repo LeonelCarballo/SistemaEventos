@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import linkup.dtosnegocios.ContactoDTO;
+import linkup.infraestructura.ContactosAPI;
+import linkup.infraestructura.interfaces.IContactosAPI;
 import linkup.objetosnegocio.UsuarioON;
 import linkup.presentacion.enviarinvitaciones.ResumenParticipantes;
 import linkup.presentacion.enviarinvitaciones.SeleccionarParticipantes;
@@ -22,10 +24,15 @@ public class ControlEnviarInvitaciones {
     private ControlCrearEvento controlPadre;
     private IGestorContactos gestorContactos = new GestorContactos();
     private ControlIniciarSesion controlIniciarSesion;
+    private final String idEvento;  
+    private final IContactosAPI contactosAPI;
     
     public ControlEnviarInvitaciones(ControlCrearEvento controlPadre, ControlIniciarSesion controlIniciarSesion) {
         this.controlPadre = controlPadre;
         this.controlIniciarSesion = controlIniciarSesion;
+        this.idEvento = controlPadre.getEventoDTO().getIdExterno();
+        this.contactosAPI = new ContactosAPI();
+        
         seleccionados = new ArrayList<>();
         ventanaSeleccion = new SeleccionarParticipantes(this);
         ventanaResumen = new ResumenParticipantes(this);
@@ -74,10 +81,10 @@ public class ControlEnviarInvitaciones {
         return seleccionados.contains(contacto);
     }
     
-        public List<ContactoDTO> obtenerContactos() {
-            String username = controlIniciarSesion.getUsuarioActual().getUsername();
-            return gestorContactos.ObtenerContactos(username);
-        }
+    public List<ContactoDTO> obtenerContactos() {
+        String username = controlIniciarSesion.getUsuarioActual().getUsername();
+        return gestorContactos.ObtenerContactos(username);
+    }
 
 }
 
