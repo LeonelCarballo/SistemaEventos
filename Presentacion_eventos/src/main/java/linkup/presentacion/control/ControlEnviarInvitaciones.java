@@ -23,8 +23,9 @@ public class ControlEnviarInvitaciones {
     private IGestorContactos gestorContactos = new GestorContactos();
     private ControlIniciarSesion controlIniciarSesion;
     
-    public ControlEnviarInvitaciones(ControlCrearEvento controlPadre) {
+    public ControlEnviarInvitaciones(ControlCrearEvento controlPadre, ControlIniciarSesion controlIniciarSesion) {
         this.controlPadre = controlPadre;
+        this.controlIniciarSesion = controlIniciarSesion;
         seleccionados = new ArrayList<>();
         ventanaSeleccion = new SeleccionarParticipantes(this);
         ventanaResumen = new ResumenParticipantes(this);

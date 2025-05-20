@@ -139,7 +139,7 @@ public class ControlCrearEvento {
 
         this.eventoDTO = eventoDTO;
 
-        ControlEnviarInvitaciones controlInvitaciones = new ControlEnviarInvitaciones(this);
+        ControlEnviarInvitaciones controlInvitaciones = new ControlEnviarInvitaciones(this, controlIniciarSesion);
         controlInvitaciones.iniciarFlujo();
     }
 
