@@ -199,6 +199,7 @@ public class ControlCrearEvento {
             }
             this.contactosSeleccionados = contactos;
             cerrarVentana(frmInvitaciones);
+            System.out.println(eventoDTO.getNombreEvento()+ "hola");
             mostrarConfirmacionEvento(eventoDTO);
             return contactosSeleccionados;
         } catch (NegocioException e) {
@@ -306,7 +307,7 @@ public class ControlCrearEvento {
         gestorUbicaciones.mostrarMapa(destino);
     }
     
-    public Map<String, Double> obtenerUbicacion(){
+    public Map<String, String> obtenerUbicacion(){
         return gestorUbicaciones.getUbicacionSeleccionada();
     }
 
