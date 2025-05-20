@@ -226,24 +226,23 @@ public class AdministrarEvento extends javax.swing.JFrame {
     private void jButtonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarActionPerformed
         List<EventoDTO> listaEventos = eventos;
 
-        for (EventoDTO e : listaEventos) {
-            if (e.getIdExterno().equals(eventoDTO.getIdExterno())) {
+        
 
-                e.setNombreEvento(jTextField1.getText());
-                e.setEtiqueta(obtenerEtiquetaSeleccionada());
-                e.setDescripcion(jTextField3.getText());
+                eventoDTO.setNombreEvento(jTextField1.getText());
+                eventoDTO.setEtiqueta(obtenerEtiquetaSeleccionada());
+                eventoDTO.setDescripcion(jTextField3.getText());
 
                 String fechaStr = jTextField4.getText();
                 String horaStr = jTextField5.getText();
 
                 LocalDateTime nuevaFechaHora = LocalDateTime.parse(fechaStr + "T" + horaStr);
-                e.setFechaHora(nuevaFechaHora);
+                eventoDTO.setFechaHora(nuevaFechaHora);
 
-                e.setDireccion(jTextField6.getText());
-                break;
-            }
-        }
-        controlEvento.setEventos(listaEventos);
+                eventoDTO.setDireccion(jTextField6.getText());
+
+
+        
+        controlEvento.intentarCrearEvento(eventoDTO);
         controlEvento.mostrarVentanaPrincipal();
         dispose();
     }//GEN-LAST:event_jButtonConfirmarActionPerformed

@@ -32,6 +32,8 @@ public final class EventoDTO {
         this.etiqueta = Objects.requireNonNull(etiqueta);
         this.fechaHora = Objects.requireNonNull(fechaHora);
     }
+    
+    
 
     public String getUsername() {
         return username;

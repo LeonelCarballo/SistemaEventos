@@ -94,6 +94,21 @@ public class Integracion implements IIntegracion {
         return ubicacion;
     }
 
+    @Override
+    public void eliminarEvento(String idCalendario, EventoInfraestructuraDTO eventoInfraestructuraDTO) {
+        Map<String, Object> payload = new HashMap<>();
+
+        payload.put("accion", "eliminarEvento");
+
+        payload.put("idExterno", eventoInfraestructuraDTO.getIdExterno());
+        payload.put("usuario", eventoInfraestructuraDTO.getUsername());    
+        payload.put("idCalendario", idCalendario);                            
+
+        String json = gson.toJson(payload);
+
+        control.agendarCalendario(json); 
+    }
+
     private static class CalendarioPayload {
 
         String idExterno;

@@ -24,28 +24,33 @@ public class OrganizadorEventos implements IOrganizadorEventos {
         this.idCalendario = Objects.requireNonNull(idCalendario, "ID de calendario no puede ser nulo");
     }
 
-    @Override
     public void agregarEvento(EventoDTO dto) throws NegocioException {
         EventoDTO eventoValidado = validarEventoCompleto(dto);
-        ServicioEventos nuevoEvento = EventoMapper.toServicioEvento(eventoValidado);
+        Evento nuevoEvento = EventoMapper.toEvento(eventoValidado);
         nuevoEvento.publicarEnCalendario(idCalendario);
     }
 
     @Override
     public EventoDTO consultarEventoPorId(String idExterno) {
-//        return eventos.stream()
-//                .filter(e -> e.getIdExterno().equals(idExterno))
-//                .findFirst()
-//                .map(EventoMapper::toDTO)
-//                .orElse(null);
-        return null;
+        return eventos.stream()
+                .filter(e -> e.getIdExterno().equals(idExterno))
+                .findFirst()
+                .orElse(null);
+
     }
+
+    @Override
+   public void eliminarEvento(EventoDTO dto) throws NegocioException {
+    EventoDTO eventoValidado = validarEventoCompleto(dto);
+    Evento evento = EventoMapper.toEvento(eventoValidado);
+    evento.eliminarEvento(idCalendario); 
+}
 
     @Override
     public List<EventoDTO> consultarEventos() {
         String usernameActual = UsuarioON.getInstance().getUsername();
 
-        List<Evento> eventosInfra = ServicioEventos.obtenerEventosDelCalendario(idCalendario);
+        List<Evento> eventosInfra = Evento.obtenerEventosDelCalendario(idCalendario);
 
         return eventosInfra.stream()
                 .filter(evento -> usernameActual.equals(evento.getUsername()))
