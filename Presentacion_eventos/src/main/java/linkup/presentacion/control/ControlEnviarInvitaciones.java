@@ -4,6 +4,8 @@
  */
 package linkup.presentacion.control;
 
+import ISubsistema.IGestorContactos;
+import Subsistema.GestorContactos;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,6 +20,8 @@ public class ControlEnviarInvitaciones {
     private SeleccionarParticipantes ventanaSeleccion;
     private ResumenParticipantes ventanaResumen;
     private ControlCrearEvento controlPadre;
+    private IGestorContactos gestorContactos = new GestorContactos();
+    private ControlIniciarSesion controlIniciarSesion;
     
     public ControlEnviarInvitaciones(ControlCrearEvento controlPadre) {
         this.controlPadre = controlPadre;
@@ -68,7 +72,11 @@ public class ControlEnviarInvitaciones {
     public boolean estaSeleccionado(String contacto) {
         return seleccionados.contains(contacto);
     }
-
+    
+        public List<ContactoDTO> obtenerContactos() {
+            String username = controlIniciarSesion.getUsuarioActual().getUsername();
+            return gestorContactos.ObtenerContactos(username);
+        }
 
 }
 

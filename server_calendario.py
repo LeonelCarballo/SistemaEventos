@@ -5,30 +5,25 @@ from datetime import datetime
 
 ARCHIVO_DATOS = "usuarios_calendarios.json"
 
-# Cargar datos desde archivo
 def cargar_datos():
     if os.path.exists(ARCHIVO_DATOS):
         with open(ARCHIVO_DATOS, "r", encoding="utf-8") as f:
             return json.load(f)
     return {}
 
-# Guardar datos en archivo
 def guardar_datos():
     try:
         with open(ARCHIVO_DATOS, "w", encoding="utf-8") as f:
             json.dump(usuarios, f, indent=2, ensure_ascii=False)
-        print("[OK] Datos guardados en JSON.")
-    except Exception as e:
-        print(f"[ERROR] No se pudo guardar el archivo: {e}")
+    except Exception:
+        pass  # Silenciar errores al guardar
 
-# Parsear fechaHora ISO8601 (string) a datetime
 def parse_fecha_hora_unica(fecha_hora_str):
     try:
         return datetime.fromisoformat(fecha_hora_str)
     except Exception:
         return None
 
-# Procesar mensaje entrante del cliente
 def procesar_mensaje(data):
     global usuarios
     try:
@@ -40,8 +35,10 @@ def procesar_mensaje(data):
         if not usuario:
             return json.dumps({"exito": False, "error": "Falta el campo 'usuario'"})
 
+        # Crear usuario si no existe
         if usuario not in usuarios:
-            return json.dumps({"exito": False, "error": f"Usuario '{usuario}' no encontrado"})
+            usuarios[usuario] = {"calendarios": {}}
+            guardar_datos()
 
         if "calendarios" not in usuarios[usuario]:
             usuarios[usuario]["calendarios"] = {}
@@ -63,27 +60,23 @@ def procesar_mensaje(data):
                 return json.dumps({"exito": False, "error": "Falta idExterno"})
 
             if id_externo not in calendarios_usuario:
-                print(f"[INFO] Calendario '{id_externo}' no existe, creando...")
                 calendarios_usuario[id_externo] = {"eventos": []}
 
             calendario = calendarios_usuario[id_externo]
 
             nueva_dt = parse_fecha_hora_unica(evento.get("fechaHora"))
             if not nueva_dt:
-                print(f"[ERROR] Fecha inválida: {evento.get('fechaHora')}")
                 return json.dumps({"exito": False, "error": "Formato de fechaHora inválido"})
 
             for existente in calendario["eventos"]:
-              existente_dt = parse_fecha_hora_unica(existente.get("fechaHora"))
-              if existente_dt == nueva_dt:
-               print(f"[WARN] Evento en conflicto con: {existente}")
-               return json.dumps({
-                 "exito": False,
-                 "error": "Conflicto de horario: ya existe un evento en esa fecha/hora"
-        })
+                existente_dt = parse_fecha_hora_unica(existente.get("fechaHora"))
+                if existente_dt == nueva_dt:
+                    return json.dumps({
+                        "exito": False,
+                        "error": "Conflicto de horario: ya existe un evento en esa fecha/hora"
+                    })
 
             calendario["eventos"].append(evento)
-            print(f"[OK] Evento añadido para {usuario}: {evento}")
             guardar_datos()
             return json.dumps({"exito": True})
 
@@ -115,10 +108,9 @@ def procesar_mensaje(data):
     except Exception as e:
         return json.dumps({"exito": False, "error": f"Error interno: {str(e)}"})
 
-# Cargar datos al iniciar
+# Inicializar estructura de usuarios
 usuarios = cargar_datos()
 
-# Configuración del servidor
 HOST = "localhost"
 PORT = 5010
 
@@ -130,13 +122,8 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     while True:
         conn, addr = s.accept()
         with conn:
-            print(f"📥 Conectado con {addr}")
             data = conn.recv(4096).decode("utf-8")
-
             if not data:
                 continue
-
-            print("🔽 Recibido:", data)
             respuesta = procesar_mensaje(data)
-            print("🔼 Respuesta:", respuesta)
             conn.sendall(respuesta.encode("utf-8"))
