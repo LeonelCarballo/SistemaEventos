@@ -18,7 +18,7 @@ import linkup.infraestructura.interfaces.IConector;
 public class ConectorContactos implements IConector {
     
     private static final String HOST = "localhost";
-    private static final int PORT = 5012;
+    private static final int PORT = 5020;
 
     @Override
     public String invocarServicioJson(String json) {
