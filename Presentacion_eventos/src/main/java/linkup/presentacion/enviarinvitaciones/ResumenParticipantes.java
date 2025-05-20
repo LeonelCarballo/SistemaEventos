@@ -4,17 +4,63 @@
  */
 package linkup.presentacion.enviarinvitaciones;
 
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.List;
+import linkup.presentacion.control.ControlEnviarInvitaciones;
+
 /**
  *
  * @author Dana Chavez
  */
 public class ResumenParticipantes extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ResumenParticipantes
-     */
-    public ResumenParticipantes() {
+    private ControlEnviarInvitaciones control;
+
+    public ResumenParticipantes(ControlEnviarInvitaciones control) {
+        this.control = control;
         initComponents();
+        setLocationRelativeTo(null);
+        
+        jScrollPaneContactos.setOpaque(false);
+        jScrollPaneContactos.getViewport().setOpaque(false);
+        jPanelContactos.setOpaque(false);
+        
+        jPanelContactos.setLayout(new javax.swing.BoxLayout(jPanelContactos, javax.swing.BoxLayout.Y_AXIS));
+        jScrollPaneContactos.setViewportView(jPanelContactos);
+
+    }
+
+    public void actualizarLista(List<String> seleccionados) {
+        jPanelContactos.removeAll();
+
+        for (String contacto : seleccionados) {
+            PanelContacto panel = new PanelContacto(contacto, true);
+
+            panel.agregarItemListener(e -> {
+                if (e.getStateChange() == ItemEvent.DESELECTED) {
+                    control.quitarParticipante(contacto);
+                    jPanelContactos.remove(panel);
+                    jPanelContactos.revalidate();
+                    jPanelContactos.repaint();
+                }
+            });
+
+            jPanelContactos.add(panel);
+        }
+
+
+        jPanelContactos.revalidate();
+        jPanelContactos.repaint();
+    }
+
+    public void mostrar() {
+        setVisible(true);
+    }
+
+    public void cerrar() {
+        setVisible(false);
+        dispose();
     }
 
     /**
@@ -33,6 +79,8 @@ public class ResumenParticipantes extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jScrollPaneContactos = new javax.swing.JScrollPane();
+        jPanelContactos = new javax.swing.JPanel();
         jLabelFondo = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
 
@@ -41,6 +89,11 @@ public class ResumenParticipantes extends javax.swing.JFrame {
 
         jButtonRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonregresar.png"))); // NOI18N
         jButtonRegresar.setContentAreaFilled(false);
+        jButtonRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRegresarActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 610, 40, -1));
 
         jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botoncancelar.png"))); // NOI18N
@@ -49,6 +102,11 @@ public class ResumenParticipantes extends javax.swing.JFrame {
 
         jButtonConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonconfirmar.png"))); // NOI18N
         jButtonConfirmar.setContentAreaFilled(false);
+        jButtonConfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConfirmarActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 610, 90, -1));
 
         jButtonMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonmenu.png"))); // NOI18N
@@ -75,6 +133,10 @@ public class ResumenParticipantes extends javax.swing.JFrame {
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 60, -1));
 
+        jScrollPaneContactos.setViewportView(jPanelContactos);
+
+        getContentPane().add(jScrollPaneContactos, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 270, 260, 330));
+
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/participantesseleccionados.png"))); // NOI18N
         getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-8, 0, 1160, -1));
 
@@ -84,41 +146,16 @@ public class ResumenParticipantes extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ResumenParticipantes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ResumenParticipantes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ResumenParticipantes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ResumenParticipantes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
+    private void jButtonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegresarActionPerformed
+        control.regresarASeleccion();
+    }//GEN-LAST:event_jButtonRegresarActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ResumenParticipantes().setVisible(true);
-            }
-        });
-    }
+    private void jButtonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarActionPerformed
+        cerrar();
+        control.confirmarSeleccion();
+    }//GEN-LAST:event_jButtonConfirmarActionPerformed
+
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
@@ -130,5 +167,7 @@ public class ResumenParticipantes extends javax.swing.JFrame {
     private javax.swing.JButton jButtonRegresar;
     private javax.swing.JLabel jLabelFondo;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanelContactos;
+    private javax.swing.JScrollPane jScrollPaneContactos;
     // End of variables declaration//GEN-END:variables
 }

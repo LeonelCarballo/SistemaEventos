@@ -56,8 +56,8 @@ public class GestorContactos implements IGestorContactos {
     }
 
     @Override
-    public boolean agregarContacto(String usuario, ContactoDTO contacto) {
-        return Contactos.getInstancia().agregarContacto(usuario, contacto.getUsuario());
+    public boolean agregarContacto(String usuario, String contacto) {
+        return Contactos.getInstancia().agregarContacto(usuario, contacto);
     }
 
     @Override
@@ -69,6 +69,7 @@ public class GestorContactos implements IGestorContactos {
         return Contactos.getInstancia().enviarInvitaciones(usuario, idEvento, contactosInfra);
     }
     
+    @Override
     public boolean validarExistenciaUsername(String username) {
         if (username == null || username.trim().isEmpty()) {
             return false;

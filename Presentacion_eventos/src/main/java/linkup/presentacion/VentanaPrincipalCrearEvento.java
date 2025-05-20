@@ -92,6 +92,7 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
         jScrollPaneListaEvento = new javax.swing.JScrollPane();
         jPanelListaEventos = new javax.swing.JPanel();
         jLabelLogo = new javax.swing.JLabel();
+        jButtonMisAmigos = new javax.swing.JButton();
         jButtonInicio1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -118,6 +119,7 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
 
         jButtonExplorar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonexplorar.png"))); // NOI18N
         jButtonExplorar.setBorder(null);
+        jButtonExplorar.setContentAreaFilled(false);
         jButtonExplorar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanelFondoBlanco.add(jButtonExplorar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, 200, -1));
 
@@ -140,8 +142,17 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
         jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/LINK UP.png"))); // NOI18N
         jPanelFondoBlanco.add(jLabelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 250, 50));
 
+        jButtonMisAmigos.setText("jButton4");
+        jButtonMisAmigos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMisAmigosActionPerformed(evt);
+            }
+        });
+        jPanelFondoBlanco.add(jButtonMisAmigos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 50, -1));
+
         jButtonInicio1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botoninicio.png"))); // NOI18N
         jButtonInicio1.setBorder(null);
+        jButtonInicio1.setContentAreaFilled(false);
         jButtonInicio1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonInicio1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -251,6 +262,10 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonMenuActionPerformed
 
+    private void jButtonMisAmigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMisAmigosActionPerformed
+        controlador.mostrarAgregarContactos();
+    }//GEN-LAST:event_jButtonMisAmigosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -295,6 +310,7 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
     private javax.swing.JButton jButtonExplorar;
     private javax.swing.JButton jButtonInicio1;
     private javax.swing.JButton jButtonMenu;
+    private javax.swing.JButton jButtonMisAmigos;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabelFondo;
