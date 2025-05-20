@@ -117,6 +117,11 @@ public class AgregarContactos extends javax.swing.JFrame {
         jPanel2.add(jTextFieldBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 360, 40));
 
         jButtonAgregar.setText("jButton1");
+        jButtonAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAgregarActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButtonAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, 110, 40));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 520, 360));
@@ -139,6 +144,10 @@ public class AgregarContactos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarActionPerformed
+        agregarContacto();
+    }//GEN-LAST:event_jButtonAgregarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

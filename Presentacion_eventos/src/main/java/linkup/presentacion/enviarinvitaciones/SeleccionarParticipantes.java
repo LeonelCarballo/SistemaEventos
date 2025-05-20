@@ -65,7 +65,7 @@ public class SeleccionarParticipantes extends javax.swing.JFrame {
     
     private void agregarContactosAlPanel(List<String> contactos) {
         jPanelContactos.removeAll(); 
-        panelesContactos.clear(); // Limpiar la lista para evitar duplicados
+        panelesContactos.clear(); 
 
         for (String contacto : contactos) {
             PanelContacto panel = new PanelContacto(contacto, false);

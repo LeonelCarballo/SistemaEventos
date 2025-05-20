@@ -106,6 +106,7 @@ linkup\presentacion\control\ControlAdministrarGrupo.class
 linkup\presentacion\IniciarSesion.class
 linkup\presentacion\AdministrarEvento$6.class
 linkup\presentacion\VentanaPrincipalCrearEvento$5.class
+linkup\presentacion\AgregarContactos$1.class
 linkup\presentacion\cu\admGrupo\frmGruposPrincipal$8.class
 linkup\presentacion\cu\admGrupo\frmOpcionesGrupo.class
 linkup\presentacion\ConfirmacionEvento$1.class

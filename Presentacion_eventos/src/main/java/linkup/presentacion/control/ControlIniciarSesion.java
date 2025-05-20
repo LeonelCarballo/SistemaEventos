@@ -29,13 +29,15 @@ public class ControlIniciarSesion {
     public boolean iniciarSesion(String username, String contraseña) throws NegocioException {
         UsuarioON usuario = usuariosON.iniciarSesionUsuario(username, contraseña);
         if (usuario != null) {
+            usuario.usuariosDAO = this.usuariosON.usuariosDAO;
             usuarioActual = usuario;
             UsuarioON.setInstance(usuario);
             return true;
         }
+        
         return false;
     }
-    
+ 
     public UsuarioON getUsuarioActual() {
         return usuarioActual;
     }
