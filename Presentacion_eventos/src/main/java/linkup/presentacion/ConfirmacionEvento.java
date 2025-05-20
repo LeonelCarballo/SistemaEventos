@@ -282,9 +282,12 @@ public class ConfirmacionEvento extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         controlador.intentarCrearEvento(eventoDTO);
-        eventos = organizadorEventos.consultarEventos();
-        controlador.mostrarVentanaPrincipalAlCrear(eventos);
-        cerrar();
+        controlador.enviarInvitacionesSeleccionadas();
+
+        List<EventoDTO> eventosActualizados = organizadorEventos.consultarEventos();
+        controlador.mostrarVentanaPrincipalAlCrear(eventosActualizados);
+
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
