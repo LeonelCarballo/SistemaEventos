@@ -56,8 +56,8 @@ public class GestorContactos implements IGestorContactos {
     }
 
     @Override
-    public boolean agregarContacto(String usuario, ContactoDTO contacto) {
-        return Contactos.getInstancia().agregarContacto(usuario, contacto.getUsuario());
+    public boolean agregarContacto(String usuario, String contacto) {
+        return Contactos.getInstancia().agregarContacto(usuario, contacto);
     }
 
     @Override

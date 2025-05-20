@@ -5,7 +5,6 @@
 package linkup.presentacion.control;
 
 import linkup.dtosnegocios.ContactoDTO;
-import linkup.dtosnegocios.EventoCompletoDTO;
 import linkup.dtosnegocios.EventoDTO;
 import ISubsistema.IGestorContactos;
 import ISubsistema.IGestorUbicaciones;
@@ -17,11 +16,11 @@ import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import linkup.dtosnegocios.mapper.EventoMapper;
-import linkup.objetosnegocio.Evento;
 import linkup.objetosnegocio.UsuarioON;
 import linkup.organizadoreventos.OrganizadorEventos;
 import linkup.organizadoreventos.interfaces.IOrganizadorEventos;
 import linkup.presentacion.AdministrarEvento;
+import linkup.presentacion.AgregarContactos;
 import linkup.presentacion.ConfirmacionEvento;
 import linkup.presentacion.EnviarInvitaciones;
 import linkup.presentacion.IngresarDetallesEvento;
@@ -59,6 +58,7 @@ public class ControlCrearEvento {
     private EnviarInvitaciones frmInvitaciones;
     private ConfirmacionEvento frmConfirmacion;
     private AdministrarEvento frmAdministrarEvento;
+    private AgregarContactos frmAgregarContactos;
     
     private IniciarSesion frmIniciarSesion;
     private RegistrarUsuario frmRegistrarUsuario;  
@@ -155,6 +155,11 @@ public class ControlCrearEvento {
         frmAdministrarEvento = new AdministrarEvento(eventoDTO, controlEvento, eventos);
 
         frmAdministrarEvento.setVisible(true);
+    }
+    
+    public void mostrarAgregarContactos() {
+        frmAgregarContactos = new AgregarContactos(this);
+        frmAgregarContactos.setVisible(true);
     }
 
     public void intentarCrearEvento(EventoDTO evento) {

@@ -40,9 +40,9 @@ public class SeleccionarParticipantes extends javax.swing.JFrame {
     
     public void actualizarCheckBoxes() {
         for (PanelContacto panel : panelesContactos) {
-            String nombre = panel.getNombreContacto(); // Asumiendo que tienes un método getNombre()
+            String nombre = panel.getNombreContacto();
             boolean seleccionado = control.estaSeleccionado(nombre);
-            panel.setSeleccionado(seleccionado); // Este método debe actualizar el checkbox internamente
+            panel.setSeleccionado(seleccionado); 
         }
     }
 
