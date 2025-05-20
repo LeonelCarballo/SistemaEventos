@@ -5,10 +5,10 @@
 package linkup.presentacion.enviarinvitaciones;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
+import linkup.dtosnegocios.ContactoDTO;
 import linkup.presentacion.control.ControlEnviarInvitaciones;
 
 /**
@@ -33,7 +33,14 @@ public class SeleccionarParticipantes extends javax.swing.JFrame {
         jPanelContactos.setOpaque(false);
 
         panelesContactos = new ArrayList<>();
-        contactos = Arrays.asList("Ana López", "Carlos Ruiz", "Diana Méndez"); 
+
+        this.contactos = new ArrayList<>();
+        List<ContactoDTO> contactosDTO = control.obtenerContactos(); 
+
+        for (ContactoDTO contacto : contactosDTO) {
+            this.contactos.add(contacto.getNombre());
+        }
+
         jPanelContactos.setLayout(new BoxLayout(jPanelContactos, BoxLayout.Y_AXIS));
         agregarContactosAlPanel(contactos);
     }

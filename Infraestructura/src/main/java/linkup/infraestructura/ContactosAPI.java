@@ -69,6 +69,7 @@ public class ContactosAPI implements IContactosAPI {
         String respuestaJson = control.obtenerContactos(jsonPeticion);
 
         Map<String, Object> respuesta = gson.fromJson(respuestaJson, Map.class);
+        System.out.println("se agrego al contacto uwu uwu");
         return Boolean.TRUE.equals(respuesta.get("exito"));
     }
 
