@@ -21,6 +21,9 @@ public class SeleccionarParticipantes extends javax.swing.JFrame {
     private List<String> seleccionados;
     private List<PanelContacto> panelesContactos;
     
+    
+    private List<ContactoDTO> contactosDTO;
+    
     private ControlEnviarInvitaciones control;
 
     public SeleccionarParticipantes(ControlEnviarInvitaciones control) {

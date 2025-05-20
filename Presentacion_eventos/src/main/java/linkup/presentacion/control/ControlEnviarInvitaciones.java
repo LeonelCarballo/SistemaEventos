@@ -74,10 +74,10 @@ public class ControlEnviarInvitaciones {
         return seleccionados.contains(contacto);
     }
     
-        public List<ContactoDTO> obtenerContactos() {
-            String username = controlIniciarSesion.getUsuarioActual().getUsername();
-            return gestorContactos.ObtenerContactos(username);
-        }
+    public List<ContactoDTO> obtenerContactos() {
+        String username = controlIniciarSesion.getUsuarioActual().getUsername();
+        return gestorContactos.ObtenerContactos(username);
+    }
 
 }
 
