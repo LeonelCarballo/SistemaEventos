@@ -21,7 +21,8 @@ public class MensajeMapper {
         
         return new Mensaje(
             nuevoMensaje.getContenido(),
-            nuevoMensaje.getFechaHora()
+            nuevoMensaje.getFechaHora(),
+            nuevoMensaje.getAutor()    
         );
     }
 }

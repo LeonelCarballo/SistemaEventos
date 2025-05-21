@@ -59,6 +59,19 @@ public class ControlAdministrarGrupo {
     public List<Grupo> obtenerGrupos() {
         return grupos;
     }
+    
+    public List<Grupo> obtenerGruposDelUsuario(UsuarioON usuario) {
+        List<Grupo> todosLosGrupos = obtenerGrupos();
+        List<Grupo> gruposDelUsuario = new ArrayList<>();
+
+        for (Grupo grupo : todosLosGrupos) {
+            if (grupo.getMiembros().contains(usuario)) { // Asegúrate que Grupo tenga lista de usuarios
+                gruposDelUsuario.add(grupo);
+            }
+        }
+
+        return gruposDelUsuario;
+    }
 
     public List<UsuarioON> getUsuariosDisponibles() {
         return usuariosDisponibles;

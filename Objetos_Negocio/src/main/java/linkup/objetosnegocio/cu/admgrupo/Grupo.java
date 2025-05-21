@@ -15,12 +15,14 @@ import linkup.objetosnegocio.UsuarioON;
 public class Grupo {
     private String nombre;
     private LocalDateTime fechaCreaciom;
+    private String creador;
     private List<UsuarioON> miembros;
     private List<Mensaje> mensajes;
 
-    public Grupo(String nombre, LocalDateTime fechaCreaciom, List<UsuarioON> miembros, List<Mensaje> mensajes) {
+    public Grupo(String nombre, LocalDateTime fechaCreaciom, String creador, List<UsuarioON> miembros, List<Mensaje> mensajes) {
         this.nombre = nombre;
         this.fechaCreaciom = fechaCreaciom;
+        this.creador = creador;
         this.miembros = miembros;
         this.mensajes = mensajes;
     }
@@ -46,6 +48,14 @@ public class Grupo {
         return mensajes;
     }
 
+    public String getCreador() {
+        return creador;
+    }
+
+    public void setCreador(String creador) {
+        this.creador = creador;
+    }
+       
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }

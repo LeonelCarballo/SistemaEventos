@@ -16,7 +16,6 @@ import javax.swing.table.JTableHeader;
 import linkup.exception.NegocioException;
 import linkup.objetosnegocio.UsuarioON;
 import linkup.objetosnegocio.cu.admgrupo.Grupo;
-import linkup.objetosnegocio.cu.admgrupo.UsuarioAG;
 import linkup.presentacion.control.ControlAdministrarGrupo;
 import linkup.presentacion.control.ControlCrearEvento;
 
@@ -38,6 +37,7 @@ public class frmOpcionesGrupo extends javax.swing.JFrame {
         initComponents();
         setTitle("Opciones grupo");
         labelNombreGrupo.setText(grupo.getNombre());
+        txtCreador.setText(grupo.getCreador());
         setLocationRelativeTo(null);
         llenarTablaUsuarios(mostrarUsuariosGrupo());
 
@@ -70,49 +70,59 @@ public class frmOpcionesGrupo extends javax.swing.JFrame {
             
         }
         
-        private void eliminarUsuarioSeleccionado() {
-            int filaSeleccionada = tablaUsuarios.getSelectedRow();
-            if (filaSeleccionada == -1) {
-                JOptionPane.showMessageDialog(this, "Selecciona un usuario para eliminar.");
-                return;
+       private void eliminarUsuarioSeleccionado() {
+    int filaSeleccionada = tablaUsuarios.getSelectedRow();
+    if (filaSeleccionada == -1) {
+        JOptionPane.showMessageDialog(this, "Selecciona un usuario para eliminar.");
+        return;
+    }
+
+    String nombreUsuario = (String) tablaUsuarios.getValueAt(filaSeleccionada, 0);
+
+    UsuarioON usuarioAEliminar = null;
+    for (UsuarioON u : grupo.getMiembros()) {
+        if (u.getNombre().equals(nombreUsuario)) {
+            usuarioAEliminar = u;
+            break;
+        }
+    }
+
+    if (usuarioAEliminar != null) {
+        int confirmacion = JOptionPane.showConfirmDialog(
+            this,
+            "Eliminar un usuario del grupo es una acción permanente.\n¿Estás seguro de que deseas continuar?",
+            "Confirmar eliminación",
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.WARNING_MESSAGE
+        );
+
+        if (confirmacion == JOptionPane.YES_OPTION) {
+            controlador.eliminarUsuario(grupo, usuarioAEliminar);
+            JOptionPane.showMessageDialog(this, "Usuario eliminado exitosamente.");
+
+            String usuarioActual = UsuarioON.getInstance().getNombre(); // 🪄 La magia
+
+            if (usuarioAEliminar.getNombre().equals(usuarioActual)) {
+                JOptionPane.showMessageDialog(this, "Te has eliminado del grupo. Serás redirigido.");
+                this.dispose(); 
+                controlador.mostrarVentanaPrincipalGrupos(); // O login, si aplica
+                return; // Ya no continuar con lógica del grupo
             }
 
-            String nombreUsuario = (String) tablaUsuarios.getValueAt(filaSeleccionada, 0);
-
-            UsuarioON usuarioAEliminar = null;
-            for (UsuarioON u : grupo.getMiembros()) {
-                if (u.getNombre().equals(nombreUsuario)) {
-                    usuarioAEliminar = u;
-                    break;
-                }
-            }
-
-            if (usuarioAEliminar != null) {
-                int confirmacion = JOptionPane.showConfirmDialog(
-                    this,
-                    "Eliminar un usuario del grupo es una acción permanente.\n¿Estás seguro de que deseas continuar?",
-                    "Confirmar eliminación",
-                    JOptionPane.YES_NO_OPTION,
-                    JOptionPane.WARNING_MESSAGE
-                );
-
-                if (confirmacion == JOptionPane.YES_OPTION) {
-                    controlador.eliminarUsuario(grupo, usuarioAEliminar);
-                    JOptionPane.showMessageDialog(this, "Usuario eliminado exitosamente.");
-
-                    if (grupo.getMiembros().isEmpty()) {
-                        controlador.eliminarGrupo(grupo);
-                        JOptionPane.showMessageDialog(this, "Como ya no hay usuarios, el grupo ha sido eliminado.");
-                        this.dispose(); 
-                        controlador.mostrarVentanaPrincipalGrupos();
-                    } else {
-                        llenarTablaUsuarios(grupo.getMiembros()); 
-                    }
-                }
-              } else {
-                JOptionPane.showMessageDialog(this, "No se pudo encontrar el usuario.");
+            if (grupo.getMiembros().isEmpty()) {
+                controlador.eliminarGrupo(grupo);
+                JOptionPane.showMessageDialog(this, "Como ya no hay usuarios, el grupo ha sido eliminado.");
+                this.dispose(); 
+                controlador.mostrarVentanaPrincipalGrupos();
+            } else {
+                llenarTablaUsuarios(grupo.getMiembros()); 
             }
         }
+    } else {
+        JOptionPane.showMessageDialog(this, "No se pudo encontrar el usuario.");
+    }
+}
+
 
         
         public void eliminarGrupo(){
@@ -169,6 +179,8 @@ public class frmOpcionesGrupo extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         BotonCambiarNombre = new javax.swing.JButton();
         labelNombreGrupo = new javax.swing.JLabel();
+        labelCreador = new javax.swing.JLabel();
+        txtCreador = new javax.swing.JTextField();
         BotonEliminarGrupo = new javax.swing.JButton();
         BotonEliminarUsuario = new javax.swing.JButton();
         scrollPane = new javax.swing.JScrollPane();
@@ -247,6 +259,11 @@ public class frmOpcionesGrupo extends javax.swing.JFrame {
         labelNombreGrupo.setFont(new java.awt.Font("Futura Book", 0, 24)); // NOI18N
         labelNombreGrupo.setText("nombreGrupo");
 
+        labelCreador.setFont(new java.awt.Font("Futura BQ", 0, 14)); // NOI18N
+        labelCreador.setText("Creado por:");
+
+        txtCreador.setEditable(false);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -256,18 +273,27 @@ public class frmOpcionesGrupo extends javax.swing.JFrame {
                 .addComponent(labelNombreGrupo)
                 .addGap(100, 100, 100)
                 .addComponent(BotonCambiarNombre)
-                .addContainerGap(338, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelCreador, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtCreador, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(122, 122, 122))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(BotonCambiarNombre))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addComponent(labelNombreGrupo)))
+                        .addComponent(labelNombreGrupo))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(labelCreador)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtCreador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(BotonCambiarNombre))))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -320,7 +346,7 @@ public class frmOpcionesGrupo extends javax.swing.JFrame {
                 .addComponent(BotonEliminarGrupo)
                 .addGap(20, 20, 20))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelPrincipalLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(131, Short.MAX_VALUE)
                 .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(128, 128, 128))
         );
@@ -437,8 +463,10 @@ public class frmOpcionesGrupo extends javax.swing.JFrame {
     private javax.swing.JButton jButtonMenu;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel labelCreador;
     private javax.swing.JLabel labelNombreGrupo;
     private javax.swing.JScrollPane scrollPane;
     private javax.swing.JTable tablaUsuarios;
+    private javax.swing.JTextField txtCreador;
     // End of variables declaration//GEN-END:variables
 }

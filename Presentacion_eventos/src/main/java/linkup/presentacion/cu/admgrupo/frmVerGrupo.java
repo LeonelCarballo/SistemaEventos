@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import linkup.dtosnegocios.cu.admgrupo.NuevoMensajeDTO;
+import linkup.objetosnegocio.UsuarioON;
 import linkup.objetosnegocio.cu.admgrupo.Grupo;
 import linkup.objetosnegocio.cu.admgrupo.Mensaje;
 import linkup.presentacion.control.ControlAdministrarGrupo;
@@ -54,7 +55,7 @@ public class frmVerGrupo extends javax.swing.JFrame {
             return;
         }
         
-        NuevoMensajeDTO dto = new NuevoMensajeDTO(contenido, LocalDateTime.now());
+        NuevoMensajeDTO dto = new NuevoMensajeDTO(contenido, LocalDateTime.now(), UsuarioON.getInstance().getUsername());
         controlador.registrarMensaje(grupo, dto);
         limpiarTxt();
         actualizarMensajes();

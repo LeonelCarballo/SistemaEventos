@@ -49,11 +49,11 @@ public class frmCrearGrupo extends javax.swing.JFrame {
 
         TablaUsuarios.setRowHeight(30);
 
+        String usuarioActual = UsuarioON.getInstance().getNombre();
         for (UsuarioON usuario : usuariosDisponibles) {
-            Object[] fila = {
-                usuario.getNombre(),
-            };
-            modeloTabla.addRow(fila);
+             if (!usuario.getNombre().equalsIgnoreCase(usuarioActual)) {
+                modeloTabla.addRow(new Object[]{usuario.getNombre()});
+            }
         }
     }
     
@@ -67,10 +67,15 @@ public class frmCrearGrupo extends javax.swing.JFrame {
             List<UsuarioON> miembrosSeleccionados = new ArrayList<>();
             DefaultTableModel modelo = (DefaultTableModel) TablaUsuarios.getModel();
             
+            String usuarioActual = UsuarioON.getInstance().getNombre();
             List<UsuarioON> todosLosUsuarios = UsuarioON.toUsuarioONList(FabricaObjetosNegocio.crearUsuarioON().obtenerTodosLosUsuarios());
             
             for (int fila : filasSeleccionadas) {
                 String nombreSeleccionado = (String) modelo.getValueAt(fila, 0);
+
+                if (nombreSeleccionado.equalsIgnoreCase(usuarioActual)) {
+                    continue;
+                }
 
                 for (UsuarioON usuario : todosLosUsuarios) {
                     if (usuario.getNombre().equalsIgnoreCase(nombreSeleccionado)) {
@@ -106,13 +111,17 @@ public class frmCrearGrupo extends javax.swing.JFrame {
             return;
         }
         
+        String usuarioActual = UsuarioON.getInstance().getNombre();
         List<String> nombresMiembros = new ArrayList<>();
+        nombresMiembros.add(usuarioActual);
         for (UsuarioON u : miembrosSeleccionados) {
             nombresMiembros.add(u.getNombre());
         }
         
+        String creador = UsuarioON.getInstance().getUsername();
         
-        GrupoDTO nuevoGrupoDTO = new GrupoDTO(nombreGrupo, nombresMiembros);
+        
+        GrupoDTO nuevoGrupoDTO = new GrupoDTO(nombreGrupo, nombresMiembros, creador);
         nuevoGrupoDTO.setMensajes(null);
         controlador.registrarGrupo(nuevoGrupoDTO);
 

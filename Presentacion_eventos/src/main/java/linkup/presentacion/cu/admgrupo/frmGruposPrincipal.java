@@ -11,6 +11,7 @@ import java.awt.event.MouseEvent;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+import linkup.objetosnegocio.UsuarioON;
 import linkup.objetosnegocio.cu.admgrupo.Grupo;
 import linkup.presentacion.control.ControlAdministrarGrupo;
 import linkup.presentacion.control.ControlCrearEvento;
@@ -50,7 +51,8 @@ public class frmGruposPrincipal extends javax.swing.JFrame {
     }
     
     public void mostrarGrupos(){
-        List<Grupo> grupos = controlador.obtenerGrupos();
+        UsuarioON usuario = UsuarioON.getInstance();
+        List<Grupo> grupos = controlador.obtenerGruposDelUsuario(usuario);
         
         String[] columnas = {"Grupos"};
         DefaultTableModel modelo = new DefaultTableModel(columnas, 0) {

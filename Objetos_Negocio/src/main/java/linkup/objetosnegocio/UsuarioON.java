@@ -21,8 +21,15 @@ public class UsuarioON {
     public UsuarioON(IUsuariosDAO usuariosDAO) {
         this.usuariosDAO = usuariosDAO;
     }
+
+    public UsuarioON() {
+    }
+
+    public UsuarioON(String username) {
+        this.username = username;
+    }
     
-    
+        
     public UsuarioON(Long id, String username, String contrasenia, String nombre, String apellido) {
         this.id = id;
         this.username = username;
