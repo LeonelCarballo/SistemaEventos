@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import linkup.objetosnegocio.UsuarioON;
+import linkup.presentacion.control.ControlAdministrarGrupo;
 import linkup.presentacion.control.ControlCrearEvento;
 
 /**
@@ -109,6 +110,11 @@ public class AgregarContactos extends javax.swing.JFrame {
         jButtonChat.setBorder(null);
         jButtonChat.setContentAreaFilled(false);
         jButtonChat.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonChat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonChatActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonChat, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 60, -1));
 
         jButtonCalendario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botoncalendario.png"))); // NOI18N
@@ -185,6 +191,11 @@ public class AgregarContactos extends javax.swing.JFrame {
     private void jButtonMisAmigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMisAmigosActionPerformed
         control.mostrarAgregarContactos();
     }//GEN-LAST:event_jButtonMisAmigosActionPerformed
+
+    private void jButtonChatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonChatActionPerformed
+        ControlAdministrarGrupo.getInstancia().iniciarFlujoGrupos();
+        cerrar();
+    }//GEN-LAST:event_jButtonChatActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -173,6 +173,7 @@ public class frmOpcionesGrupo extends javax.swing.JFrame {
         btnCalendario = new javax.swing.JButton();
         btnGrupos = new javax.swing.JButton();
         btnEventos = new javax.swing.JButton();
+        jButtonMisAmigos = new javax.swing.JButton();
         PanelLogo = new javax.swing.JLabel();
         BotonRegresar = new javax.swing.JButton();
         PanelPrincipal = new javax.swing.JPanel();
@@ -234,6 +235,18 @@ public class frmOpcionesGrupo extends javax.swing.JFrame {
         });
         PanelRosa.add(btnEventos);
         btnEventos.setBounds(10, 220, 46, 47);
+
+        jButtonMisAmigos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonmisamigos.png"))); // NOI18N
+        jButtonMisAmigos.setBorder(null);
+        jButtonMisAmigos.setContentAreaFilled(false);
+        jButtonMisAmigos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonMisAmigos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMisAmigosActionPerformed(evt);
+            }
+        });
+        PanelRosa.add(jButtonMisAmigos);
+        jButtonMisAmigos.setBounds(10, 280, 40, 40);
 
         PanelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/LINK UP.png"))); // NOI18N
 
@@ -449,6 +462,11 @@ public class frmOpcionesGrupo extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnEventosActionPerformed
 
+    private void jButtonMisAmigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMisAmigosActionPerformed
+        ControlCrearEvento.getInstancia().mostrarAgregarContactos();
+        this.dispose();
+    }//GEN-LAST:event_jButtonMisAmigosActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonCambiarNombre;
     private javax.swing.JButton BotonEliminarGrupo;
@@ -461,6 +479,7 @@ public class frmOpcionesGrupo extends javax.swing.JFrame {
     private javax.swing.JButton btnEventos;
     private javax.swing.JButton btnGrupos;
     private javax.swing.JButton jButtonMenu;
+    private javax.swing.JButton jButtonMisAmigos;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel labelCreador;

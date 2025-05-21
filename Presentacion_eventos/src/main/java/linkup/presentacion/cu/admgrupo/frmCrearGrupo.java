@@ -144,6 +144,7 @@ public class frmCrearGrupo extends javax.swing.JFrame {
         btnCalendario = new javax.swing.JButton();
         btnGrupos = new javax.swing.JButton();
         btnEventos = new javax.swing.JButton();
+        jButtonMisAmigos2 = new javax.swing.JButton();
         PanelLogo = new javax.swing.JLabel();
         BotonRegresar = new javax.swing.JButton();
         PanelPrincipal = new javax.swing.JPanel();
@@ -202,6 +203,18 @@ public class frmCrearGrupo extends javax.swing.JFrame {
         });
         PanelRosa.add(btnEventos);
         btnEventos.setBounds(10, 220, 46, 47);
+
+        jButtonMisAmigos2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonmisamigos.png"))); // NOI18N
+        jButtonMisAmigos2.setBorder(null);
+        jButtonMisAmigos2.setContentAreaFilled(false);
+        jButtonMisAmigos2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonMisAmigos2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMisAmigos2ActionPerformed(evt);
+            }
+        });
+        PanelRosa.add(jButtonMisAmigos2);
+        jButtonMisAmigos2.setBounds(10, 280, 40, 40);
 
         PanelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/LINK UP.png"))); // NOI18N
 
@@ -377,6 +390,11 @@ public class frmCrearGrupo extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnEventosActionPerformed
 
+    private void jButtonMisAmigos2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMisAmigos2ActionPerformed
+        ControlCrearEvento.getInstancia().mostrarAgregarContactos();
+        this.dispose();
+    }//GEN-LAST:event_jButtonMisAmigos2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonCrearGrupo;
@@ -390,6 +408,9 @@ public class frmCrearGrupo extends javax.swing.JFrame {
     private javax.swing.JButton btnEventos;
     private javax.swing.JButton btnGrupos;
     private javax.swing.JButton jButtonMenu;
+    private javax.swing.JButton jButtonMisAmigos;
+    private javax.swing.JButton jButtonMisAmigos1;
+    private javax.swing.JButton jButtonMisAmigos2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
