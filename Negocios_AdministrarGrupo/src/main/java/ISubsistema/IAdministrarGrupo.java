@@ -8,7 +8,6 @@ import exception.NegocioException;
 import java.util.List;
 import linkup.objetosnegocio.UsuarioON;
 import linkup.objetosnegocio.cu.admgrupo.Grupo;
-import linkup.objetosnegocio.cu.admgrupo.UsuarioAG;
 
 /**
  *

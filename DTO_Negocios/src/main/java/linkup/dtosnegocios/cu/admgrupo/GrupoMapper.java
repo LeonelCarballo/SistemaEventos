@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import linkup.objetosnegocio.UsuarioON;
 import linkup.objetosnegocio.cu.admgrupo.Grupo;
-import linkup.objetosnegocio.cu.admgrupo.UsuarioAG;
 
 /**
  *
@@ -35,6 +34,7 @@ public class GrupoMapper {
         return new Grupo(
             dto.getNombre(),
             LocalDateTime.now(),
+            dto.getCreador(),
             miembros,
             dto.getMensajes() != null ? dto.getMensajes() : new ArrayList<>()
         );

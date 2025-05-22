@@ -12,7 +12,6 @@ import java.util.regex.Pattern;
 import linkup.exception.NegocioException;
 import linkup.objetosnegocio.UsuarioON;
 import linkup.objetosnegocio.cu.admgrupo.Grupo;
-import linkup.objetosnegocio.cu.admgrupo.UsuarioAG;
 
 /**
  *

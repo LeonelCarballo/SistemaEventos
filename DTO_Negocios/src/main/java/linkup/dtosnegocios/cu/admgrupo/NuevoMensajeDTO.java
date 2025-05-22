@@ -13,13 +13,18 @@ import java.time.LocalDateTime;
 public class NuevoMensajeDTO {
     private String contenido;
     private LocalDateTime fechaHora;
-    //private Usuario emisor
+    private String autor;
 
-    public NuevoMensajeDTO(String contenido, LocalDateTime fechaHora) {
+    public NuevoMensajeDTO(String contenido, LocalDateTime fechaHora, String autor) {
         this.contenido = contenido;
         this.fechaHora = fechaHora;
+        this.autor = autor;
     }
 
+    public String getAutor() {
+        return autor;
+    }
+    
     public String getContenido() {
         return contenido;
     }

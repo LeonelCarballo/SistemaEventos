@@ -1,27 +1,20 @@
 package linkup.objetosnegocio;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+
 import linkup.dtoinfraestructura.EventoInfraestructuraDTO;
 import linkup.infraestructura.Integracion;
 import linkup.infraestructura.interfaces.IIntegracion;
 
 public final class ServicioEventos {
+
     private static ServicioEventos instancia;
-    private final IIntegracion integracion;
-    private final Evento evento; 
 
-    private ServicioEventos() {
-        this.integracion = new Integracion();
-        this.evento = null;  
-    }
-
-    public ServicioEventos(Evento evento) {
-        this.integracion = new Integracion();
-        this.evento = Objects.requireNonNull(evento, "Evento no puede ser nulo");
-    }
+    private ServicioEventos() {}
 
     public static ServicioEventos getInstancia() {
         if (instancia == null) {
@@ -30,78 +23,33 @@ public final class ServicioEventos {
         return instancia;
     }
 
-    public void publicarEnCalendario(String idCalendarioExterno) {
-        if (evento == null) {
-            throw new IllegalStateException("Se requiere un evento válido para esta operación");
-        }
-        EventoInfraestructuraDTO dto = convertirADTO();
-        integracion.agregarEventoACalendario(idCalendarioExterno, dto);
+    public boolean puedeCancelarse(Evento evento) {
+        Objects.requireNonNull(evento);
+        return !evento.getFechaHora().isBefore(LocalDateTime.now().plusHours(2));
     }
 
-    public boolean puedeCancelarse() {
-        return evento != null && evento.puedeCancelarse();
+    public boolean esEventoPasado(Evento evento) {
+        Objects.requireNonNull(evento);
+        LocalDateTime ahora = LocalDateTime.now();
+        return ahora.isAfter(evento.getFechaFin() != null ? evento.getFechaFin() : evento.getFechaHora());
     }
 
-    public static List<Evento> obtenerEventosDelCalendario(String idCalendarioExterno) {
-        List<EventoInfraestructuraDTO> eventosInfra = getInstancia().integracion
-            .obtenerEventosDelCalendario(idCalendarioExterno, UsuarioON.getInstance().getUsername());
-        
-        return eventosInfra.stream()
-                .map(getInstancia()::convertirADominio)
-                .collect(Collectors.toList());
+    public boolean esEventoHoy(Evento evento) {
+        Objects.requireNonNull(evento);
+        LocalDateTime hoy = LocalDateTime.now().toLocalDate().atStartOfDay();
+        LocalDateTime manana = hoy.plusDays(1);
+        LocalDateTime inicio = evento.getFechaHora();
+        LocalDateTime fin = evento.getFechaFin();
+
+        return (inicio.isEqual(hoy) || inicio.isAfter(hoy)) && inicio.isBefore(manana)
+                || (fin != null && fin.isAfter(hoy) && fin.isBefore(manana));
     }
 
-    private Evento convertirADominio(EventoInfraestructuraDTO dto) {
-        return new Evento(
-            dto.idExterno,
-            dto.username,
-            dto.nombreEvento,
-            Etiqueta.valueOf(dto.etiqueta),
-            dto.descripcion,
-            dto.fechaHora,
-            dto.fechaFin,
-            dto.direccion,
-            dto.latitud,
-            dto.longitud,
-            dto.recordatorioActivo,
-            dto.fechaRecordatorio,
-            dto.bannerPath
-        );
+    public long duracionEnMinutos(Evento evento) {
+        Objects.requireNonNull(evento);
+        return evento.getFechaFin() != null
+                ? Duration.between(evento.getFechaHora(), evento.getFechaFin()).toMinutes()
+                : 0;
     }
-
-    private EventoInfraestructuraDTO convertirADTO() {
-        EventoInfraestructuraDTO dto = new EventoInfraestructuraDTO();
-        dto.idExterno = evento.getIdExterno();
-        dto.username = evento.getUsername();
-        dto.nombreEvento = evento.getNombreEvento();
-        dto.descripcion = evento.getDescripcion();
-        dto.etiqueta = evento.getEtiqueta().name();
-        dto.fechaHora = evento.getFechaHora();
-        dto.fechaFin = evento.getFechaFin();
-        dto.direccion = evento.getDireccion();
-        dto.latitud = evento.getLatitud();
-        dto.longitud = evento.getLongitud();
-        dto.recordatorioActivo = evento.isRecordatorioActivo();
-        dto.fechaRecordatorio = evento.getFechaRecordatorio();
-        dto.bannerPath = evento.getBannerPath();
-        return dto;
-    }
-   
-    public String getIdExterno() {
-        return evento != null ? evento.getIdExterno() : null;
-    }
-
-    public String getNombreEvento() {
-        return evento != null ? evento.getNombreEvento() : null;
-    }
-
-    public Evento getEvento() {
-        return evento;
-    }
-    
-    
-    
-    
-   
 }
 

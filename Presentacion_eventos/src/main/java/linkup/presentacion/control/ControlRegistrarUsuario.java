@@ -6,8 +6,6 @@ package linkup.presentacion.control;
 
 
 import javax.swing.JOptionPane;
-import linkup.dtosnegocios.NuevoUsuarioDTO;
-import linkup.dtosnegocios.UsuarioDTO;
 import linkup.exception.NegocioException;
 import linkup.objetosnegocio.UsuarioON;
 import linkup.objetosnegocio.fabrica.FabricaObjetosNegocio;

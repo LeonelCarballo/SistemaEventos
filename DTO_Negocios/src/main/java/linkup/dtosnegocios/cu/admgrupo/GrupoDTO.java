@@ -16,13 +16,24 @@ public class GrupoDTO {
     private String nombre;
     private List<String> nombreMiembros; 
     private List<Mensaje> mensajes;
+    private String creador;
 
-    public GrupoDTO(String nombre,  List<String> nombreMiembros) {
+    public GrupoDTO(String nombre,  List<String> nombreMiembros, String creador) {
         this.nombre = nombre;
         this.nombreMiembros = nombreMiembros;
         this.mensajes = new ArrayList<>();
+        this.creador = creador;
     }
 
+    public String getCreador() {
+        return creador;
+    }
+
+    public void setCreador(String creador) {
+        this.creador = creador;
+    }
+
+       
     public String getNombre() {
         return nombre;
     }

@@ -38,7 +38,6 @@ public class ControlCrearEvento {
 
     private static ControlCrearEvento instancia;
 
-    
     private static IOrganizadorEventos validadorEvento = new OrganizadorEventos("1");
     private static IGestorUbicaciones gestorUbicaciones = new GestorUbicaciones();
     private static IGestorContactos gestorContactos = new GestorContactos();
@@ -59,13 +58,15 @@ public class ControlCrearEvento {
     private ConfirmacionEvento frmConfirmacion;
     private AdministrarEvento frmAdministrarEvento;
     private AgregarContactos frmAgregarContactos;
-    
+
     private IniciarSesion frmIniciarSesion;
-    private RegistrarUsuario frmRegistrarUsuario;  
-    
+    private RegistrarUsuario frmRegistrarUsuario;
+
     private ControlIniciarSesion controlIniciarSesion = new ControlIniciarSesion();
-    
+
     private ControlRegistrarUsuario controlR = new ControlRegistrarUsuario(frmIniciarSesion);
+    
+    private ControlAdministrarInvitaciones controlai;
 
     private ControlCrearEvento() {
     }
@@ -88,7 +89,7 @@ public class ControlCrearEvento {
 
         frmPrincipal.setVisible(true);
     }
-    
+
     public void mostrarVentanaPrincipal() {
         this.eventos = validadorEvento.consultarEventos();
 
@@ -96,21 +97,21 @@ public class ControlCrearEvento {
 
         frmPrincipal.setVisible(true);
     }
-    
+
     public void mostrarInicioSesion(ControlCrearEvento controlEvento) {
-        frmIniciarSesion = new IniciarSesion(controlIniciarSesion,this);
+        frmIniciarSesion = new IniciarSesion(controlIniciarSesion, this);
         frmIniciarSesion.setVisible(true);
     }
-    
+
     public void mostrarRegistrar(ControlCrearEvento controlEvento) {
-        RegistrarUsuario frmRegistrarUsuario = new RegistrarUsuario(controlR,this);
+        RegistrarUsuario frmRegistrarUsuario = new RegistrarUsuario(controlR, this);
         frmRegistrarUsuario.setVisible(true);
     }
 
     public void mostrarVentanaPrincipalAlCrear(List<EventoDTO> eventos1) {
-        eventos = validadorEvento.consultarEventos();
+        this.eventos = validadorEvento.consultarEventos();
 
-        frmPrincipal = new VentanaPrincipalCrearEvento(this, eventos);
+        frmPrincipal = new VentanaPrincipalCrearEvento(this, this.eventos);
 
         frmPrincipal.setVisible(true);
     }
@@ -149,14 +150,14 @@ public class ControlCrearEvento {
 
         frmConfirmacion.setVisible(true);
     }
-    
+
     public void mostrarAdministrarEvento(EventoDTO eventoDTO, ControlCrearEvento controlEvento, List<EventoDTO> eventos) {
 
         frmAdministrarEvento = new AdministrarEvento(eventoDTO, controlEvento, eventos);
 
         frmAdministrarEvento.setVisible(true);
     }
-    
+
     public void mostrarAgregarContactos() {
         frmAgregarContactos = new AgregarContactos(this);
         frmAgregarContactos.setVisible(true);
@@ -166,10 +167,10 @@ public class ControlCrearEvento {
 
         EventoDTO validado = validadorEvento.validarEventoCompleto(evento);
 
-        if(validado.getIdExterno() == null) {
+        if (validado.getIdExterno() == null) {
             validado.setIdExterno(EventoMapper.generarNuevoId());
         }
-        
+
         String username = UsuarioON.getInstance().getUsername();
         validado.setUsername(username);
 
@@ -180,6 +181,23 @@ public class ControlCrearEvento {
         mostrarSeleccionFechaHora(validado);
     }
 
+    public void intentarBorrarEvento(EventoDTO evento) {
+
+        EventoDTO validado = validadorEvento.validarEventoCompleto(evento);
+
+        String idExterno = validado.getIdExterno();
+        String usuario = validado.getUsername();
+
+        validadorEvento.eliminarEvento(validado);
+
+        JOptionPane.showMessageDialog(null, "Evento eliminado correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+
+
+        this.eventos = validadorEvento.consultarEventos();
+        mostrarVentanaPrincipalAlCrear(eventos);
+    }
+    
+    
 //    public Infraestructura RegistrarUbicacion(Infraestructura ubicacion) {
 //        try {
 //            this.ubicacionSeleccionada = gestorUbicaciones.(ubicacion);
@@ -191,7 +209,7 @@ public class ControlCrearEvento {
 //            return null;
 //        }
 //    }
-    
+
     public List<ContactoDTO> intentarValidarContactos(List<ContactoDTO> contactos) {
         try {
             for (ContactoDTO c : contactos) {
@@ -199,6 +217,7 @@ public class ControlCrearEvento {
             }
             this.contactosSeleccionados = contactos;
             cerrarVentana(frmInvitaciones);
+            System.out.println(eventoDTO.getNombreEvento()+ "hola");
             mostrarConfirmacionEvento(eventoDTO);
             return contactosSeleccionados;
         } catch (NegocioException e) {
@@ -262,14 +281,13 @@ public class ControlCrearEvento {
 //            JOptionPane.showMessageDialog(null, e.getMessage(), "Error al guardar", JOptionPane.INFORMATION_MESSAGE);
 //        }
 //    }
-    
     public void cerrarVentana(javax.swing.JFrame ventana) {
         if (ventana != null) {
             ventana.dispose();
         }
     }
-     
-    public void cerrarSesion(){
+
+    public void cerrarSesion() {
         UsuarioON.cerrarSesion();
         mostrarInicioSesion(this);
     }
@@ -281,7 +299,6 @@ public class ControlCrearEvento {
 //    public Infraestructura getUbicacionSeleccionada() {
 //        return ubicacionSeleccionada;
 //    }
-    
     public List<ContactoDTO> getContactosSeleccionados() {
         return contactosSeleccionados;
     }
@@ -301,12 +318,12 @@ public class ControlCrearEvento {
     public EventoDTO validarUbicacionEventoDTO(EventoDTO evento) {
         return gestorUbicaciones.validarUbicacionEvento(evento);
     }
-    
-    public void showMapa(JPanel destino){
+
+    public void showMapa(JPanel destino) {
         gestorUbicaciones.mostrarMapa(destino);
     }
     
-    public Map<String, Double> obtenerUbicacion(){
+    public Map<String, String> obtenerUbicacion(){
         return gestorUbicaciones.getUbicacionSeleccionada();
     }
 
@@ -318,4 +335,11 @@ public class ControlCrearEvento {
         return eventos;
     }
 
+    public void mostrarInvitaciones(){
+        String username = UsuarioON.getInstance().getUsername();
+        System.out.println(username +" holaaaa");
+        controlai = new ControlAdministrarInvitaciones(username,this);
+        
+        controlai.mostrarInvitacionesEnviadas();
+    }
 }

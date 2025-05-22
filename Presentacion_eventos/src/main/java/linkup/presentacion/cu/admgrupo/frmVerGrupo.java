@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import linkup.dtosnegocios.cu.admgrupo.NuevoMensajeDTO;
+import linkup.objetosnegocio.UsuarioON;
 import linkup.objetosnegocio.cu.admgrupo.Grupo;
 import linkup.objetosnegocio.cu.admgrupo.Mensaje;
 import linkup.presentacion.control.ControlAdministrarGrupo;
@@ -54,7 +55,7 @@ public class frmVerGrupo extends javax.swing.JFrame {
             return;
         }
         
-        NuevoMensajeDTO dto = new NuevoMensajeDTO(contenido, LocalDateTime.now());
+        NuevoMensajeDTO dto = new NuevoMensajeDTO(contenido, LocalDateTime.now(), UsuarioON.getInstance().getUsername());
         controlador.registrarMensaje(grupo, dto);
         limpiarTxt();
         actualizarMensajes();
@@ -106,6 +107,7 @@ public class frmVerGrupo extends javax.swing.JFrame {
         btnCalendario = new javax.swing.JButton();
         btnGrupos = new javax.swing.JButton();
         btnEventos = new javax.swing.JButton();
+        jButtonMisAmigos = new javax.swing.JButton();
         PanelLogo = new javax.swing.JLabel();
         BotonRegresar = new javax.swing.JButton();
         PanelGrupoPrincipal = new javax.swing.JPanel();
@@ -166,6 +168,18 @@ public class frmVerGrupo extends javax.swing.JFrame {
         });
         PanelRosa.add(btnEventos);
         btnEventos.setBounds(10, 220, 46, 47);
+
+        jButtonMisAmigos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonmisamigos.png"))); // NOI18N
+        jButtonMisAmigos.setBorder(null);
+        jButtonMisAmigos.setContentAreaFilled(false);
+        jButtonMisAmigos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonMisAmigos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMisAmigosActionPerformed(evt);
+            }
+        });
+        PanelRosa.add(jButtonMisAmigos);
+        jButtonMisAmigos.setBounds(10, 280, 40, 40);
 
         PanelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/LINK UP.png"))); // NOI18N
 
@@ -350,6 +364,11 @@ public class frmVerGrupo extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnEventosActionPerformed
 
+    private void jButtonMisAmigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMisAmigosActionPerformed
+        ControlCrearEvento.getInstancia().mostrarAgregarContactos();
+        this.dispose();
+    }//GEN-LAST:event_jButtonMisAmigosActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -366,6 +385,7 @@ public class frmVerGrupo extends javax.swing.JFrame {
     private javax.swing.JButton btnGrupos;
     private javax.swing.JButton btnOpciones;
     private javax.swing.JButton jButtonMenu;
+    private javax.swing.JButton jButtonMisAmigos;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelNombreGrupo;
     private javax.swing.JTable tablaMensajes;

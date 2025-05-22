@@ -56,9 +56,9 @@ public class GestorUbicaciones implements IGestorUbicaciones {
     }
 
     @Override
-    public Map<String, Double> getUbicacionSeleccionada() {
+    public Map<String, String> getUbicacionSeleccionada() {
         
-        Map<String, Double> coordenadas = integracion.obtenerUbicacionMapa();
+        Map<String, String> coordenadas = integracion.obtenerUbicacionMapa();
         return coordenadas;
     }
 

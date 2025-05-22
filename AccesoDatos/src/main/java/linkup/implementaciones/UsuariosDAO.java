@@ -82,5 +82,4 @@ public class UsuariosDAO implements IUsuariosDAO {
             em.close();
         }
     }
-
 }

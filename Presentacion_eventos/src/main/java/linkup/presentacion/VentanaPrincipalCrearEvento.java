@@ -93,6 +93,7 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
         jPanelListaEventos = new javax.swing.JPanel();
         jLabelLogo = new javax.swing.JLabel();
         jButtonMisAmigos = new javax.swing.JButton();
+        jButtonMisAmigos1 = new javax.swing.JButton();
         jButtonInicio1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -143,6 +144,7 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
         jPanelFondoBlanco.add(jLabelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 250, 50));
 
         jButtonMisAmigos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonmisamigos.png"))); // NOI18N
+        jButtonMisAmigos.setToolTipText("");
         jButtonMisAmigos.setBorder(null);
         jButtonMisAmigos.setContentAreaFilled(false);
         jButtonMisAmigos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -152,6 +154,17 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
             }
         });
         jPanelFondoBlanco.add(jButtonMisAmigos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 60, -1));
+
+        jButtonMisAmigos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonchat.png"))); // NOI18N
+        jButtonMisAmigos1.setBorder(null);
+        jButtonMisAmigos1.setContentAreaFilled(false);
+        jButtonMisAmigos1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonMisAmigos1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMisAmigos1ActionPerformed(evt);
+            }
+        });
+        jPanelFondoBlanco.add(jButtonMisAmigos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 60, -1));
 
         jButtonInicio1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botoninicio.png"))); // NOI18N
         jButtonInicio1.setBorder(null);
@@ -270,6 +283,11 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
         controlador.mostrarAgregarContactos();
     }//GEN-LAST:event_jButtonMisAmigosActionPerformed
 
+    private void jButtonMisAmigos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMisAmigos1ActionPerformed
+        // TODO add your handling code here:
+        controlador.mostrarInvitaciones();
+    }//GEN-LAST:event_jButtonMisAmigos1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -315,6 +333,7 @@ public class VentanaPrincipalCrearEvento extends javax.swing.JFrame {
     private javax.swing.JButton jButtonInicio1;
     private javax.swing.JButton jButtonMenu;
     private javax.swing.JButton jButtonMisAmigos;
+    private javax.swing.JButton jButtonMisAmigos1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabelFondo;

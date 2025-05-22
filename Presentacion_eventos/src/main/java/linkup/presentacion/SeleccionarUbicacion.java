@@ -213,7 +213,7 @@ public class SeleccionarUbicacion extends javax.swing.JFrame {
 
         try {
             eventoDTO = controlador.validarUbicacionEventoDTO(eventoDTO);
-
+            System.out.println(eventoDTO.getNombreEvento());
             controlador.mostrarEnviarInvitaciones(eventoDTO);
             cerrar();
         } catch (NegocioException ex) {
@@ -234,21 +234,19 @@ public class SeleccionarUbicacion extends javax.swing.JFrame {
 
     private void jButtonSeleccionarUbicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeleccionarUbicacionActionPerformed
         // TODO add your handling code here:
-//         Map<String, Double> coordenadas = controlador.obtenerUbicacion();
-//        eventoDTO.setLatitud(coordenadas.get("latitud"));
-//        eventoDTO.setLongitud(coordenadas.get("longitud"));
-//        //por cambiar
-//        eventoDTO.setDireccion(coordenadas.get("latitud") +", "+ coordenadas.get("longitud"));
-//        
-        eventoDTO.setDireccion("20.603740, 103.263764");
+         Map<String, String> Ubicacion = controlador.obtenerUbicacion();
+         System.out.println(Ubicacion);
+        eventoDTO.setDireccion(Ubicacion.get("ciudad")+","+  Ubicacion.get("localidad") + "," + Ubicacion.get("latitud")+" , "+ Ubicacion.get("longitud"));
+
         try {
         eventoDTO = controlador.validarUbicacionEventoDTO(eventoDTO);
-
         controlador.mostrarEnviarInvitaciones(eventoDTO);
         cerrar();
     } catch (NegocioException ex) {
         JOptionPane.showMessageDialog(this, ex.getMessage(), "Error de validación", JOptionPane.ERROR_MESSAGE);
     }
+        
+        
     }//GEN-LAST:event_jButtonSeleccionarUbicacionActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
