@@ -5,17 +5,26 @@
 package linkup.presentacion.cu.gestionarInvitacion;
 
 
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Font;
 import linkup.presentacion.cu.admgrupo.*;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import linkup.dtosnegocios.cu.admgrupo.GrupoDTO;
 import linkup.objetosnegocio.UsuarioON;
+import linkup.objetosnegocio.cu.admInvitacion.Invitacion;
 import linkup.objetosnegocio.cu.admgrupo.Grupo;
 import linkup.objetosnegocio.fabrica.FabricaObjetosNegocio;
 import linkup.presentacion.control.ControlAdministrarGrupo;
+import linkup.presentacion.control.ControlAdministrarInvitaciones;
 import linkup.presentacion.control.ControlCrearEvento;
 
 
@@ -25,18 +34,54 @@ import linkup.presentacion.control.ControlCrearEvento;
  */
 public class frmMostrarInvitacion extends javax.swing.JFrame {
 
-   
-    
+   private List<Invitacion> invitaciones;
+    private ControlAdministrarInvitaciones administrarInvitaciones;
     /**
      * Creates new form frmCrearGrupo
      */
-    public frmMostrarInvitacion() {
-       
+    public frmMostrarInvitacion(List<Invitacion> invitaciones, ControlAdministrarInvitaciones administrarInvitaciones) {
+       this.invitaciones = invitaciones;
+       this.administrarInvitaciones = administrarInvitaciones;
         initComponents();
         
         setTitle("Invitaciones");
+        cargarInvitaciones(invitaciones);
         
     }
+    
+  public void cargarInvitaciones(List<Invitacion> listaInvitaciones) {
+    jPanelListaInvitaciones.removeAll(); // limpiar el panel donde van los paneles
+
+    jPanelListaInvitaciones.setLayout(new BoxLayout(jPanelListaInvitaciones, BoxLayout.Y_AXIS)); // layout vertical
+    jPanelListaInvitaciones.setBackground(Color.PINK);
+
+    if (listaInvitaciones == null || listaInvitaciones.isEmpty()) {
+        // Si no hay invitaciones, mostrar un label indicando que no hay
+        JLabel labelNoHay = new JLabel("No hay invitaciones disponibles");
+        labelNoHay.setForeground(Color.DARK_GRAY);
+        labelNoHay.setFont(new Font("Arial", Font.ITALIC, 16));
+        labelNoHay.setAlignmentX(Component.CENTER_ALIGNMENT);
+        jPanelListaInvitaciones.add(Box.createVerticalGlue()); // para centrar verticalmente
+        jPanelListaInvitaciones.add(labelNoHay);
+        jPanelListaInvitaciones.add(Box.createVerticalGlue());
+    } else {
+        // Si hay invitaciones, agregarlas con fondo gris
+        for (Invitacion invitacion : listaInvitaciones) {
+            panelInvitacion panel = new panelInvitacion(invitacion, administrarInvitaciones);
+            panel.setBackground(Color.LIGHT_GRAY); // fondo gris claro
+            panel.setOpaque(true); // muy importante para que se pinte el fondo
+            panel.setAlignmentX(Component.LEFT_ALIGNMENT); // para que se alinee bien en BoxLayout
+            jPanelListaInvitaciones.add(panel);
+            jPanelListaInvitaciones.add(Box.createRigidArea(new Dimension(0, 5))); // separador vertical entre paneles
+        }
+    }
+
+    jPanelListaInvitaciones.revalidate();
+    jPanelListaInvitaciones.repaint();
+}
+
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.

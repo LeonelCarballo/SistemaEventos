@@ -106,7 +106,7 @@ public final class Evento {
         );
     }
 
-    private EventoInfraestructuraDTO convertirADTO() {
+    public  EventoInfraestructuraDTO convertirADTO() {
         EventoInfraestructuraDTO dto = new EventoInfraestructuraDTO();
         dto.idExterno = this.getIdExterno();
         dto.username = this.getUsername();

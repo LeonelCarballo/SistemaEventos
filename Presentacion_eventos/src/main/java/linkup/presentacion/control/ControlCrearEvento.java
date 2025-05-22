@@ -65,6 +65,8 @@ public class ControlCrearEvento {
     private ControlIniciarSesion controlIniciarSesion = new ControlIniciarSesion();
 
     private ControlRegistrarUsuario controlR = new ControlRegistrarUsuario(frmIniciarSesion);
+    
+    private ControlAdministrarInvitaciones controlai;
 
     private ControlCrearEvento() {
     }
@@ -333,4 +335,11 @@ public class ControlCrearEvento {
         return eventos;
     }
 
+    public void mostrarInvitaciones(){
+        String username = UsuarioON.getInstance().getUsername();
+        System.out.println(username +" holaaaa");
+        controlai = new ControlAdministrarInvitaciones(username,this);
+        
+        controlai.mostrarInvitacionesEnviadas();
+    }
 }

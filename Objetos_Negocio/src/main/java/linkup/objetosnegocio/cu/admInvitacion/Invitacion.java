@@ -4,34 +4,51 @@
  */
 package linkup.objetosnegocio.cu.admInvitacion;
 
+import java.util.Objects;
+import linkup.objetosnegocio.Evento;
+
 /**
  *
  * @author santi
  */
 public class Invitacion {
-    
-    private final String EventoCodigo;
-    private final String CreadorNombre;
-    private final Estado estado;
 
-    public Invitacion(String EventoCodigo, String CreadorNombre, Estado estado) {
-        this.EventoCodigo = EventoCodigo;
-        this.CreadorNombre = CreadorNombre;
-        this.estado = estado;
+
+    private final String from;          // Quién envió la invitación
+    private final Evento evento;        // El evento asociado a la invitación
+
+    public Invitacion(String from, Evento evento) {
+        this.from = Objects.requireNonNull(from, "Remitente no puede ser nulo");
+        this.evento = Objects.requireNonNull(evento, "Evento no puede ser nulo");
     }
 
-    public String getEventoCodigo() {
-        return EventoCodigo;
+    public String getFrom() {
+        return from;
     }
 
-    public String getCreadorNombre() {
-        return CreadorNombre;
+    public Evento getEvento() {
+        return evento;
     }
 
-    public Estado getEstado() {
-        return estado;
+    @Override
+    public String toString() {
+        return String.format("Invitacion[from=%s, evento=%s]", from, evento);
     }
-    
-    
-    
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Invitacion)) return false;
+        Invitacion that = (Invitacion) o;
+        return from.equals(that.from) && evento.equals(that.evento);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(from, evento);
+    }
 }
+
+    
+
+

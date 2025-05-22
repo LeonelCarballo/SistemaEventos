@@ -16,6 +16,7 @@
         <module>../Infraestructura</module>
         <module>../DTO_Infraestructura</module>
         <module>../Negocios_AdministrarGrupo</module>
+        <module>../Negocios_AdministrarInvitaciones</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

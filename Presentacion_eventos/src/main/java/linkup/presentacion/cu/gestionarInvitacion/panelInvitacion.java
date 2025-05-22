@@ -4,6 +4,9 @@
  */
 package linkup.presentacion.cu.gestionarInvitacion;
 
+import linkup.objetosnegocio.cu.admInvitacion.Invitacion;
+import linkup.presentacion.control.ControlAdministrarInvitaciones;
+
 /**
  *
  * @author santi
@@ -13,8 +16,21 @@ public class panelInvitacion extends javax.swing.JPanel {
     /**
      * Creates new form panelInvitacion
      */
-    public panelInvitacion() {
+    private Invitacion invitacion;
+    private ControlAdministrarInvitaciones controlai;
+    
+    public panelInvitacion(Invitacion invitacion, ControlAdministrarInvitaciones controlai) {
+        this.invitacion = invitacion;
         initComponents();
+        RellenarInvitacion();
+    }
+    
+    public void RellenarInvitacion(){
+        NombreEventoLabel.setText(invitacion.getEvento().getNombreEvento());
+        etiDescripcion.setText(invitacion.getEvento().getDescripcion());
+        etiLugar.setText(invitacion.getEvento().getDireccion());
+        etiFecha.setText(invitacion.getEvento().getFechaHora().toString());
+    
     }
 
     /**
@@ -27,7 +43,7 @@ public class panelInvitacion extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        NombreEventoLabel = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         BtnAceptar = new javax.swing.JButton();
         BtnRechazar = new javax.swing.JButton();
@@ -44,12 +60,12 @@ public class panelInvitacion extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.BorderLayout());
 
-        jLabel5.setFont(new java.awt.Font("Arial Black", 0, 20)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(168, 91, 102));
-        jLabel5.setText("NombreEvento");
-        jLabel5.setAlignmentX(0.5F);
-        jLabel5.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 20, 5, 1));
-        add(jLabel5, java.awt.BorderLayout.PAGE_START);
+        NombreEventoLabel.setFont(new java.awt.Font("Arial Black", 0, 20)); // NOI18N
+        NombreEventoLabel.setForeground(new java.awt.Color(168, 91, 102));
+        NombreEventoLabel.setText("NombreEvento");
+        NombreEventoLabel.setAlignmentX(0.5F);
+        NombreEventoLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 20, 5, 1));
+        add(NombreEventoLabel, java.awt.BorderLayout.PAGE_START);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(542, 75));
@@ -105,7 +121,7 @@ public class panelInvitacion extends javax.swing.JPanel {
         etiLugar.setText("Lugar");
         etiLugar.setAlignmentX(0.5F);
         etiLugar.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 20, 5, 1));
-        jPanel2.add(etiLugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 150, -1));
+        jPanel2.add(etiLugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 370, -1));
 
         jLabel7.setFont(new java.awt.Font("Arial Black", 0, 16)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 153, 153));
@@ -126,7 +142,7 @@ public class panelInvitacion extends javax.swing.JPanel {
         etiDescripcion.setText("Descripcion");
         etiDescripcion.setAlignmentX(0.5F);
         etiDescripcion.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 20, 5, 1));
-        jPanel2.add(etiDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 150, -1));
+        jPanel2.add(etiDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 480, -1));
 
         jLabel10.setFont(new java.awt.Font("Arial Black", 0, 16)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 153, 153));
@@ -140,29 +156,30 @@ public class panelInvitacion extends javax.swing.JPanel {
         etiFecha.setText("Fecha");
         etiFecha.setAlignmentX(0.5F);
         etiFecha.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 20, 5, 1));
-        jPanel2.add(etiFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 150, -1));
+        jPanel2.add(etiFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 360, -1));
 
         add(jPanel2, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAceptarActionPerformed
-
+        controlai.aceptarInvitacion(invitacion.getEvento());
     }//GEN-LAST:event_BtnAceptarActionPerformed
 
     private void BtnRechazarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRechazarActionPerformed
         // TODO add your handling code here:
+        controlai.rechazar(invitacion.getEvento());
     }//GEN-LAST:event_BtnRechazarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAceptar;
     private javax.swing.JButton BtnRechazar;
+    private javax.swing.JLabel NombreEventoLabel;
     private javax.swing.JLabel etiDescripcion;
     private javax.swing.JLabel etiFecha;
     private javax.swing.JLabel etiLugar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;

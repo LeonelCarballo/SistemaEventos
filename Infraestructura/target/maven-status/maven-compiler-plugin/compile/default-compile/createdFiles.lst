@@ -10,5 +10,6 @@ linkup\infraestructura\Integracion$1.class
 linkup\infraestructura\conectores\ConectorMapa.class
 linkup\infraestructura\conectores\ConectorContactos.class
 linkup\infraestructura\Integracion.class
+linkup\infraestructura\Integracion$2.class
 linkup\infraestructura\ContactosAPI$1.class
 linkup\infraestructura\interfaces\IConector.class

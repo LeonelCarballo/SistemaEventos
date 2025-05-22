@@ -104,6 +104,11 @@
             <artifactId>Negocios_AdministrarGrupo</artifactId>
             <version>1.0</version>
         </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>Negocios_AdministrarInvitaciones</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

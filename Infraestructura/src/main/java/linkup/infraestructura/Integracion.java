@@ -17,6 +17,7 @@ import com.google.gson.reflect.TypeToken;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
+import linkup.dtoinfraestructura.InvitacionInfraestructuraDTO;
 import linkup.infraestructura.utils.LocalDateTimeAdapter;
 
 public class Integracion implements IIntegracion {
@@ -107,6 +108,44 @@ public class Integracion implements IIntegracion {
         String json = gson.toJson(payload);
 
         control.agendarCalendario(json); 
+    }
+    
+    @Override
+    public List<InvitacionInfraestructuraDTO> obtenerNotificaciones(String username) {
+    Map<String, String> payload = new HashMap<>();
+    payload.put("accion", "obtenerNotificaciones");
+    payload.put("usuario", username);
+
+    String jsonPeticion = gson.toJson(payload);
+    String respuestaJson = control.agendarCalendario(jsonPeticion);
+
+    System.out.println("Respuesta JSON: " + respuestaJson);
+
+    try {
+        JsonObject respuestaObj = JsonParser.parseString(respuestaJson).getAsJsonObject();
+        if (respuestaObj.has("exito") && !respuestaObj.get("exito").getAsBoolean()) {
+            System.out.println("Error desde el servidor: " + respuestaObj.get("error").getAsString());
+            return Collections.emptyList();
+        }
+    } catch (Exception e) {
+        
+    }
+
+    java.lang.reflect.Type tipoLista = new TypeToken<List<InvitacionInfraestructuraDTO>>() {}.getType();
+    List<InvitacionInfraestructuraDTO> notificaciones = gson.fromJson(respuestaJson, tipoLista);
+
+    return notificaciones != null ? notificaciones : Collections.emptyList();
+}
+
+    @Override
+    public void eliminarNotificacion(String username, String idEvento) {
+        Map<String, String> payload = new HashMap<>();
+        payload.put("accion", "eliminarNotificacion");
+        payload.put("usuario", username);
+        payload.put("idEvento", idEvento);
+
+        String json = gson.toJson(payload);
+        String respuestaJson = control.agendarCalendario(json);
     }
 
     private static class CalendarioPayload {

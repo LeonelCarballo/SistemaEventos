@@ -7,6 +7,7 @@ package linkup.infraestructura.interfaces;
 import java.util.List;
 import java.util.Map;
 import linkup.dtoinfraestructura.EventoInfraestructuraDTO;
+import linkup.dtoinfraestructura.InvitacionInfraestructuraDTO;
 
 /**
  *
@@ -32,6 +33,11 @@ public interface IIntegracion {
     public abstract boolean validarHorario(String idCalendario, String fecha, String hora);
     
     public abstract void eliminarEvento(String idCalendario, EventoInfraestructuraDTO evento);
+    
+    public  abstract List<InvitacionInfraestructuraDTO> obtenerNotificaciones(String username);
+    
     public abstract Map<String, String> obtenerUbicacionMapa();
+    
+    public void eliminarNotificacion(String username, String idEvento);
 
 }
